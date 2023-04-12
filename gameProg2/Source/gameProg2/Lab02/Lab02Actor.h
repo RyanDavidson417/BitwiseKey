@@ -25,6 +25,8 @@ public:
 	FVector InitialPosition;
 	UPROPERTY(VisibleAnywhere)
 	UStaticMeshComponent* TheMesh;
+	UPROPERTY(EditAnywhere)
+	float MaxDistance = 500;
 
 	UPROPERTY(VisibleAnywhere)
 	FVector Target; 

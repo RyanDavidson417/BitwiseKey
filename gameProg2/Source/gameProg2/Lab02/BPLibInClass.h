@@ -15,6 +15,6 @@ class GAMEPROG2_API UBPLibInClass : public UBlueprintFunctionLibrary
 	GENERATED_BODY()
 	
 	public:
-		static FVector MoveTowards(const FVector &startPos, const FVector &endPos, float maxDist);
+	static FVector MoveTowards(const FVector &startPos, const FVector &endPos, float maxDist);
 		
 };

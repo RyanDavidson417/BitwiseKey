@@ -45,10 +45,10 @@ void ALab02Actor::Tick(float DeltaTime)
 	
 	FVector NewLocation = GetActorLocation();
 	FRotator NewRotation = GetActorRotation();
-	float RunningTime = GetGameTimeSinceCreation();
-	float DeltaHeight = (FMath::Sin(RunningTime + DeltaTime) - FMath::Sin(RunningTime));
+	float RunningTime = GetWorld()->GetTimeSeconds();
+	float DeltaHeight = MaxDistance * (FMath::Sin(RunningTime* speed));
 	
-	NewLocation.Z += DeltaHeight * speed;
+	NewLocation.Z = DeltaHeight;
 	SetActorLocation(NewLocation);
 
 	
