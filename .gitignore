@@ -75,3 +75,14 @@ Plugins/*/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+gameProg2/Saved/Autosaves/Game/labs/lab02/lab02_Auto3.umap
+gameProg2/Saved/Autosaves/Game/labs/lab02/lab02_Auto4.umap
+gameProg2/Saved/Config/CrashReportClient/UECC-Mac-2884E27BE0480C698F603F9A27D0F006/CrashReportClient.ini
+gameProg2/Saved/Config/CrashReportClient/UECC-Mac-52E6446B584822201EFA16BAA7A4047E/CrashReportClient.ini
+gameProg2/Saved/Config/CrashReportClient/UECC-Mac-6CF7B187A7432DBE5374F1806E6FAE0B/CrashReportClient.ini
+gameProg2/Saved/Logs/gameProg2.log
+gameProg2/Saved/Logs/gameProg2_2.log
+gameProg2/Source/gameProg2/Private/Lab02/TestSceneComponent.cpp
+gameProg2/Source/gameProg2/Private/Lab02/WayPointSceneComponent.cpp
+gameProg2/Source/gameProg2/Public/Lab02/TestSceneComponent.h
+gameProg2/Source/gameProg2/Public/Lab02/WayPointSceneComponent.h
