@@ -46,6 +46,5 @@ void UWayPointSceneComponent::TickComponent(float DeltaTime, ELevelTick TickType
 		WPIndex = (WPIndex + 1) % waypoints.Num();
 	}
 	
-	// ...
 }
 
