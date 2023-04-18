@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "UObject/ConstructorHelpers.h"
+#include "Lab03/Lab03SceneComponent.h"
 #include "Lab03Actor.generated.h"
 
 UCLASS()
@@ -22,5 +24,11 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+	UPROPERTY(EditAnywhere)
+	TObjectPtr<UStaticMeshComponent> StaticMesh;
+	UPROPERTY(EditAnywhere)
+	TObjectPtr<USceneComponent> SceneComponent;
+	
+	
 
 };
