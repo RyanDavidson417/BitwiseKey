@@ -30,7 +30,7 @@ void UBounceComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActo
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
 	FVector newPos = GetOwner()->GetActorLocation();
-	newPos.Y += FMath::Sin(GetWorld()->GetTimeSeconds() * bounceSpeed) * 30;
+	newPos.Z += FMath::Sin(GetWorld()->GetTimeSeconds() * bounceSpeed) * 30;
 	GetOwner()->SetActorLocation(newPos);
 	// ...
 }
