@@ -4,3 +4,6 @@
 #include "Modules/ModuleManager.h"
 
 IMPLEMENT_PRIMARY_GAME_MODULE( FDefaultGameModuleImpl, gameProg2, "gameProg2" );
+
+DEFINE_LOG_CATEGORY(InitLog);
+DEFINE_LOG_CATEGORY(AiLog);

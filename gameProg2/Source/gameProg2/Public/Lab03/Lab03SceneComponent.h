@@ -15,6 +15,9 @@ class GAMEPROG2_API ULab03SceneComponent : public USceneComponent
 public:	
 	// Sets default values for this component's properties
 	ULab03SceneComponent();
+	
+	// Contains the default functionality (name is arbitrary)
+	virtual void OnInteractedBehavior();
 
 protected:
 	// Called when the game starts
@@ -26,5 +29,12 @@ public:
 
 	UPROPERTY(EditAnywhere)
 	float speed;
+	
+	UPROPERTY(EditAnywhere)
+	float currRotation;
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Interactable Actor")
+	void OnInteracted(); // The event itself
+	void OnInteracted_Implementation(); //The default implementation of the behavior (required if BlueprintNativeEvent, optional if BlueprintImplementableEvent)
 		
 };

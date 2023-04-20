@@ -27,8 +27,24 @@ void ULab03SceneComponent::BeginPlay()
 void ULab03SceneComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-	GetOwner()->SetActorRotation(FRotator(0, GetWorld()->GetTimeSeconds() * speed, 0 ));
+	currRotation = GetWorld()->GetTimeSeconds() * speed;
+	GetOwner()->SetActorRotation(FRotator(0, currRotation, 0 ));
+	UE_LOG(LogTemp, Warning, TEXT("Current Rotation: "));
 
 	// ...
 }
 
+// Function that defines default behavior that occurs when the event fires
+// Do not implement OnInteracted() and the implementation, just the implementation
+void ULab03SceneComponent::OnInteracted_Implementation()
+{
+	OnInteractedBehavior();
+}
+
+// Because BlueprintNativeEvent can't be virtual, have the native event call a virtual function.
+// This allows child class to override virtual for different / additional functionality.
+void ULab03SceneComponent::OnInteractedBehavior()
+{
+	// Print the name of the actor
+	UE_LOG(LogTemp, Warning, TEXT("AExampleEventActor: %s"), *GetName());
+}
