@@ -17,7 +17,7 @@ public:
 	ULab03SceneComponent();
 	
 	// Contains the default functionality (name is arbitrary)
-	virtual void OnInteractedBehavior();
+	virtual void OnRotationBehavior();
 
 protected:
 	// Called when the game starts
@@ -34,7 +34,9 @@ public:
 	float currRotation;
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Interactable Actor")
-	void OnInteracted(); // The event itself
-	void OnInteracted_Implementation(); //The default implementation of the behavior (required if BlueprintNativeEvent, optional if BlueprintImplementableEvent)
-		
+	void OnRotation(); // The event itself
+	void OnRotation_Implementation(); //The default implementation of the behavior (required if BlueprintNativeEvent, optional if BlueprintImplementableEvent)
+
+private:
+	bool rotationInit = false;
 };

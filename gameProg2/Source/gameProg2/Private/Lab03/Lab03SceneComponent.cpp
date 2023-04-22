@@ -29,22 +29,40 @@ void ULab03SceneComponent::TickComponent(float DeltaTime, ELevelTick TickType, F
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 	currRotation = GetWorld()->GetTimeSeconds() * speed;
 	GetOwner()->SetActorRotation(FRotator(0, currRotation, 0 ));
-	UE_LOG(LogTemp, Warning, TEXT("Current Rotation: "));
+
+	if( std::fmod(currRotation, 360) < 40)
+	{
+		if(!rotationInit)
+		{
+			OnRotation();
+			//UE_LOG(LogTemp, Warning, TEXT("Current Rotation: %f"), currRotation);
+			rotationInit = true;
+		}
+	} else
+	{
+		rotationInit = false;
+	}
+	if(!rotationInit)
+	{
+		
+	}
+	
+	//UE_LOG(LogTemp, Warning, TEXT("Current Rotation: "));
 
 	// ...
 }
 
 // Function that defines default behavior that occurs when the event fires
 // Do not implement OnInteracted() and the implementation, just the implementation
-void ULab03SceneComponent::OnInteracted_Implementation()
+void ULab03SceneComponent::OnRotation_Implementation()
 {
-	OnInteractedBehavior();
+	OnRotationBehavior();
 }
 
 // Because BlueprintNativeEvent can't be virtual, have the native event call a virtual function.
 // This allows child class to override virtual for different / additional functionality.
-void ULab03SceneComponent::OnInteractedBehavior()
+void ULab03SceneComponent::OnRotationBehavior()
 {
 	// Print the name of the actor
-	UE_LOG(LogTemp, Warning, TEXT("AExampleEventActor: %s"), *GetName());
+	UE_LOG(LogTemp, Warning, TEXT("ONE FULL ROTATION AExampleEventActor: %s"), *GetOwner()->GetName());
 }
