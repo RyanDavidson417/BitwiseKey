@@ -46,6 +46,19 @@ void UCustomSceneComponent::TickComponent(float DeltaTime, ELevelTick TickType, 
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
 	// ...
+	if(Parent != nullptr) // if we're at the top of the hierarchy 
+	{
+		
+		FTransform parentTransform = Parent->GetTransform(); //I'm unsure if there's a better way to get the parent's custom local transform
+		FTransform finalTransform = LocalTransform * parentTransform;
+		GetOwner()->SetActorTransform(finalTransform);
+	} else // if we're at the top then we'll just want to set our Unreal transform to our custom local transform
+	{
+		
+		GetOwner()->SetActorTransform(LocalTransform);
+	}
+	
+	
 }
 
 void UCustomSceneComponent::setLocalTransform(FTransform newTransform)
