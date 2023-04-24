@@ -22,9 +22,13 @@ protected:
 	virtual void BeginPlay() override;
 
 	//setters for the localTransform variables
+	UFUNCTION(BlueprintCallable)
 	void setLocalTransform(FTransform newTransform);
+	UFUNCTION(BlueprintCallable)
 	void setLocalRotation(FQuat newRotation);
+	UFUNCTION(BlueprintCallable)
 	void setLocalScale(FVector newScale);
+	UFUNCTION(BlueprintCallable)
 	void setLocalTranslation(FVector newTranslation);
 	
 	
@@ -32,7 +36,7 @@ protected:
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintCallable)
 	AActor* Parent;
 	UPROPERTY(EditAnywhere)
 	TArray<AActor *> Children;
