@@ -61,6 +61,30 @@ void UCustomSceneComponent::TickComponent(float DeltaTime, ELevelTick TickType, 
 	
 }
 
+float UCustomSceneComponent::TestFuction(float exampleParam)
+{
+	UE_LOG(LogTemp, Warning, TEXT("Function called!"));
+	return exampleParam * 2;
+}
+
+float UCustomSceneComponent::TestFuctionExposed(float exampleParam)
+{
+	UE_LOG(LogTemp, Warning, TEXT("Function called!"));
+	return exampleParam * 2;
+}
+
+float UCustomSceneComponent::TestFuctionCallable(float exampleParam)
+{
+	UE_LOG(LogTemp, Warning, TEXT("Function called!"));
+	return exampleParam * 2;
+}
+
+float UCustomSceneComponent::TestFuctionPure(float exampleParam)
+{
+	UE_LOG(LogTemp, Warning, TEXT("Function called!"));
+	return exampleParam * 2;
+}
+
 void UCustomSceneComponent::setLocalTransform(FTransform newTransform)
 {
 	setLocalRotation(newTransform.GetRotation());

@@ -8,7 +8,7 @@
 #include "CustomSceneComponent.generated.h"
 
 
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+UCLASS(Blueprintable, ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class GAMEPROG2_API UCustomSceneComponent : public UActorComponent
 {
 	GENERATED_BODY()
@@ -36,12 +36,24 @@ protected:
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-	UPROPERTY(EditAnywhere, BlueprintCallable)
+	UPROPERTY(EditAnywhere)
 	AActor* Parent;
 	UPROPERTY(EditAnywhere)
 	TArray<AActor *> Children;
 	UPROPERTY(EditAnywhere)
 	FTransform LocalTransform;
+
+	float TestFuction(float exampleParam);
+
+	UFUNCTION()
+	float TestFuctionExposed(float exampleParam);
+
+	UFUNCTION(BlueprintCallable)
+	float TestFuctionCallable(float exampleParam);
+
+	UFUNCTION(BlueprintPure)
+	float TestFuctionPure(float exampleParam);
+
 	
 		
 };
