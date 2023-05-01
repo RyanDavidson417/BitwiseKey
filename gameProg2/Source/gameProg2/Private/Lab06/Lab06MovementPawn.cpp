@@ -23,23 +23,23 @@ ALab06MovementPawn::ALab06MovementPawn()
 		StaticMesh->SetStaticMesh(mesh.Object);
 	}
 
-	auto moveAction = ConstructorHelpers::FObjectFinder<UInputAction>(TEXT("/Game/labs/lab06/UserInput/IA_Moving.IA_Moving"));
-	if(moveAction.Succeeded())
-	{
-		MovementAction = moveAction.Object;
-	}
-	
-	auto steerAction = ConstructorHelpers::FObjectFinder<UInputAction>(TEXT("/Game/labs/lab06/UserInput/IA_steering.IA_steering"));
-	if(steerAction.Succeeded())
-	{
-		SteeringAction = steerAction.Object;
-	}
-
-	auto input = ConstructorHelpers::FObjectFinder<UInputMappingContext>(TEXT("/Game/labs/lab06/UserInput/SteeringMappingContext.SteeringMappingContext"));
-	if(input.Succeeded())
-	{
-		InputMapping = input.Object;
-	}
+	// auto moveAction = ConstructorHelpers::FObjectFinder<UInputAction>(TEXT("/Game/labs/lab06/UserInput/IA_Moving.IA_Moving"));
+	// if(moveAction.Succeeded())
+	// {
+	// 	MovementAction = moveAction.Object;
+	// }
+	//
+	// auto steerAction = ConstructorHelpers::FObjectFinder<UInputAction>(TEXT("/Game/labs/lab06/UserInput/IA_steering.IA_steering"));
+	// if(steerAction.Succeeded())
+	// {
+	// 	SteeringAction = steerAction.Object;
+	// }
+	//
+	// auto input = ConstructorHelpers::FObjectFinder<UInputMappingContext>(TEXT("/Game/labs/lab06/UserInput/SteeringMappingContext.SteeringMappingContext"));
+	// if(input.Succeeded())
+	// {
+	// 	InputMapping = input.Object;
+	// }
 }
 
 // Called when the game starts or when spawned
