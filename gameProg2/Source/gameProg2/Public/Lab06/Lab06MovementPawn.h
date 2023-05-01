@@ -16,18 +16,22 @@ public:
 	ALab06MovementPawn();
 
 	UPROPERTY(EditAnywhere)
-	TObjectPtr<class UStaticMeshComponent> StaticMesh;
-
+	UStaticMeshComponent* StaticMesh;
+//	TObjectPtr<class UStaticMeshComponent> StaticMesh;
+	
 	//references to the actions 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
-	TObjectPtr<class UInputAction> MovementAction;
+	class UInputAction* MovementAction; 
+//	TObjectPtr<class UInputAction> MovementAction;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
-	TObjectPtr<class UInputAction> SteeringAction;
+	UInputAction* SteeringAction;
+//	TObjectPtr<class UInputAction> SteeringAction;
 
 	//the base input mapping context we want to add
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
-	TSoftObjectPtr<class UInputMappingContext> InputMapping;
+	class UInputMappingContext* InputMapping;
+//	TSoftObjectPtr<class UInputMappingContext> InputMapping;
 
 	//max movement speed
 	UPROPERTY(EditAnywhere)

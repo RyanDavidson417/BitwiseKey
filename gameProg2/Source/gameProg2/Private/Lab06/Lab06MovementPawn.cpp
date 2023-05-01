@@ -49,25 +49,34 @@ void ALab06MovementPawn::BeginPlay()
 
 
 	UE_LOG(LogTemp, Warning, TEXT("checking for player controller"));
-	if(TObjectPtr<APlayerController> playerController = Cast<APlayerController>(GetController()))
+	UE_LOG(LogTemp, Warning, TEXT("isvalid?  %s"), (IsValid(GetController()) ? TEXT("TRUE") : TEXT("FALSE")))
+
+	if(APlayerController* playerController = Cast<APlayerController>(GetController()))
+//	if(TObjectPtr<APlayerController> playerController = Cast<APlayerController>(GetController()))
 	{
 		
 		UE_LOG(LogTemp, Warning, TEXT("checking to see if there's a local player"));
-		if(TObjectPtr<ULocalPlayer> localPlayer = Cast<ULocalPlayer>(playerController->GetLocalPlayer()))
+		if(ULocalPlayer* localPlayer = Cast<ULocalPlayer>(playerController->GetLocalPlayer()))
+//		if(TObjectPtr<ULocalPlayer> localPlayer = Cast<ULocalPlayer>(playerController->GetLocalPlayer()))
 		{
 			UE_LOG(LogTemp, Warning, TEXT("looking for input system "));
-			if(TObjectPtr<UEnhancedInputLocalPlayerSubsystem> inputSystem =
+			if(UEnhancedInputLocalPlayerSubsystem* inputSystem =
+//			if(TObjectPtr<UEnhancedInputLocalPlayerSubsystem> inputSystem =
 				localPlayer->GetSubsystem<UEnhancedInputLocalPlayerSubsystem>())
 			{
 				UE_LOG(LogTemp, Warning, TEXT("loading inputMapping"));	
-				if(!InputMapping.IsNull())
+				if(InputMapping != nullptr)
 				{
 					
 					UE_LOG(LogTemp, Warning, TEXT("Reached the end of nested ifs"));
-					inputSystem->AddMappingContext(InputMapping.LoadSynchronous(), 0);
+					inputSystem->AddMappingContext(InputMapping, 0);
 				}
 			}
 		}
+	} else
+	{
+		
+		UE_LOG(LogTemp, Warning, TEXT("Player controller cast failed"));
 	}
 	
 }
@@ -87,7 +96,7 @@ void ALab06MovementPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 	UE_LOG(LogTemp, Warning, TEXT("running SetupPlayerComponent()"));
 	//WARN("getting enhanced input component");
 	//doncasting the PlayerInputComponent to be a UEnhancedInputComponent
-	TObjectPtr<UEnhancedInputComponent> EIS = CastChecked<UEnhancedInputComponent>(PlayerInputComponent);
+	UEnhancedInputComponent* EIS = CastChecked<UEnhancedInputComponent>(PlayerInputComponent);
 
 	//bind the move action
 	//WARN("Binding Move actions");
