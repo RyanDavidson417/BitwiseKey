@@ -3,6 +3,9 @@
 
 #include "Lab06/Lab06MovementPawn.h"
 #include "EnhancedInputComponent.h"
+#include "InputMappingContext.h"
+#include "gameProg2/gameProg2.h"
+#include "EnhancedInputSubsystems.h"
 
 // Sets default values
 ALab06MovementPawn::ALab06MovementPawn()
@@ -31,12 +34,41 @@ ALab06MovementPawn::ALab06MovementPawn()
 	{
 		SteeringAction = steerAction.Object;
 	}
+
+	auto input = ConstructorHelpers::FObjectFinder<UInputMappingContext>(TEXT("/Game/labs/lab06/UserInput/SteeringMappingContext.SteeringMappingContext"));
+	if(input.Succeeded())
+	{
+		InputMapping = input.Object;
+	}
 }
 
 // Called when the game starts or when spawned
 void ALab06MovementPawn::BeginPlay()
 {
 	Super::BeginPlay();
+
+
+	UE_LOG(LogTemp, Warning, TEXT("checking for player controller"));
+	if(TObjectPtr<APlayerController> playerController = Cast<APlayerController>(GetController()))
+	{
+		
+		UE_LOG(LogTemp, Warning, TEXT("checking to see if there's a local player"));
+		if(TObjectPtr<ULocalPlayer> localPlayer = Cast<ULocalPlayer>(playerController->GetLocalPlayer()))
+		{
+			UE_LOG(LogTemp, Warning, TEXT("looking for input system "));
+			if(TObjectPtr<UEnhancedInputLocalPlayerSubsystem> inputSystem =
+				localPlayer->GetSubsystem<UEnhancedInputLocalPlayerSubsystem>())
+			{
+				UE_LOG(LogTemp, Warning, TEXT("loading inputMapping"));	
+				if(!InputMapping.IsNull())
+				{
+					
+					UE_LOG(LogTemp, Warning, TEXT("Reached the end of nested ifs"));
+					inputSystem->AddMappingContext(InputMapping.LoadSynchronous(), 0);
+				}
+			}
+		}
+	}
 	
 }
 
@@ -52,5 +84,22 @@ void ALab06MovementPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+	UE_LOG(LogTemp, Warning, TEXT("running SetupPlayerComponent()"));
+	//WARN("getting enhanced input component");
+	//doncasting the PlayerInputComponent to be a UEnhancedInputComponent
+	TObjectPtr<UEnhancedInputComponent> EIS = CastChecked<UEnhancedInputComponent>(PlayerInputComponent);
+
+	//bind the move action
+	//WARN("Binding Move actions");
+	EIS->BindAction(SteeringAction,  ETriggerEvent::Triggered, this, &ALab06MovementPawn::Move);
+	//only doing steering action in this - need to mirror movement
 }
 
+//move function to move the pawn
+void ALab06MovementPawn::Move(const struct FInputActionInstance& Instance)
+{
+	lastSteerInput = Instance.GetValue().Get<FVector2d>();
+	//LOG("MOVE INPUT: (%f, %f)", lastSteerInput.X, lastSteerInput.Y);
+	UE_LOG(LogTemp, Warning, TEXT("MOVE INPUT"));
+	
+}

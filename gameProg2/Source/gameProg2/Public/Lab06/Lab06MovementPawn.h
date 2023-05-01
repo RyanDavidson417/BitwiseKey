@@ -18,17 +18,31 @@ public:
 	UPROPERTY(EditAnywhere)
 	TObjectPtr<class UStaticMeshComponent> StaticMesh;
 
+	//references to the actions 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
 	TObjectPtr<class UInputAction> MovementAction;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
 	TObjectPtr<class UInputAction> SteeringAction;
 
+	//the base input mapping context we want to add
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
+	TSoftObjectPtr<class UInputMappingContext> InputMapping;
+
+	//max movement speed
+	UPROPERTY(EditAnywhere)
+	float MaxMoveSpeed;
+
+	//define a move function
+	virtual void Move(const struct FInputActionInstance& Instance);
 		
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
+	
+	FVector2d lastSteerInput;
+	bool lastMoveInput;
+	
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
