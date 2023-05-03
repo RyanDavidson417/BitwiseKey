@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
+#include "Math/UnrealMathUtility.h"
 #include "Lab06MovementPawn.generated.h"
 
 class UCameraComponent;
@@ -48,7 +49,7 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	
-	FVector2d lastSteerInput;
+	FVector3d lastSteerInput;
 	bool lastMoveInput;
 	
 public:	

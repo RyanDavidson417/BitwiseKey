@@ -6,6 +6,7 @@
 #include "InputMappingContext.h"
 #include "gameProg2/gameProg2.h"
 #include "EnhancedInputSubsystems.h"
+#include "BaseGizmos/GizmoElementShared.h"
 #include "Camera/CameraComponent.h"
 
 // Sets default values
@@ -27,8 +28,8 @@ ALab06MovementPawn::ALab06MovementPawn()
 	//for this lab this is attached to the staticMesh, but we'll probably want to set up a proper capsule collider as in the unreal code
 	FirstPersonCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("FirstPersonCamera"));
 	FirstPersonCameraComponent->SetupAttachment(StaticMesh);
-	FirstPersonCameraComponent->SetRelativeLocation(FVector(400.f, 0.f, 0.f));
-	FirstPersonCameraComponent->bUsePawnControlRotation = true;
+	FirstPersonCameraComponent->SetRelativeLocation(FVector(0.f, -400.f, 200.f));
+	// FirstPersonCameraComponent->bUsePawnControlRotation = true;
 	
 	// auto moveAction = ConstructorHelpers::FObjectFinder<UInputAction>(TEXT("/Game/labs/lab06/UserInput/IA_Moving.IA_Moving"));
 	// if(moveAction.Succeeded())
@@ -124,11 +125,16 @@ void ALab06MovementPawn::Move(const struct FInputActionInstance& Instance)
 	//LOG("MOVE INPUT: (%f, %f)", lastSteerInput.X, lastSteerInput.Y);
 	UE_LOG(LogTemp, Warning, TEXT("MOVE INPUT detected"));
 
+	float moveMagnitude = (lastMoveInput ? 1 : 0);
+
 	if(Controller != nullptr)
 	{
-	UE_LOG(LogTemp, Warning, TEXT("controller not null"));
-		AddMovementInput(GetActorForwardVector(), 100);
-		AddMovementInput(GetActorRightVector(), 100);
+	    UE_LOG(LogTemp, Warning, TEXT("controller not null"));
+		FVector tempVec = GetActorForwardVector() * 100;
+		UE_LOG(LogTemp, Warning, TEXT("%f, %f, %f, %f"), tempVec.X, tempVec.Y, tempVec.Z, moveMagnitude);
+		//AddMovementInput(GetActorForwardVector(), moveMagnitude);
+
+		AddActorWorldOffset(tempVec);
 		
 	}
 	
@@ -136,15 +142,28 @@ void ALab06MovementPawn::Move(const struct FInputActionInstance& Instance)
 
 void ALab06MovementPawn::Steer(const FInputActionInstance& Instance)
 {
-	lastSteerInput = Instance.GetValue().Get<FVector2d>();
+	lastSteerInput = Instance.GetValue().Get<FVector3d>();
 	//LOG("MOVE INPUT: (%f, %f)", lastSteerInput.X, lastSteerInput.Y);
 	UE_LOG(LogTemp, Warning, TEXT("Steer input value: %f and %f"), lastSteerInput.X, lastSteerInput.Y);
 
 	if(Controller != nullptr)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("controller not null"));
-		AddControllerYawInput(lastSteerInput.Y);
-		AddControllerPitchInput(lastSteerInput.X);
+
+		float speed = 60; //do this properly in the .h
+
+		float deltaTime = GetWorld()->GetDeltaSeconds();
+		FQuat yawQuat = FQuat(GetActorUpVector(), FMath::DegreesToRadians(speed * lastSteerInput.X) * deltaTime);
+		FQuat pitchQuat = FQuat(GetActorRightVector(), FMath::DegreesToRadians(speed * lastSteerInput.Y) * deltaTime);
+		FQuat rollQuat = FQuat(GetActorForwardVector(), FMath::DegreesToRadians(speed * lastSteerInput.Z) * deltaTime);
+
+		FQuat spinQuat = yawQuat * pitchQuat * rollQuat;
+		
+		AddActorWorldRotation(spinQuat);
+
+		
+		// AddControllerYawInput(lastSteerInput.X);
+		// AddControllerPitchInput(lastSteerInput.Y);
 	}
 	
 	
