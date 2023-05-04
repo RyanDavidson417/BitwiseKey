@@ -4,7 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
+#include "Math/UnrealMathUtility.h"
 #include "Lab06MovementPawn.generated.h"
+
+class UCameraComponent;
 
 UCLASS()
 class GAMEPROG2_API ALab06MovementPawn : public APawn
@@ -33,25 +36,32 @@ public:
 	class UInputMappingContext* InputMapping;
 //	TSoftObjectPtr<class UInputMappingContext> InputMapping;
 
+	//first person camera
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
+	UCameraComponent* FirstPersonCameraComponent;
+	
 	//max movement speed
 	UPROPERTY(EditAnywhere)
 	float MaxMoveSpeed;
 
-	//define a move function
-	virtual void Move(const struct FInputActionInstance& Instance);
 		
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	
-	FVector2d lastSteerInput;
+	FVector3d lastSteerInput;
 	bool lastMoveInput;
 	
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	//define a move function
+	virtual void Move(const struct FInputActionInstance& Instance);
+	virtual void Steer(const FInputActionInstance& InputActionInstance);
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	UCameraComponent* GetFirstPersonCameraComponent() const {return FirstPersonCameraComponent; }
 
 };
