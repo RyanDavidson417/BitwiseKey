@@ -91,7 +91,7 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	UE_LOG(LogTemp, Warning, TEXT("binding the move action"));
 	EIS->BindAction(MovementAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Move);
 	//bind the steer action
-	EIS->BindAction(SteeringAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Look);
+	EIS->BindAction(LookAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Look);
 
 }
 

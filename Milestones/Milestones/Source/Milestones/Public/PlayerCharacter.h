@@ -37,7 +37,7 @@ public:
 		class UInputAction* MovementAction;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
-		UInputAction* SteeringAction;
+		UInputAction* LookAction;
 
 	//the base input mapping context we want to add
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
