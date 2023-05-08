@@ -47,19 +47,19 @@ void APlayerCharacter::BeginPlay()
 	if (APlayerController* playerController = Cast<APlayerController>(GetController()))
 	{
 
-		//UE_LOG(LogTemp, Warning, TEXT("checking to see if there's a local player"));
+		UE_LOG(LogTemp, Warning, TEXT("checking to see if there's a local player"));
 		if (ULocalPlayer* localPlayer = Cast<ULocalPlayer>(playerController->GetLocalPlayer()))
 		{
-			//UE_LOG(LogTemp, Warning, TEXT("looking for input system "));
+			UE_LOG(LogTemp, Warning, TEXT("looking for input system "));
 			if (UEnhancedInputLocalPlayerSubsystem* inputSystem =
 				localPlayer->GetSubsystem<UEnhancedInputLocalPlayerSubsystem>())
 			{
-				//UE_LOG(LogTemp, Warning, TEXT("loading inputMapping"));
+				UE_LOG(LogTemp, Warning, TEXT("loading inputMapping"));
 				if (InputMapping != nullptr)
 				{
 
-					//UE_LOG(LogTemp, Warning, TEXT("reached end of playerController nested ifs"));
-					//UE_LOG(LogTemp, Warning, TEXT("adding mapping context"));
+					UE_LOG(LogTemp, Warning, TEXT("reached end of playerController nested ifs"));
+					UE_LOG(LogTemp, Warning, TEXT("adding mapping context"));
 					inputSystem->AddMappingContext(InputMapping, 0);
 				}
 			}
