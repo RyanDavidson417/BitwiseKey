@@ -27,12 +27,12 @@ APlayerCharacter::APlayerCharacter()
 	FirstPersonCameraComponent->SetRelativeLocation(FVector(-10.f, 0.f, 60.f)); // Position the camera
 	FirstPersonCameraComponent->bUsePawnControlRotation = true;
 
-	PlayerMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("CharacterMesh1P"));
-	PlayerMesh->SetOnlyOwnerSee(true);
-	PlayerMesh->SetupAttachment(FirstPersonCameraComponent);
+	//PlayerMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("CharacterMesh1P"));
+	//PlayerMesh->SetOnlyOwnerSee(true);
+	//PlayerMesh->SetupAttachment(FirstPersonCameraComponent);
 	//PlayerMesh->bCastDynamicShadow = false; //these two lines were included in Unreal's stock code, but I'm inclined to leave them out
 	//PlayerMesh->CastShadow = false
-	PlayerMesh->SetRelativeLocation(FVector(-30.f, 0.f, -150.f));
+	//PlayerMesh->SetRelativeLocation(FVector(-30.f, 0.f, -150.f));
 
 
 
@@ -93,6 +93,11 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	//bind the steer action
 	EIS->BindAction(LookAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Look);
 
+	//bind the jump actions
+	EIS->BindAction(JumpAction, ETriggerEvent::Triggered, this, &ACharacter::Jump);
+	EIS->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
+
+
 }
 
 void APlayerCharacter::Move(const FInputActionInstance& Instance)
@@ -125,4 +130,3 @@ void APlayerCharacter::Look(const FInputActionInstance& InputActionInstance)
 		AddControllerPitchInput(LookAxisVector.Y);
 	}
 }
-

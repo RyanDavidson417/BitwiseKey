@@ -28,16 +28,17 @@ public:
 	APlayerCharacter();
 
 
-	//static mesh
-	UPROPERTY(VisibleDefaultsOnly, Category = mesh)
-		USkeletalMeshComponent* PlayerMesh;
 
 	//references to the actions 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
 		class UInputAction* MovementAction;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
-		UInputAction* LookAction;
+		class UInputAction* LookAction;
+
+	/** Jump Input Action */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Input)
+		class UInputAction* JumpAction;
 
 	//the base input mapping context we want to add
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
@@ -70,6 +71,7 @@ public:
 	//update movement and looking
 	virtual void Move(const struct FInputActionInstance& Instance);
 	virtual void Look(const FInputActionInstance& InputActionInstance);
+
 
 	//reference to camera component
 	UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
