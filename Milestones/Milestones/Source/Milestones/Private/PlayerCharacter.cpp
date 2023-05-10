@@ -96,7 +96,7 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	//bind the steer action
 	EIS->BindAction(LookAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Look);
 	//bind the steer action
-	EIS->BindAction(InteractAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Interact);
+	EIS->BindAction(InteractAction, ETriggerEvent::Started, this, &APlayerCharacter::Interact);
 
 	//bind the jump actions
 	EIS->BindAction(JumpAction, ETriggerEvent::Triggered, this, &ACharacter::Jump);
@@ -109,7 +109,6 @@ void APlayerCharacter::Move(const FInputActionInstance& Instance)
 {
 
 	lastMoveInput = Instance.GetValue().Get<FVector2D>();
-	//LOG("MOVE INPUT: (%f, %f)", lastSteerInput.X, lastSteerInput.Y);
 	//UE_LOG(LogTemp, Warning, TEXT("MOVE INPUT detected"));
 
 	//FVector2D MovementVector = Value.Get<FVector2D>()
@@ -141,6 +140,7 @@ void APlayerCharacter::Interact(const FInputActionInstance& Instance)
 
 	if (InteractionComponent != nullptr) {
 		UE_LOG(LogTemp, Warning, TEXT("You Collected the %s "), *InteractionComponent->Powerup);
+		InteractionComponent->Interact(Cast<APlayerController>(GetController()));
 
 	}
 	else {
@@ -190,6 +190,7 @@ void APlayerCharacter::TraceLine()
 		}
 	}
 	else {
+		InteractionComponent = nullptr;
 		//UE_LOG(LogTemp, Log, TEXT("No Actors were hit"));
 	}
 
