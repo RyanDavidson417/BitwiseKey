@@ -95,6 +95,8 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	EIS->BindAction(MovementAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Move);
 	//bind the steer action
 	EIS->BindAction(LookAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Look);
+	//bind the steer action
+	EIS->BindAction(InteractAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Interact);
 
 	//bind the jump actions
 	EIS->BindAction(JumpAction, ETriggerEvent::Triggered, this, &ACharacter::Jump);
@@ -134,6 +136,19 @@ void APlayerCharacter::Look(const FInputActionInstance& InputActionInstance)
 	}
 }
 
+void APlayerCharacter::Interact(const FInputActionInstance& Instance)
+{
+
+	if (InteractionComponent != nullptr) {
+		UE_LOG(LogTemp, Warning, TEXT("You Collected the %s "), *InteractionComponent->Powerup);
+
+	}
+	else {
+		UE_LOG(LogTemp, Warning, TEXT("interaction called, interactable object DOESN'T exist"));
+
+	}
+}
+
 void APlayerCharacter::TraceLine()
 {
 
@@ -152,24 +167,30 @@ void APlayerCharacter::TraceLine()
 
 
 	//you can use DrawDebug helpers and the log to help visualize and debug your trace queries
+	/*
 	DrawDebugLine(GetWorld(), TraceStart, TraceEnd, LineTraceHit.bBlockingHit ? FColor::Blue : FColor::Red, false, 5.0f, 0, 10.0f);
 	UE_LOG(LogTemp, Log, TEXT("Tracing line: %s to %s"), *TraceStart.ToCompactString(), *TraceEnd.ToCompactString());
+	*/
 
 	// If the trace hit something, bBlockingHit will be true,
 // and its fields will be filled with detailed info about what was hit
 	if (LineTraceHit.bBlockingHit && IsValid(LineTraceHit.GetActor()))
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Trace hit actor: %s"), *LineTraceHit.GetActor()->GetName());// 
-		if (LineTraceHit.GetActor()->FindComponentByClass(UCollectionInteractable::StaticClass())){
+		//UE_LOG(LogTemp, Warning, TEXT("Trace hit actor: %s"), *LineTraceHit.GetActor()->GetName());// 
+		if (LineTraceHit.GetActor()->FindComponentByClass(UInteractionComponent::StaticClass())){
 
-			UE_LOG(LogTemp, Warning, TEXT("INTERACTABLE Trace hit actor: %s"), *LineTraceHit.GetActor()->GetName());
+			//UE_LOG(LogTemp, Warning, TEXT("INTERACTABLE Trace hit actor: %s"), *LineTraceHit.GetActor()->GetName());
 
 			//MAYBE maybe set a bool to track whether we have one, and store a reference to the actor
+			InteractionComponent = Cast<UCollectionInteractable>(LineTraceHit.GetActor()->FindComponentByClass(UInteractionComponent::StaticClass()));
 
+		}
+		else {
+			InteractionComponent = nullptr;
 		}
 	}
 	else {
-		UE_LOG(LogTemp, Log, TEXT("No Actors were hit"));
+		//UE_LOG(LogTemp, Log, TEXT("No Actors were hit"));
 	}
 
 }

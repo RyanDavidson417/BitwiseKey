@@ -44,6 +44,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Input)
 		class UInputAction* JumpAction;
 
+	/** Interact Input Action */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Input)
+		class UInputAction* InteractAction;
+
 	//the base input mapping context we want to add
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
 		class UInputMappingContext* InputMapping;
@@ -51,6 +55,9 @@ public:
 	//first person camera
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 		UCameraComponent* FirstPersonCameraComponent;
+
+	UPROPERTY(VisibleAnywhere, blueprintReadOnly, Category = Interaction)
+		UCollectionInteractable* InteractionComponent;
 
 	//max movement speed
 	UPROPERTY(EditAnywhere)
@@ -88,6 +95,9 @@ public:
 	//update movement and looking
 	virtual void Move(const struct FInputActionInstance& Instance);
 	virtual void Look(const FInputActionInstance& InputActionInstance);
+
+	//interaction
+	virtual void Interact(const FInputActionInstance& Instance);
 
 	virtual void TraceLine();
 

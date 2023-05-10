@@ -9,13 +9,17 @@
 /**
  * 
  */
-UCLASS()
+UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class MILESTONES_API UCollectionInteractable : public UInteractionComponent
 {
 	GENERATED_BODY()
 
+
 public:
 	UCollectionInteractable();
+
+	UPROPERTY(EditAnywhere, blueprintReadOnly, Category = Interaction)
+		FString Powerup;
 
 protected:
 	virtual void BeginPlay() override;
