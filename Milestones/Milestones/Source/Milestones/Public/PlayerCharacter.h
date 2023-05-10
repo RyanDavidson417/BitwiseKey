@@ -51,11 +51,24 @@ public:
 	//max movement speed
 	UPROPERTY(EditAnywhere)
 		float MaxMoveSpeed;
+	
+	
+	UPROPERTY(EditAnywhere)
+		float interactionDistance;
+		
 
 	FVector2d lastLookInput;
 	FVector2D lastMoveInput;
 
+	FHitResult Hit;
 
+	FVector TraceStart = GetActorLocation();
+
+	FVector TraceEnd = GetActorLocation() + GetActorForwardVector() * 1000.0f;
+
+
+
+	//FCollisionQueryparams RV_TraceParams = FCollisionQueryParams(FName(TEXT("RV_TRACE")), true, this);
 
 protected:
 	// Called when the game starts or when spawned
