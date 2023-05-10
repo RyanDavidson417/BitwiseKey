@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "InteractionComponent.h"
+#include "CollectionInteractable.h"
 #include "PlayerCharacter.generated.h"
 
 class UInputComponent;
@@ -12,6 +14,8 @@ class USceneComponent;
 class UCameraComponent;
 class UAnimMontage;
 class USoundBase;
+class UInteractionComponent;
+class UCollectionInteractable;
 
 
 UCLASS()
@@ -60,13 +64,13 @@ public:
 	FVector2d lastLookInput;
 	FVector2D lastMoveInput;
 
-	FHitResult Hit;
+	// You can expose some of your collision query data as properties to help customize and debug 
+// Here we expose the collision channel we want to run the query on, and set it to only hit Pawns.
+	UPROPERTY(EditAnywhere, Category = "Collision")
+		TEnumAsByte<ECollisionChannel> TraceChannelProperty = ECC_Pawn;
 
-	FVector TraceStart = GetActorLocation();
-
-	FVector TraceEnd = GetActorLocation() + GetActorForwardVector() * 1000.0f;
-
-
+	//online code had this as a local variable but I believe we want to use this elsewhere
+	FHitResult LineTraceHit;
 
 	//FCollisionQueryparams RV_TraceParams = FCollisionQueryParams(FName(TEXT("RV_TRACE")), true, this);
 
@@ -84,6 +88,8 @@ public:
 	//update movement and looking
 	virtual void Move(const struct FInputActionInstance& Instance);
 	virtual void Look(const FInputActionInstance& InputActionInstance);
+
+	virtual void TraceLine();
 
 
 	//reference to camera component

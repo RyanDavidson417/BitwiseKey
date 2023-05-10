@@ -65,13 +65,16 @@ void APlayerCharacter::BeginPlay()
 			}
 		}
 	}
-	
+
+
 }
 
 // Called every frame
 void APlayerCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	TraceLine();
 
 }
 
@@ -105,7 +108,7 @@ void APlayerCharacter::Move(const FInputActionInstance& Instance)
 
 	lastMoveInput = Instance.GetValue().Get<FVector2D>();
 	//LOG("MOVE INPUT: (%f, %f)", lastSteerInput.X, lastSteerInput.Y);
-	UE_LOG(LogTemp, Warning, TEXT("MOVE INPUT detected"));
+	//UE_LOG(LogTemp, Warning, TEXT("MOVE INPUT detected"));
 
 	//FVector2D MovementVector = Value.Get<FVector2D>()
 
@@ -129,4 +132,44 @@ void APlayerCharacter::Look(const FInputActionInstance& InputActionInstance)
 		AddControllerYawInput(LookAxisVector.X);
 		AddControllerPitchInput(LookAxisVector.Y);
 	}
+}
+
+void APlayerCharacter::TraceLine()
+{
+
+	//set up a line trace from our current position to a point interactionDistance ahead of us
+	FVector TraceStart = GetActorLocation();
+	FVector TraceEnd = GetActorLocation() + GetActorForwardVector() * interactionDistance;
+
+	//you can use FCollisionqueryParams to further configure the query
+	FCollisionQueryParams QueryParams;
+	//here we add outselves to the ingnored list so we won't block the trace
+	QueryParams.AddIgnoredActor(this);
+
+	//to run the query, you need a pointer to the current level, which you can get from an actor with GetWorld()
+	// UWorld()->LineTraceSingleByChannel runs a line trace and returns the first actor hit over the provided collision channel.
+	GetWorld()->LineTraceSingleByChannel(LineTraceHit, TraceStart, TraceEnd, TraceChannelProperty, QueryParams);
+
+
+	//you can use DrawDebug helpers and the log to help visualize and debug your trace queries
+	DrawDebugLine(GetWorld(), TraceStart, TraceEnd, LineTraceHit.bBlockingHit ? FColor::Blue : FColor::Red, false, 5.0f, 0, 10.0f);
+	UE_LOG(LogTemp, Log, TEXT("Tracing line: %s to %s"), *TraceStart.ToCompactString(), *TraceEnd.ToCompactString());
+
+	// If the trace hit something, bBlockingHit will be true,
+// and its fields will be filled with detailed info about what was hit
+	if (LineTraceHit.bBlockingHit && IsValid(LineTraceHit.GetActor()))
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Trace hit actor: %s"), *LineTraceHit.GetActor()->GetName());// 
+		if (LineTraceHit.GetActor()->FindComponentByClass(UCollectionInteractable::StaticClass())){
+
+			UE_LOG(LogTemp, Warning, TEXT("INTERACTABLE Trace hit actor: %s"), *LineTraceHit.GetActor()->GetName());
+
+			//MAYBE maybe set a bool to track whether we have one, and store a reference to the actor
+
+		}
+	}
+	else {
+		UE_LOG(LogTemp, Log, TEXT("No Actors were hit"));
+	}
+
 }
