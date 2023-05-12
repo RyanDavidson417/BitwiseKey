@@ -123,15 +123,15 @@ void ALab06MovementPawn::Move(const struct FInputActionInstance& Instance)
 {
 	lastMoveInput = Instance.GetValue().Get<bool>();
 	//LOG("MOVE INPUT: (%f, %f)", lastSteerInput.X, lastSteerInput.Y);
-	UE_LOG(LogTemp, Warning, TEXT("MOVE INPUT detected"));
+	//UE_LOG(LogTemp, Warning, TEXT("MOVE INPUT detected"));
 
 	float moveMagnitude = (lastMoveInput ? 1 : 0);
 
 	if(Controller != nullptr)
 	{
-	    UE_LOG(LogTemp, Warning, TEXT("controller not null"));
+	    //UE_LOG(LogTemp, Warning, TEXT("controller not null"));
 		FVector tempVec = GetActorForwardVector() * 100;
-		UE_LOG(LogTemp, Warning, TEXT("%f, %f, %f, %f"), tempVec.X, tempVec.Y, tempVec.Z, moveMagnitude);
+		//UE_LOG(LogTemp, Warning, TEXT("%f, %f, %f, %f"), tempVec.X, tempVec.Y, tempVec.Z, moveMagnitude);
 		//AddMovementInput(GetActorForwardVector(), moveMagnitude);
 
 		AddActorWorldOffset(tempVec);
@@ -144,11 +144,11 @@ void ALab06MovementPawn::Steer(const FInputActionInstance& Instance)
 {
 	lastSteerInput = Instance.GetValue().Get<FVector3d>();
 	//LOG("MOVE INPUT: (%f, %f)", lastSteerInput.X, lastSteerInput.Y);
-	UE_LOG(LogTemp, Warning, TEXT("Steer input value: %f and %f"), lastSteerInput.X, lastSteerInput.Y);
+	//UE_LOG(LogTemp, Warning, TEXT("Steer input value: %f and %f"), lastSteerInput.X, lastSteerInput.Y);
 
 	if(Controller != nullptr)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("controller not null"));
+		//UE_LOG(LogTemp, Warning, TEXT("controller not null"));
 
 		float speed = 60; //do this properly in the .h
 
