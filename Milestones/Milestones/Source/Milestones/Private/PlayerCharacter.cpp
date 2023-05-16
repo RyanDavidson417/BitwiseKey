@@ -2,6 +2,7 @@
 
 
 #include "PlayerCharacter.h"
+#include "Milestones/Milestones.h"
 #include "EnhancedInputComponent.h"
 #include "InputMappingContext.h"
 #include "EnhancedInputSubsystems.h"
@@ -47,19 +48,19 @@ void APlayerCharacter::BeginPlay()
 	if (APlayerController* playerController = Cast<APlayerController>(GetController()))
 	{
 
-		UE_LOG(LogTemp, Warning, TEXT("checking to see if there's a local player"));
+		//UE_LOG(LogTemp, Warning, TEXT("checking to see if there's a local player"));
 		if (ULocalPlayer* localPlayer = Cast<ULocalPlayer>(playerController->GetLocalPlayer()))
 		{
-			UE_LOG(LogTemp, Warning, TEXT("looking for input system "));
+			//UE_LOG(LogTemp, Warning, TEXT("looking for input system "));
 			if (UEnhancedInputLocalPlayerSubsystem* inputSystem =
 				localPlayer->GetSubsystem<UEnhancedInputLocalPlayerSubsystem>())
 			{
-				UE_LOG(LogTemp, Warning, TEXT("loading inputMapping"));
+				//UE_LOG(LogTemp, Warning, TEXT("loading inputMapping"));
 				if (InputMapping != nullptr)
 				{
 
-					UE_LOG(LogTemp, Warning, TEXT("reached end of playerController nested ifs"));
-					UE_LOG(LogTemp, Warning, TEXT("adding mapping context"));
+					//UE_LOG(LogTemp, Warning, TEXT("reached end of playerController nested ifs"));
+					//UE_LOG(LogTemp, Warning, TEXT("adding mapping context"));
 					inputSystem->AddMappingContext(InputMapping, 0);
 				}
 			}
@@ -84,14 +85,14 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
 
-	UE_LOG(LogTemp, Warning, TEXT("running SetupPlayerComponent()"));
+	//UE_LOG(LogTemp, Warning, TEXT("running SetupPlayerComponent()"));
 	//WARN("getting enhanced input component");
 	//doncasting the PlayerInputComponent to be a UEnhancedInputComponent
 	UEnhancedInputComponent* EIS = CastChecked<UEnhancedInputComponent>(PlayerInputComponent);
 
 	//bind the move action
 	//WARN("Binding Move actions");
-	UE_LOG(LogTemp, Warning, TEXT("binding the move action"));
+	//UE_LOG(LogTemp, Warning, TEXT("binding the move action"));
 	EIS->BindAction(MovementAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Move);
 	//bind the steer action
 	EIS->BindAction(LookAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Look);
@@ -128,6 +129,8 @@ void APlayerCharacter::Look(const FInputActionInstance& InputActionInstance)
 
 	FVector2D LookAxisVector = InputActionInstance.GetValue().Get<FVector2D>();
 
+	//LOG("looking around");
+
 	if (Controller != nullptr) 
 	{
 		AddControllerYawInput(LookAxisVector.X);
@@ -139,12 +142,12 @@ void APlayerCharacter::Interact(const FInputActionInstance& Instance)
 {
 
 	if (InteractionComponent != nullptr) {
-		UE_LOG(LogTemp, Warning, TEXT("You Collected the %s "), *InteractionComponent->Powerup);
+		//UE_LOG(LogTemp, Warning, TEXT("You Collected the %s "), *InteractionComponent->Powerup);
 		InteractionComponent->Interact(Cast<APlayerController>(GetController()));
 
 	}
 	else {
-		UE_LOG(LogTemp, Warning, TEXT("interaction called, interactable object DOESN'T exist"));
+		//UE_LOG(LogTemp, Warning, TEXT("interaction called, interactable object DOESN'T exist"));
 
 	}
 }
