@@ -122,7 +122,7 @@ void ALab06MovementPawn::Tick(float DeltaTime)
 void ALab06MovementPawn::Move(const struct FInputActionInstance& Instance)
 {
 	lastMoveInput = Instance.GetValue().Get<bool>();
-	//LOG("MOVE INPUT: (%f, %f)", lastSteerInput.X, lastSteerInput.Y);
+	WARN("MOVE INPUT: (%f, %f)", lastSteerInput.X, lastSteerInput.Y);
 	//UE_LOG(LogTemp, Warning, TEXT("MOVE INPUT detected"));
 
 	float moveMagnitude = (lastMoveInput ? 1 : 0);
