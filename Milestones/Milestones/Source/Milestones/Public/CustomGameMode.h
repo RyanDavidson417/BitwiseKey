@@ -5,18 +5,31 @@
 #include "CoreMinimal.h"
 #include "GameFramework/GameMode.h"
 #include "PlayerCharacter.h"
-#include "CustomGameState.h"
 #include "CustomGameMode.generated.h"
 
 /**
  * 
  */
+
+class APlayerCharacter;
+
 UCLASS()
 class MILESTONES_API ACustomGameMode : public AGameMode
 {
 	GENERATED_BODY()
 
+public:	
+
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+
+
 public:
 	ACustomGameMode();
 	
+	virtual void CollectXRay();
+
+	class ACustomGameState* gs;
+
 };

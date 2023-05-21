@@ -21,5 +21,11 @@ private:
 
 public:
 	float gameTimer;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
+	bool hasXray;
+	bool hasGrapple;
+	bool hasWallGrip;
+	bool hasTeleport;
+	bool hasEnemyDisrupt;
 
 };

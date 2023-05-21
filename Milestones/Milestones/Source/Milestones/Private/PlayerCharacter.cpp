@@ -58,7 +58,7 @@ void APlayerCharacter::BeginPlay()
 				//UE_LOG(LogTemp, Warning, TEXT("loading inputMapping"));
 				if (InputMapping != nullptr)
 				{
-
+					
 					//UE_LOG(LogTemp, Warning, TEXT("reached end of playerController nested ifs"));
 					//UE_LOG(LogTemp, Warning, TEXT("adding mapping context"));
 					inputSystem->AddMappingContext(InputMapping, 0);

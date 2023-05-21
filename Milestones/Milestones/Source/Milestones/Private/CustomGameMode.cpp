@@ -2,6 +2,11 @@
 
 
 #include "CustomGameMode.h"
+#include "CustomGameState.h"
+#include "PlayerCharacter.h"
+#include "Milestones/Milestones.h"
+#include "CustomGameState.h"
+
 
 ACustomGameMode::ACustomGameMode()
 {
@@ -10,4 +15,17 @@ ACustomGameMode::ACustomGameMode()
         notice the use of StaticClass to get the UClass class type properly */
     DefaultPawnClass = APlayerCharacter::StaticClass();
     GameStateClass = ACustomGameState::StaticClass();
+
 }
+
+void ACustomGameMode::BeginPlay()
+{
+    gs = GetWorld()->GetGameState<ACustomGameState>();
+}
+
+void ACustomGameMode::CollectXRay()
+{
+    WARN("COLLECT METHOD CALLED FROM GAMEMODE");
+}
+
+//C:\Users\ryand\LocDocuments\Indie games\Unreal\gp2 repo\Milestones\Milestones\Source\Milestones\Private\CustomGameMode.cpp
