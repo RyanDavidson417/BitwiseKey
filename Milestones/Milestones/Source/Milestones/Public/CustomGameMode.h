@@ -12,6 +12,7 @@
  */
 
 class APlayerCharacter;
+class ACustomGameState;
 
 UCLASS()
 class MILESTONES_API ACustomGameMode : public AGameMode
@@ -30,6 +31,6 @@ public:
 	
 	virtual void CollectXRay();
 
-	class ACustomGameState* gs;
+	TObjectPtr<ACustomGameState> gs;
 
 };
