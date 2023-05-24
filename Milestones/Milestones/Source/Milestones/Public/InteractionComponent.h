@@ -7,6 +7,8 @@
 #include "InteractionComponent.generated.h"
 
 
+
+
 UCLASS( ABSTRACT, ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class MILESTONES_API UInteractionComponent : public UActorComponent
 {

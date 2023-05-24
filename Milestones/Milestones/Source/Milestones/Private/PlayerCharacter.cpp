@@ -142,6 +142,7 @@ void APlayerCharacter::Interact(const FInputActionInstance& Instance)
 {
 
 	if (InteractionComponent != nullptr) {
+		LOG("interacted")
 		//UE_LOG(LogTemp, Warning, TEXT("You Collected the %s "), *InteractionComponent->Powerup);
 		InteractionComponent->Interact(Cast<APlayerController>(GetController()));
 
@@ -179,13 +180,15 @@ void APlayerCharacter::TraceLine()
 // and its fields will be filled with detailed info about what was hit
 	if (LineTraceHit.bBlockingHit && IsValid(LineTraceHit.GetActor()))
 	{
+		UActorComponent* InteractableObj = LineTraceHit.GetActor()->FindComponentByClass(UInteractionComponent::StaticClass());
+
 		//UE_LOG(LogTemp, Warning, TEXT("Trace hit actor: %s"), *LineTraceHit.GetActor()->GetName());// 
-		if (LineTraceHit.GetActor()->FindComponentByClass(UInteractionComponent::StaticClass())){
+		if (InteractableObj){
 
 			//UE_LOG(LogTemp, Warning, TEXT("INTERACTABLE Trace hit actor: %s"), *LineTraceHit.GetActor()->GetName());
 
 			//MAYBE maybe set a bool to track whether we have one, and store a reference to the actor
-			InteractionComponent = Cast<UCollectionInteractable>(LineTraceHit.GetActor()->FindComponentByClass(UInteractionComponent::StaticClass()));
+			InteractionComponent = Cast<UCollectionInteractable>(InteractableObj);
 
 		}
 		else {

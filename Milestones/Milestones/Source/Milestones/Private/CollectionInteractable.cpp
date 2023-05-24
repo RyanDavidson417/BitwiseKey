@@ -18,9 +18,17 @@ void UCollectionInteractable::TickComponent(float DeltaTime, ELevelTick TickType
 
 void UCollectionInteractable::Interact(APlayerController* playerController)
 {
+	TObjectPtr<class ACustomGameMode> gm1 = GetWorld()->GetAuthGameMode<ACustomGameMode>();
 
+	//ACustomGameMode* gm1 = (ACustomGameMode*)GetWorld()->GetAuthGameMode();
 	UE_LOG(LogTemp, Warning, TEXT("Collected object"));
-	TObjectPtr<ACustomGameMode> gm = GetWorld()->GetAuthGameMode<ACustomGameMode>(); //should maybe do this as a variable in the .h
-	gm->CollectXRay();
+	//
+	if (IsValid(gm1)) {
+		gm1->CollectXRay();
+	}
+	else {
+		UE_LOG(LogTemp, Error, TEXT("gm not valid"));
+	}
+
 
 }
