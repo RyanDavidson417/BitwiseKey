@@ -20,13 +20,14 @@ protected:
 	virtual void BeginPlay() override;
 
 	//root (first/top level objective for the quest
+	//UPROPERTY()
 	class UObjectiveCollection* RootObjectiveCollection;
 	
 	//constructs the root objective collection and associates objectives with the quest
 	virtual UObjectiveCollection* SetupQuest();
 
 	//populate the objectives and subObjectives of the RootObjectiveCollection
-	virtual void PopulateObjectives();
+	virtual void PopulateObjectives(UObjectiveCollection* RootObjCol);
 
 public:	
 	// Called every frame

@@ -56,25 +56,25 @@ void ALab06MovementPawn::BeginPlay()
 	Super::BeginPlay();
 
 
-	UE_LOG(LogTemp, Warning, TEXT("checking for player controller"));
-	UE_LOG(LogTemp, Warning, TEXT("isvalid?  %s"), (IsValid(GetController()) ? TEXT("TRUE") : TEXT("FALSE")))
+	//UE_LOG(LogTemp, Warning, TEXT("checking for player controller"));
+	//UE_LOG(LogTemp, Warning, TEXT("isvalid?  %s"), (IsValid(GetController()) ? TEXT("TRUE") : TEXT("FALSE")))
 
 	//add input mapping context
 	if(APlayerController* playerController = Cast<APlayerController>(GetController()))
 	{
 		
-		UE_LOG(LogTemp, Warning, TEXT("checking to see if there's a local player"));
+		//UE_LOG(LogTemp, Warning, TEXT("checking to see if there's a local player"));
 		if(ULocalPlayer* localPlayer = Cast<ULocalPlayer>(playerController->GetLocalPlayer()))
 		{
-			UE_LOG(LogTemp, Warning, TEXT("looking for input system "));
+			//UE_LOG(LogTemp, Warning, TEXT("looking for input system "));
 			if(UEnhancedInputLocalPlayerSubsystem* inputSystem =
 				localPlayer->GetSubsystem<UEnhancedInputLocalPlayerSubsystem>())
 			{
-				UE_LOG(LogTemp, Warning, TEXT("loading inputMapping"));	
+				//UE_LOG(LogTemp, Warning, TEXT("loading inputMapping"));	
 				if(InputMapping != nullptr)
 				{
 					
-					UE_LOG(LogTemp, Warning, TEXT("Reached the end of nested ifs"));
+					//UE_LOG(LogTemp, Warning, TEXT("Reached the end of nested ifs"));
 					inputSystem->AddMappingContext(InputMapping, 0);
 				}
 			}
@@ -92,14 +92,14 @@ void ALab06MovementPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-	UE_LOG(LogTemp, Warning, TEXT("running SetupPlayerComponent()"));
+	//UE_LOG(LogTemp, Warning, TEXT("running SetupPlayerComponent()"));
 	//WARN("getting enhanced input component");
 	//doncasting the PlayerInputComponent to be a UEnhancedInputComponent
 	UEnhancedInputComponent* EIS = CastChecked<UEnhancedInputComponent>(PlayerInputComponent);
 
 	//bind the move action
 	//WARN("Binding Move actions");
-	UE_LOG(LogTemp, Warning, TEXT("binding the move action"));
+	//UE_LOG(LogTemp, Warning, TEXT("binding the move action"));
 	EIS->BindAction(MovementAction,  ETriggerEvent::Triggered, this, &ALab06MovementPawn::Move);
 	//bind the steer action
 	EIS->BindAction(SteeringAction, ETriggerEvent::Triggered, this, &ALab06MovementPawn::Steer);

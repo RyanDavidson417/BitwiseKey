@@ -2,6 +2,7 @@
 
 
 #include "inClass/QuestSystem/Quests/Quest.h"
+#include "inClass/QuestSystem/Objectives/ObjectiveCollection.h"
 
 // Sets default values
 AQuest::AQuest()
@@ -17,6 +18,12 @@ void AQuest::BeginPlay()
 	Super::BeginPlay();
 
 	//TODO: implement
+	RootObjectiveCollection = SetupQuest();
+	PopulateObjectives(RootObjectiveCollection);
+
+	RootObjectiveCollection->ActivateObjective();
+
+
 	
 }
 
@@ -26,7 +33,7 @@ UObjectiveCollection* AQuest::SetupQuest()
 	return nullptr;
 }
 
-void AQuest::PopulateObjectives()
+void AQuest::PopulateObjectives(UObjectiveCollection* RootObjCol)
 {
 	UE_LOG(LogTemp ,Error, TEXT("populate objectives called for base class"));
 
