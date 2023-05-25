@@ -10,6 +10,7 @@
  * 
  */
 class ACustomGameMode;
+class ACustomGameState;
 
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class MILESTONES_API UCollectionInteractable : public UInteractionComponent
@@ -20,17 +21,17 @@ class MILESTONES_API UCollectionInteractable : public UInteractionComponent
 public:
 	UCollectionInteractable();
 
+	// Called every frame
+	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+	virtual void Interact(APlayerController* playerController) override;
+
 	//UPROPERTY(EditAnywhere, blueprintReadOnly, Category = Interaction)
 	//	FString Powerup;
 
 protected:
 	virtual void BeginPlay() override;
 
-public:
-	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-
-	virtual void Interact(APlayerController* playerController) override;
-
+	TObjectPtr<ACustomGameMode> gm;
+	TObjectPtr<ACustomGameState> gs; 
 
 };

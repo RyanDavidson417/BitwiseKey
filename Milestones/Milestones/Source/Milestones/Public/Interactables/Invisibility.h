@@ -3,23 +3,25 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "../CollectionInteractable.h"
-#include "XRayVision.generated.h"
+#include "CollectionInteractable.h"
+//#include "Invisibility.generated.h"
 
 /**
  * 
  */
-
-//class ACustomGameMode;
+//class ACustomGameMode
+/*
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
-class MILESTONES_API UXRayVision : public UCollectionInteractable
+class MILESTONES_API UInvisibility : public UCollectionInteractable
 {
 	GENERATED_BODY()
-
+	
 public:
-	UXRayVision();
-
-	//UPROPERTY(Editanywhere)
+	UInvisibility();
 
 	virtual void Interact(APlayerController* playerController) override;
-};
+
+
+
+
+};*/
