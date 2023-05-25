@@ -34,6 +34,8 @@ public:
 	virtual void CollectXRay();
 	virtual void CollectInvisibility();
 
+	void ToggleInvisibility();
+
 	TObjectPtr<ACustomGameState> gs;
 
 };

@@ -16,6 +16,8 @@ class UAnimMontage;
 class USoundBase;
 class UInteractionComponent;
 class UCollectionInteractable;
+class ACustomGameMode;
+class ACustomGameState;
 
 
 UCLASS()
@@ -47,6 +49,10 @@ public:
 	/** Interact Input Action */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Input)
 		class UInputAction* InteractAction;
+
+	/** InvisToggle Input Action */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Input)
+		class UInputAction* InvisToggleAction;
 
 	//the base input mapping context we want to add
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
@@ -81,6 +87,10 @@ public:
 
 	//FCollisionQueryparams RV_TraceParams = FCollisionQueryParams(FName(TEXT("RV_TRACE")), true, this);
 
+
+	TObjectPtr<ACustomGameMode> gm;
+	TObjectPtr<ACustomGameState> gs;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -93,13 +103,17 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	//update movement and looking
-	virtual void Move(const struct FInputActionInstance& Instance);
-	virtual void Look(const FInputActionInstance& InputActionInstance);
+	void Move(const struct FInputActionInstance& Instance);
+	void Look(const FInputActionInstance& InputActionInstance);
 
 	//interaction
-	virtual void Interact(const FInputActionInstance& Instance);
+	void Interact(const FInputActionInstance& Instance);
 
-	virtual void TraceLine();
+	void TraceLine();
+
+	//powerups
+	void ToggleInvisibility(const FInputActionInstance& Instance);
+
 
 
 	//reference to camera component

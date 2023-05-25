@@ -33,6 +33,6 @@ public:
 	bool hasInvisibility;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
-	bool playerIsInvisible;
+	bool bPlayerIsInvisible;
 
 };

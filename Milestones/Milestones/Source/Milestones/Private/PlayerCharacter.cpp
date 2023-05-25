@@ -11,6 +11,8 @@
 #include "Camera/CameraComponent.h"
 #include "Animation/AnimInstance.h"
 #include "EnhancedInputSubsystems.h"
+#include "CustomGameState.h"
+#include "CustomGameMode.h"
 
 
 // Sets default values
@@ -68,6 +70,9 @@ void APlayerCharacter::BeginPlay()
 	}
 
 
+	gm = GetWorld()->GetAuthGameMode<ACustomGameMode>();
+	gs = Cast<ACustomGameState>(gm->GameState);
+
 }
 
 // Called every frame
@@ -96,8 +101,11 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	EIS->BindAction(MovementAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Move);
 	//bind the steer action
 	EIS->BindAction(LookAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Look);
-	//bind the steer action
+	//bind the Interact action
 	EIS->BindAction(InteractAction, ETriggerEvent::Started, this, &APlayerCharacter::Interact);
+	//bind the invisActivate action;
+	EIS->BindAction(InvisToggleAction, ETriggerEvent::Started, this, &APlayerCharacter::ToggleInvisibility);
+
 
 	//bind the jump actions
 	EIS->BindAction(JumpAction, ETriggerEvent::Triggered, this, &ACharacter::Jump);
@@ -142,7 +150,6 @@ void APlayerCharacter::Interact(const FInputActionInstance& Instance)
 {
 
 	if (InteractionComponent != nullptr) {
-		LOG("interacted")
 		//UE_LOG(LogTemp, Warning, TEXT("You Collected the %s "), *InteractionComponent->Powerup);
 		InteractionComponent->Interact(Cast<APlayerController>(GetController()));
 
@@ -200,4 +207,10 @@ void APlayerCharacter::TraceLine()
 		//UE_LOG(LogTemp, Log, TEXT("No Actors were hit"));
 	}
 
+}
+
+void APlayerCharacter::ToggleInvisibility(const FInputActionInstance& Instance)
+{
+	WARN("toggle invisibility input called");
+	gm->ToggleInvisibility();
 }

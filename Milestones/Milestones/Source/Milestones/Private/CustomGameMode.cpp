@@ -35,8 +35,25 @@ void ACustomGameMode::CollectInvisibility()
 {
     WARN("player collected invisibility -gm");
 
-    gs->playerIsInvisible = true;
     gs->hasInvisibility = true;
+}
+
+void ACustomGameMode::ToggleInvisibility()
+{
+    if (gs->hasInvisibility) {
+
+        if (gs->bPlayerIsInvisible) {
+            gs->bPlayerIsInvisible = false; 
+
+        }
+        else {
+            gs->bPlayerIsInvisible = true;
+
+        }
+    }
+    else {
+        WARN("You do not yet have that ability");
+    }
 }
 
 //C:\Users\ryand\LocDocuments\Indie games\Unreal\gp2 repo\Milestones\Milestones\Source\Milestones\Private\CustomGameMode.cpp
