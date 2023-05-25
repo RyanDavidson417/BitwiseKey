@@ -22,11 +22,11 @@
 			]
 		},
 		{
-			"Name": "GameplayStateTree",
+			"Name": "StateTree",
 			"Enabled": true
 		},
 		{
-			"Name": "StateTree",
+			"Name": "GameplayStateTree",
 			"Enabled": true
 		}
 	]
