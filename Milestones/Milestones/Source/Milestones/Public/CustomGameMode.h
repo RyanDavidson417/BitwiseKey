@@ -21,15 +21,18 @@ class MILESTONES_API ACustomGameMode : public AGameMode
 
 public:	
 
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
 
 
 public:
 	ACustomGameMode();
 	
 	virtual void CollectXRay();
+	virtual void CollectInvisibility();
 
 	TObjectPtr<ACustomGameState> gs;
 

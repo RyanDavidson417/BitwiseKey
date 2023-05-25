@@ -23,9 +23,16 @@ public:
 	float gameTimer;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
 	bool hasXray;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
 	bool hasGrapple;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
 	bool hasWallGrip;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
 	bool hasTeleport;
-	bool hasEnemyDisrupt;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
+	bool hasInvisibility;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
+	bool playerIsInvisible;
 
 };

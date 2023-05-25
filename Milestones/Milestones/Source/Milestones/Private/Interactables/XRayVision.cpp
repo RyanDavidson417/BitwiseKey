@@ -12,7 +12,7 @@ UXRayVision::UXRayVision()
 
 void UXRayVision::Interact(APlayerController* playerController)
 {
-	UE_LOG(LogTemp, Warning, TEXT("Collected object"));
+
 	//
 	if (IsValid(gm)) {
 		gm->CollectXRay();

@@ -25,8 +25,18 @@ void ACustomGameMode::BeginPlay()
 
 void ACustomGameMode::CollectXRay()
 {
-    WARN("COLLECT METHOD CALLED FROM GAMEMODE");
+    WARN("collect x ray method called from gamemode");
     gs->hasXray = true;
+
+    //when implementing xray we're going to want to iterate over our list of fake walls - stored by way of getallactorsof class in beginPlay(), and call their toggleXray function
+}
+
+void ACustomGameMode::CollectInvisibility()
+{
+    WARN("player collected invisibility -gm");
+
+    gs->playerIsInvisible = true;
+    gs->hasInvisibility = true;
 }
 
 //C:\Users\ryand\LocDocuments\Indie games\Unreal\gp2 repo\Milestones\Milestones\Source\Milestones\Private\CustomGameMode.cpp
