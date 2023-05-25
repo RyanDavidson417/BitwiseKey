@@ -2,6 +2,7 @@
 
 
 #include "CollectionInteractable.h"
+#include "CustomGameState.h"
 #include "CustomGameMode.h"
 
 UCollectionInteractable::UCollectionInteractable()
