@@ -26,7 +26,7 @@ void ACustomGameMode::BeginPlay()
 void ACustomGameMode::CollectXRay()
 {
     WARN("COLLECT METHOD CALLED FROM GAMEMODE");
-    gs->hasXray;
+    gs->hasXray = true;
 }
 
 //C:\Users\ryand\LocDocuments\Indie games\Unreal\gp2 repo\Milestones\Milestones\Source\Milestones\Private\CustomGameMode.cpp
