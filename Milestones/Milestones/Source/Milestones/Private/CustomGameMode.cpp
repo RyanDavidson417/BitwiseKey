@@ -4,7 +4,9 @@
 #include "CustomGameMode.h"
 #include "CustomGameState.h"
 #include "PlayerCharacter.h"
+#include "Math/UnrealMathUtility.h"
 #include "Milestones/Milestones.h"
+#include "Kismet/KismetArrayLibrary.h"
 #include "CustomGameState.h"
 
 
@@ -18,9 +20,12 @@ ACustomGameMode::ACustomGameMode()
 
 }
 
+
 void ACustomGameMode::BeginPlay()
 {
     gs = GetWorld()->GetGameState<ACustomGameState>();
+    randomizePowerups();
+
 }
 
 void ACustomGameMode::CollectXRay()
@@ -54,6 +59,26 @@ void ACustomGameMode::ToggleInvisibility()
     else {
         WARN("You do not yet have that ability");
     }
+}
+
+
+void ACustomGameMode::randomizePowerups()
+{
+    TArray<EPowerUp> RandomizedArray;
+    int powerupNumber = gs->EA_PowerupOrder.Num() ;
+    for (int i = 0; i < powerupNumber ; i++) {
+        //WARN("array number %d and we stepped up to %d ", powerupNumber, i)
+        int rand = FMath::RandRange(0, powerupNumber-i-1 );//generate a random number from the number of loops we've had up 
+        RandomizedArray.Add(gs->EA_PowerupOrder[rand]);
+        gs->EA_PowerupOrder.RemoveAt(rand);
+
+       
+
+        //gs->EA_PowerupOrder
+
+        
+    }
+    gs->EA_PowerupOrder = RandomizedArray;
 }
 
 //C:\Users\ryand\LocDocuments\Indie games\Unreal\gp2 repo\Milestones\Milestones\Source\Milestones\Private\CustomGameMode.cpp

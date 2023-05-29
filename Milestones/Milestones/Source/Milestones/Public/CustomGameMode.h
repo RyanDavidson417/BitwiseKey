@@ -31,8 +31,11 @@ protected:
 public:
 	ACustomGameMode();
 	
-	virtual void CollectXRay();
-	virtual void CollectInvisibility();
+	void randomizePowerups();
+
+	void CollectXRay();
+	void CollectInvisibility();
+	
 
 	void ToggleInvisibility();
 

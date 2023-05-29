@@ -9,6 +9,18 @@
 /**
  * 
  */
+
+UENUM(BlueprintType) 
+enum class EPowerUp : uint8
+{
+	PE_XRay UMETA(DisplayName="XRay"),
+	PE_Invisibility UMETA(DisplayName = "Invisibility"),
+	PE_Teleport UMETA(DisplayName = "Teleport"),
+	PE_Movement UMETA(DisplayName = "Movement"),
+}; //yet to decide whether the mvement ability will be wall climb related or a grapple
+
+
+
 UCLASS()
 class MILESTONES_API ACustomGameState : public AGameState
 {
@@ -34,5 +46,14 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
 	bool bPlayerIsInvisible;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
+	EPowerUp PowerupEnum;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
+		TArray<EPowerUp> EA_PowerupOrder;
+	
+
+
 
 };
