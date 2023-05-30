@@ -12,6 +12,7 @@ UXRayVision::UXRayVision()
 
 void UXRayVision::Interact(APlayerController* playerController)
 {
+	UE_LOG(LogTemp, Error, TEXT("INTERACTED"));
 
 	//
 	if (IsValid(gm)) {
