@@ -3,20 +3,23 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Actor.h"
+#include "Components/ActorComponent.h"
+#include "Interactables/XRayVision.h"  
+#include "CustomGameMode.h"
 #include "ASpawnPowerup.generated.h"
 
 class ACustomGameMode;
 class ACustomGameState;
+class UXRayVision;
 
-UCLASS()
-class MILESTONES_API AASpawnPowerup : public AActor
+UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
+class MILESTONES_API ASpawnPowerup : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	AASpawnPowerup();
+	ASpawnPowerup();
 
 protected:
 	// Called when the game starts or when spawned
@@ -25,9 +28,12 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+	//virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+
 
 public:
 	//used to reference the randomized array in the gamestate, on generation we reference the nth index to determine which ability we spawn
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collectibles")
 	int spawnOrder;
 
 protected:

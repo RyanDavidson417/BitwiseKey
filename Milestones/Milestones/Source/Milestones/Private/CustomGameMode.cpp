@@ -1,11 +1,12 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "CustomGameMode.h"
+#include "Interactables/ASpawnPowerup.h"
 #include "CustomGameState.h"
 #include "PlayerCharacter.h"
 #include "Math/UnrealMathUtility.h"
 #include "Milestones/Milestones.h"
+#include "Kismet/GameplayStatics.h" 
 #include "Kismet/KismetArrayLibrary.h"
 #include "CustomGameState.h"
 
@@ -23,9 +24,30 @@ ACustomGameMode::ACustomGameMode()
 
 void ACustomGameMode::BeginPlay()
 {
+    UGameplayStatics::GetAllActorsOfClass(GetWorld(), ASpawnPowerup::StaticClass(), PowerupSpawnLocations);
+
     gs = GetWorld()->GetGameState<ACustomGameState>();
     randomizePowerups();
 
+    
+    for (EPowerUp powerup : gs->EA_PowerupOrder) {
+        switch (powerup) {
+        default:
+        case(EPowerUp::PE_XRay) :
+            LOG("spawn an xray")
+                break;
+        case(EPowerUp::PE_Invisibility):
+            LOG("spawn INVISIBILITY")
+                break;
+        case(EPowerUp::PE_Teleport):
+            LOG("spawn TELEPORT")
+                break;
+        case(EPowerUp::PE_Movement):
+            LOG("spawn PE_Movement")
+                break;
+        }
+
+    }
 }
 
 void ACustomGameMode::CollectXRay()
