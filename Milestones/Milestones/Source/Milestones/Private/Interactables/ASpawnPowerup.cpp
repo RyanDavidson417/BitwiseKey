@@ -39,7 +39,7 @@ void ASpawnPowerup::BeginPlay()
 	default:
 	case(EPowerUp::PE_XRay):
 		//spawn x ray
-		UXRayVision* SpawnedActor = GetWorld()->SpawnActor<UXRayVision>(UXRayVision::StaticClass(), myPos, myRot, SpawnInfo);
+		//UXRayVision* SpawnedActor = GetWorld()->SpawnActor<UXRayVision>(UXRayVision::StaticClass(), myPos, myRot, SpawnInfo);
 		break;
 	}
 }

@@ -8,6 +8,7 @@
 #include "Milestones/Milestones.h"
 #include "Kismet/GameplayStatics.h" 
 #include "Kismet/KismetArrayLibrary.h"
+#include "UObject/ConstructorHelpers.h" 
 #include "CustomGameState.h"
 
 
@@ -19,8 +20,22 @@ ACustomGameMode::ACustomGameMode()
     DefaultPawnClass = APlayerCharacter::StaticClass();
     GameStateClass = ACustomGameState::StaticClass();
 
-}
 
+    //static ConstructorHelpers::FClassFinder<UStaticMesh> AssetFile(TEXT("/Game/Blueprints/XRayActor.XRayActor"));
+    //if (AssetFile.Class != nullptr) {
+    //    WARN("we're so fucking back")
+    //    XRayCollectible = AssetFile.Class;
+
+    //}
+    //else {
+    //    WARN("it's over")
+    //}
+
+
+    //auto xray = ConstructorHelpers::FObjectFinder<AActor>(TEXT("/Game/Blueprints/XRayActor.XRayActor"));
+    //if(xray.Succeeded()){
+    //    XRayCollectible->
+}
 
 void ACustomGameMode::BeginPlay()
 {
@@ -29,12 +44,16 @@ void ACustomGameMode::BeginPlay()
     gs = GetWorld()->GetGameState<ACustomGameState>();
     randomizePowerups();
 
-    
+    int i = 0;
     for (EPowerUp powerup : gs->EA_PowerupOrder) {
+        
         switch (powerup) {
         default:
-        case(EPowerUp::PE_XRay) :
-            LOG("spawn an xray")
+        case(EPowerUp::PE_XRay):
+            
+            GetWorld()->SpawnActor<AActor>(XRayCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0,0,0) );
+
+            LOG("spawn an xray at %f %f ", PowerupSpawnLocations[i]->GetActorLocation().X, PowerupSpawnLocations[i]->GetActorLocation().Y)
                 break;
         case(EPowerUp::PE_Invisibility):
             LOG("spawn INVISIBILITY")
@@ -46,7 +65,7 @@ void ACustomGameMode::BeginPlay()
             LOG("spawn PE_Movement")
                 break;
         }
-
+        i++;
     }
 }
 
