@@ -43,17 +43,17 @@ public:
 	TObjectPtr<ACustomGameState> gs;
 
 	//spawned in the xray spot
-	UPROPERTY(EditAnywhere,  Category = "Collectibles")
+	UPROPERTY(EditAnywhere, Category = "Collectibles")
 		TSubclassOf<AActor> XRayCollectible;
 	//spawned in the invisibility spot
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collectibles")
-		AActor* InvisibilityCollectible;
+	UPROPERTY(EditAnywhere,  Category = "Collectibles")
+		TSubclassOf<AActor> InvisibilityCollectible;
 	//spawned in the movement ability spot
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collectibles")
-		AActor* MovementAbilityCollectible;
+	UPROPERTY(EditAnywhere, Category = "Collectibles")
+		TSubclassOf<AActor> MovementAbilityCollectible;
 	//spawned in the teleport ability spot
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collectibles")
-		AActor* TeleportAbilityCollectible;
+	UPROPERTY(EditAnywhere, Category = "Collectibles")
+		TSubclassOf<AActor> TeleportAbilityCollectible;
 
 
 	//spawned in the maze

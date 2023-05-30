@@ -151,11 +151,12 @@ void APlayerCharacter::Interact(const FInputActionInstance& Instance)
 
 	if (InteractionComponent != nullptr) {
 		//UE_LOG(LogTemp, Warning, TEXT("You Collected the %s "), *InteractionComponent->Powerup);
-		//InteractionComponent->Interact(Cast<APlayerController>(GetController()));
+		UE_LOG(LogTemp, Warning, TEXT("You Collected the "));
+		InteractionComponent->Interact(Cast<APlayerController>(GetController()));
 
 	}
 	else {
-		//UE_LOG(LogTemp, Warning, TEXT("interaction called, interactable object DOESN'T exist"));
+		UE_LOG(LogTemp, Warning, TEXT("interaction called, interactable object DOESN'T exist"));
 
 	}
 }
@@ -166,7 +167,7 @@ void APlayerCharacter::TraceLine()
 	//set up a line trace from our current position to a point interactionDistance ahead of us
 	FVector EyesLoc;
 	FRotator EyesRot;
-	GetActorEyesViewPoint(EyesLoc, EyesRot);
+	GetActorEyesViewPoint(EyesLoc, EyesRot);//maybe change this to be related to camera location
 	FVector TraceStart = EyesLoc;
 	//FVector TraceStart = GetActorLocation();
 
@@ -186,20 +187,20 @@ void APlayerCharacter::TraceLine()
 
 	//you can use DrawDebug helpers and the log to help visualize and debug your trace queries
 	
-	DrawDebugLine(GetWorld(), TraceStart, TraceEnd, LineTraceHit.bBlockingHit ? FColor::Blue : FColor::Red, false, 5.0f, 0, 10.0f);
-	UE_LOG(LogTemp, Log, TEXT("Tracing line: %s to %s"), *TraceStart.ToCompactString(), *TraceEnd.ToCompactString());
+	DrawDebugLine(GetWorld(), TraceStart, TraceEnd, LineTraceHit.bBlockingHit ? FColor::Blue : FColor::Red, false, 0.0f, 0, 1.0f);
+	//UE_LOG(LogTemp, Log, TEXT("Tracing line: %s to %s"), *TraceStart.ToCompactString(), *TraceEnd.ToCompactString());
 	
 
 	// If the trace hit something, bBlockingHit will be true,
 // and its fields will be filled with detailed info about what was hit
 	if (LineTraceHit.bBlockingHit && IsValid(LineTraceHit.GetActor()))
 	{
-		UActorComponent* InteractableObj = LineTraceHit.GetActor()->FindComponentByClass(UInteractionComponent::StaticClass());
+		UActorComponent* InteractableObj = LineTraceHit.GetActor()->FindComponentByClass<UInteractionComponent>();
 
-		UE_LOG(LogTemp, Warning, TEXT("Trace hit actor: %s"), *LineTraceHit.GetActor()->GetName());// 
-		if (InteractableObj){
+		//UE_LOG(LogTemp, Warning, TEXT("Trace hit actor: %s"), *LineTraceHit.GetActor()->GetName());// 
+		if (IsValid(InteractableObj)){
 
-			UE_LOG(LogTemp, Warning, TEXT("INTERACTABLE Trace hit actor: %s"), *LineTraceHit.GetActor()->GetName());
+			//UE_LOG(LogTemp, Warning, TEXT("INTERACTABLE Trace hit actor: %s"), *LineTraceHit.GetActor()->GetName());
 
 			//MAYBE maybe set a bool to track whether we have one, and store a reference to the actor
 			InteractionComponent = Cast<UCollectionInteractable>(InteractableObj);
