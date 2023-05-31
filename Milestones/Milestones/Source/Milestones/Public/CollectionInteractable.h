@@ -27,6 +27,10 @@ public:
 
 	//UPROPERTY(EditAnywhere, blueprintReadOnly, Category = Interaction)
 	//	FString Powerup;
+public:
+
+	UPROPERTY(EditAnywhere, blueprintReadWrite, Category = Audio)
+		TObjectPtr<class UAudioComponent> CollectionSound;
 
 protected:
 	virtual void BeginPlay() override;

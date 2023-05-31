@@ -12,7 +12,7 @@ UXRayVision::UXRayVision()
 
 void UXRayVision::Interact(APlayerController* playerController)
 {
-
+	Super::Interact(playerController);
 	//
 	if (IsValid(gm)) {
 		gm->CollectXRay();

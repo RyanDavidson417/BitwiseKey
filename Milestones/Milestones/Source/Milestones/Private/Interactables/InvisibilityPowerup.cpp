@@ -10,6 +10,7 @@ UInvisibilityPowerup::UInvisibilityPowerup()
 
 void UInvisibilityPowerup::Interact(APlayerController* playerController)
 {
+	Super::Interact(playerController);
 	if (IsValid(gm)) {
 		gm->CollectInvisibility();
 	}
