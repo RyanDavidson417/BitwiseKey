@@ -18,6 +18,7 @@ UInteractionComponent::UInteractionComponent()
 void UInteractionComponent::BeginPlay()
 {
 	Super::BeginPlay();
+	
 
 	// ...
 	
@@ -35,6 +36,6 @@ void UInteractionComponent::TickComponent(float DeltaTime, ELevelTick TickType, 
 void UInteractionComponent::Interact(APlayerController* playerController)
 {
 
-	UE_LOG(LogTemp, Error, TEXT("Interact called in base class - you should be calling this from a child component of Interaction"));
+	UE_LOG(LogTemp, Error, TEXT("Interact called in base class - you should be calling this from a child component of InteractionComponent"));
 }
 

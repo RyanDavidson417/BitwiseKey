@@ -4,6 +4,8 @@
 #include "CollectionInteractable.h"
 #include "CustomGameState.h"
 #include "CustomGameMode.h"
+#include "Milestones/Milestones.h"
+#include "Kismet/GameplayStatics.h" 
 #include "Components/AudioComponent.h" 
 
 UCollectionInteractable::UCollectionInteractable()
@@ -20,6 +22,16 @@ void UCollectionInteractable::BeginPlay()
 
 void UCollectionInteractable::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
+	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+
+
+	float timeInSeconds = UGameplayStatics::GetTimeSeconds(GetWorld());
+	float newZ = GetOwner()->GetActorLocation().Z + ((FMath::Sin(timeInSeconds)) );
+	GetOwner()->SetActorLocation(FVector(GetOwner()->GetActorLocation().X, GetOwner()->GetActorLocation().Y, newZ));
+
+
+	LOG("newZ: %f", newZ);
+	// ...
 }
 
 void UCollectionInteractable::Interact(APlayerController* playerController)
