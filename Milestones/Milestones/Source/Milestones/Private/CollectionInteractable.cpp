@@ -29,9 +29,6 @@ void UCollectionInteractable::TickComponent(float DeltaTime, ELevelTick TickType
 	float newZ = GetOwner()->GetActorLocation().Z + ((FMath::Sin(timeInSeconds)) );
 	GetOwner()->SetActorLocation(FVector(GetOwner()->GetActorLocation().X, GetOwner()->GetActorLocation().Y, newZ));
 
-
-	LOG("newZ: %f", newZ);
-	// ...
 }
 
 void UCollectionInteractable::Interact(APlayerController* playerController)
