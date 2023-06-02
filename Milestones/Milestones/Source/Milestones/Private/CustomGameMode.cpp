@@ -1,6 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "CustomGameMode.h"
+#include "Managers/BitwisePlayerController.h"
+#include "Managers/BitwisePlayerState.h"
 #include "Interactables/ASpawnPowerup.h"
 #include "CustomGameState.h"
 #include "PlayerCharacter.h"
@@ -42,6 +44,8 @@ void ACustomGameMode::BeginPlay()
     UGameplayStatics::GetAllActorsOfClass(GetWorld(), ASpawnPowerup::StaticClass(), PowerupSpawnLocations);
 
     gs = GetWorld()->GetGameState<ACustomGameState>();
+    pc = Cast<ABitwisePlayerController>(UGameplayStatics::GetPlayerController(GetWorld(), 0));
+    ps = pc->GetPlayerState<ABitwisePlayerState>();
     randomizePowerups();
 
     int i = 0;

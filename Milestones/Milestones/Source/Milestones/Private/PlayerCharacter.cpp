@@ -2,6 +2,8 @@
 
 
 #include "PlayerCharacter.h"
+#include "Managers/BitwisePlayerController.h"
+#include "Managers/BitwisePlayerState.h"
 #include "Milestones/Milestones.h"
 #include "EnhancedInputComponent.h"
 #include "InputMappingContext.h"

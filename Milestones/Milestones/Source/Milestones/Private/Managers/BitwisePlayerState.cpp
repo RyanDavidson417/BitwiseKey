@@ -2,5 +2,6 @@
 
 
 #include "Managers/BitwisePlayerState.h"
+#include "Managers/BitwisePlayerController.h"
 
 

@@ -16,8 +16,8 @@ class UAnimMontage;
 class USoundBase;
 class UInteractionComponent;
 class UCollectionInteractable;
-class ACustomGameMode;
-class ACustomGameState;
+class ABitwiseGameMode;
+class ABitwiseGameState;
 
 
 UCLASS()
@@ -98,6 +98,9 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+	
+	void TraceLine();
+
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
@@ -109,7 +112,6 @@ public:
 	//interaction
 	void Interact(const FInputActionInstance& Instance);
 
-	void TraceLine();
 
 	//powerups
 	void ToggleInvisibility(const FInputActionInstance& Instance);

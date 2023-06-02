@@ -13,7 +13,6 @@
 
 class ACustomGameMode;
 class APlayerCharacter;
-class ABitwisePlayerController;
 class ACustomGameState;
 class ABitwisePlayerState;
 
@@ -27,7 +26,7 @@ public:
     bool UpdateInvisCharge();
     virtual void BeginPlay() override;
     virtual void PlayerTick(float DeltaTime) override;
-    virtual void SetupInputComponent() override; 
+    virtual void SetupInputComponent() override; //may not need this
 
 public:
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
@@ -37,7 +36,8 @@ public:
     TObjectPtr<ACustomGameMode> gm;
     TObjectPtr<ACustomGameState> gs;
     TObjectPtr<ABitwisePlayerState> ps;
-    APlayerCharacter* playerCharacter;
+    //APlayerCharacter* playerCharacter;
+    TObjectPtr<APlayerCharacter> playerCharacter;
 
 
 protected:

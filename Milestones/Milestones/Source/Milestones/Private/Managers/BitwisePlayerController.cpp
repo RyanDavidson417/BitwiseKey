@@ -2,6 +2,8 @@
 
 
 #include "Managers/BitwisePlayerController.h"
+#include "Managers/BitwisePlayerController.h"
+#include "Managers/BitwisePlayerState.h"
 #include "CustomGameState.h"
 #include "GameFramework/PlayerState.h"
 #include "EnhancedInputComponent.h"
