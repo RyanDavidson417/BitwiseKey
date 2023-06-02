@@ -18,6 +18,8 @@ void UCollectionInteractable::BeginPlay()
 	gs = Cast<ACustomGameState>(gm->GameState);
 
 	CollectionSound = GetOwner()->FindComponentByClass<UAudioComponent>(); 
+
+	StartZ = GetOwner()->GetActorLocation().Z;
 }
 
 void UCollectionInteractable::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
@@ -26,7 +28,7 @@ void UCollectionInteractable::TickComponent(float DeltaTime, ELevelTick TickType
 
 
 	float timeInSeconds = UGameplayStatics::GetTimeSeconds(GetWorld());
-	float newZ = GetOwner()->GetActorLocation().Z + ((FMath::Sin(timeInSeconds)) );
+	float newZ = StartZ + ((FMath::Sin(timeInSeconds) +1) *50 );
 	GetOwner()->SetActorLocation(FVector(GetOwner()->GetActorLocation().X, GetOwner()->GetActorLocation().Y, newZ));
 
 }
