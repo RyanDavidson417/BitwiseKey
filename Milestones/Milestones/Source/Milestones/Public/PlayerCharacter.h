@@ -16,18 +16,14 @@ class UAnimMontage;
 class USoundBase;
 class UInteractionComponent;
 class UCollectionInteractable;
+
 class ABitwiseGameMode;
 class ABitwiseGameState;
-
 
 UCLASS()
 class MILESTONES_API APlayerCharacter : public ACharacter
 {
 	GENERATED_BODY()
-
-
-	 
-
 
 public:
 	// Sets default values for this character's properties

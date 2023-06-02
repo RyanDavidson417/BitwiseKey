@@ -19,7 +19,7 @@ ACustomGameMode::ACustomGameMode()
 
     /** initialize some of the defaults, blueprinting this will override it,
         notice the use of StaticClass to get the UClass class type properly */
-    DefaultPawnClass = APlayerCharacter::StaticClass();
+    //DefaultPawnClass = APlayerCharacter::StaticClass();
     GameStateClass = ACustomGameState::StaticClass();
 
 
@@ -46,6 +46,7 @@ void ACustomGameMode::BeginPlay()
     gs = GetWorld()->GetGameState<ACustomGameState>();
     pc = Cast<ABitwisePlayerController>(UGameplayStatics::GetPlayerController(GetWorld(), 0));
     ps = pc->GetPlayerState<ABitwisePlayerState>();
+    playerCharacter = Cast<APlayerCharacter>(DefaultPawnClass.GetDefaultObject());
     randomizePowerups();
 
     int i = 0;
@@ -73,6 +74,7 @@ void ACustomGameMode::BeginPlay()
         }
         i++;
     }
+
 }
 
 void ACustomGameMode::CollectXRay()

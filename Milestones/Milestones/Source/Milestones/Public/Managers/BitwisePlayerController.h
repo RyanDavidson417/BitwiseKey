@@ -36,8 +36,10 @@ public:
     TObjectPtr<ACustomGameMode> gm;
     TObjectPtr<ACustomGameState> gs;
     TObjectPtr<ABitwisePlayerState> ps;
-    //APlayerCharacter* playerCharacter;
-    TObjectPtr<APlayerCharacter> playerCharacter;
+    UPROPERTY(EditAnywhere, Category = "managers")
+
+    APlayerCharacter* playerCharacter;
+    //TObjectPtr<APlayerCharacter> playerCharacter;
 
 
 protected:

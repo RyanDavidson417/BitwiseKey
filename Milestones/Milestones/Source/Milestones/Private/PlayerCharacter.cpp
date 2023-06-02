@@ -49,7 +49,7 @@ void APlayerCharacter::BeginPlay()
 	Super::BeginPlay();
 
 	//add input mapping context
-	if (APlayerController* playerController = Cast<APlayerController>(GetController()))
+	if (ABitwisePlayerController* playerController = Cast<ABitwisePlayerController>(GetController()))
 	{
 
 		//UE_LOG(LogTemp, Warning, TEXT("checking to see if there's a local player"));
@@ -63,8 +63,9 @@ void APlayerCharacter::BeginPlay()
 				if (InputMapping != nullptr)
 				{
 					
-					//UE_LOG(LogTemp, Warning, TEXT("reached end of playerController nested ifs"));
+					UE_LOG(LogTemp, Warning, TEXT("reached end of playerController nested ifs"));
 					//UE_LOG(LogTemp, Warning, TEXT("adding mapping context"));
+					//UE_LOG(LogTemp, Warning, TEXT("playerController: %s"), *playerController->GetName());
 					inputSystem->AddMappingContext(InputMapping, 0);
 				}
 			}
@@ -81,6 +82,7 @@ void APlayerCharacter::BeginPlay()
 void APlayerCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	//UE_LOG(LogTemp, Warning, TEXT("playerController: %s"), *GetController()->GetName());
 
 	TraceLine();
 
@@ -91,6 +93,7 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+	WARN("Player CHARACTER calling setupinputcomponent")
 
 	//UE_LOG(LogTemp, Warning, TEXT("running SetupPlayerComponent()"));
 	//WARN("getting enhanced input component");
@@ -120,7 +123,7 @@ void APlayerCharacter::Move(const FInputActionInstance& Instance)
 {
 
 	lastMoveInput = Instance.GetValue().Get<FVector2D>();
-	//UE_LOG(LogTemp, Warning, TEXT("MOVE INPUT detected"));
+	UE_LOG(LogTemp, Warning, TEXT("MOVE INPUT detected"));
 
 	//FVector2D MovementVector = Value.Get<FVector2D>()
 
@@ -139,7 +142,7 @@ void APlayerCharacter::Look(const FInputActionInstance& InputActionInstance)
 
 	FVector2D LookAxisVector = InputActionInstance.GetValue().Get<FVector2D>();
 
-	//LOG("looking around");
+	LOG("looking around");
 
 	if (Controller != nullptr) 
 	{

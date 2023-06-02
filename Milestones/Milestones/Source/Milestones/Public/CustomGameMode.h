@@ -46,6 +46,8 @@ public:
 	//TObjectPtr<ACustomGameState> gs;    
 	TObjectPtr<ABitwisePlayerController> pc;
 	TObjectPtr<ABitwisePlayerState> ps;
+	UPROPERTY(EditAnywhere, Category = "managers")
+	TObjectPtr<APlayerCharacter> playerCharacter;
 
 	//spawned in the xray spot
 	UPROPERTY(EditAnywhere, Category = "Collectibles")
