@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
-#include "GameFramework/PlayerController.h"
 #include "CustomPlayerController.generated.h"
 
 /**
@@ -16,6 +15,7 @@ class APlayerCharacter;
 class ACustomGameState;
 class ACustomPlayerState;
 class APlayerCharacter;
+class UEnhancedInputComponent;
 
 
 UCLASS()
@@ -60,7 +60,7 @@ public:
 	TObjectPtr<ACustomGameMode> gm;
 	TObjectPtr<ACustomGameState> gs;
 	TObjectPtr<ACustomPlayerState> ps;
-	APlayerCharacter* playerCharacter;
+	TObjectPtr<APlayerCharacter> playerCharacter;
 	//TObjectPtr<APlayerCharacter> playerCharacter //throws an error when binding movement input actions
 
 protected:

@@ -46,28 +46,28 @@ void APlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
-	//add input mapping context
-	if (APlayerController* playerController = Cast<APlayerController>(GetController()))
-	{
+	////add input mapping context
+	//if (APlayerController* playerController = Cast<APlayerController>(GetController()))
+	//{
 
-		//UE_LOG(LogTemp, Warning, TEXT("checking to see if there's a local player"));
-		if (ULocalPlayer* localPlayer = Cast<ULocalPlayer>(playerController->GetLocalPlayer()))
-		{
-			//UE_LOG(LogTemp, Warning, TEXT("looking for input system "));
-			if (UEnhancedInputLocalPlayerSubsystem* inputSystem =
-				localPlayer->GetSubsystem<UEnhancedInputLocalPlayerSubsystem>())
-			{
-				//UE_LOG(LogTemp, Warning, TEXT("loading inputMapping"));
-				if (InputMapping != nullptr)
-				{
-					
-					UE_LOG(LogTemp, Warning, TEXT("reached end of playerController nested ifs"));
-					//UE_LOG(LogTemp, Warning, TEXT("adding mapping context"));
-					inputSystem->AddMappingContext(InputMapping, 0);
-				}
-			}
-		}
-	}
+	//	//UE_LOG(LogTemp, Warning, TEXT("checking to see if there's a local player"));
+	//	if (ULocalPlayer* localPlayer = Cast<ULocalPlayer>(playerController->GetLocalPlayer()))
+	//	{
+	//		//UE_LOG(LogTemp, Warning, TEXT("looking for input system "));
+	//		if (UEnhancedInputLocalPlayerSubsystem* inputSystem =
+	//			localPlayer->GetSubsystem<UEnhancedInputLocalPlayerSubsystem>())
+	//		{
+	//			//UE_LOG(LogTemp, Warning, TEXT("loading inputMapping"));
+	//			if (InputMapping != nullptr)
+	//			{
+	//				
+	//				UE_LOG(LogTemp, Warning, TEXT("reached end of playerController nested ifs"));
+	//				//UE_LOG(LogTemp, Warning, TEXT("adding mapping context"));
+	//				inputSystem->AddMappingContext(InputMapping, 0);
+	//			}
+	//		}
+	//	}
+	//}
 
 
 	gm = GetWorld()->GetAuthGameMode<ACustomGameMode>();
@@ -92,7 +92,8 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-	/*
+	
+	
 	UE_LOG(LogTemp, Warning, TEXT("running SetupPlayerComponent()"));
 	//WARN("getting enhanced input component");
 	//doncasting the PlayerInputComponent to be a UEnhancedInputComponent
@@ -100,21 +101,22 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 	//bind the move action
 	//WARN("Binding Move actions");
-	//UE_LOG(LogTemp, Warning, TEXT("binding the move action"));
-	EIS->BindAction(MovementAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Move);
-	//bind the steer action
-	EIS->BindAction(LookAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Look);
-	//bind the Interact action
-	EIS->BindAction(InteractAction, ETriggerEvent::Started, this, &APlayerCharacter::Interact);
-	//bind the invisActivate action;
-	EIS->BindAction(InvisToggleAction, ETriggerEvent::Started, this, &APlayerCharacter::ToggleInvisibility);
+	//
+	////UE_LOG(LogTemp, Warning, TEXT("binding the move action"));
+	//EIS->BindAction(MovementAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Move);
+	////bind the steer action
+	//EIS->BindAction(LookAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Look);
+	////bind the Interact action
+	//EIS->BindAction(InteractAction, ETriggerEvent::Started, this, &APlayerCharacter::Interact);
+	////bind the invisActivate action;
+	//EIS->BindAction(InvisToggleAction, ETriggerEvent::Started, this, &APlayerCharacter::ToggleInvisibility);
 
 
-	//bind the jump actions
-	EIS->BindAction(JumpAction, ETriggerEvent::Triggered, this, &ACharacter::Jump);
-	EIS->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
+	////bind the jump actions
+	//EIS->BindAction(JumpAction, ETriggerEvent::Triggered, this, &ACharacter::Jump);
+	//EIS->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
 
-	*/
+	
 }
 
 void APlayerCharacter::Move(const FInputActionInstance& Instance)
