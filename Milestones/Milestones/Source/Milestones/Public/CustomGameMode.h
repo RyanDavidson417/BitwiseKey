@@ -11,9 +11,12 @@
  * 
  */
 
+class APawnPowerup;
+
 class APlayerCharacter;
 class ACustomGameState;
-class APawnPowerup;
+class ACustomPlayerState;
+class ACustomPlayerController;
 
 UCLASS()
 class MILESTONES_API ACustomGameMode : public AGameMode
@@ -41,6 +44,8 @@ public:
 	void ToggleInvisibility();
 
 	TObjectPtr<ACustomGameState> gs;
+	TObjectPtr<ACustomPlayerController> pc;
+	TObjectPtr<ACustomPlayerState> ps;
 
 	//spawned in the xray spot
 	UPROPERTY(EditAnywhere, Category = "Collectibles")

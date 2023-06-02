@@ -10,6 +10,8 @@
  * 
  */
 
+
+
 UENUM(BlueprintType) 
 enum class EPowerUp : uint8
 {
@@ -44,8 +46,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
 	bool hasInvisibility;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
-	bool bPlayerIsInvisible;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
 	EPowerUp PowerupEnum;

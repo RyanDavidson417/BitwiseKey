@@ -18,6 +18,8 @@ void UCollectionInteractable::BeginPlay()
 	gs = Cast<ACustomGameState>(gm->GameState);
 
 	CollectionSound = GetOwner()->FindComponentByClass<UAudioComponent>(); 
+
+	StartZ = GetOwner()->GetActorLocation().Z;
 }
 
 void UCollectionInteractable::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)

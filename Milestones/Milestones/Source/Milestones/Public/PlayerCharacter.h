@@ -35,24 +35,6 @@ public:
 
 
 
-	//references to the actions 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
-		class UInputAction* MovementAction;
-
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
-		class UInputAction* LookAction;
-
-	/** Jump Input Action */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Input)
-		class UInputAction* JumpAction;
-
-	/** Interact Input Action */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Input)
-		class UInputAction* InteractAction;
-
-	/** InvisToggle Input Action */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Input)
-		class UInputAction* InvisToggleAction;
 
 	//the base input mapping context we want to add
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
@@ -68,7 +50,6 @@ public:
 	//max movement speed
 	UPROPERTY(EditAnywhere)
 		float MaxMoveSpeed;
-	
 	
 	UPROPERTY(EditAnywhere)
 		float interactionDistance;
@@ -91,6 +72,9 @@ public:
 	TObjectPtr<ACustomGameMode> gm;
 	TObjectPtr<ACustomGameState> gs;
 
+
+
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -103,7 +87,7 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	//update movement and looking
-	void Move(const struct FInputActionInstance& Instance);
+	void Move(const struct FInputActionInstance& InputActionInstance);
 	void Look(const FInputActionInstance& InputActionInstance);
 
 	//interaction

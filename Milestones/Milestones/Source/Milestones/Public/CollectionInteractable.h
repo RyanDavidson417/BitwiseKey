@@ -38,4 +38,5 @@ protected:
 	TObjectPtr<ACustomGameMode> gm;
 	TObjectPtr<ACustomGameState> gs; 
 
+	float StartZ;
 };

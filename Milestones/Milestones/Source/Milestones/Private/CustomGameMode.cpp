@@ -9,6 +9,8 @@
 #include "Kismet/GameplayStatics.h" 
 #include "Kismet/KismetArrayLibrary.h"
 #include "UObject/ConstructorHelpers.h" 
+#include "PlayerManagers/CustomPlayerState.h"
+#include "PlayerManagers/CustomPlayerController.h"
 #include "CustomGameState.h"
 
 
@@ -21,20 +23,17 @@ ACustomGameMode::ACustomGameMode()
     GameStateClass = ACustomGameState::StaticClass();
 
 
+
     //static ConstructorHelpers::FClassFinder<UStaticMesh> AssetFile(TEXT("/Game/Blueprints/XRayActor.XRayActor"));
     //if (AssetFile.Class != nullptr) {
     //    WARN("we're so fucking back")
     //    XRayCollectible = AssetFile.Class;
-
     //}
     //else {
     //    WARN("it's over")
     //}
 
 
-    //auto xray = ConstructorHelpers::FObjectFinder<AActor>(TEXT("/Game/Blueprints/XRayActor.XRayActor"));
-    //if(xray.Succeeded()){
-    //    XRayCollectible->
 }
 
 void ACustomGameMode::BeginPlay()
@@ -42,6 +41,11 @@ void ACustomGameMode::BeginPlay()
     UGameplayStatics::GetAllActorsOfClass(GetWorld(), ASpawnPowerup::StaticClass(), PowerupSpawnLocations);
 
     gs = GetWorld()->GetGameState<ACustomGameState>();
+    //pc = Cast<ACustomPlayerController>(UGameplayStatics::GetPlayerController(GetWorld(), 0));
+    //ps = pc->GetPlayerState<ACustomPlayerState>();
+    //set player controller and state
+    //set player controller and state
+
     randomizePowerups();
 
     int i = 0;
@@ -50,7 +54,6 @@ void ACustomGameMode::BeginPlay()
         switch (powerup) {
         default:
         case(EPowerUp::PE_XRay):
-            
             GetWorld()->SpawnActor<AActor>(XRayCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0,0,0) );
             //if we wanted to access it later, we'd want to set a separate AActor*, and then cast this into that variable
             // eg XRayInteractable* exampleActor = Cast<XRayInteractable*>(GetWrold....)
@@ -88,20 +91,20 @@ void ACustomGameMode::CollectInvisibility()
 
 void ACustomGameMode::ToggleInvisibility()
 {
-    if (gs->hasInvisibility) {
+    //if (gs->hasInvisibility) {
 
-        if (gs->bPlayerIsInvisible) {
-            gs->bPlayerIsInvisible = false; 
+    //    if (ps->bPlayerIsInvisible) {
+    //        ps->bPlayerIsInvisible = false;
 
-        }
-        else {
-            gs->bPlayerIsInvisible = true;
+    //    }
+    //    else {
+    //        ps->bPlayerIsInvisible = true;
 
-        }
-    }
-    else {
-        WARN("You do not yet have that ability");
-    }
+    //    }
+    //}
+    //else {
+    //    WARN("You do not yet have that ability");
+    //}
 }
 
 

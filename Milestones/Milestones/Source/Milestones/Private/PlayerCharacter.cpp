@@ -61,7 +61,7 @@ void APlayerCharacter::BeginPlay()
 				if (InputMapping != nullptr)
 				{
 					
-					//UE_LOG(LogTemp, Warning, TEXT("reached end of playerController nested ifs"));
+					UE_LOG(LogTemp, Warning, TEXT("reached end of playerController nested ifs"));
 					//UE_LOG(LogTemp, Warning, TEXT("adding mapping context"));
 					inputSystem->AddMappingContext(InputMapping, 0);
 				}
@@ -72,6 +72,9 @@ void APlayerCharacter::BeginPlay()
 
 	gm = GetWorld()->GetAuthGameMode<ACustomGameMode>();
 	gs = Cast<ACustomGameState>(gm->GameState);
+
+
+	UEnhancedInputComponent* EIS = CastChecked<UEnhancedInputComponent>(InputComponent);
 
 }
 
@@ -89,8 +92,8 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-
-	//UE_LOG(LogTemp, Warning, TEXT("running SetupPlayerComponent()"));
+	/*
+	UE_LOG(LogTemp, Warning, TEXT("running SetupPlayerComponent()"));
 	//WARN("getting enhanced input component");
 	//doncasting the PlayerInputComponent to be a UEnhancedInputComponent
 	UEnhancedInputComponent* EIS = CastChecked<UEnhancedInputComponent>(PlayerInputComponent);
@@ -111,14 +114,14 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	EIS->BindAction(JumpAction, ETriggerEvent::Triggered, this, &ACharacter::Jump);
 	EIS->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
 
-
+	*/
 }
 
 void APlayerCharacter::Move(const FInputActionInstance& Instance)
 {
 
 	lastMoveInput = Instance.GetValue().Get<FVector2D>();
-	//UE_LOG(LogTemp, Warning, TEXT("MOVE INPUT detected"));
+	UE_LOG(LogTemp, Warning, TEXT("MOVE INPUT detected"));
 
 	//FVector2D MovementVector = Value.Get<FVector2D>()
 
@@ -150,7 +153,6 @@ void APlayerCharacter::Interact(const FInputActionInstance& Instance)
 {
 
 	if (InteractionComponent != nullptr) {
-		//UE_LOG(LogTemp, Warning, TEXT("You Collected the %s "), *InteractionComponent->Powerup);
 		UE_LOG(LogTemp, Warning, TEXT("You Collected the "));
 		InteractionComponent->Interact(Cast<APlayerController>(GetController()));
 
