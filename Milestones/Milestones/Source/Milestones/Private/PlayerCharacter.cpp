@@ -72,9 +72,10 @@ void APlayerCharacter::BeginPlay()
 
 	gm = GetWorld()->GetAuthGameMode<ACustomGameMode>();
 	gs = Cast<ACustomGameState>(gm->GameState);
+	pc = gm->pc;
 
 
-	UEnhancedInputComponent* EIC = CastChecked<UEnhancedInputComponent>(InputComponent);
+	//UEnhancedInputComponent* EIC = CastChecked<UEnhancedInputComponent>(InputComponent);
 
 }
 
@@ -86,39 +87,44 @@ void APlayerCharacter::Tick(float DeltaTime)
 	TraceLine();
 
 }
-
-// Called to bind functionality to input
-void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
-	
-	
-	UE_LOG(LogTemp, Warning, TEXT("running SetupPlayerComponent()"));
-	//WARN("getting enhanced input component");
-	//doncasting the PlayerInputComponent to be a UEnhancedInputComponent
-	UEnhancedInputComponent* EIC = CastChecked<UEnhancedInputComponent>(PlayerInputComponent);
-
-	//bind the move action
-	//WARN("Binding Move actions");
-	
-
-	////UE_LOG(LogTemp, Warning, TEXT("binding the move action"));
-	//EIC->BindAction(MovementAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Move);
-	////bind the steer action
-	//EIC->BindAction(LookAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Look);
-	////bind the Interact action
-	//EIC->BindAction(InteractAction, ETriggerEvent::Started, this, &APlayerCharacter::Interact);
-	////bind the invisActivate action;
-	//EIC->BindAction(InvisToggleAction, ETriggerEvent::Started, this, &APlayerCharacter::ToggleInvisibility);
-
-
-	////bind the jump actions
-	//EIC->BindAction(JumpAction, ETriggerEvent::Triggered, this, &ACharacter::Jump);
-	//EIC->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
-
-	
-}
+//
+//// Called to bind functionality to input
+//void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+//{
+//	/*
+//	Super::SetupPlayerInputComponent(PlayerInputComponent);
+//
+//	PlayerEnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerInputComponent);
+//	
+//	UE_LOG(LogTemp, Warning, TEXT("running SetupPlayerComponent()"));
+//	*/
+//
+//
+//
+//	//WARN("getting enhanced input component");
+//	//doncasting the PlayerInputComponent to be a UEnhancedInputComponent
+//	//UEnhancedInputComponent* EIC = CastChecked<UEnhancedInputComponent>(PlayerInputComponent);
+//
+//	//bind the move action
+//	//WARN("Binding Move actions");
+//	
+//
+//	////UE_LOG(LogTemp, Warning, TEXT("binding the move action"));
+//	//EIC->BindAction(MovementAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Move);
+//	////bind the steer action
+//	//EIC->BindAction(LookAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Look);
+//	////bind the Interact action
+//	//EIC->BindAction(InteractAction, ETriggerEvent::Started, this, &APlayerCharacter::Interact);
+//	////bind the invisActivate action;
+//	//EIC->BindAction(InvisToggleAction, ETriggerEvent::Started, this, &APlayerCharacter::ToggleInvisibility);
+//
+//
+//	////bind the jump actions
+//	//EIC->BindAction(JumpAction, ETriggerEvent::Triggered, this, &ACharacter::Jump);
+//	//EIC->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
+//
+//	
+//}
 
 void APlayerCharacter::Move(const FInputActionInstance& Instance)
 {

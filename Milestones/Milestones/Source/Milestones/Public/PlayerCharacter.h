@@ -16,9 +16,10 @@ class UAnimMontage;
 class USoundBase;
 class UInteractionComponent;
 class UCollectionInteractable;
+
 class ACustomGameMode;
 class ACustomGameState;
-
+class ACustomPlayerController;
 
 UCLASS()
 class MILESTONES_API APlayerCharacter : public ACharacter
@@ -36,9 +37,6 @@ public:
 
 
 
-	//the base input mapping context we want to add
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
-		class UInputMappingContext* InputMapping;
 
 	//first person camera
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
@@ -71,6 +69,7 @@ public:
 
 	TObjectPtr<ACustomGameMode> gm;
 	TObjectPtr<ACustomGameState> gs;
+	TObjectPtr<ACustomPlayerController> pc;
 
 
 
@@ -84,7 +83,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	//virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	//update movement and looking
 	void Move(const struct FInputActionInstance& InputActionInstance);

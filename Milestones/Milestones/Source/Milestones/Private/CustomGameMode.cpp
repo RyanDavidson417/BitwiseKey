@@ -41,8 +41,8 @@ void ACustomGameMode::BeginPlay()
     UGameplayStatics::GetAllActorsOfClass(GetWorld(), ASpawnPowerup::StaticClass(), PowerupSpawnLocations);
 
     gs = GetWorld()->GetGameState<ACustomGameState>();
-    //pc = Cast<ACustomPlayerController>(UGameplayStatics::GetPlayerController(GetWorld(), 0));
-    //ps = pc->GetPlayerState<ACustomPlayerState>();
+    pc = Cast<ACustomPlayerController>(UGameplayStatics::GetPlayerController(GetWorld(), 0));
+    ps = pc->GetPlayerState<ACustomPlayerState>();
     //set player controller and state
     //set player controller and state
 

@@ -30,15 +30,22 @@ public:
 	void PlayerTick(float deltaTime) override;
 	virtual void SetupInputComponent() override;
 
-	void MovePlayer(const struct FInputActionInstance& InputActionInstance);
+	//void MovePlayer(const struct FInputActionInstance& InputActionInstance);
+	void MovePlayer();
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
 		float InvisMaxCharge;
 
 
+	//the base input mapping context we want to add
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
+		class UInputMappingContext* InputMapping;
 
 	//references to the actions 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
+		class UInputAction* TestAction;
+
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
 		class UInputAction* MovementAction;
 
