@@ -12,11 +12,21 @@
 #include "CustomGameMode.h"
 
 
+ACustomPlayerController::ACustomPlayerController()
+{
+}
+
 
 void ACustomPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 
+
+	gm = GetWorld()->GetAuthGameMode<ACustomGameMode>();
+	gs = Cast<ACustomGameState>(gm->GameState);
+	//gs = GetWorld()->GetGameState<ACustomGameState>();
+	ps = this->GetPlayerState<ACustomPlayerState>();
+	playerCharacter = Cast<APlayerCharacter>(gm->DefaultPawnClass.GetDefaultObject());
 
 	//add input mapping context
 	if (APlayerController* playerController = Cast<APlayerController>(this))
@@ -41,11 +51,6 @@ void ACustomPlayerController::BeginPlay()
 		}
 	}
 
-	gm = GetWorld()->GetAuthGameMode<ACustomGameMode>();
-	gs = Cast<ACustomGameState>(gm->GameState);
-	//gs = GetWorld()->GetGameState<ACustomGameState>();
-	ps = this->GetPlayerState<ACustomPlayerState>();
-	playerCharacter = Cast<APlayerCharacter>(gm->DefaultPawnClass.GetDefaultObject());
 	SetupInputComponent();
 	
 }
@@ -58,38 +63,56 @@ void ACustomPlayerController::PlayerTick(float deltaTime)
 
 void ACustomPlayerController::SetupInputComponent()
 {
-	//Super::SetupInputComponent(); //commented cause it was breaking it
-	UEnhancedInputComponent* EIS = CastChecked<UEnhancedInputComponent>(playerCharacter->InputComponent);
+	Super::SetupInputComponent();
 
-	//WARN("getting enhanced input component");
-	//doncasting the PlayerInputComponent to be a UEnhancedInputComponent
-			
-	UE_LOG(LogTemp, Warning, TEXT("running SetupPlayerComponent()"));	
+	if (IsValid(playerCharacter)) {
+		//Super::SetupInputComponent(); //commented cause it was breaking it
+		UEnhancedInputComponent* EIS = CastChecked<UEnhancedInputComponent>(InputComponent);
 
-	//bind the move action
-	//WARN("Binding Move actions");
-	//UE_LOG(LogTemp, Warning, TEXT("binding the move action"));
+		//WARN("getting enhanced input component");
+		//doncasting the PlayerInputComponent to be a UEnhancedInputComponent
 
-	
-		//EIS->BindAction(MovementAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Move);
+		UE_LOG(LogTemp, Warning, TEXT("running SetupPlayerComponent()"));
 
-	//EIS->BindAction(MovementAction, ETriggerEvent::Triggered, playerCharacter, APlayerCharacter::Move);
-
-	//	//MovementAction, ETriggerEvent::Triggered, playerCharacter, &APlayerCharacter::Move);
-	////bind the steer action
-	//EIS->BindAction(LookAction, ETriggerEvent::Triggered, playerCharacter, &APlayerCharacter::Look);
-	////bind the Interact action
-	//EIS->BindAction(InteractAction, ETriggerEvent::Started, playerCharacter, &APlayerCharacter::Interact);
-	////bind the invisActivate action;
-	//EIS->BindAction(InvisToggleAction, ETriggerEvent::Started, playerCharacter, &APlayerCharacter::ToggleInvisibility);
+		//bind the move action
+		//WARN("Binding Move actions");
+		//UE_LOG(LogTemp, Warning, TEXT("binding the move action"));
 
 
-	////bind the jump actions
-	//EIS->BindAction(JumpAction, ETriggerEvent::Triggered, playerCharacter, &ACharacter::Jump);
-	//EIS->BindAction(JumpAction, ETriggerEvent::Completed, playerCharacter, &ACharacter::StopJumping);
-	//UEnhancedInputComponent* EIS = CastChecked<UEnhancedInputComponent>(InputComponent);//previous version
+			//EIS->BindAction(MovementAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Move);
+
+		EIS->BindAction(MovementAction, ETriggerEvent::Triggered, this, GET_FUNCTION_NAME_CHECKED(ACustomPlayerController, MovePlayer));
+
+
+		//	//MovementAction, ETriggerEvent::Triggered, playerCharacter, &APlayerCharacter::Move);
+		////bind the steer action //ACustomPlayerController::MovePlayer
+		//EIS->BindAction(LookAction, ETriggerEvent::Triggered, playerCharacter, &APlayerCharacter::Look);
+		////bind the Interact action
+		//EIS->BindAction(InteractAction, ETriggerEvent::Started, playerCharacter, &APlayerCharacter::Interact);
+		////bind the invisActivate action;
+		//EIS->BindAction(InvisToggleAction, ETriggerEvent::Started, playerCharacter, &APlayerCharacter::ToggleInvisibility);
+
+
+		////bind the jump actions
+		//EIS->BindAction(JumpAction, ETriggerEvent::Triggered, playerCharacter, &ACharacter::Jump);
+		//EIS->BindAction(JumpAction, ETriggerEvent::Completed, playerCharacter, &ACharacter::StopJumping);
+		//UEnhancedInputComponent* EIS = CastChecked<UEnhancedInputComponent>(InputComponent);//previous version
+
+	}
+	else {
+		WARN("CustomPlayerController.SetupPlayerComonent() called but playerCharacter was not valid")
+	}
 
 }
+
+
+void ACustomPlayerController::MovePlayer(const FInputActionInstance& InputActionInstance)
+{
+	WARN("MOVEPLAYER CALLED")
+	//playerCharacter->Move(InputActionInstance);
+}
+
+
 
 //returns true if any changes are made to the charge
 bool ACustomPlayerController::updateInvisCharge()

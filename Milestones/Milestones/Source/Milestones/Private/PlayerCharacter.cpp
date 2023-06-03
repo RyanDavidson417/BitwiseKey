@@ -74,7 +74,7 @@ void APlayerCharacter::BeginPlay()
 	gs = Cast<ACustomGameState>(gm->GameState);
 
 
-	UEnhancedInputComponent* EIS = CastChecked<UEnhancedInputComponent>(InputComponent);
+	UEnhancedInputComponent* EIC = CastChecked<UEnhancedInputComponent>(InputComponent);
 
 }
 
@@ -97,24 +97,25 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	UE_LOG(LogTemp, Warning, TEXT("running SetupPlayerComponent()"));
 	//WARN("getting enhanced input component");
 	//doncasting the PlayerInputComponent to be a UEnhancedInputComponent
-	UEnhancedInputComponent* EIS = CastChecked<UEnhancedInputComponent>(PlayerInputComponent);
+	UEnhancedInputComponent* EIC = CastChecked<UEnhancedInputComponent>(PlayerInputComponent);
 
 	//bind the move action
 	//WARN("Binding Move actions");
-	//
+	
+
 	////UE_LOG(LogTemp, Warning, TEXT("binding the move action"));
-	//EIS->BindAction(MovementAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Move);
+	//EIC->BindAction(MovementAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Move);
 	////bind the steer action
-	//EIS->BindAction(LookAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Look);
+	//EIC->BindAction(LookAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Look);
 	////bind the Interact action
-	//EIS->BindAction(InteractAction, ETriggerEvent::Started, this, &APlayerCharacter::Interact);
+	//EIC->BindAction(InteractAction, ETriggerEvent::Started, this, &APlayerCharacter::Interact);
 	////bind the invisActivate action;
-	//EIS->BindAction(InvisToggleAction, ETriggerEvent::Started, this, &APlayerCharacter::ToggleInvisibility);
+	//EIC->BindAction(InvisToggleAction, ETriggerEvent::Started, this, &APlayerCharacter::ToggleInvisibility);
 
 
 	////bind the jump actions
-	//EIS->BindAction(JumpAction, ETriggerEvent::Triggered, this, &ACharacter::Jump);
-	//EIS->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
+	//EIC->BindAction(JumpAction, ETriggerEvent::Triggered, this, &ACharacter::Jump);
+	//EIC->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
 
 	
 }

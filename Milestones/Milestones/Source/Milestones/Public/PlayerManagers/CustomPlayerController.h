@@ -24,10 +24,13 @@ class MILESTONES_API ACustomPlayerController : public APlayerController
 	GENERATED_BODY()
 
 public:
+	ACustomPlayerController();
 	bool updateInvisCharge();
 	void BeginPlay() override;
 	void PlayerTick(float deltaTime) override;
 	virtual void SetupInputComponent() override;
+
+	void MovePlayer(const struct FInputActionInstance& InputActionInstance);
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
