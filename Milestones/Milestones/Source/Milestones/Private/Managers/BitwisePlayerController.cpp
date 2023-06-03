@@ -54,7 +54,7 @@ void ABitwisePlayerController::SetupInputComponent()
 	if (IsValid(InputComponent)) {
 		if (IsValid(playerCharacter)) {
 			playerCharacter->SetupPlayerInputComponent(InputComponent);		
-			WARN("setupPlayerInputComponet successfully called on playercharacter from PlayerController")
+			WARN("setupPlayerInputComponent successfully called on playercharacter from PlayerController")
 		}
 		else {
 			WARN("player character not valid")

@@ -38,7 +38,7 @@ public:
     TObjectPtr<ABitwisePlayerState> ps;
     UPROPERTY(EditAnywhere, Category = "managers")
 
-    APlayerCharacter* playerCharacter;
+    TObjectPtr<APlayerCharacter> playerCharacter;
     //TObjectPtr<APlayerCharacter> playerCharacter;
 
 

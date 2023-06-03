@@ -17,8 +17,9 @@ class USoundBase;
 class UInteractionComponent;
 class UCollectionInteractable;
 
-class ABitwiseGameMode;
-class ABitwiseGameState;
+class ACustomGameMode;
+class ACustomGameState;
+class ABitwisePlayerController;
 
 UCLASS()
 class MILESTONES_API APlayerCharacter : public ACharacter
@@ -86,6 +87,7 @@ public:
 
 	TObjectPtr<ACustomGameMode> gm;
 	TObjectPtr<ACustomGameState> gs;
+	TObjectPtr<ABitwisePlayerController> pc;
 
 protected:
 	// Called when the game starts or when spawned

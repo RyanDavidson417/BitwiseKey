@@ -10,6 +10,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "Components/CapsuleComponent.h"
 #include "BaseGizmos/GizmoElementShared.h"
+#include "Kismet/GameplayStatics.h" 
 #include "Camera/CameraComponent.h"
 #include "Animation/AnimInstance.h"
 #include "EnhancedInputSubsystems.h"
@@ -48,34 +49,35 @@ void APlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
-	//add input mapping context
-	if (ABitwisePlayerController* playerController = Cast<ABitwisePlayerController>(GetController()))
-	{
-
-		//UE_LOG(LogTemp, Warning, TEXT("checking to see if there's a local player"));
-		if (ULocalPlayer* localPlayer = Cast<ULocalPlayer>(playerController->GetLocalPlayer()))
-		{
-			//UE_LOG(LogTemp, Warning, TEXT("looking for input system "));
-			if (UEnhancedInputLocalPlayerSubsystem* inputSystem =
-				localPlayer->GetSubsystem<UEnhancedInputLocalPlayerSubsystem>())
-			{
-				//UE_LOG(LogTemp, Warning, TEXT("loading inputMapping"));
-				if (InputMapping != nullptr)
-				{
-					
-					UE_LOG(LogTemp, Warning, TEXT("reached end of playerController nested ifs"));
-					//UE_LOG(LogTemp, Warning, TEXT("adding mapping context"));
-					//UE_LOG(LogTemp, Warning, TEXT("playerController: %s"), *playerController->GetName());
-					inputSystem->AddMappingContext(InputMapping, 0);
-				}
-			}
-		}
-	}
 
 
 	gm = GetWorld()->GetAuthGameMode<ACustomGameMode>();
 	gs = Cast<ACustomGameState>(gm->GameState);
+	pc = Cast<ABitwisePlayerController>(UGameplayStatics::GetPlayerController(GetWorld(), 0));
 
+	//add input mapping context
+	if (ABitwisePlayerController* playerController = Cast<ABitwisePlayerController>(pc))
+	{
+		LOG("CONTROLLER: %s", *pc->GetName())
+			//UE_LOG(LogTemp, Warning, TEXT("checking to see if there's a local player"));
+			if (ULocalPlayer* localPlayer = Cast<ULocalPlayer>(pc->GetLocalPlayer()))
+			{
+				//UE_LOG(LogTemp, Warning, TEXT("looking for input system "));
+				if (UEnhancedInputLocalPlayerSubsystem* inputSystem =
+					localPlayer->GetSubsystem<UEnhancedInputLocalPlayerSubsystem>())
+				{
+					//UE_LOG(LogTemp, Warning, TEXT("loading inputMapping"));
+					if (InputMapping != nullptr)
+					{
+
+						UE_LOG(LogTemp, Warning, TEXT("reached end of playerController nested ifs"));
+						//UE_LOG(LogTemp, Warning, TEXT("adding mapping context"));
+						//UE_LOG(LogTemp, Warning, TEXT("playerController: %s"), *playerController->GetName());
+						inputSystem->AddMappingContext(InputMapping, 0);
+					}
+				}
+			}
+	}
 }
 
 // Called every frame
