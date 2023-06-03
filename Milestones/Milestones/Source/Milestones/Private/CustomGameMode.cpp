@@ -40,6 +40,9 @@ ACustomGameMode::ACustomGameMode()
 
 void ACustomGameMode::BeginPlay()
 {
+    Super::BeginPlay();
+    DispatchBeginPlay();
+
     UGameplayStatics::GetAllActorsOfClass(GetWorld(), ASpawnPowerup::StaticClass(), PowerupSpawnLocations);
 
     gs = GetWorld()->GetGameState<ACustomGameState>();
