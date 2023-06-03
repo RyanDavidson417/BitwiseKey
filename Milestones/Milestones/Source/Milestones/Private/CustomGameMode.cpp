@@ -7,6 +7,7 @@
 #include "Math/UnrealMathUtility.h"
 #include "Milestones/Milestones.h"
 #include "Kismet/GameplayStatics.h" 
+#include "TimerManager.h"
 #include "Kismet/KismetArrayLibrary.h"
 #include "UObject/ConstructorHelpers.h" 
 #include "CustomGameState.h"
@@ -69,6 +70,8 @@ void ACustomGameMode::BeginPlay()
         }
         i++;
     }
+    //
+    GetWorldTimerManager().SetTimer(InvisRechargeTimerHandle, this, &ACustomGameMode::updateInvisCharge, 1.0f, true, 2.0f);
 }
 
 void ACustomGameMode::CollectXRay()
@@ -122,6 +125,46 @@ void ACustomGameMode::randomizePowerups()
         
     }
     gs->EA_PowerupOrder = RandomizedArray;
+}
+
+
+//returns true if any changes are made to the charge
+void ACustomGameMode::updateInvisCharge()
+{
+
+    if (gs->hasInvisibility) {
+
+        LOG("CurrentCharge: %f", gs->CurrentInvisCharge)
+        bool bLocalPlayerIsInvisible = gs->bPlayerIsInvisible;
+        if (bLocalPlayerIsInvisible) {
+            if (gs->CurrentInvisCharge == 0) {
+                return ;
+            }
+            else  if (gs->CurrentInvisCharge < 0) {
+                gs->CurrentInvisCharge = 0;
+                return ;
+            }
+            else if (gs->CurrentInvisCharge > 0) {
+
+                gs->CurrentInvisCharge -= InvisDecrement;
+                return ;
+            }
+        } else {
+            if (gs->CurrentInvisCharge == InvisMaxCharge) {
+                return ;
+            }
+            else  if (gs->CurrentInvisCharge > InvisMaxCharge) {
+                gs->CurrentInvisCharge = InvisMaxCharge;
+                return ;
+            }
+            else if (gs->CurrentInvisCharge < InvisMaxCharge) {
+                gs->CurrentInvisCharge += InvisIncrement;
+                return ;
+            }
+        }
+
+    }
+    return ;
 }
 
 //C:\Users\ryand\LocDocuments\Indie games\Unreal\gp2 repo\Milestones\Milestones\Source\Milestones\Private\CustomGameMode.cpp

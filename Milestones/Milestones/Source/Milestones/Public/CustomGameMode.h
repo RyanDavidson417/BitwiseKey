@@ -37,8 +37,8 @@ public:
 	void CollectXRay();
 	void CollectInvisibility();
 	
-
 	void ToggleInvisibility();
+	void updateInvisCharge();
 
 	TObjectPtr<ACustomGameState> gs;
 
@@ -64,6 +64,16 @@ public:
 	AActor* MovementRoomCollectible;
 	//spawned in the teleport room
 	AActor* TeleportCollectible;
+
+	FTimerHandle InvisRechargeTimerHandle;
+
+protected:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
+		float InvisIncrement;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
+		float InvisDecrement;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
+		float InvisMaxCharge;
 
 
 private:

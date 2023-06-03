@@ -45,14 +45,18 @@ public:
 	bool hasInvisibility;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
-	bool bPlayerIsInvisible;
-
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
 	EPowerUp PowerupEnum;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
 		TArray<EPowerUp> EA_PowerupOrder;
-	
+
+	//invisibility 
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
+		bool bPlayerIsInvisible;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
+		float CurrentInvisCharge = 100;
 
 
 

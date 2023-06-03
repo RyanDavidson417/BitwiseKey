@@ -34,7 +34,9 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
+	
 
+	float StartZ;
 	TObjectPtr<ACustomGameMode> gm;
 	TObjectPtr<ACustomGameState> gs; 
 
