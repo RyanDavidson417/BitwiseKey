@@ -5,7 +5,10 @@
 #include "CoreMinimal.h"
 #include "GameFramework/GameMode.h"
 #include "PlayerCharacter.h"
+#include "Delegates/Delegate.h"
+#include "Delegates/DelegateSignatureImpl.inl"
 #include "CustomGameMode.generated.h"
+
 
 /**
  * 
@@ -34,16 +37,21 @@ protected:
 public:
 	ACustomGameMode();
 	
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCollectedXrayDelegate);
+	UPROPERTY(BlueprintAssignable, BlueprintCallable)
+	FOnCollectedXrayDelegate OnCollectedXray;
+
 	void randomizePowerups();
 
 	void CollectXRay();
-	void CollectInvisibility();
 	
+	void CollectInvisibility();
 	void ToggleInvisibility();
 	void updateInvisCharge();
 
 	TObjectPtr<ACustomGameState> gs;
 
+	//spawn locations
 	//spawned in the xray spot
 	UPROPERTY(EditAnywhere, Category = "Collectibles")
 		TSubclassOf<AActor> XRayCollectible;
@@ -57,7 +65,7 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Collectibles")
 		TSubclassOf<AActor> TeleportAbilityCollectible;
 
-
+	//prefabs to spawn from
 	//spawned in the maze
 	AActor* MazeCollectible;
 	//spawned in the enemy room

@@ -82,6 +82,8 @@ void ACustomGameMode::CollectXRay()
     WARN("collect x ray method called from gamemode");
     gs->hasXray = true;
 
+    OnCollectedXray.Broadcast();
+
     //when implementing xray we're going to want to iterate over our list of fake walls - stored by way of getallactorsof class in beginPlay(), and call their toggleXray function
 }
 
