@@ -56,7 +56,7 @@ public:
 		bool bPlayerIsInvisible;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
-		float CurrentInvisCharge = 100;
+		float CurrentInvisCharge = 0;
 
 
 

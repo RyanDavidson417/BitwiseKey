@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "CollectionInteractable.h"
+#include "../CollectionInteractable.h"
 #include "InvisibilityPowerup.generated.h"
 
 /**
@@ -11,7 +11,6 @@
  */
 
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
-
 class MILESTONES_API UInvisibilityPowerup : public UCollectionInteractable
 {
 	GENERATED_BODY()

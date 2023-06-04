@@ -74,7 +74,7 @@ void ACustomGameMode::BeginPlay()
         i++;
     }
     //
-    GetWorldTimerManager().SetTimer(InvisRechargeTimerHandle, this, &ACustomGameMode::updateInvisCharge, 1.0f, true, 2.0f);
+    GetWorldTimerManager().SetTimer(InvisRechargeTimerHandle, this, &ACustomGameMode::updateInvisCharge, 1/invis_precision, true, 2.0f);
 }
 
 void ACustomGameMode::CollectXRay()
@@ -88,7 +88,7 @@ void ACustomGameMode::CollectXRay()
 void ACustomGameMode::CollectInvisibility()
 {
     WARN("player collected invisibility -gm");
-
+    gs->CurrentInvisCharge = InvisMaxCharge;
     gs->hasInvisibility = true;
 }
 
@@ -137,7 +137,7 @@ void ACustomGameMode::updateInvisCharge()
 
     if (gs->hasInvisibility) {
 
-        LOG("CurrentCharge: %f", gs->CurrentInvisCharge)
+        //LOG("CurrentCharge: %f", gs->CurrentInvisCharge)
         bool bLocalPlayerIsInvisible = gs->bPlayerIsInvisible;
         if (bLocalPlayerIsInvisible) {
             if (gs->CurrentInvisCharge == 0) {
@@ -149,7 +149,7 @@ void ACustomGameMode::updateInvisCharge()
             }
             else if (gs->CurrentInvisCharge > 0) {
 
-                gs->CurrentInvisCharge -= InvisDecrement;
+                gs->CurrentInvisCharge -= InvisDecrement/invis_precision;
                 return ;
             }
         } else {
@@ -161,7 +161,7 @@ void ACustomGameMode::updateInvisCharge()
                 return ;
             }
             else if (gs->CurrentInvisCharge < InvisMaxCharge) {
-                gs->CurrentInvisCharge += InvisIncrement;
+                gs->CurrentInvisCharge += InvisIncrement/invis_precision;
                 return ;
             }
         }
