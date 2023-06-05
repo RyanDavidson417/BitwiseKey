@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "InteractionComponent.h"
+#include "Materials/MaterialInstanceDynamic.h"
 #include "CollectionInteractable.generated.h"
 
 /**
@@ -11,6 +12,9 @@
  */
 class ACustomGameMode;
 class ACustomGameState;
+
+class UMaterialInterface;
+struct FLinearColor;
 
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class MILESTONES_API UCollectionInteractable : public UInteractionComponent
@@ -27,17 +31,29 @@ public:
 
 	//UPROPERTY(EditAnywhere, blueprintReadOnly, Category = Interaction)
 	//	FString Powerup;
+	
+protected:
+	virtual void BeginPlay() override;
+
 public:
 
 	UPROPERTY(EditAnywhere, blueprintReadWrite, Category = Audio)
 		TObjectPtr<class UAudioComponent> CollectionSound;
 
 protected:
-	virtual void BeginPlay() override;
 	
 
 	float StartZ;
 	TObjectPtr<ACustomGameMode> gm;
 	TObjectPtr<ACustomGameState> gs; 
+
+	UPROPERTY(EditAnywhere, blueprintReadWrite)
+		UMaterialInterface* Material;
+
+	UPROPERTY(EditAnywhere, blueprintReadWrite)
+		FLinearColor PowerupColor;
+
+	UPROPERTY(EditAnywhere, blueprintReadWrite)
+		UStaticMeshComponent* PodMesh;
 
 };

@@ -20,6 +20,28 @@ void UCollectionInteractable::BeginPlay()
 	CollectionSound = GetOwner()->FindComponentByClass<UAudioComponent>(); 
 
 	StartZ = GetOwner()->GetActorLocation().Z;
+
+	PodMesh =  Cast<UStaticMeshComponent>(GetOwner()->GetComponentByClass(UStaticMeshComponent::StaticClass()));
+
+	UMaterialInstanceDynamic* DynMaterial = UMaterialInstanceDynamic::Create(Material, GetOwner());
+
+	DynMaterial->SetVectorParameterValue(FName("Emissive color 01"), PowerupColor);
+
+	PodMesh->SetMaterial(2, DynMaterial);
+
+	WARN("podmesh: %s ", *PodMesh->GetName())
+
+	/*
+	UMaterialInstanceDynamic* GlassMaterial = Cast<UMaterialInstanceDynamic>(PodMesh->GetMaterial(2));
+
+	if (IsValid(GlassMaterial)) {
+		GlassMaterial->
+
+	}
+	else {
+		WARN("nope")
+	}*/
+
 }
 
 void UCollectionInteractable::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
