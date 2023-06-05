@@ -100,10 +100,12 @@ void ACustomGameMode::ToggleInvisibility()
 
         if (gs->bPlayerIsInvisible) {
             gs->bPlayerIsInvisible = false; 
+            UGameplayStatics::PlaySound2D(GetWorld(), SW_InvisDeactivate);
 
         }
         else {
             gs->bPlayerIsInvisible = true;
+            UGameplayStatics::PlaySound2D(GetWorld(), SW_InvisActivate);
 
         }
     }

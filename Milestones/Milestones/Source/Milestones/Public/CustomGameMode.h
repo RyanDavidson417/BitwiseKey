@@ -33,6 +33,11 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Powerups")
 		float invis_precision;
 
+	//sound waves to play when you activate and deactivate invisibility
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Audio)
+		USoundWave* SW_InvisActivate;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Audio)
+		USoundWave* SW_InvisDeactivate;
 
 public:
 	ACustomGameMode();
