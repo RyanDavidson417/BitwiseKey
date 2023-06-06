@@ -40,9 +40,11 @@ ACustomGameMode::ACustomGameMode()
 
 void ACustomGameMode::BeginPlay()
 {
-    playerCharacter = Cast<APlayerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
+
     Super::BeginPlay();
     DispatchBeginPlay();
+
+    playerCharacter = Cast<APlayerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
 
     UGameplayStatics::GetAllActorsOfClass(GetWorld(), ASpawnPowerup::StaticClass(), PowerupSpawnLocations);
 
@@ -85,7 +87,9 @@ void ACustomGameMode::Tick(float DeltaSeconds)
         if (playerCharacter->bReceivedFirstPlayerInput) {
             gs->gameTimer = GetWorld()->GetUnpausedTimeSeconds() - GameStartTime;
             LOG("GAME TIME: %f", gs->gameTimer)
-        }   
+        }
+    } else {
+        UE_LOG(LogTemp, Error, TEXT("Player character reference in gamemode NOT valid"));
     }
 }
 

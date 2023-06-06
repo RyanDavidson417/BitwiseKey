@@ -27,6 +27,7 @@ class MILESTONES_API APlayerCharacter : public ACharacter
 
 //variables
 public:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
 	bool bReceivedFirstPlayerInput;
 
 protected:

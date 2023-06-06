@@ -110,7 +110,7 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 
 	//bind the jump actions
-	EIS->BindAction(JumpAction, ETriggerEvent::Triggered, this, &ACharacter::Jump);
+	EIS->BindAction(JumpAction, ETriggerEvent::Triggered, this, &ACharacter::Jump); //would have to override if we wanted to start game timer on jump
 	EIS->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
 
 
@@ -118,6 +118,10 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 void APlayerCharacter::Move(const FInputActionInstance& Instance)
 {
+	//used for game timer
+	if (!bReceivedFirstPlayerInput) {
+		bReceivedFirstPlayerInput = true;
+	}
 
 	lastMoveInput = Instance.GetValue().Get<FVector2D>();
 	//UE_LOG(LogTemp, Warning, TEXT("MOVE INPUT detected"));
@@ -136,6 +140,11 @@ void APlayerCharacter::Move(const FInputActionInstance& Instance)
 
 void APlayerCharacter::Look(const FInputActionInstance& InputActionInstance)
 {
+	//used for game timer, could disable these lines if we wanted to be generous and only start the game timer when the player starts moving
+	if (!bReceivedFirstPlayerInput) {
+		bReceivedFirstPlayerInput = true;
+	}
+
 
 	FVector2D LookAxisVector = InputActionInstance.GetValue().Get<FVector2D>();
 
@@ -150,6 +159,11 @@ void APlayerCharacter::Look(const FInputActionInstance& InputActionInstance)
 
 void APlayerCharacter::Interact(const FInputActionInstance& Instance)
 {
+
+	//used for game timer, probably not totally necessary to start it if the player hits the invisibility button, just for posterity
+	if (!bReceivedFirstPlayerInput) {
+		bReceivedFirstPlayerInput = true;
+	}
 
 	if (InteractionComponent != nullptr) {
 		//UE_LOG(LogTemp, Warning, TEXT("You Collected the %s "), *InteractionComponent->Powerup);
@@ -221,6 +235,10 @@ void APlayerCharacter::TraceLine()
 
 void APlayerCharacter::ToggleInvisibility(const FInputActionInstance& Instance)
 {
+	//used for game timer, probably not totally necessary to start it if the player hits the invisibility button, just for posterity
+	if (!bReceivedFirstPlayerInput) {
+		bReceivedFirstPlayerInput = true;
+	}
 	WARN("toggle invisibility input called");
 	gm->ToggleInvisibility();
 }

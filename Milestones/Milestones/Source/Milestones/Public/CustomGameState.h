@@ -32,6 +32,7 @@ public:
 private:
 
 public:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Timer")
 	float gameTimer = 0;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
 	bool hasXray;
