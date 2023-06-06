@@ -40,6 +40,7 @@ ACustomGameMode::ACustomGameMode()
 
 void ACustomGameMode::BeginPlay()
 {
+    playerCharacter = Cast<APlayerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
     Super::BeginPlay();
     DispatchBeginPlay();
 
@@ -75,6 +76,23 @@ void ACustomGameMode::BeginPlay()
     }
     //
     GetWorldTimerManager().SetTimer(InvisRechargeTimerHandle, this, &ACustomGameMode::updateInvisCharge, 1/invis_precision, true, 2.0f);
+}
+
+void ACustomGameMode::Tick(float DeltaSeconds)
+{
+    if (IsValid(playerCharacter)) {
+
+        if (playerCharacter->bReceivedFirstPlayerInput) {
+            gs->gameTimer = GetWorld()->GetUnpausedTimeSeconds() - GameStartTime;
+            LOG("GAME TIME: %f", gs->gameTimer)
+        }   
+    }
+}
+
+void ACustomGameMode::StartGameTimer()
+{
+    GameStartTime = GetWorld()->GetUnpausedTimeSeconds();
+    
 }
 
 void ACustomGameMode::CollectXRay()
@@ -174,4 +192,3 @@ void ACustomGameMode::updateInvisCharge()
     return ;
 }
 
-//C:\Users\ryand\LocDocuments\Indie games\Unreal\gp2 repo\Milestones\Milestones\Source\Milestones\Private\CustomGameMode.cpp

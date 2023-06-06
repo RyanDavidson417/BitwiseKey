@@ -23,12 +23,42 @@ class MILESTONES_API ACustomGameMode : public AGameMode
 {
 	GENERATED_BODY()
 
+		//functions
 public:	
+	ACustomGameMode();
+
+	void randomizePowerups();
+
+	void CollectXRay();
+
+	void CollectInvisibility();
+	void ToggleInvisibility();
+	void updateInvisCharge();
+
+	void StartGameTimer();
 
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	virtual void Tick(float DeltaSeconds) override;
+
+private:
+
+
+		//variables
+public:
+	
+	
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCollectedXrayDelegate);
+	UPROPERTY(BlueprintAssignable, BlueprintCallable)
+	FOnCollectedXrayDelegate OnCollectedXray;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+		float BitwiseGameTimer = 0;
+
+
 
 	UPROPERTY(EditAnywhere, Category = "Powerups")
 		float invis_precision;
@@ -39,22 +69,8 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Audio)
 		USoundWave* SW_InvisDeactivate;
 
-public:
-	ACustomGameMode();
-	
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCollectedXrayDelegate);
-	UPROPERTY(BlueprintAssignable, BlueprintCallable)
-	FOnCollectedXrayDelegate OnCollectedXray;
-
-	void randomizePowerups();
-
-	void CollectXRay();
-	
-	void CollectInvisibility();
-	void ToggleInvisibility();
-	void updateInvisCharge();
-
 	TObjectPtr<ACustomGameState> gs;
+	TObjectPtr<APlayerCharacter> playerCharacter;
 
 	//spawn locations
 	//spawned in the xray spot
@@ -92,5 +108,7 @@ protected:
 
 
 private:
+	float GameStartTime;
+
 	TArray<AActor*> PowerupSpawnLocations;
 };

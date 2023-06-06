@@ -26,6 +26,9 @@ class MILESTONES_API APlayerCharacter : public ACharacter
 	GENERATED_BODY()
 
 //variables
+public:
+	bool bReceivedFirstPlayerInput;
+
 protected:
 
 	//gamemode and gamestate, playercontroller and playerstate will be declared here as well
