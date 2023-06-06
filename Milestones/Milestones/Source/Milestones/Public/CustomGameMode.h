@@ -50,6 +50,10 @@ private:
 		//variables
 public:
 	
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnResetDelegate);
+	UPROPERTY(BlueprintAssignable, BlueprintCallable)
+		FOnResetDelegate D_OnReset;
+
 	
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCollectedXrayDelegate);
 	UPROPERTY(BlueprintAssignable, BlueprintCallable)
@@ -57,8 +61,6 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 		float BitwiseGameTimer = 0;
-
-
 
 	UPROPERTY(EditAnywhere, Category = "Powerups")
 		float invis_precision;

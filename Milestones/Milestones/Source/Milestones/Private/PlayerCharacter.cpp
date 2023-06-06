@@ -12,6 +12,7 @@
 #include "Animation/AnimInstance.h"
 #include "EnhancedInputSubsystems.h"
 #include "CustomGameState.h"
+#include "GameFramework/PlayerStart.h" 
 #include "CustomGameMode.h"
 
 
@@ -71,9 +72,11 @@ void APlayerCharacter::BeginPlay()
 		}
 	}
 
-
 	gm = GetWorld()->GetAuthGameMode<ACustomGameMode>();
 	gs = Cast<ACustomGameState>(gm->GameState);
+
+	gm->D_OnReset.AddDynamic(this, &APlayerCharacter::ResetPlayer);
+
 
 }
 
@@ -112,6 +115,8 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	//bind the jump actions
 	EIS->BindAction(JumpAction, ETriggerEvent::Triggered, this, &ACharacter::Jump); //would have to override if we wanted to start game timer on jump
 	EIS->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
+
+	EIS->BindAction(ResetPlayerAction, ETriggerEvent::Started, this, &APlayerCharacter::ResetFromPlayer);
 
 
 }
@@ -241,4 +246,16 @@ void APlayerCharacter::ToggleInvisibility(const FInputActionInstance& Instance)
 	}
 	WARN("toggle invisibility input called");
 	gm->ToggleInvisibility();
+}
+
+void APlayerCharacter::ResetPlayer()
+{
+	SetActorLocation(gm->FindPlayerStart(Controller)->GetActorLocation());
+	WARN("reset delegate RECIEVED on player");
+}
+
+void APlayerCharacter::ResetFromPlayer()
+{
+	WARN("reset action called from player")
+		gm->D_OnReset.Broadcast();
 }

@@ -50,6 +50,9 @@ protected:
 	/** InvisToggle Input Action */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Input)
 		class UInputAction* InvisToggleAction;
+	/** Reset Player Action */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Input)
+		class UInputAction* ResetPlayerAction;
 	//movement and look input variables, set in move and look functions
 	FVector2d lastLookInput;
 	FVector2D lastMoveInput;
@@ -84,6 +87,8 @@ protected:
 	UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
 
 
+	
+
 	//methods
 public:
 	// Sets default values for this character's properties
@@ -106,9 +111,10 @@ public:
 	//powerups
 	void ToggleInvisibility(const FInputActionInstance& Instance);
 
+	UFUNCTION()
+	void ResetPlayer();
 
-
-	
+	void ResetFromPlayer();
 
 protected:
 	// Called when the game starts or when spawned
