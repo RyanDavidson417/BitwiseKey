@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameMode.h"
+#include "CustomGameState.h"
 #include "PlayerCharacter.h"
 #include "Delegates/Delegate.h"
 #include "Delegates/DelegateSignatureImpl.inl"
@@ -17,6 +18,9 @@
 class APlayerCharacter;
 class ACustomGameState;
 class APawnPowerup;
+class UXRayVision;
+class UInvisibilityPowerup;
+class UCollectionInteractable;
 
 UCLASS()
 class MILESTONES_API ACustomGameMode : public AGameMode
@@ -36,6 +40,9 @@ public:
 	void updateInvisCharge();
 
 	void StartGameTimer();
+
+	UFUNCTION()
+	void ResetGameMode();
 
 
 protected:
@@ -74,7 +81,7 @@ public:
 	TObjectPtr<ACustomGameState> gs;
 	TObjectPtr<APlayerCharacter> playerCharacter;
 
-	//spawn locations
+	//prefabs to spawn from
 	//spawned in the xray spot
 	UPROPERTY(EditAnywhere, Category = "Collectibles")
 		TSubclassOf<AActor> XRayCollectible;
@@ -88,7 +95,7 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Collectibles")
 		TSubclassOf<AActor> TeleportAbilityCollectible;
 
-	//prefabs to spawn from
+	//spawn locations
 	//spawned in the maze
 	AActor* MazeCollectible;
 	//spawned in the enemy room
@@ -97,6 +104,8 @@ public:
 	AActor* MovementRoomCollectible;
 	//spawned in the teleport room
 	AActor* TeleportCollectible;
+
+	AActor* LastSpawnedPowerup;
 
 	FTimerHandle InvisRechargeTimerHandle;
 
@@ -108,6 +117,9 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
 		float InvisMaxCharge;
 
+	TArray<AActor*> SpawnedCollectibles;
+
+	TMap<EPowerUp, AActor*> SpawnedCollectiblesMap;
 
 private:
 	float GameStartTime;

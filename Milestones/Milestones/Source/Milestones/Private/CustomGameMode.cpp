@@ -3,6 +3,9 @@
 #include "CustomGameMode.h"
 #include "Interactables/ASpawnPowerup.h"
 #include "CustomGameState.h"
+#include "CollectionInteractable.h"
+#include "Interactables/XRayVision.h"  
+#include "Interactables/InvisibilityPowerup.h"
 #include "PlayerCharacter.h"
 #include "Math/UnrealMathUtility.h"
 #include "Milestones/Milestones.h"
@@ -51,21 +54,50 @@ void ACustomGameMode::BeginPlay()
     gs = GetWorld()->GetGameState<ACustomGameState>();
     randomizePowerups();
 
+    //should probably make a new helper function buuuuuuut
+
     int i = 0;
-    for (EPowerUp powerup : gs->EA_PowerupOrder) {
-        
-        switch (powerup) {
+    for (EPowerUp OrderedPowerUp: gs->EA_PowerupOrder) {//FUTURE CLEANUP: do all this in helper functions rather than several messy case labels
+        switch (OrderedPowerUp) {
         default:
         case(EPowerUp::PE_XRay):
-            
-            GetWorld()->SpawnActor<AActor>(XRayCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0,0,0) );
+        {
+            //SpawnedCollectibles.Add(GetWorld()->SpawnActor<AActor>(XRayCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0, 0, 0)));
+
+            AActor* PowerupActor = GetWorld()->SpawnActor<AActor>(XRayCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0, 0, 0));
+
+            UXRayVision* Component = PowerupActor->FindComponentByClass<UXRayVision>();
+            if (Component)
+            {
+                EPowerUp Key = EPowerUp::PE_XRay; // Use an appropriate method from your component to get the key
+                SpawnedCollectiblesMap.Add(Key, PowerupActor);
+            }
+
+            //LOG("spawned powerup: %s", &LastSpawnedPowerup->GetName())
+            //SpawnedCollectibles.Add(LastSpawnedPowerup);
             //if we wanted to access it later, we'd want to set a separate AActor*, and then cast this into that variable
             // eg XRayInteractable* exampleActor = Cast<XRayInteractable*>(GetWrold....)
             LOG("spawn an xray at %f %f ", PowerupSpawnLocations[i]->GetActorLocation().X, PowerupSpawnLocations[i]->GetActorLocation().Y)
+        }
                 break;
         case(EPowerUp::PE_Invisibility):
-            GetWorld()->SpawnActor<AActor>(InvisibilityCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0, 0, 0));
+        {
+
+            //SpawnedCollectibles.Add(GetWorld()->SpawnActor<AActor>(XRayCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0, 0, 0)));
+
+            AActor* PowerupActor = GetWorld()->SpawnActor<AActor>(InvisibilityCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0, 0, 0));
+
+            UInvisibilityPowerup* Component = PowerupActor->FindComponentByClass<UInvisibilityPowerup>();
+            if (Component)
+            {
+                EPowerUp Key = EPowerUp::PE_Invisibility; // Use an appropriate method from your component to get the key
+                SpawnedCollectiblesMap.Add(Key, PowerupActor);
+            }
+
+            //SpawnedCollectibles.Add(GetWorld()->SpawnActor<AActor>(InvisibilityCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0, 0, 0)));
+            //SpawnedCollectibles.Add(LastSpawnedPowerup);
             LOG("spawn INVISIBILITY")
+        }
                 break;
         case(EPowerUp::PE_Teleport):
             LOG("spawn TELEPORT")
@@ -78,10 +110,16 @@ void ACustomGameMode::BeginPlay()
     }
     //
     GetWorldTimerManager().SetTimer(InvisRechargeTimerHandle, this, &ACustomGameMode::updateInvisCharge, 1/invis_precision, true, 2.0f);
+
+    LOG("size of array = %f", SpawnedCollectibles.Num())
+
+    D_OnReset.AddDynamic(this, &ACustomGameMode::ResetGameMode);
 }
 
 void ACustomGameMode::Tick(float DeltaSeconds)
 {
+
+
     if (IsValid(playerCharacter)) {
 
         if (playerCharacter->bReceivedFirstPlayerInput) {
@@ -98,10 +136,100 @@ void ACustomGameMode::StartGameTimer()
     
 }
 
+void ACustomGameMode::ResetGameMode()
+{
+
+    gs->gameTimer = 0;
+
+    //reset ability collection
+    gs->hasXray = false;
+    gs->hasWallGrip = false;
+    gs->hasTeleport = false;
+    gs->hasInvisibility = false;
+    //make sure that invisibility is reset beyond just collection
+    gs->bPlayerIsInvisible = false;
+    gs->CurrentInvisCharge = 0;
+
+    //int32 NumSpawnedCollectibles = SpawnedCollectiblesMap.Num();
+    //LOG("size of array = %d", NumSpawnedCollectibles)
+
+    //destroy each spawned powerup and remove it from the TMap
+    for ( const auto& Pair : SpawnedCollectiblesMap) {
+        LOG("PING")
+        AActor* PowerUpActor = Pair.Value;
+        PowerUpActor->Destroy();
+        SpawnedCollectiblesMap.Remove(Pair.Key);
+    }
+
+    //NumSpawnedCollectibles = SpawnedCollectiblesMap.Num();
+    //LOG("size of array = %d", NumSpawnedCollectibles)
+
+    randomizePowerups();
+    //should probably make a new helper function buuuuuuut
+    int i = 0;
+    for (EPowerUp OrderedPowerUp : gs->EA_PowerupOrder) {//FUTURE CLEANUP: do all this in helper functions rather than several messy case labels
+        switch (OrderedPowerUp) {
+        default:
+        case(EPowerUp::PE_XRay):
+        {
+            //SpawnedCollectibles.Add(GetWorld()->SpawnActor<AActor>(XRayCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0, 0, 0)));
+
+            AActor* PowerupActor = GetWorld()->SpawnActor<AActor>(XRayCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0, 0, 0));
+
+            UXRayVision* Component = PowerupActor->FindComponentByClass<UXRayVision>();
+            if (Component)
+            {
+                EPowerUp Key = EPowerUp::PE_XRay; // Use an appropriate method from your component to get the key
+                SpawnedCollectiblesMap.Add(Key, PowerupActor);
+            }
+
+            //LOG("spawned powerup: %s", &LastSpawnedPowerup->GetName())
+            //SpawnedCollectibles.Add(LastSpawnedPowerup);
+            //if we wanted to access it later, we'd want to set a separate AActor*, and then cast this into that variable
+            // eg XRayInteractable* exampleActor = Cast<XRayInteractable*>(GetWrold....)
+            LOG("spawn an xray at %f %f ", PowerupSpawnLocations[i]->GetActorLocation().X, PowerupSpawnLocations[i]->GetActorLocation().Y)
+        }
+        break;
+        case(EPowerUp::PE_Invisibility):
+        {
+
+            //SpawnedCollectibles.Add(GetWorld()->SpawnActor<AActor>(XRayCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0, 0, 0)));
+
+            AActor* PowerupActor = GetWorld()->SpawnActor<AActor>(InvisibilityCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0, 0, 0));
+
+            UInvisibilityPowerup* Component = PowerupActor->FindComponentByClass<UInvisibilityPowerup>();
+            if (Component)
+            {
+                EPowerUp Key = EPowerUp::PE_Invisibility; // Use an appropriate method from your component to get the key
+                SpawnedCollectiblesMap.Add(Key, PowerupActor);
+            }
+
+            //SpawnedCollectibles.Add(GetWorld()->SpawnActor<AActor>(InvisibilityCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0, 0, 0)));
+            //SpawnedCollectibles.Add(LastSpawnedPowerup);
+            LOG("spawn INVISIBILITY")
+        }
+        break;
+        case(EPowerUp::PE_Teleport):
+            LOG("spawn TELEPORT")
+                break;
+        case(EPowerUp::PE_Movement):
+            LOG("spawn PE_Movement")
+                break;
+        }
+        i++;
+    }
+
+    StartGameTimer();
+}
+
 void ACustomGameMode::CollectXRay()
 {
     WARN("collect x ray method called from gamemode");
     gs->hasXray = true;
+
+    SpawnedCollectiblesMap.FindAndRemoveChecked(EPowerUp::PE_XRay);
+
+    //AActor* xraycol = SpawnedCollectibles.Find(UXRayVision);
 
     OnCollectedXray.Broadcast();
 
@@ -110,6 +238,7 @@ void ACustomGameMode::CollectXRay()
 
 void ACustomGameMode::CollectInvisibility()
 {
+    SpawnedCollectiblesMap.FindAndRemoveChecked(EPowerUp::PE_Invisibility);
     WARN("player collected invisibility -gm");
     gs->CurrentInvisCharge = InvisMaxCharge;
     gs->hasInvisibility = true;

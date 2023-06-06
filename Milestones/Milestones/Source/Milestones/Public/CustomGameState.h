@@ -37,8 +37,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
 	bool hasXray;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
-	bool hasGrapple;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
 	bool hasWallGrip;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
 	bool hasTeleport;

@@ -251,6 +251,7 @@ void APlayerCharacter::ToggleInvisibility(const FInputActionInstance& Instance)
 void APlayerCharacter::ResetPlayer()
 {
 	SetActorLocation(gm->FindPlayerStart(Controller)->GetActorLocation());
+	bReceivedFirstPlayerInput = false;
 	WARN("reset delegate RECIEVED on player");
 }
 
