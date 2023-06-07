@@ -148,6 +148,7 @@ void APlayerCharacter::Look(const FInputActionInstance& InputActionInstance)
 {
 	//used for game timer, could disable these lines if we wanted to be generous and only start the game timer when the player starts moving
 	if (!bReceivedFirstPlayerInput) {
+		gm->StartGameTimer();
 		bReceivedFirstPlayerInput = true;
 	}
 
@@ -168,6 +169,7 @@ void APlayerCharacter::Interact(const FInputActionInstance& Instance)
 
 	//used for game timer, probably not totally necessary to start it if the player hits the invisibility button, just for posterity
 	if (!bReceivedFirstPlayerInput) {
+		gm->StartGameTimer();
 		bReceivedFirstPlayerInput = true;
 	}
 
@@ -243,6 +245,7 @@ void APlayerCharacter::ToggleInvisibility(const FInputActionInstance& Instance)
 {
 	//used for game timer, probably not totally necessary to start it if the player hits the invisibility button, just for posterity
 	if (!bReceivedFirstPlayerInput) {
+		gm->StartGameTimer();
 		bReceivedFirstPlayerInput = true;
 	}
 	WARN("toggle invisibility input called");
