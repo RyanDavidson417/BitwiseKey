@@ -123,6 +123,7 @@ void ACustomGameMode::Tick(float DeltaSeconds)
     if (IsValid(playerCharacter)) {
 
         if (playerCharacter->bReceivedFirstPlayerInput) {
+            //StartGameTimer();
             gs->gameTimer = GetWorld()->GetUnpausedTimeSeconds() - GameStartTime;
         }
     } else {

@@ -125,6 +125,7 @@ void APlayerCharacter::Move(const FInputActionInstance& Instance)
 {
 	//used for game timer
 	if (!bReceivedFirstPlayerInput) {
+		gm->StartGameTimer();
 		bReceivedFirstPlayerInput = true;
 	}
 
