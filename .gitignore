@@ -54,6 +54,7 @@ Binaries/
 Plugins/*/Binaries/*
 Intermediate/
 StarterContent/
+StockContent/StarterContent
 Saved/
 
 # Whitelist PakBlacklist-.txt files
