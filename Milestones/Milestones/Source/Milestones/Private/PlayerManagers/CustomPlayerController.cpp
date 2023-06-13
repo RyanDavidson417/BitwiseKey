@@ -5,6 +5,7 @@
 #include "GameFramework/PlayerController.h"
 #include "EnhancedInputComponent.h"
 #include "InputMappingContext.h"
+#include "Kismet/GameplayStatics.h" 
 #include "EnhancedInputSubsystems.h"
 #include "PlayerManagers/CustomPlayerState.h"
 #include "Milestones/Milestones.h"
@@ -26,7 +27,7 @@ void ACustomPlayerController::BeginPlay()
 	gs = Cast<ACustomGameState>(gm->GameState);
 	//gs = GetWorld()->GetGameState<ACustomGameState>();
 	ps = this->GetPlayerState<ACustomPlayerState>();
-	playerCharacter = Cast<APlayerCharacter>(gm->DefaultPawnClass.GetDefaultObject());
+	playerCharacter = Cast<APlayerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
 
 	//add input mapping context
 	//if (APlayerController* playerController = Cast<APlayerController>(this))
