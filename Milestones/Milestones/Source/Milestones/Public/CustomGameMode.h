@@ -44,6 +44,8 @@ public:
 	UFUNCTION()
 	void ResetGameMode();
 
+	void PlaceCollectibleArray();
+
 
 protected:
 	// Called when the game starts or when spawned

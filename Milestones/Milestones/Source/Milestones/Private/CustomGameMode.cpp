@@ -54,60 +54,10 @@ void ACustomGameMode::BeginPlay()
     gs = GetWorld()->GetGameState<ACustomGameState>();
     randomizePowerups();
 
+    PlaceCollectibleArray();
+
     //should probably make a new helper function buuuuuuut
 
-    int i = 0;
-    for (EPowerUp OrderedPowerUp: gs->EA_PowerupOrder) {//FUTURE CLEANUP: do all this in helper functions rather than several messy case labels
-        switch (OrderedPowerUp) {
-        default:
-        case(EPowerUp::PE_XRay):
-        {
-            //SpawnedCollectibles.Add(GetWorld()->SpawnActor<AActor>(XRayCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0, 0, 0)));
-
-            AActor* PowerupActor = GetWorld()->SpawnActor<AActor>(XRayCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0, 0, 0));
-
-            UXRayVision* Component = PowerupActor->FindComponentByClass<UXRayVision>();
-            if (Component)
-            {
-                EPowerUp Key = EPowerUp::PE_XRay; // Use an appropriate method from your component to get the key
-                SpawnedCollectiblesMap.Add(Key, PowerupActor);
-            }
-
-            //LOG("spawned powerup: %s", &LastSpawnedPowerup->GetName())
-            //SpawnedCollectibles.Add(LastSpawnedPowerup);
-            //if we wanted to access it later, we'd want to set a separate AActor*, and then cast this into that variable
-            // eg XRayInteractable* exampleActor = Cast<XRayInteractable*>(GetWrold....)
-            LOG("spawn an xray at %f %f ", PowerupSpawnLocations[i]->GetActorLocation().X, PowerupSpawnLocations[i]->GetActorLocation().Y)
-        }
-                break;
-        case(EPowerUp::PE_Invisibility):
-        {
-
-            //SpawnedCollectibles.Add(GetWorld()->SpawnActor<AActor>(XRayCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0, 0, 0)));
-
-            AActor* PowerupActor = GetWorld()->SpawnActor<AActor>(InvisibilityCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0, 0, 0));
-
-            UInvisibilityPowerup* Component = PowerupActor->FindComponentByClass<UInvisibilityPowerup>();
-            if (Component)
-            {
-                EPowerUp Key = EPowerUp::PE_Invisibility; // Use an appropriate method from your component to get the key
-                SpawnedCollectiblesMap.Add(Key, PowerupActor);
-            }
-
-            //SpawnedCollectibles.Add(GetWorld()->SpawnActor<AActor>(InvisibilityCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0, 0, 0)));
-            //SpawnedCollectibles.Add(LastSpawnedPowerup);
-            LOG("spawn INVISIBILITY")
-        }
-                break;
-        case(EPowerUp::PE_Teleport):
-            LOG("spawn TELEPORT")
-                break;
-        case(EPowerUp::PE_Movement):
-            LOG("spawn PE_Movement")
-                break;
-        }
-        i++;
-    }
     //
     GetWorldTimerManager().SetTimer(InvisRechargeTimerHandle, this, &ACustomGameMode::updateInvisCharge, 1/invis_precision, true, 2.0f);
 
@@ -115,6 +65,8 @@ void ACustomGameMode::BeginPlay()
 
     D_OnReset.AddDynamic(this, &ACustomGameMode::ResetGameMode);
 }
+
+
 
 void ACustomGameMode::Tick(float DeltaSeconds)
 {
@@ -166,7 +118,14 @@ void ACustomGameMode::ResetGameMode()
     //LOG("size of array = %d", NumSpawnedCollectibles)
 
     randomizePowerups();
-    //should probably make a new helper function buuuuuuut
+        
+    PlaceCollectibleArray();
+
+    StartGameTimer();
+}
+
+void ACustomGameMode::PlaceCollectibleArray()
+{
     int i = 0;
     for (EPowerUp OrderedPowerUp : gs->EA_PowerupOrder) {//FUTURE CLEANUP: do all this in helper functions rather than several messy case labels
         switch (OrderedPowerUp) {
@@ -219,8 +178,6 @@ void ACustomGameMode::ResetGameMode()
         }
         i++;
     }
-
-    StartGameTimer();
 }
 
 void ACustomGameMode::CollectXRay()
