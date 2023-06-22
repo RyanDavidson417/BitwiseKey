@@ -3,7 +3,7 @@
 A solo-developed indie game.
 
 ## Description
-A work in progress solo development indie game drawing inspiration from metroidvania and roguelike elements. The final product will have 4 collectible abilities which spawn in randomized locations across the map, leaving players to decide the order in which they want to explore the map and collect the abilities, each of which will be useful as they explore further, and necessary to reach and explore the next level. 
+A work in progress solo development indie game drawing with metroidvania and roguelike elements. The final product will have 4 collectible abilities which spawn in randomized locations across the map, leaving players to decide the order in which they want to explore the map and collect the abilities, each of which will be useful as they explore further, and necessary to reach and explore the next level. 
 
 ## Current features
 So far, I have a solid foundation of much of the gameplay mechanics. Including player movement, simplistic enemy behavior, and the infrastructure for gameplay progression. This last point includes the implementation of two of the 4 planned abilities, the ability to reset the current run, and randomized placement of the abilities throughout my initial map design. 
