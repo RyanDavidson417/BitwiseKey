@@ -37,6 +37,7 @@ Specific and concrete features that will expand the scope of what's currently po
 - More robust randomization - in addition to randomizing the spawns of the abilities, I intend to add other tidbits of randomization to provide variance to the level design
   - this will utilize the same algorithm for randomization as the abilities, but will involve some restructuring of my code/inheritance patterns to be more easily replicable
   - some examples might include all but one route in the maze being blocked off by fake walls, with the passable route being different each time, or the locations of the teleportation pads.
+- Creation of a main and pause menu
 
 ### Polish
 Plans to improve the parts of the game that I already have, so as to make it more clean and enjoyable to play
@@ -47,46 +48,30 @@ Plans to improve the parts of the game that I already have, so as to make it mor
   - difficulty - Even without much expansion of the AI behavior tree, (which would fall closer to new features), tweaking the variables behind its movement speed, perception ranges, and other variables would go a long way to making the AI feel like a more dynamic challenge to the players
   - sounds - while The AI has sounds for when in the "patrol" and "chase" states, I'm still unsatisfied with the ones I've selected, as they feel tonally dissonant with the atmosphere of the game. I settled on the current ones for testing and placeholder purposes, but I certainly intend to revisit them
   - appearance - I intend to find a more fitting and unique skin for the enemies, rather than Unreal's manequin model.
-- player movement - tweaking the variance between player starting speed and max speed, as well as their acceleration will result in a more robust movement system that will provide a satisfying  but approachable (and optional) field in which player skill can develop.
+
 
 
 ### Juice
 A step beyond polish, but not so far as new features, "juice" is what's used to refer to subtle elements of previous features to provide the game with that extra level of satisfaction and enjoyment 
 - Improving the collection of the powerups
+  - fading the powerup out gradually rather than destroying it instantly
   - particle effects that play when collecting the pods, as well as polish surrounding the destruction of the model
   - a way for the world to respond to their destruction/collection. Perhaps having the walls/surrounding lights flash with the color associated with the ability
-- 
-  
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+- player movement - tweaking the variance between player starting speed and max speed, as well as their acceleration will result in a more robust movement system that will provide a satisfying  but approachable (and optional) field in which player skill can develop.
+- HUD - Currently I'm simply displaying the abilities in a 2x2 grid, redesigning that portion of the hud to look like an actuual physical key could help affirm the in-universe justification that these are being used to unlock the next level
 
 ## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+If you find any glitches or major issues with the current release, or simply want to provide feedback, feel free to reach out to me at Ryan.davidson.417@gmail.com
 
 ## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+I'm not looking for anyone who wishes to contribute to the programing, development, or design of this project, as I want it to be a clear demonstration of my abilities as a programmer and developer. That said, I'd be more than happy to add variety to the artistic side of this project. Anyone who wants to contribute assets, models, or any music/audio to the project would be greatly appreciated, and I'll be sure to accredit you in turn.
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+## Credits
+While I intend to include this within the game and accessible from the menus, in the meantime here is a list of sources from which I've been receiving the assets
+Many of the materials, models, and other assets are from Unreal Engine's Starter content
+Texures:
+- ambientCG.com (CC0).
+Audio:
+- Power up collection: https://freesound.org/s/320655/
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+other assets will be properly credited in the coming days when I regain access to my home computer.
