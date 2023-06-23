@@ -1,25 +1,25 @@
 # Bitwise Key
 
-A solo-developed indie game.
+A solo project of mine to develop a small scale indie game inspired by roguelike and metroidvania elements, still a work in progress.
 
 ## Description
-A work in progress solo development indie game drawing with metroidvania and roguelike elements. The final product will have 4 collectible abilities which spawn in randomized locations across the map, leaving players to decide the order in which they want to explore the map and collect the abilities, each of which will be useful as they explore further, and necessary to reach and explore the next level. 
+While most mashups of the two genres have abilities the player collects on a given run, which then persist between runs and provide a form of inter-run progression. Instead I wanted to create a game in which the ability based progression of metroidvanias changes within the randomized, repetative nature of roguelikes. The final product will have four collectible abilities which spawn in randomized locations across the map, leaving players to decide the order in which they want to explore the map and collect the abilities. These abilities will make exploration of the first level easier and faster, and will be necessary to unlock and explore the second level to the end of the game.
 
 ## Current features
-So far, I have a solid foundation of much of the gameplay mechanics. Including player movement, simplistic enemy behavior, and the infrastructure for gameplay progression. This last point includes the implementation of two of the 4 planned abilities, the ability to reset the current run, and randomized placement of the abilities throughout my initial map design. 
+So far, I have a solid foundation of much of the gameplay mechanics. Including player movement, simplistic enemy behavior, and substantial infrastructure for gameplay progression. This last point includes the implementation of two of the four planned abilities, the ability to reset the current run, and randomized placement of the abilities throughout my initial map design. 
 
-To view these current features, view the playable release, but please be aware that this project is actively in progress. While I wanted my work to be viewable somewhere, there's a reason this is still only on github rather than itch.io or a personal website. For further details on my plans for future features, polishing, and everything else that'll make this game stand out, please see the following section.
+To view these current features, feel free to view the playable release exe file on the development branch. But please be aware that this project is actively in progress. While I wanted my work to be viewable somewhere as soon as possible, there's a reason this is still only on github rather than itch.io or a personal website. For further details on my plans for future features, polishing, and everything else that'll make this game feel fun, please see the Future Plans section below.
 
 A more specific list of the currently implemented features:
-- player is able to spawn in at the center of the map, they will be able to view a timer which does not start until the player provides input (either by looking around or movement).
-- 2 pods spawn at 2 of 4 randomized locations throughout the map, each with their own emissive colors. The player can interact (E) with these pods to collect them and unlock new abilities.
-  - the green pod unlocks X-ray vision, enabling a particle effect on fake walls throughout one room of the map, and allowing players to pass through them.
-  - the blue pod unlocks invisibility, providing players with a recharging source of energy that they can then use to disable detection by the enemy AI
-- in addition to the starting room, there are currently a total of three rooms, each heavily associated with each ability
-  - the maze contains fake walls which can be detected and passed through when the player has x ray vision
-  - A room with an enemy in it is far easy to pass through then the player can turn invisible
-  - a platforming room will have a shortcut which will only be accessible with a third ability (detailed in the following section)
-- at any given point, the player can press R to reset the game. This will spawn them back in the center of the map, reset the timer remove their abilities, and re-randomize the placement of the abilities throughout the map
+- Player is able to spawn in at the center of the map. They will be able to view a timer which does not start until the player provides input (either by looking around or moving).
+- 2 pods spawn at 2 of 4 randomized locations throughout the map, each with their own unique colors. The player can interact (E) with these pods to collect them and unlock new abilities.
+  - The green pod unlocks X-ray vision, enabling a particle effect on fake walls throughout one room of the map, and allowing players to pass through them.
+  - The blue pod unlocks invisibility, allowing players to manually activate it and disable detection by the enemy AI. Players have a limited amount of "charge" they can use to power the invisibility, which will recharge when not in use.
+- In addition to the starting room, there are currently a total of three rooms, each heavily associated with each ability
+  - The maze contains fake walls, which can be detected and passed through when the player has x ray vision
+  - A room with an enemy in it, which is far easier to pass through then the player can turn invisible
+  - A platforming room will have a shortcut which will only be accessible with a third ability (Wall Cling, detailed in the following section)
+- At any given point, the player can press R to reset the game. This will spawn them back in the center of the map, reset the timer, remove their abilities, and re-randomize the placement of the abilities throughout the map
 
 
 ## Future Plans
@@ -53,18 +53,20 @@ Plans to improve the parts of the game that I already have, so as to make it mor
 
 ### Juice
 A step beyond polish, but not so far as new features, "juice" is what's used to refer to subtle elements of previous features to provide the game with that extra level of satisfaction and enjoyment 
-- Improving the collection of the powerups
+- Improving the collection of the powerups - currently the power ups simply play a sound and deactivate upon collection. I want to make this feel like a noteworthy moment and make the player feel rewarded by emphasizing the changes to the player and the world around them when the ability is collected
   - fading the powerup out gradually rather than destroying it instantly
   - particle effects that play when collecting the pods, as well as polish surrounding the destruction of the model
   - a way for the world to respond to their destruction/collection. Perhaps having the walls/surrounding lights flash with the color associated with the ability
-- player movement - tweaking the variance between player starting speed and max speed, as well as their acceleration will result in a more robust movement system that will provide a satisfying  but approachable (and optional) field in which player skill can develop.
-- HUD - Currently I'm simply displaying the abilities in a 2x2 grid, redesigning that portion of the hud to look like an actuual physical key could help affirm the in-universe justification that these are being used to unlock the next level
+- player movement - tweaking the variance between player starting speed and max speed, as well as their acceleration will result in a more robust movement system that will provide a satisfying but approachable (and optional) field in which player skill can develop.
+- HUD
+  - Currently I'm simply displaying the abilities in a 2x2 grid, redesigning that portion of the hud to look like an actuual physical key could help affirm the in-universe justification that these are being used to unlock the next level
+  - the current Timer's appearance is very simplistic and unrefined. I'll work to fit it better with the rest of the games aesthetic style
 
 ## Support
-If you find any glitches or major issues with the current release, or simply want to provide feedback, feel free to reach out to me at Ryan.davidson.417@gmail.com
+If you find any glitches or major issues with the current release, or simply want to provide feedback, feel free to reach out to me at Ryan.davidson.417@gmail.com. Alternatively my discord handle is .ferrous. In any case I'd love to hear from you.
 
 ## Contributing
-I'm not looking for anyone who wishes to contribute to the programing, development, or design of this project, as I want it to be a clear demonstration of my abilities as a programmer and developer. That said, I'd be more than happy to add variety to the artistic side of this project. Anyone who wants to contribute assets, models, or any music/audio to the project would be greatly appreciated, and I'll be sure to accredit you in turn.
+I'm not looking for any assistance in the programming, development, or design of this project, as I want it to be a clear demonstration of my abilities as a programmer and developer. That being said, I'd be more than happy to receive assistance to the artistic side of this project. Anyone who wants to contribute assets, models, or any music/audio to the project would be greatly appreciated, and I'll be sure to accredit you in turn.
 
 ## Credits
 While I intend to include this within the game and accessible from the menus, in the meantime here is a list of sources from which I've been receiving the assets
