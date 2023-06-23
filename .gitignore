@@ -53,8 +53,6 @@ SourceArt/**/*.tga
 Binaries/
 Plugins/*/Binaries/*
 Intermediate/
-StarterContent/
-StockContent/StarterContent
 Saved/
 
 # Whitelist PakBlacklist-.txt files
@@ -77,9 +75,3 @@ Plugins/*/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
-
-#personal edits
-# export I made as a backup for lab 2 early on before making a risky git maneuver - probably no longer needed but I want to keep at least one spare copy
-fullyworkinglab2/*
-# during one bout of unreal issues I made a separate external project, but I don't need that to be ported around
-InClassProject2/*
