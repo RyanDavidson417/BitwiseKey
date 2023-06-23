@@ -1,92 +1,81 @@
-# GameProg2
+# Bitwise Key
 
-
-
-## Getting started
-
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
-
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
-```
-cd existing_repo
-git remote add origin https://git.cs.du.edu/ryadavid/gameprog2.git
-git branch -M main
-git push -uf origin main
-```
-
-## Integrate with your tools
-
-- [ ] [Set up project integrations](https://git.cs.du.edu/ryadavid/gameprog2/-/settings/integrations)
-
-## Collaborate with your team
-
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
+A solo project of mine to develop a small scale indie game inspired by roguelike and metroidvania elements, still a work in progress.
 
 ## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+While most mashups of the two genres have abilities the player collects on a given run, which then persist between runs and provide a form of inter-run progression. Instead I wanted to create a game in which the ability based progression of metroidvanias changes within the randomized, repetative nature of roguelikes. The final product will have four collectible abilities which spawn in randomized locations across the map, leaving players to decide the order in which they want to explore the map and collect the abilities. These abilities will make exploration of the first level easier and faster, and will be necessary to unlock and explore the second level to the end of the game.
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+While I'm planning to reach my first milestone no later than June 30th, I want to get the game in a clean, working, and appealing state before commiting anything to main. If you want to view the project in it's current state, feel free to check out the Development Branch, which has far more work finished on it.
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+## Current features
+So far, I have a solid foundation of much of the gameplay mechanics. Including player movement, simplistic enemy behavior, and substantial infrastructure for gameplay progression. This last point includes the implementation of two of the four planned abilities, the ability to reset the current run, and randomized placement of the abilities throughout my initial map design. 
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+To view these current features, feel free to view the playable release exe file on the development branch. But please be aware that this project is actively in progress. While I wanted my work to be viewable somewhere as soon as possible, there's a reason this is still only on github rather than itch.io or a personal website. For further details on my plans for future features, polishing, and everything else that'll make this game feel fun, please see the Future Plans section below.
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+A more specific list of the currently implemented features:
+- Player is able to spawn in at the center of the map. They will be able to view a timer which does not start until the player provides input (either by looking around or moving).
+- 2 pods spawn at 2 of 4 randomized locations throughout the map, each with their own unique colors. The player can interact (E) with these pods to collect them and unlock new abilities.
+  - The green pod unlocks X-ray vision, enabling a particle effect on fake walls throughout one room of the map, and allowing players to pass through them.
+  - The blue pod unlocks invisibility, allowing players to manually activate it and disable detection by the enemy AI. Players have a limited amount of "charge" they can use to power the invisibility, which will recharge when not in use.
+- In addition to the starting room, there are currently a total of three rooms, each heavily associated with each ability
+  - The maze contains fake walls, which can be detected and passed through when the player has x ray vision
+  - A room with an enemy in it, which is far easier to pass through then the player can turn invisible
+  - A platforming room will have a shortcut which will only be accessible with a third ability (Wall Cling, detailed in the following section)
+- At any given point, the player can press R to reset the game. This will spawn them back in the center of the map, reset the timer, remove their abilities, and re-randomize the placement of the abilities throughout the map
+
+
+## Future Plans
+This game is far from finished, while I'm proud of the foundation I have so far, I'm excited for my future plans for other features, polish, and elements of "juice" to make the game feel good.
+
+### Features
+Specific and concrete features that will expand the scope of what's currently possible within the game
+- future abilities - the two other ideas I have for collectible abilities that will allow the player further ease in exploring the map
+  - wall cling/jump - The player will be able to stick to certain surfaces and jump off of them. Rather than a wall climb/run, the player will only be able to slide down the wall or jump off of it, akin to the wall climb abilities in 2d metroidvanias such as Hollow Knight or Dead Cells.
+  - Teleportation - the player will be able to teleport between set pairs of points throughout the map.
+- Expanded map/level design - Currently there are only 3 rooms, and those are also very simplistic in design.
+  - I intend to add 1 more room to the starting level,
+  - Given that the current room designs are very short and basic, I intend to expand them significantly. In addition to being longer, they'll likely incorporate the usage of multiple abilities to provide different for which shortcut the player will take (though with well defined differences in that some shortcuts will be more effective than others, evenly spread out between each ability)
+  - after the player collects all 4 abilities, they will be able to assemble the Bitwise Key, and begin the second level. Taking them to an obstacle course requiring the use of all four abilities.
+- More robust randomization - in addition to randomizing the spawns of the abilities, I intend to add other tidbits of randomization to provide variance to the level design
+  - this will utilize the same algorithm for randomization as the abilities, but will involve some restructuring of my code/inheritance patterns to be more easily replicable
+  - some examples might include all but one route in the maze being blocked off by fake walls, with the passable route being different each time, or the locations of the teleportation pads.
+- Creation of a main and pause menu
+
+### Polish
+Plans to improve the parts of the game that I already have, so as to make it more clean and enjoyable to play
+- level appearance
+  - while the "infected hex" material I'm using for most of my walls looks cool, it's a bit visually overpowering (and the emissive lighting is somehwat performance-heavy), I'll need to use a different material for most of my walls, with the "infected hex" being used more sparingly to catch the player's attention and guide the level progression.
+  - styling each room
+- AI
+  - difficulty - Even without much expansion of the AI behavior tree, (which would fall closer to new features), tweaking the variables behind its movement speed, perception ranges, and other variables would go a long way to making the AI feel like a more dynamic challenge to the players
+  - sounds - while The AI has sounds for when in the "patrol" and "chase" states, I'm still unsatisfied with the ones I've selected, as they feel tonally dissonant with the atmosphere of the game. I settled on the current ones for testing and placeholder purposes, but I certainly intend to revisit them
+  - appearance - I intend to find a more fitting and unique skin for the enemies, rather than Unreal's manequin model.
+
+
+
+### Juice
+A step beyond polish, but not so far as new features, "juice" is what's used to refer to subtle elements of previous features to provide the game with that extra level of satisfaction and enjoyment 
+- Improving the collection of the powerups - currently the power ups simply play a sound and deactivate upon collection. I want to make this feel like a noteworthy moment and make the player feel rewarded by emphasizing the changes to the player and the world around them when the ability is collected
+  - fading the powerup out gradually rather than destroying it instantly
+  - particle effects that play when collecting the pods, as well as polish surrounding the destruction of the model
+  - a way for the world to respond to their destruction/collection. Perhaps having the walls/surrounding lights flash with the color associated with the ability
+- player movement - tweaking the variance between player starting speed and max speed, as well as their acceleration will result in a more robust movement system that will provide a satisfying but approachable (and optional) field in which player skill can develop.
+- HUD
+  - Currently I'm simply displaying the abilities in a 2x2 grid, redesigning that portion of the hud to look like an actuual physical key could help affirm the in-universe justification that these are being used to unlock the next level
+  - the current Timer's appearance is very simplistic and unrefined. I'll work to fit it better with the rest of the games aesthetic style
 
 ## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+If you find any glitches or major issues with the current release, or simply want to provide feedback, feel free to reach out to me at Ryan.davidson.417@gmail.com. Alternatively my discord handle is .ferrous. In any case I'd love to hear from you.
 
 ## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+I'm not looking for any assistance in the programming, development, or design of this project, as I want it to be a clear demonstration of my abilities as a programmer and developer. That being said, I'd be more than happy to receive assistance to the artistic side of this project. Anyone who wants to contribute assets, models, or any music/audio to the project would be greatly appreciated, and I'll be sure to accredit you in turn.
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+## Credits
+While I intend to include this within the game and accessible from the menus, in the meantime here is a list of sources from which I've been receiving the assets
+Many of the materials, models, and other assets are from Unreal Engine's Starter content
+Texures:
+- ambientCG.com (CC0).
+Audio:
+- Power up collection: https://freesound.org/s/320655/
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+other assets will be properly credited in the coming days when I regain access to my home computer.
