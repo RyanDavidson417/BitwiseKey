@@ -70,10 +70,18 @@ I'm not looking for any assistance in the programming, development, or design of
 
 ## Credits
 While I intend to include this within the game and accessible from the menus, in the meantime here is a list of sources from which I've been receiving the assets
-Many of the materials, models, and other assets are from Unreal Engine's Starter content
+Many of the materials, models, and other assets are from Unreal Engine's Starter content.     
 Texures:
-- ambientCG.com (CC0).
-Audio:
-- Power up collection: https://freesound.org/s/320655/
-
-other assets will be properly credited in the coming days when I regain access to my home computer.
+ - [ambientCG.com](https://ambientcg.com/) (CC0).
+ 
+ Audio:
+ - Power up collection from Rhoedesmas at [freesound.org](https://freesound.org/s/320655/) CC 3.0
+ - Enemy patrol "scan" from [Gamesounds.org](https://gamesounds.xyz/?dir=Sonniss.com%20-%20GDC%202021-2023%20-%20Game%20Audio%20Bundle/BluezoneCorp%20-%20Combat%20Drone) ([license](https://gamesounds.xyz/Sonniss.com%20-%20GDC%202021-2023%20-%20Game%20Audio%20Bundle/License.pdf))
+ - Enemy detect/chase: [Gamesounds.org](https://gamesounds.xyz/?dir=99Sounds/%5B99Sounds%5D%20Dark%20Engine/02_Feedback%20FX/05_Pitched) ([license](https://gamesounds.xyz/99Sounds/%5B99Sounds%5D%20Dark%20Engine/README.pdf))
+ - Invisibility activate/deactivate: [Gamesounds.org](https://gamesounds.xyz/?dir=99Sounds/%5B99Sounds%5D%20Dark%20Engine/02_Feedback%20FX/05_Pitched)([license](https://gamesounds.xyz/Sonniss.com%20-%20GDC%202021-2023%20-%20Game%20Audio%20Bundle/License.pdf))
+ 
+ Models:
+ - powerup "pod" from [poly pizza](https://poly.pizza/m/hedSWVZx9E) CC 3.0
+ 
+ Icons:
+ - [invisibility ](https://game-icons.net/1x1/delapouite/invisible.html) and [x-ray vision (cyber eye)](https://game-icons.net/1x1/delapouite/cyber-eye.html) power up icons provided in b/w from [game-icons.net] (https://game-icons.net) CC BY 3.0
