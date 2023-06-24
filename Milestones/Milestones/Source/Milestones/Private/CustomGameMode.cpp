@@ -198,7 +198,7 @@ void ACustomGameMode::CollectInvisibility()
 {
     SpawnedCollectiblesMap.FindAndRemoveChecked(EPowerUp::PE_Invisibility);
     WARN("player collected invisibility -gm");
-    gs->CurrentInvisCharge = InvisMaxCharge;
+    //gs->CurrentInvisCharge = InvisMaxCharge;
     gs->hasInvisibility = true;
 }
 
