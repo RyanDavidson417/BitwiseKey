@@ -251,8 +251,9 @@ void ACustomGameMode::updateInvisCharge()
 
         //LOG("CurrentCharge: %f", gs->CurrentInvisCharge)
         bool bLocalPlayerIsInvisible = gs->bPlayerIsInvisible;
-        if (bLocalPlayerIsInvisible) {
+        if (bLocalPlayerIsInvisible) { //invisibility active, counting down
             if (gs->CurrentInvisCharge == 0) {
+                ToggleInvisibility();
                 return ;
             }
             else  if (gs->CurrentInvisCharge < 0) {
@@ -264,7 +265,7 @@ void ACustomGameMode::updateInvisCharge()
                 gs->CurrentInvisCharge -= InvisDecrement/invis_precision;
                 return ;
             }
-        } else {
+        } else { //invisibility inactive, counting up
             if (gs->CurrentInvisCharge == InvisMaxCharge) {
                 return ;
             }
