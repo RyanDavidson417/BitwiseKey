@@ -9,6 +9,7 @@
 #include "PlayerCharacter.h"
 #include "Math/UnrealMathUtility.h"
 #include "Milestones/Milestones.h"
+#include "Components/AudioComponent.h" 
 #include "Kismet/GameplayStatics.h" 
 #include "TimerManager.h"
 #include "Kismet/KismetArrayLibrary.h"
@@ -127,21 +128,54 @@ void ACustomGameMode::ResetGameMode()
 void ACustomGameMode::PlaceCollectibleArray()
 {
     int i = 0;
-    for (EPowerUp OrderedPowerUp : gs->EA_PowerupOrder) {//FUTURE CLEANUP: do all this in helper functions rather than several messy case labels
+    for (EPowerUp OrderedPowerUp : gs->EA_PowerupOrder) {//FUTURE CLEANUP: Consider doing all this in helper functions rather than several messy case labels
+        
+        AActor* PowerupActor;
+
         switch (OrderedPowerUp) {
         default:
         case(EPowerUp::PE_XRay):
         {
             //SpawnedCollectibles.Add(GetWorld()->SpawnActor<AActor>(XRayCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0, 0, 0)));
 
-            AActor* PowerupActor = GetWorld()->SpawnActor<AActor>(XRayCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0, 0, 0));
+            PowerupActor = GetWorld()->SpawnActor<AActor>(XRayCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0, 0, 0));
 
             UXRayVision* Component = PowerupActor->FindComponentByClass<UXRayVision>();
             if (Component)
             {
-                EPowerUp Key = EPowerUp::PE_XRay; // Use an appropriate method from your component to get the key
+                EPowerUp Key = EPowerUp::PE_XRay; // set the key in the map to the enum::invisibility for easy lookup later
                 SpawnedCollectiblesMap.Add(Key, PowerupActor);
+
+
+                ASpawnPowerup* spawnPoint = Cast<ASpawnPowerup>(PowerupSpawnLocations[i]);
+
+
+                if (IsValid(spawnPoint)) {
+                    Component->SpawnPoint = spawnPoint;
+                    //Component->SpawnPoint->CollectionSound->Play();
+                }
+
+                if (IsValid(spawnPoint->CollectionSound)) {}
+                else {
+                    LOG("spawn point not valid")
+                }
             }
+
+
+            /*UCollectionInteractable* CollectionInteractable = Cast<UCollectionInteractable>(Component);
+            ASpawnPowerup* spawnPoint = Cast<ASpawnPowerup>(PowerupSpawnLocations[i]);
+            if (IsValid(spawnPoint)) {
+                if (IsValid(CollectionInteractable)) {
+                    Component->SpawnPoint = spawnPoint;
+
+                }
+                else {
+                    WARN("collection interactable not valid")
+                }
+            }
+            else {
+                LOG("spawn point not valid")
+            }*/
 
             //LOG("spawned powerup: %s", &LastSpawnedPowerup->GetName())
             //SpawnedCollectibles.Add(LastSpawnedPowerup);
@@ -155,14 +189,25 @@ void ACustomGameMode::PlaceCollectibleArray()
 
             //SpawnedCollectibles.Add(GetWorld()->SpawnActor<AActor>(XRayCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0, 0, 0)));
 
-            AActor* PowerupActor = GetWorld()->SpawnActor<AActor>(InvisibilityCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0, 0, 0));
+            PowerupActor = GetWorld()->SpawnActor<AActor>(InvisibilityCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0, 0, 0));
 
             UInvisibilityPowerup* Component = PowerupActor->FindComponentByClass<UInvisibilityPowerup>();
             if (Component)
             {
-                EPowerUp Key = EPowerUp::PE_Invisibility; // Use an appropriate method from your component to get the key
+                EPowerUp Key = EPowerUp::PE_Invisibility; // set the key in the map to the enum::invisibility for easy lookup later
                 SpawnedCollectiblesMap.Add(Key, PowerupActor);
+
+
+                ASpawnPowerup* spawnPoint = Cast<ASpawnPowerup>(PowerupSpawnLocations[i]);
+
+                if (IsValid(spawnPoint)) {
+                    Component->SpawnPoint = spawnPoint;
+                }
+                else {
+                    LOG("spawn point not valid")
+                }
             }
+
 
             //SpawnedCollectibles.Add(GetWorld()->SpawnActor<AActor>(InvisibilityCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0, 0, 0)));
             //SpawnedCollectibles.Add(LastSpawnedPowerup);
@@ -170,12 +215,17 @@ void ACustomGameMode::PlaceCollectibleArray()
         }
         break;
         case(EPowerUp::PE_Teleport):
-            LOG("spawn TELEPORT")
+            //PowerupActor = GetWorld()->SpawnActor<AActor>(InvisibilityCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0, 0, 0));
+            WARN("spawn Teleport - NOTE: you haven't actually set up the teleport spawning properly, it's currently of type invisibility")
                 break;
         case(EPowerUp::PE_Movement):
-            LOG("spawn PE_Movement")
+            //PowerupActor = GetWorld()->SpawnActor<AActor>(InvisibilityCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0, 0, 0));
+            WARN("spawn Movement - NOTE: you haven't actually set up the Movement spawning properly, it's currently of type invisibility")
                 break;
         }
+
+
+
         i++;
     }
 }

@@ -9,6 +9,7 @@
 #include "ASpawnPowerup.generated.h"
 
 class ACustomGameMode;
+class UAudioComponent;
 class ACustomGameState;
 class UXRayVision;
 
@@ -20,6 +21,9 @@ class MILESTONES_API ASpawnPowerup : public AActor
 public:	
 	// Sets default values for this actor's properties
 	ASpawnPowerup();
+
+	UPROPERTY(EditAnywhere, blueprintReadWrite, Category = Audio)
+		TObjectPtr<class UAudioComponent> CollectionSound;
 
 protected:
 	// Called when the game starts or when spawned

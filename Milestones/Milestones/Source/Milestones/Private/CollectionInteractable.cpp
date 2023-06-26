@@ -4,6 +4,8 @@
 #include "CollectionInteractable.h"
 #include "CustomGameState.h"
 #include "CustomGameMode.h"
+#include "Components/AudioComponent.h" 
+#include "Interactables/ASpawnPowerup.h"
 #include "Milestones/Milestones.h"
 #include "Kismet/GameplayStatics.h" 
 #include "Components/AudioComponent.h" 
@@ -30,6 +32,9 @@ void UCollectionInteractable::BeginPlay()
 	PodMesh->SetMaterial(2, DynMaterial);
 
 	WARN("podmesh: %s ", *PodMesh->GetName())
+
+
+	//if we wanted different collection sounds for different powerups, we'd probably set those on the powerup prefab, then copy the data over here
 
 	/*
 	UMaterialInstanceDynamic* GlassMaterial = Cast<UMaterialInstanceDynamic>(PodMesh->GetMaterial(2));
@@ -58,7 +63,20 @@ void UCollectionInteractable::TickComponent(float DeltaTime, ELevelTick TickType
 void UCollectionInteractable::Interact(APlayerController* playerController)
 {
 	//play sound
-	CollectionSound->Play();
+	//CollectionSound->Play();
+	if (IsValid(SpawnPoint)) {
+		if (IsValid(SpawnPoint->CollectionSound)) {
+			SpawnPoint->CollectionSound->Play();
+
+		}
+		else {
+			WARN("collection sound not valid")
+		}
+	}
+	else {
+		WARN("spawn point not valid")
+
+	}
 
 
 	// while (CollectionSound->IsPlaying()) {	}//infinite loop lmao

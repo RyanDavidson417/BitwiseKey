@@ -275,7 +275,7 @@ void APlayerCharacter::setRandomStartRotation()
 	}
 	AddControllerYawInput((randDirection * 90) / 2.5);
 
-	LOG("random number: %d, direction: %d", randDirection, randDirection * 90);
+	//LOG("random number: %d, direction: %d", randDirection, randDirection * 90);
 
 }
 
