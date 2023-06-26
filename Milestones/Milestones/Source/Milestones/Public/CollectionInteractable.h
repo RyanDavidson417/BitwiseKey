@@ -12,8 +12,8 @@
  */
 class ACustomGameMode;
 class ACustomGameState;
-
 class UMaterialInterface;
+class ASpawnPowerup;
 struct FLinearColor;
 
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
@@ -40,6 +40,9 @@ public:
 	UPROPERTY(EditAnywhere, blueprintReadWrite, Category = Audio)
 		TObjectPtr<class UAudioComponent> CollectionSound;
 
+	UPROPERTY(EditAnywhere, blueprintReadWrite)
+		ASpawnPowerup* SpawnPoint;
+
 protected:
 	
 
@@ -55,5 +58,6 @@ protected:
 
 	UPROPERTY(EditAnywhere, blueprintReadWrite)
 		UStaticMeshComponent* PodMesh;
+
 
 };

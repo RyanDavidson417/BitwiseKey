@@ -3,6 +3,7 @@
 
 #include "Interactables/ASpawnPowerup.h"
 #include "CustomGameState.h"
+#include "Components/AudioComponent.h" 
 #include "Interactables/XRayVision.h"  
 #include "CustomGameMode.h"
 #include "Math/Rotator.h"
@@ -34,14 +35,8 @@ void ASpawnPowerup::BeginPlay()
 	FRotator myRot(0, 0, 0);
 	FVector myPos(0, 0, 0);
 
-	switch (gs->EA_PowerupOrder[spawnOrder])
-	{
-	default:
-	case(EPowerUp::PE_XRay):
-		//spawn x ray
-		//UXRayVision* SpawnedActor = GetWorld()->SpawnActor<UXRayVision>(UXRayVision::StaticClass(), myPos, myRot, SpawnInfo);
-		break;
-	}
+	CollectionSound = FindComponentByClass<UAudioComponent>();
+
 }
 
 void ASpawnPowerup::Tick(float DeltaTime)
