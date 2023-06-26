@@ -41,7 +41,7 @@ public:
 
 	void StartGameTimer();
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void ResetGameMode();
 
 	void PlaceCollectibleArray();
