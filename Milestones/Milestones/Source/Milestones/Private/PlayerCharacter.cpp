@@ -77,8 +77,10 @@ void APlayerCharacter::BeginPlay()
 
 	gm->D_OnReset.AddDynamic(this, &APlayerCharacter::ResetPlayer);
 
+	setRandomStartRotation();
 
 }
+
 
 // Called every frame
 void APlayerCharacter::Tick(float DeltaTime)
@@ -255,8 +257,26 @@ void APlayerCharacter::ToggleInvisibility(const FInputActionInstance& Instance)
 void APlayerCharacter::ResetPlayer()
 {
 	SetActorLocation(gm->FindPlayerStart(Controller)->GetActorLocation());
+	
 	bReceivedFirstPlayerInput = false;
 	WARN("reset delegate RECIEVED on player");
+	setRandomStartRotation();
+
+}
+
+
+void APlayerCharacter::setRandomStartRotation()
+{
+	int randDirection = FMath::RandRange(0, 3); //0 is forward, 1 is right, etc.
+
+	if (Controller != nullptr)
+	{
+		Controller->SetControlRotation(FRotator::ZeroRotator);
+	}
+	AddControllerYawInput((randDirection * 90) / 2.5);
+
+	LOG("random number: %d, direction: %d", randDirection, randDirection * 90);
+
 }
 
 void APlayerCharacter::ResetFromPlayer()
