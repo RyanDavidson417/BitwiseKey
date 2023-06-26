@@ -121,6 +121,7 @@ protected:
 
 	TArray<AActor*> SpawnedCollectibles;
 
+	//used on reset to track which collectibles still have yet to be destroyed
 	TMap<EPowerUp, AActor*> SpawnedCollectiblesMap;
 
 private:
