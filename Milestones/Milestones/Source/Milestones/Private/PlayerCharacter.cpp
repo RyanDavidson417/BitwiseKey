@@ -7,7 +7,7 @@
 #include "InputMappingContext.h"
 #include "EnhancedInputSubsystems.h"
 #include "Components/CapsuleComponent.h"
-#include "BaseGizmos/GizmoElementShared.h"
+//#include "BaseGizmos/GizmoElementShared.h"
 #include "Camera/CameraComponent.h"
 #include "Animation/AnimInstance.h"
 #include "EnhancedInputSubsystems.h"
