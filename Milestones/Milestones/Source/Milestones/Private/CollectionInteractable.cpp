@@ -81,5 +81,5 @@ void UCollectionInteractable::Interact(APlayerController* playerController)
 
 	// while (CollectionSound->IsPlaying()) {	}//infinite loop lmao
 
-	//GetOwner()->Destroy();
+	GetOwner()->Destroy();
 }

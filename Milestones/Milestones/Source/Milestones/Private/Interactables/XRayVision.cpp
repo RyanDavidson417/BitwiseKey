@@ -12,7 +12,6 @@ UXRayVision::UXRayVision()
 
 void UXRayVision::Interact(APlayerController* playerController)
 {
-	Super::Interact(playerController);
 	//
 	if (IsValid(gm)) {
 		gm->CollectXRay();
@@ -20,4 +19,5 @@ void UXRayVision::Interact(APlayerController* playerController)
 	else {
 		UE_LOG(LogTemp, Error, TEXT("gm not valid"));
 	}
+	Super::Interact(playerController);
 }
