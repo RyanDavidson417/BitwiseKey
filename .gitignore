@@ -53,7 +53,7 @@ SourceArt/**/*.tga
 Binaries/
 Plugins/*/Binaries/*
 Intermediate/
-StarterContent/
+Saved/
 
 # Whitelist PakBlacklist-.txt files
 !Build/*/
@@ -75,3 +75,4 @@ Plugins/*/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+Milestones/Milestones/Content/StarterContent/
