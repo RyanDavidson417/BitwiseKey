@@ -191,7 +191,7 @@ void ACustomGameMode::PlaceCollectibleArray()
 
             //SpawnedCollectibles.Add(GetWorld()->SpawnActor<AActor>(XRayCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0, 0, 0)));
 
-            PowerupActor = GetWorld()->SpawnActor<AActor>(InvisibilityCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0, 0, 0));
+            PowerupActor = GetWorld()->SpawnActor<AActor>(InvisibilityCollectible, PowerupSpawnLocations[i]->GetActorLocation(), PowerupSpawnLocations[i]->GetActorRotation());
 
             UInvisibilityPowerup* Component = PowerupActor->FindComponentByClass<UInvisibilityPowerup>();
             if (Component)
@@ -218,11 +218,11 @@ void ACustomGameMode::PlaceCollectibleArray()
         break;
         case(EPowerUp::PE_Teleport):
             //PowerupActor = GetWorld()->SpawnActor<AActor>(InvisibilityCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0, 0, 0));
-            WARN("spawn Teleport - NOTE: you haven't actually set up the teleport spawning properly, it's currently of type invisibility")
+            LOG("spawn Teleport - NOTE: you haven't actually set up the teleport spawning properly, it's currently of type invisibility")
                 break;
         case(EPowerUp::PE_Movement):
             //PowerupActor = GetWorld()->SpawnActor<AActor>(InvisibilityCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0, 0, 0));
-            WARN("spawn Movement - NOTE: you haven't actually set up the Movement spawning properly, it's currently of type invisibility")
+            LOG("spawn Movement - NOTE: you haven't actually set up the Movement spawning properly, it's currently of type invisibility")
                 break;
         }
 
