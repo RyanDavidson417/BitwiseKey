@@ -138,7 +138,7 @@ void ACustomGameMode::PlaceCollectibleArray()
         {
             //SpawnedCollectibles.Add(GetWorld()->SpawnActor<AActor>(XRayCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0, 0, 0)));
 
-            PowerupActor = GetWorld()->SpawnActor<AActor>(XRayCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0, 0, 0));
+            PowerupActor = GetWorld()->SpawnActor<AActor>(XRayCollectible, PowerupSpawnLocations[i]->GetActorLocation(), PowerupSpawnLocations[i]->GetActorRotation());
 
             UXRayVision* Component = PowerupActor->FindComponentByClass<UXRayVision>();
             if (Component)
@@ -182,6 +182,8 @@ void ACustomGameMode::PlaceCollectibleArray()
             //if we wanted to access it later, we'd want to set a separate AActor*, and then cast this into that variable
             // eg XRayInteractable* exampleActor = Cast<XRayInteractable*>(GetWrold....)
             LOG("spawn an xray at %f %f ", PowerupSpawnLocations[i]->GetActorLocation().X, PowerupSpawnLocations[i]->GetActorLocation().Y)
+
+
         }
         break;
         case(EPowerUp::PE_Invisibility):
