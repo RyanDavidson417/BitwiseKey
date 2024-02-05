@@ -4,21 +4,20 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "FakeWall.generated.h"
+#include "RandomItemSpawner.generated.h"
+
 
 class ACustomGameMode;
 class ACustomGameState;
 
 UCLASS()
-class BITWISEKEY_API AFakeWall : public AActor
+class BITWISEKEY_API ARandomItemSpawner : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	AFakeWall();
-
-
+	ARandomItemSpawner();
 
 protected:
 	// Called when the game starts or when spawned
@@ -29,7 +28,15 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 
+
+public:
+	//used to reference the randomized array in the gamestate, on generation we reference the nth index to determine which ability we spawn
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collectibles")
+	int spawnOrder;
+
 protected:
+
 	TObjectPtr<ACustomGameMode> gm;
 	TObjectPtr<ACustomGameState> gs;
+
 };

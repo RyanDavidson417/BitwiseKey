@@ -1,10 +1,10 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "FakeWall.h"
+#include "Interactables/RandomItemSpawner.h"
 
 // Sets default values
-AFakeWall::AFakeWall()
+ARandomItemSpawner::ARandomItemSpawner()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -12,14 +12,14 @@ AFakeWall::AFakeWall()
 }
 
 // Called when the game starts or when spawned
-void AFakeWall::BeginPlay()
+void ARandomItemSpawner::BeginPlay()
 {
 	Super::BeginPlay();
 	
 }
 
 // Called every frame
-void AFakeWall::Tick(float DeltaTime)
+void ARandomItemSpawner::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
