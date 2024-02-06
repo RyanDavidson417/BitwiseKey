@@ -6,15 +6,17 @@
 #include "Components/ActorComponent.h"
 #include "Interactables/XRayVision.h"  
 #include "CustomGameMode.h"
+#include "Interactables/RandomItemSpawner.h"
 #include "ASpawnPowerup.generated.h"
 
 class ACustomGameMode;
 class UAudioComponent;
 class ACustomGameState;
 class UXRayVision;
+class ARandomItemSpawner;
 
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
-class BITWISEKEY_API ASpawnPowerup : public AActor
+class BITWISEKEY_API ASpawnPowerup : public ARandomItemSpawner
 {
 	GENERATED_BODY()
 	
@@ -32,13 +34,13 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+	virtual void Spawn() override;
 	//virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 
 public:
 	//used to reference the randomized array in the gamestate, on generation we reference the nth index to determine which ability we spawn
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collectibles")
-	int spawnOrder;
+	
 
 protected:
 

@@ -22,6 +22,10 @@ class UXRayVision;
 class UInvisibilityPowerup;
 class UCollectionInteractable;
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnResetDelegate);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCollectedXrayDelegate);
+
+
 UCLASS()
 class BITWISEKEY_API ACustomGameMode : public AGameMode
 {
@@ -59,12 +63,10 @@ private:
 		//variables
 public:
 	
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnResetDelegate);
 	UPROPERTY(BlueprintAssignable, BlueprintCallable)
 		FOnResetDelegate D_OnReset;
 
 	
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCollectedXrayDelegate);
 	UPROPERTY(BlueprintAssignable, BlueprintCallable)
 	FOnCollectedXrayDelegate OnCollectedXray;
 

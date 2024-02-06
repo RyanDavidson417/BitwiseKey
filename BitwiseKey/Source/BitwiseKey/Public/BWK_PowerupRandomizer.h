@@ -17,10 +17,7 @@ class BITWISEKEY_API ABWK_PowerupRandomizer : public ABWK_RandomizerBase
 	GENERATED_BODY()
 
 public:
-	virtual ~ABWK_PowerupRandomizer() noexcept = default;
 
-
-	virtual void RandomizeOrder() override;
 	virtual void PlaceItems() override;
 
 

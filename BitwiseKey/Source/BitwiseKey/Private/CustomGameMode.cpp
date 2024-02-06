@@ -55,7 +55,7 @@ void ACustomGameMode::BeginPlay()
     gs = GetWorld()->GetGameState<ACustomGameState>();
     randomizePowerups();
 
-    PlaceCollectibleArray();
+    //PlaceCollectibleArray();
 
     //should probably make a new helper function buuuuuuut
 
@@ -112,7 +112,7 @@ void ACustomGameMode::ResetGameMode()
         LOG("PING")
         AActor* PowerUpActor = Pair.Value;
         PowerUpActor->Destroy();
-        SpawnedCollectiblesMap.Remove(Pair.Key);
+        //SpawnedCollectiblesMap.Remove(Pair.Key);
     }
 
     //NumSpawnedCollectibles = SpawnedCollectiblesMap.Num();
@@ -120,13 +120,14 @@ void ACustomGameMode::ResetGameMode()
 
     randomizePowerups();
         
-    PlaceCollectibleArray();
+    //PlaceCollectibleArray();
 
     StartGameTimer();
 }
 
 void ACustomGameMode::PlaceCollectibleArray()
 {
+
     int i = 0;
     for (EPowerUp OrderedPowerUp : gs->EA_PowerupOrder) {//FUTURE CLEANUP: Consider doing all this in helper functions rather than several messy case labels
         
@@ -237,7 +238,7 @@ void ACustomGameMode::CollectXRay()
     WARN("collect x ray method called from gamemode");
     gs->hasXray = true;
 
-    SpawnedCollectiblesMap.FindAndRemoveChecked(EPowerUp::PE_XRay);
+    //SpawnedCollectiblesMap.FindAndRemoveChecked(EPowerUp::PE_XRay);
 
     //AActor* xraycol = SpawnedCollectibles.Find(UXRayVision);
 
@@ -248,7 +249,7 @@ void ACustomGameMode::CollectXRay()
 
 void ACustomGameMode::CollectInvisibility()
 {
-    SpawnedCollectiblesMap.FindAndRemoveChecked(EPowerUp::PE_Invisibility);
+    //SpawnedCollectiblesMap.FindAndRemoveChecked(EPowerUp::PE_Invisibility);
     WARN("player collected invisibility -gm");
     //gs->CurrentInvisCharge = InvisMaxCharge;
     gs->hasInvisibility = true;

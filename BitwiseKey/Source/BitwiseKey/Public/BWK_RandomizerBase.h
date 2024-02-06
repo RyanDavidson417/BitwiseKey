@@ -9,7 +9,7 @@
 
 class AActorComponent;
 class RandomItemSpawner;
-
+class ACustomGameMode;
 
 
 UCLASS()
@@ -23,9 +23,13 @@ public:
 	// Sets default values for this actor's properties
 	ABWK_RandomizerBase();
 
-	virtual void RandomizeOrder();
+
 	virtual void PlaceItems();
-	virtual ~ABWK_RandomizerBase() noexcept = default;
+	virtual void RandomizeOrder();
+	UFUNCTION()
+	virtual void ResetItems();
+
+	virtual void RemoveItemFromPlacedActors(TObjectPtr<AActor> actor);
 
 
 protected:
@@ -40,12 +44,17 @@ public:
 
 protected:
 
+	TObjectPtr<ACustomGameMode> gm;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "Randomization")
 	TArray<TSubclassOf<AActor>> ItemArray;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "Randomization")
 	TArray<ARandomItemSpawner*> SpawnerArray;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "Randomization")
+	TArray<TObjectPtr<AActor>> PlacedActors;
+
 
 public:
 	UPROPERTY(EditAnywhere, Category = "Randomization")

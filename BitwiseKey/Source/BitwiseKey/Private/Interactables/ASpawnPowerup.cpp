@@ -7,6 +7,7 @@
 #include "Interactables/XRayVision.h"  
 #include "CustomGameMode.h"
 #include "Math/Rotator.h"
+#include "Interactables/RandomItemSpawner.h"
 #include "Math/Vector.h" 
 #include "Engine/World.h" 
 
@@ -41,6 +42,11 @@ void ASpawnPowerup::BeginPlay()
 
 void ASpawnPowerup::Tick(float DeltaTime)
 {
+}
+
+void ASpawnPowerup::Spawn()
+{
+
 }
 
 

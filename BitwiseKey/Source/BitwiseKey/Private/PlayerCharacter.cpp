@@ -52,7 +52,6 @@ void APlayerCharacter::BeginPlay()
 	//add input mapping context
 	if (APlayerController* playerController = Cast<APlayerController>(GetController()))
 	{
-
 		//UE_LOG(LogTemp, Warning, TEXT("checking to see if there's a local player"));
 		if (ULocalPlayer* localPlayer = Cast<ULocalPlayer>(playerController->GetLocalPlayer()))
 		{
@@ -78,7 +77,6 @@ void APlayerCharacter::BeginPlay()
 	gm->D_OnReset.AddDynamic(this, &APlayerCharacter::ResetPlayer);
 
 	setRandomStartRotation();
-
 }
 
 

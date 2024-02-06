@@ -3,11 +3,6 @@
 
 #include "BWK_PowerupRandomizer.h"
 
-void ABWK_PowerupRandomizer::RandomizeOrder()
-{
-
-
-}
 
 void ABWK_PowerupRandomizer::PlaceItems()
 {

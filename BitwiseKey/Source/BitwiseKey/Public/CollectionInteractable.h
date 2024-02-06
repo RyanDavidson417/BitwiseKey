@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "InteractionComponent.h"
 #include "Materials/MaterialInstanceDynamic.h"
+#include "BWK_RandomizerBase.h"
 #include "CollectionInteractable.generated.h"
 
 /**
@@ -14,6 +15,7 @@ class ACustomGameMode;
 class ACustomGameState;
 class UMaterialInterface;
 class ASpawnPowerup;
+class ABWK_RandomizerBase;
 struct FLinearColor;
 
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
@@ -44,11 +46,14 @@ public:
 		ASpawnPowerup* SpawnPoint;
 
 protected:
-	
+
 
 	float StartZ;
 	TObjectPtr<ACustomGameMode> gm;
 	TObjectPtr<ACustomGameState> gs; 
+	
+	UPROPERTY(EditAnywhere, blueprintReadWrite)
+	TObjectPtr<ABWK_RandomizerBase> Randomizer;
 
 	UPROPERTY(EditAnywhere, blueprintReadWrite)
 		UMaterialInterface* Material;

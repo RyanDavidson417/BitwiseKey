@@ -8,6 +8,7 @@
 #include "Interactables/ASpawnPowerup.h"
 #include "BitwiseKey/BitwiseKey.h"
 #include "Kismet/GameplayStatics.h" 
+#include "BWK_RandomizerBase.h"
 #include "Components/AudioComponent.h" 
 
 UCollectionInteractable::UCollectionInteractable()
@@ -78,6 +79,10 @@ void UCollectionInteractable::Interact(APlayerController* playerController)
 
 	}
 
+	if (Randomizer) {
+
+		Randomizer->RemoveItemFromPlacedActors(GetOwner());
+	}
 
 	// while (CollectionSound->IsPlaying()) {	}//infinite loop lmao
 

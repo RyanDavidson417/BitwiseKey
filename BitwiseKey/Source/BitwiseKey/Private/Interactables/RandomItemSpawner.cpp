@@ -25,3 +25,8 @@ void ARandomItemSpawner::Tick(float DeltaTime)
 
 }
 
+void ARandomItemSpawner::Spawn(TSubclassOf<AActor*> actor)
+{
+}
+
+
