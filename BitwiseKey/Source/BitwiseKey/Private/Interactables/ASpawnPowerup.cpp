@@ -7,6 +7,7 @@
 #include "Interactables/XRayVision.h"  
 #include "CustomGameMode.h"
 #include "Math/Rotator.h"
+#include "CollectionInteractable.h"
 #include "Interactables/RandomItemSpawner.h"
 #include "Math/Vector.h" 
 #include "Engine/World.h" 
@@ -44,9 +45,9 @@ void ASpawnPowerup::Tick(float DeltaTime)
 {
 }
 
-void ASpawnPowerup::Spawn()
+void ASpawnPowerup::Spawn(TSubclassOf<AActor*> actor)
 {
-
+	if(UCollectionInteractable powerup )
 }
 
 

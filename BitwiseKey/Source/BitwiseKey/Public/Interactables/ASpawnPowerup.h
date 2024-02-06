@@ -34,7 +34,7 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-	virtual void Spawn() override;
+	virtual void Spawn(TSubclassOf<AActor*> actor) override;
 	//virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 
