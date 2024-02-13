@@ -43,7 +43,8 @@ void ABWK_RandomizerBase::RandomizeOrder()
 		//check if it's null? or maybe we still want to re-randomize if it's null and check that if it's placed
 
 
-		int rand = UKismetMathLibrary::RandomInteger(NumOfItems - i - 1);
+		int rand = FMath::RandRange(0, NumOfItems- i - 1);
+		LOG("ARRAY SPOT: %d, num of items: %d", rand, NumOfItems)
 		//FMath::RandRange(0, NumOfItems - i - 1);//generate a random number from the number of loops we've had up 
 		RandomizedArray.Add(ItemArray[rand]);
 		ItemArray.RemoveAt(rand);//necessary because as we remove items from the array we don't want them drawn again
@@ -80,6 +81,7 @@ void ABWK_RandomizerBase::PlaceItems()
 
 		}
 	}
+	LOG("ARRAY placed")
 }
 
 
