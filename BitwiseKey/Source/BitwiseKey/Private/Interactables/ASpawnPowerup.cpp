@@ -47,7 +47,7 @@ void ASpawnPowerup::Tick(float DeltaTime)
 
 void ASpawnPowerup::Spawn(TSubclassOf<AActor*> actor)
 {
-	if(UCollectionInteractable powerup )
+	//if(UCollectionInteractable powerup )
 }
 
 
