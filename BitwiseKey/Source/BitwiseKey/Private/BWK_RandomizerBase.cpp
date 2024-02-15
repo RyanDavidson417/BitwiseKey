@@ -3,6 +3,7 @@
 #include "BWK_RandomizerBase.h"
 #include "CustomGameMode.h"
 #include "CustomGameState.h"
+#include "Interactables/ASpawnPowerup.h"
 #include "../BitwiseKey.h"
 #include "Kismet//KismetMathLibrary.h"
 
@@ -66,15 +67,33 @@ void ABWK_RandomizerBase::PlaceItems()
 
 		AActor* PlacedActor;
 
-		if (ItemArray[i]) {//if item array at i is not null, this DOES allow us to place empty items
+
+
+		if (ItemArray[i]) {//if item array at i is not null, do nothing, otherwise empty items would cause a nullref
 			if (PlacedActor = GetWorld()->SpawnActor<AActor>(
 				ItemArray[i], SpawnerArray[i]->GetActorLocation(),
 				SpawnerArray[i]->GetActorRotation())) {
 
-					PlacedActors.Add(PlacedActor);
+				PlacedActors.Add(PlacedActor);
+
+				if (ASpawnPowerup* PowerupSpawn = Cast<ASpawnPowerup>(SpawnerArray[i])) {
+					if (UCollectionInteractable* Powerup = PlacedActor->FindComponentByClass<UCollectionInteractable>()) {
+							Powerup->SpawnPoint = PowerupSpawn;
+					}
+					
+
+				}
 			}
 
-			LOG("HELLO")
+
+			
+			
+
+			//sets the spawn point for the collectionInteractable
+			//could also theoretically do this in a separate powerupRandomizer class inherited from RandomizerBase
+			//however this is currently the only different functionality. if I add more I'll refactor this as well
+			
+
 
 			//XRayCollectible, PowerupSpawnLocations[i]->GetActorLocation(), 
 			//PowerupSpawnLocations[i]->GetActorRotation());

@@ -63,6 +63,14 @@ void UCollectionInteractable::TickComponent(float DeltaTime, ELevelTick TickType
 
 void UCollectionInteractable::Interact(APlayerController* playerController)
 {
+	if (IsValid(CollectionSound)) {
+		CollectionSound->Play();
+	}
+	else {
+		WARN("collection sound not valid")
+
+	}
+
 	//play sound
 	//CollectionSound->Play();
 	if (IsValid(SpawnPoint)) {

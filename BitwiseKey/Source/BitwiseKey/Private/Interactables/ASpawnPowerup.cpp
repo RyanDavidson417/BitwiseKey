@@ -10,6 +10,8 @@
 #include "CollectionInteractable.h"
 #include "Interactables/RandomItemSpawner.h"
 #include "Math/Vector.h" 
+#include "CollectionInteractable.h"
+#include "../BitwiseKey.h"
 #include "Engine/World.h" 
 
 /*struct FActorSpawnParameters;
@@ -47,6 +49,12 @@ void ASpawnPowerup::Tick(float DeltaTime)
 
 void ASpawnPowerup::Spawn(TSubclassOf<AActor*> actor)
 {
+	/*
+	if (AActor* newActor = Cast<AActor>(actor)) {
+		WARN("CAST YIPPEE")
+			//UCollectionInteractable* powerup = newActor->FindComponentByClass<UCollectionInteractable>();
+	}*/
+	
 	//if(UCollectionInteractable powerup )
 }
 
