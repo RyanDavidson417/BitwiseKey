@@ -12,6 +12,7 @@
 #include "Animation/AnimInstance.h"
 #include "EnhancedInputSubsystems.h"
 #include "CustomGameState.h"
+#include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/PlayerStart.h" 
 #include "CustomGameMode.h"
 
@@ -77,6 +78,8 @@ void APlayerCharacter::BeginPlay()
 	gm->D_OnReset.AddDynamic(this, &APlayerCharacter::ResetPlayer);
 
 	setRandomStartRotation();
+
+	characterMovement = GetCharacterMovement();
 }
 
 
@@ -117,6 +120,7 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	EIS->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
 
 	EIS->BindAction(ResetPlayerAction, ETriggerEvent::Started, this, &APlayerCharacter::ResetFromPlayer);
+
 
 
 }
@@ -248,8 +252,36 @@ void APlayerCharacter::ToggleInvisibility(const FInputActionInstance& Instance)
 		gm->StartGameTimer();
 		bReceivedFirstPlayerInput = true;
 	}
+
+	
 	WARN("toggle invisibility input called");
 	gm->ToggleInvisibility();
+
+	if (gs->bPlayerIsInvisible) {
+
+		GetCharacterMovement()->GravityScale = 1;
+	}
+	else {
+		GetCharacterMovement()->GravityScale = 2;
+
+	}
+
+}
+
+void APlayerCharacter::ToggleInvisibilityEffects()
+{
+	UCharacterMovementComponent* charMove = GetCharacterMovement();
+	if (gs->bPlayerIsInvisible) {
+		characterMovement->GravityScale = 1;
+		characterMovement->JumpZVelocity = 400;
+		characterMovement->MaxWalkSpeed = 1100;
+	}
+	else {
+		characterMovement->GravityScale = 2;
+		characterMovement->JumpZVelocity = 500;
+		characterMovement->MaxWalkSpeed = 700;
+
+	}
 }
 
 void APlayerCharacter::ResetPlayer()
@@ -257,7 +289,9 @@ void APlayerCharacter::ResetPlayer()
 	SetActorLocation(gm->FindPlayerStart(Controller)->GetActorLocation());
 	
 	bReceivedFirstPlayerInput = false;
-	WARN("reset delegate RECIEVED on player");
+
+	ToggleInvisibilityEffects();
+
 	setRandomStartRotation();
 
 }

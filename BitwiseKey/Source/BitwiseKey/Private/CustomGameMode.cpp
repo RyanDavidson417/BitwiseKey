@@ -257,9 +257,11 @@ void ACustomGameMode::CollectInvisibility()
 
 void ACustomGameMode::ToggleInvisibility()
 {
+
     if (gs->hasInvisibility) {
 
         if (gs->bPlayerIsInvisible) {
+
             gs->bPlayerIsInvisible = false; 
             UGameplayStatics::PlaySound2D(GetWorld(), SW_InvisDeactivate);
 
@@ -268,6 +270,10 @@ void ACustomGameMode::ToggleInvisibility()
             gs->bPlayerIsInvisible = true;
             UGameplayStatics::PlaySound2D(GetWorld(), SW_InvisActivate);
 
+        }
+        if (IsValid(playerCharacter)) {
+
+            playerCharacter->ToggleInvisibilityEffects();
         }
     }
     else {

@@ -14,6 +14,7 @@ class USceneComponent;
 class UCameraComponent;
 class UAnimMontage;
 class USoundBase;
+class UCharacterMovementComponent;
 class UInteractionComponent;
 class UCollectionInteractable;
 class ACustomGameMode;
@@ -75,6 +76,8 @@ protected:
 	//set from traceline when we find an interactable
 	UPROPERTY(VisibleAnywhere, blueprintReadOnly, Category = Interaction)
 		UCollectionInteractable* InteractionComponent;
+
+		UCharacterMovementComponent* characterMovement;
 	//whether or not we've hit an actor (maybe needs to be a collectible?
 	FHitResult LineTraceHit;
 
@@ -110,6 +113,7 @@ public:
 
 	//powerups
 	void ToggleInvisibility(const FInputActionInstance& Instance);
+	void ToggleInvisibilityEffects();
 
 	UFUNCTION()
 	void ResetPlayer();
