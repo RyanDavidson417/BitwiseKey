@@ -4,11 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameMode.h"
-#include "CustomGameState.h"
+#include "BitwiseGameState.h"
 #include "PlayerCharacter.h"
 #include "Delegates/Delegate.h"
 #include "Delegates/DelegateSignatureImpl.inl"
-#include "CustomGameMode.generated.h"
+#include "BitwiseGameMode.generated.h"
 
 
 /**
@@ -16,7 +16,7 @@
  */
 
 class APlayerCharacter;
-class ACustomGameState;
+class AGameState;
 class APawnPowerup;
 class UXRayVision;
 class UInvisibilityPowerup;
@@ -27,13 +27,13 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCollectedXrayDelegate);
 
 
 UCLASS()
-class BITWISEKEY_API ACustomGameMode : public AGameMode
+class BITWISEKEY_API ABitwiseGameMode : public AGameMode
 {
 	GENERATED_BODY()
 
 		//functions
 public:	
-	ACustomGameMode();
+	ABitwiseGameMode();
 
 	void randomizePowerups();
 
@@ -82,7 +82,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Audio)
 		USoundWave* SW_InvisDeactivate;
 
-	TObjectPtr<ACustomGameState> gs;
+	TObjectPtr<ABitwiseGameState> gs;
 	TObjectPtr<APlayerCharacter> playerCharacter;
 
 	//prefabs to spawn from

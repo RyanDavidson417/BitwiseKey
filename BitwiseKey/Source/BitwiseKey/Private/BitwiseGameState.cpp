@@ -1,10 +1,10 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "CustomGameState.h"
+#include "BitwiseGameState.h"
 
 
-ACustomGameState::ACustomGameState()
+ABitwiseGameState::ABitwiseGameState()
 {
 	EA_PowerupOrder.Add(EPowerUp::PE_XRay);
 	EA_PowerupOrder.Add(EPowerUp::PE_Invisibility);

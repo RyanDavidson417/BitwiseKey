@@ -2,10 +2,10 @@
 #pragma once
 
 #include "Interactables/ASpawnPowerup.h"
-#include "CustomGameState.h"
+#include "BitwiseGameState.h"
 #include "Components/AudioComponent.h" 
 #include "Interactables/XRayVision.h"  
-#include "CustomGameMode.h"
+#include "BitwiseGameMode.h"
 #include "Math/Rotator.h"
 #include "CollectionInteractable.h"
 #include "Interactables/RandomItemSpawner.h"
@@ -31,8 +31,8 @@ ASpawnPowerup::ASpawnPowerup()
 // Called when the game starts or when spawned
 void ASpawnPowerup::BeginPlay()
 {
-	gm = GetWorld()->GetAuthGameMode<ACustomGameMode>();
-	gs = Cast<ACustomGameState>(gm->GameState);
+	gm = GetWorld()->GetAuthGameMode<ABitwiseGameMode>();
+	gs = Cast<ABitwiseGameState>(gm->GameState);
 	
 	FActorSpawnParameters SpawnInfo;
 

@@ -17,8 +17,8 @@ class USoundBase;
 class UCharacterMovementComponent;
 class UInteractionComponent;
 class UCollectionInteractable;
-class ACustomGameMode;
-class ACustomGameState;
+class ABitwiseGameMode;
+class ABitwiseGameState;
 
 
 UCLASS()
@@ -34,8 +34,8 @@ public:
 protected:
 
 	//gamemode and gamestate, playercontroller and playerstate will be declared here as well
-	TObjectPtr<ACustomGameMode> gm;
-	TObjectPtr<ACustomGameState> gs;
+	TObjectPtr<ABitwiseGameMode> gm;
+	TObjectPtr<ABitwiseGameState> gs;
 
 	//references to the actions 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)

@@ -1,8 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "CustomGameMode.h"
+#include "BitwiseGameMode.h"
 #include "Interactables/ASpawnPowerup.h"
-#include "CustomGameState.h"
+#include "BitwiseGameState.h"
 #include "CollectionInteractable.h"
 #include "Interactables/XRayVision.h"  
 #include "Interactables/InvisibilityPowerup.h"
@@ -14,16 +14,16 @@
 #include "TimerManager.h"
 #include "Kismet/KismetArrayLibrary.h"
 #include "UObject/ConstructorHelpers.h" 
-#include "CustomGameState.h"
+#include "BitwiseGameState.h"
 
 
-ACustomGameMode::ACustomGameMode()
+ABitwiseGameMode::ABitwiseGameMode()
 {
 
     /** initialize some of the defaults, blueprinting this will override it,
         notice the use of StaticClass to get the UClass class type properly */
     DefaultPawnClass = APlayerCharacter::StaticClass();
-    GameStateClass = ACustomGameState::StaticClass();
+    GameStateClass = ABitwiseGameState::StaticClass();
 
 
     //static ConstructorHelpers::FClassFinder<UStaticMesh> AssetFile(TEXT("/Game/Blueprints/XRayActor.XRayActor"));
@@ -42,7 +42,7 @@ ACustomGameMode::ACustomGameMode()
     //    XRayCollectible->
 }
 
-void ACustomGameMode::BeginPlay()
+void ABitwiseGameMode::BeginPlay()
 {
 
     Super::BeginPlay();
@@ -52,7 +52,7 @@ void ACustomGameMode::BeginPlay()
 
     UGameplayStatics::GetAllActorsOfClass(GetWorld(), ASpawnPowerup::StaticClass(), PowerupSpawnLocations);
 
-    gs = GetWorld()->GetGameState<ACustomGameState>();
+    gs = GetWorld()->GetGameState<ABitwiseGameState>();
     randomizePowerups();
 
     //PlaceCollectibleArray();
@@ -60,16 +60,16 @@ void ACustomGameMode::BeginPlay()
     //should probably make a new helper function buuuuuuut
 
     //
-    GetWorldTimerManager().SetTimer(InvisRechargeTimerHandle, this, &ACustomGameMode::updateInvisCharge, 1/invis_precision, true, 2.0f);
+    GetWorldTimerManager().SetTimer(InvisRechargeTimerHandle, this, &ABitwiseGameMode::updateInvisCharge, 1/invis_precision, true, 2.0f);
 
     LOG("size of array = %f", SpawnedCollectibles.Num())
 
-    D_OnReset.AddDynamic(this, &ACustomGameMode::ResetGameMode);
+    D_OnReset.AddDynamic(this, &ABitwiseGameMode::ResetGameMode);
 }
 
 
 
-void ACustomGameMode::Tick(float DeltaSeconds)
+void ABitwiseGameMode::Tick(float DeltaSeconds)
 {
 
 
@@ -84,13 +84,13 @@ void ACustomGameMode::Tick(float DeltaSeconds)
     }
 }
 
-void ACustomGameMode::StartGameTimer()
+void ABitwiseGameMode::StartGameTimer()
 {
     GameStartTime = GetWorld()->GetUnpausedTimeSeconds();
     
 }
 
-void ACustomGameMode::ResetGameMode()
+void ABitwiseGameMode::ResetGameMode()
 {
 
     gs->gameTimer = 0;
@@ -125,7 +125,7 @@ void ACustomGameMode::ResetGameMode()
     StartGameTimer();
 }
 
-void ACustomGameMode::PlaceCollectibleArray()
+void ABitwiseGameMode::PlaceCollectibleArray()
 {
 
     int i = 0;
@@ -233,7 +233,7 @@ void ACustomGameMode::PlaceCollectibleArray()
     }
 }
 
-void ACustomGameMode::CollectXRay()
+void ABitwiseGameMode::CollectXRay()
 {
     WARN("collect x ray method called from gamemode");
     gs->hasXray = true;
@@ -247,7 +247,7 @@ void ACustomGameMode::CollectXRay()
     //when implementing xray we're going to want to iterate over our list of fake walls - stored by way of getallactorsof class in beginPlay(), and call their toggleXray function
 }
 
-void ACustomGameMode::CollectInvisibility()
+void ABitwiseGameMode::CollectInvisibility()
 {
     //SpawnedCollectiblesMap.FindAndRemoveChecked(EPowerUp::PE_Invisibility);
     WARN("player collected invisibility -gm");
@@ -255,7 +255,7 @@ void ACustomGameMode::CollectInvisibility()
     gs->hasInvisibility = true;
 }
 
-void ACustomGameMode::ToggleInvisibility()
+void ABitwiseGameMode::ToggleInvisibility()
 {
 
     if (gs->hasInvisibility) {
@@ -282,7 +282,7 @@ void ACustomGameMode::ToggleInvisibility()
 }
 
 
-void ACustomGameMode::randomizePowerups()
+void ABitwiseGameMode::randomizePowerups()
 {
     TArray<EPowerUp> RandomizedArray;
     int powerupNumber = gs->EA_PowerupOrder.Num() ;
@@ -303,7 +303,7 @@ void ACustomGameMode::randomizePowerups()
 
 
 //returns true if any changes are made to the charge
-void ACustomGameMode::updateInvisCharge()
+void ABitwiseGameMode::updateInvisCharge()
 {
 
     if (gs->hasInvisibility) {

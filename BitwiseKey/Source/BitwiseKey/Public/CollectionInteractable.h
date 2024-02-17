@@ -11,8 +11,8 @@
 /**
  * 
  */
-class ACustomGameMode;
-class ACustomGameState;
+class ABitwiseGameMode;
+class ABitwiseGameState;
 class UMaterialInterface;
 class ASpawnPowerup;
 class ABWK_RandomizerBase;
@@ -49,8 +49,8 @@ protected:
 
 
 	float StartZ;
-	TObjectPtr<ACustomGameMode> gm;
-	TObjectPtr<ACustomGameState> gs; 
+	TObjectPtr<ABitwiseGameMode> gm;
+	TObjectPtr<ABitwiseGameState> gs; 
 	
 	UPROPERTY(EditAnywhere, blueprintReadWrite)
 	TObjectPtr<ABWK_RandomizerBase> Randomizer;

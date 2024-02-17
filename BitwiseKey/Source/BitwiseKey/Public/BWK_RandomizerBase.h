@@ -9,7 +9,7 @@
 
 class AActorComponent;
 class RandomItemSpawner;
-class ACustomGameMode;
+class ABitwiseGameMode;
 
 
 UCLASS()
@@ -44,7 +44,7 @@ public:
 
 protected:
 
-	TObjectPtr<ACustomGameMode> gm;
+	TObjectPtr<ABitwiseGameMode> gm;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "Randomization")
 	TArray<TSubclassOf<AActor>> ItemArray;

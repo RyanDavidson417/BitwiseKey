@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameState.h"
-#include "CustomGameState.generated.h"
+#include "BitwiseGameState.generated.h"
 
 /**
  * 
@@ -22,12 +22,12 @@ enum class EPowerUp : uint8
 
 
 UCLASS()
-class BITWISEKEY_API ACustomGameState : public AGameState
+class BITWISEKEY_API ABitwiseGameState : public AGameState
 {
 	GENERATED_BODY()
 	
 public:
-	ACustomGameState();
+	ABitwiseGameState();
 
 private:
 

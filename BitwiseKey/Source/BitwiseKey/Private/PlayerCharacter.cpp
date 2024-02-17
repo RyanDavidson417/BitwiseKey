@@ -11,10 +11,10 @@
 #include "Camera/CameraComponent.h"
 #include "Animation/AnimInstance.h"
 #include "EnhancedInputSubsystems.h"
-#include "CustomGameState.h"
+#include "BitwiseGameState.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/PlayerStart.h" 
-#include "CustomGameMode.h"
+#include "BitwiseGameMode.h"
 
 
 // Sets default values
@@ -72,8 +72,8 @@ void APlayerCharacter::BeginPlay()
 		}
 	}
 
-	gm = GetWorld()->GetAuthGameMode<ACustomGameMode>();
-	gs = Cast<ACustomGameState>(gm->GameState);
+	gm = GetWorld()->GetAuthGameMode<ABitwiseGameMode>();
+	gs = Cast<ABitwiseGameState>(gm->GameState);
 
 	gm->D_OnReset.AddDynamic(this, &APlayerCharacter::ResetPlayer);
 
