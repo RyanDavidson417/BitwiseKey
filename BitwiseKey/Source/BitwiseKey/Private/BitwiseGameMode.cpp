@@ -103,8 +103,10 @@ void ABitwiseGameMode::ResetGameMode()
         pair.Value.bEnabled = false;
     }
 
-    InvisibilityStatStruct.currentCharge = 0;
+    InvisibilityStatStruct.currentCharge = 0; 
     StaminaStatStruct.currentCharge = 0;
+
+    gs->ResetGameState();
 
     //DEPRECATED: before I refactored powerups to structs I went through and reset each one individually (gross)
     //gs->PowerupMap.Find(EPowerUpName::PE_XRay)->bCollected = false;
@@ -174,7 +176,7 @@ void ABitwiseGameMode::ToggleInvisibility()
 
         }
         else {
-            gs->InvisibilityStruct.bCollected = true;
+            gs->InvisibilityStruct.bEnabled = true;
             UGameplayStatics::PlaySound2D(GetWorld(), SW_InvisActivate);
 
         }
@@ -195,7 +197,7 @@ void ABitwiseGameMode::UpdateInvisCharge()
         if (gs->InvisibilityStruct.bEnabled) { //invisibility active, counting down
 
             InvisibilityStatStruct.currentCharge = FMath::Clamp(
-                InvisibilityStatStruct.currentCharge - InvisibilityStatStruct.DischargeRate,
+                InvisibilityStatStruct.currentCharge - (InvisibilityStatStruct.DischargeRate / InvisibilityStatStruct.Precision),
                 0.0, InvisibilityStatStruct.MaxCharge);
 
             if (InvisibilityStatStruct.currentCharge == 0) {
@@ -219,7 +221,7 @@ void ABitwiseGameMode::UpdateInvisCharge()
         } else { //invisibility inactive, counting up
 
             InvisibilityStatStruct.currentCharge = FMath::Clamp(
-                InvisibilityStatStruct.currentCharge + InvisibilityStatStruct.ChargeRate,
+                InvisibilityStatStruct.currentCharge + (InvisibilityStatStruct.ChargeRate / InvisibilityStatStruct.Precision),
                 0.0, InvisibilityStatStruct.MaxCharge);
                 
             //DEPRECATED: the (obviously very messy) way I'd been clamping the values originally
@@ -242,6 +244,7 @@ void ABitwiseGameMode::UpdateInvisCharge()
 void ABitwiseGameMode::UpdateStamina()
 {
     if (gs->bHasStaminaAbility) {
+        WARN("player has a stamina ability ")
         if (gs->bPlayerIsUsingStamina) { //count down
 
             //decrease the value, setting it no lower than 0 and no higher than the max

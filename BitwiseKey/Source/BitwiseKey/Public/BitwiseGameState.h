@@ -57,6 +57,8 @@ class BITWISEKEY_API ABitwiseGameState : public AGameState
 public:
 	ABitwiseGameState();
 
+	void ResetGameState();
+	
 	bool GetStaminaActive();
 	bool GetStaminaAbilityHeld();
 	void BeginPlay() override;

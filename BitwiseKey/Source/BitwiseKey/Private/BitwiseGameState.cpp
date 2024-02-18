@@ -9,6 +9,15 @@ ABitwiseGameState::ABitwiseGameState()
 	BuildPowerupMap();
 }
 
+void ABitwiseGameState::ResetGameState()
+{
+	for (TPair<EPowerUpName, FPowerupStruct> pair : PowerupMap) {
+		pair.Value.bCollected = false;
+		pair.Value.bEnabled = false;
+	}
+
+}
+
 void ABitwiseGameState::BuildPowerupMap() 
 {
 	PowerupMap.Add(EPowerUpName::PE_XRay, XRayStruct);
@@ -16,6 +25,7 @@ void ABitwiseGameState::BuildPowerupMap()
 	PowerupMap.Add(EPowerUpName::PE_SpeedBoost, SpeedBoostStruct);
 	PowerupMap.Add(EPowerUpName::PE_JumpBoost, JumpBoostStruct);
 }
+
 
 
 bool ABitwiseGameState::GetStaminaActive() 
@@ -45,6 +55,8 @@ void ABitwiseGameState::BeginPlay()
 {
 	Super::BeginPlay();
 	BuildPowerupMap();
+
+
 }
 
 
