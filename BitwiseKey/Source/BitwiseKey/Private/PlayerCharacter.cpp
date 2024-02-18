@@ -259,7 +259,7 @@ void APlayerCharacter::ToggleInvisibility(const FInputActionInstance& Instance)
 	WARN("toggle invisibility input called");
 	gm->ToggleInvisibility();
 
-	if (gs->PowerupMap.Find(EPowerUpName::PE_Invisibility)->bIsActive) {
+	if (gs->InvisibilityStruct.bIsActive) {
 
 		GetCharacterMovement()->GravityScale = 1;
 	}
@@ -270,28 +270,72 @@ void APlayerCharacter::ToggleInvisibility(const FInputActionInstance& Instance)
 
 }
 
-void APlayerCharacter::ToggleInvisibilityEffects()
-{
-	UCharacterMovementComponent* charMove = GetCharacterMovement();
-	if (gs->PowerupMap.Find(EPowerUpName::PE_Invisibility)->bIsActive) {
-		characterMovement->GravityScale = 1;
-		characterMovement->JumpZVelocity = 400;
-		characterMovement->MaxWalkSpeed = 1100;
-	}
-	else {
-		characterMovement->GravityScale = 2;
-		characterMovement->JumpZVelocity = 500;
-		characterMovement->MaxWalkSpeed = 700;
+//void APlayerCharacter::DeactivateInvisibilityEffects()
+//{
+//
+//}
+//
+//void APlayerCharacter::ActivateInvisibilityEffects()
+//{
+//	UCharacterMovementComponent* charMove = GetCharacterMovement();
+//	if (gs->PowerupMap.Find(EPowerUpName::PE_Invisibility)->bIsActive) {
+//		characterMovement->GravityScale = 1;
+//		characterMovement->JumpZVelocity = 400;
+//		characterMovement->MaxWalkSpeed = 1100;
+//	}
+//	else {
+//		characterMovement->GravityScale = 2;
+//		characterMovement->JumpZVelocity = 500;
+//		characterMovement->MaxWalkSpeed = 700;
+//
+//	}
+//}
 
-	}
-}
-
-void APlayerCharacter::ToggleStaminaEffects()
+void APlayerCharacter::ActivateStaminaEffects()
 {
 	//zzzz
 	//step though each powerup. check if it's a stamina related ability, and if so deactivate it
 	//we might need to refactor it from being a map
 
+	if (gs->XRayStruct.bIsStaminaAbility) {
+		//no implementation needed as xray (currently) doesn't have any player vals associated
+		//theoretically this statement won't even ever activate
+	}
+
+	if (gs->InvisibilityStruct.bIsStaminaAbility) {
+		//no implementation needed as invisibility (currently) doesn't have any player vals associated
+		//theoretically this statement won't even ever activate
+	}
+
+	if (gs->SpeedBoostStruct.bIsStaminaAbility) {
+		characterMovement->MaxWalkSpeed = gs->SpeedBoostStruct.ActiveValue;
+	}
+
+	if (gs->JumpBoostStruct.bIsStaminaAbility) {
+		characterMovement->JumpZVelocity = gs->JumpBoostStruct.ActiveValue;
+	}
+}
+
+void APlayerCharacter::DeactivateStaminaEffects()
+{
+
+	if (gs->XRayStruct.bIsStaminaAbility) {
+		//no implementation needed as xray (currently) doesn't have any player vals associated
+		//theoretically this statement won't even ever activate
+	}
+
+	if (gs->InvisibilityStruct.bIsStaminaAbility) {
+		//no implementation needed as invisibility (currently) doesn't have any player vals associated
+		//theoretically this statement won't even ever activate
+	}
+
+	if (gs->SpeedBoostStruct.bIsStaminaAbility) {
+		characterMovement->MaxWalkSpeed = gs->SpeedBoostStruct.defaultValue;
+	}
+
+	if (gs->JumpBoostStruct.bIsStaminaAbility) {
+		characterMovement->JumpZVelocity = gs->JumpBoostStruct.defaultValue;
+	}
 }
 
 void APlayerCharacter::ResetPlayer()
@@ -300,7 +344,8 @@ void APlayerCharacter::ResetPlayer()
 	
 	bReceivedFirstPlayerInput = false;
 
-	ToggleInvisibilityEffects();
+	DeactivateStaminaEffects();
+
 
 	setRandomStartRotation();
 

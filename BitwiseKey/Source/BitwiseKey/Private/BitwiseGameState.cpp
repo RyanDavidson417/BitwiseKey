@@ -6,6 +6,15 @@
 
 ABitwiseGameState::ABitwiseGameState()
 {
+	BuildPowerupMap();
+}
+
+void ABitwiseGameState::BuildPowerupMap() 
+{
+	PowerupMap.Add(EPowerUpName::PE_XRay, XRayStruct);
+	PowerupMap.Add(EPowerUpName::PE_Invisibility, InvisibilityStruct);
+	PowerupMap.Add(EPowerUpName::PE_SpeedBoost, SpeedBoostStruct);
+	PowerupMap.Add(EPowerUpName::PE_JumpBoost, JumpBoostStruct);
 }
 
 
@@ -30,6 +39,12 @@ bool ABitwiseGameState::GetStaminaAbilityHeld()
 		}
 	}
 	return false;
+}
+
+void ABitwiseGameState::BeginPlay()
+{
+	Super::BeginPlay();
+	BuildPowerupMap();
 }
 
 

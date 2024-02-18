@@ -15,8 +15,8 @@ enum class EPowerUpName : uint8
 {
 	PE_XRay UMETA(DisplayName="XRay"),
 	PE_Invisibility UMETA(DisplayName = "Invisibility"),
-	PE_SpeedBoost UMETA(DisplayName = "Teleport"),
-	PE_JumpBoost UMETA(DisplayName = "Movement"),
+	PE_SpeedBoost UMETA(DisplayName = "SpeedBoost"),
+	PE_JumpBoost UMETA(DisplayName = "JumpBoost"),
 }; //yet to decide whether the mvement ability will be wall climb related or a grapple
 
 
@@ -27,12 +27,6 @@ struct FPowerupStruct
 	
 	//generalizedRef genRef
 
-	//the default value of the relevant stat when this powerup is active
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
-	float defaultValue;
-	//the value of the relevant stat when this powerup is active
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
-	float ActiveValue;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	EPowerUpName name;
@@ -49,7 +43,12 @@ struct FPowerupStruct
 	//	tick that they see the player). it could be useful to just remake the bPlayerIsinvisble variable and set 
 	//	them equal to one another somehow
 
-
+	//the default value of the relevant stat when this powerup is active
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
+	float defaultValue;
+	//the value of the relevant stat when this powerup is active
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
+	float ActiveValue;
 };
 
 
@@ -63,14 +62,27 @@ public:
 
 	bool GetStaminaActive();
 	bool GetStaminaAbilityHeld();
+	void BeginPlay() override;
+	
 
 private:
+
+	void BuildPowerupMap();
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Timer")
 	float gameTimer = 0;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Powerups")
+	FPowerupStruct XRayStruct;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Powerups")
+	FPowerupStruct InvisibilityStruct;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Powerups")
+	FPowerupStruct SpeedBoostStruct;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Powerups")
+	FPowerupStruct JumpBoostStruct;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Powerups")
 	TMap<EPowerUpName, FPowerupStruct> PowerupMap;
 
 	//DEPRECATED: the means by which I was storing whether the player collected powerups before I refac'd to structs

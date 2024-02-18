@@ -102,7 +102,7 @@ void ABitwiseGameMode::ResetGameMode()
     InvisibilityStruct.currentCharge = 0;
     StaminaStruct.currentCharge = 0;
 
-    //DEPRECEATED: before I refactored powerups to structs I went through and reset each one individually (gross)
+    //DEPRECATED: before I refactored powerups to structs I went through and reset each one individually (gross)
     //gs->PowerupMap.Find(EPowerUpName::PE_XRay)->bCollected = false;
     //gs->bHasSpeedBoost = false;
     //gs->bHasJumpBoost = false;
@@ -129,8 +129,7 @@ void ABitwiseGameMode::ResetGameMode()
 void ABitwiseGameMode::CollectXRay()
 {
     LOG("collect x ray method called from gamemode");
-    gs->PowerupMap.Find(EPowerUpName::PE_XRay)->bCollected = true; //tell the gamestate to update xray's collected val
-
+    gs->XRayStruct.bCollected = true;
     //used to notify all xray objects to update their state
     OnCollectedXray.Broadcast();
 }
@@ -139,47 +138,55 @@ void ABitwiseGameMode::CollectInvisibility()
 {
     //SpawnedCollectiblesMap.FindAndRemoveChecked(EPowerUp::PE_Invisibility);
     LOG("collect x ray method called from gamemode");
-    gs->PowerupMap.Find(EPowerUpName::PE_Invisibility)->bCollected = true; //tell the gamestate to update xray's collected val
+    gs->InvisibilityStruct.bCollected = true;
 
 }
+
+void ABitwiseGameMode::CollectSpeedBoost()
+{
+    gs->SpeedBoostStruct.bCollected = true;
+}
+
+void ABitwiseGameMode::CollectJumpBoost()
+{
+    gs->JumpBoostStruct.bCollected = true;
+
+}
+
+
 
 void ABitwiseGameMode::ToggleInvisibility()
 {
 
-    if (gs->PowerupMap.Find(EPowerUpName::PE_Invisibility)->bCollected) {
+    if (gs->InvisibilityStruct.bCollected) {
 
-        if (gs->PowerupMap.Find(EPowerUpName::PE_Invisibility)->bCollected) {
+        if (gs->InvisibilityStruct.bIsActive) {
 
-            gs->PowerupMap.Find(EPowerUpName::PE_Invisibility)->bCollected = false;
+            gs->InvisibilityStruct.bIsActive = false;
             UGameplayStatics::PlaySound2D(GetWorld(), SW_InvisDeactivate);
+
 
         }
         else {
-            gs->PowerupMap.Find(EPowerUpName::PE_Invisibility)->bCollected = true;
+            gs->InvisibilityStruct.bCollected = true;
             UGameplayStatics::PlaySound2D(GetWorld(), SW_InvisActivate);
 
         }
-        if (IsValid(playerCharacter)) {
 
-            playerCharacter->ToggleInvisibilityEffects();
-        }
+
+
     }
     else {
         WARN("You do not yet have that ability");
     }
 }
 
-void ABitwiseGameMode::ToggleStamina()
-{
-
-}
-
 void ABitwiseGameMode::UpdateInvisCharge()
 {
-    if (gs->PowerupMap.Find(EPowerUpName::PE_Invisibility)->bCollected) {
+    if (gs->InvisibilityStruct.bCollected) {
 
         //LOG("CurrentCharge: %f", gs->CurrentInvisCharge)
-        if (gs->PowerupMap.Find(EPowerUpName::PE_Invisibility)->bIsActive) { //invisibility active, counting down
+        if (gs->InvisibilityStruct.bIsActive) { //invisibility active, counting down
 
             InvisibilityStruct.currentCharge = FMath::Clamp(
                 InvisibilityStruct.currentCharge - InvisibilityStruct.DischargeRate,
@@ -205,7 +212,8 @@ void ABitwiseGameMode::UpdateInvisCharge()
             //}
         } else { //invisibility inactive, counting up
 
-            InvisibilityStruct.currentCharge = FMath::Clamp(InvisibilityStruct.currentCharge + InvisibilityStruct.ChargeRate,
+            InvisibilityStruct.currentCharge = FMath::Clamp(
+                InvisibilityStruct.currentCharge + InvisibilityStruct.ChargeRate,
                 0.0, InvisibilityStruct.MaxCharge);
                 
             //DEPRECATED: the (obviously very messy) way I'd been clamping the values originally
@@ -230,12 +238,13 @@ void ABitwiseGameMode::UpdateStamina()
     if (gs->bHasStaminaAbility) {
         if (gs->bPlayerIsUsingStamina) { //count down
 
+            //decrease the value, setting it no lower than 0 and no higher than the max
             StaminaStruct.currentCharge = FMath::Clamp(
                 StaminaStruct.currentCharge - StaminaStruct.DischargeRate,
                 0.0, StaminaStruct.MaxCharge);
 
-            if (InvisibilityStruct.currentCharge == 0) {
-                ToggleInvisibility();
+            if (StaminaStruct.currentCharge == 0) {
+                playerCharacter->DeactivateStaminaEffects(); //tell the player to deactivate stamina
                 return;
             }
 
@@ -256,6 +265,7 @@ void ABitwiseGameMode::UpdateStamina()
         }
         else { //invisibility inactive, counting up
 
+            //increase stamina, setting it no lower than 0 and no higher than the max
             StaminaStruct.currentCharge = FMath::Clamp(
                 StaminaStruct.currentCharge + StaminaStruct.ChargeRate,
                 0.0, StaminaStruct.MaxCharge);

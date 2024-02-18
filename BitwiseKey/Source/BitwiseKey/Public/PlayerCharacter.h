@@ -6,6 +6,8 @@
 #include "GameFramework/Character.h"
 #include "InteractionComponent.h"
 #include "CollectionInteractable.h"
+#include "BitwiseGameMode.h"
+#include "BitwiseGameState.h"
 #include "PlayerCharacter.generated.h"
 
 class UInputComponent;
@@ -112,9 +114,9 @@ public:
 
 	//powerups
 	void ToggleInvisibility(const FInputActionInstance& Instance);
-	void ToggleInvisibilityEffects();
 	
-	void ToggleStaminaEffects();
+	void ActivateStaminaEffects();
+	void DeactivateStaminaEffects();
 
 	UFUNCTION()
 	void ResetPlayer();

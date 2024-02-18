@@ -5,7 +5,6 @@
 #include "CoreMinimal.h"
 #include "GameFramework/GameMode.h"
 #include "BitwiseGameState.h"
-#include "PlayerCharacter.h"
 #include "Delegates/Delegate.h"
 #include "Delegates/DelegateSignatureImpl.inl"
 #include "BitwiseGameMode.generated.h"
@@ -61,11 +60,24 @@ class BITWISEKEY_API ABitwiseGameMode : public AGameMode
 public:	
 	ABitwiseGameMode();
 
-	void CollectXRay();
+	//concept: rather than separate functions for each ability, could we do one Collect(EPowerup powerUp)
+	// then iterate over the list of powerups until we find a match. I don't want to experiment with this now
+	// since I've already spent a long time on this refactor. I'm also wary of whether it'd properly update
+	// the references (since the TMap doesn't store them as pointers). so we may need to refactor it to a TArray.
+	// but this could be worth keeping in mind. much cleaner function call at the expense of a very small loop
+	//
 
+
+
+	void CollectXRay();
 	void CollectInvisibility();
+	void CollectSpeedBoost();
+	void CollectJumpBoost();
+	
+	
 	void ToggleInvisibility();
-	void ToggleStamina();
+
+
 	void UpdateInvisCharge();
 	void UpdateStamina();
 
@@ -134,10 +146,14 @@ public:
 	AActor* TeleportCollectible;
 
 	AActor* LastSpawnedPowerup;
-	
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
 	FPlayerStatStruct InvisibilityStruct;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
 	FPlayerStatStruct StaminaStruct;
 
+
+	
 
 protected:
 
