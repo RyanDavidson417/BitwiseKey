@@ -148,22 +148,14 @@ public:
 	AActor* LastSpawnedPowerup;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
-	FPlayerStatStruct InvisibilityStruct;
+	FPlayerStatStruct InvisibilityStatStruct;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
-	FPlayerStatStruct StaminaStruct;
+	FPlayerStatStruct StaminaStatStruct;
 
 
 	
 
 protected:
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
-		float StaminaChargeRate;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
-		float StaminaDischargeRate;
-		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
-		float StaminaMaxCharge;
-
 
 	TArray<AActor*> SpawnedCollectibles;
 

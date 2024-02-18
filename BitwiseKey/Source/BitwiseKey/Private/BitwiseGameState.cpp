@@ -22,7 +22,7 @@ bool ABitwiseGameState::GetStaminaActive()
 {
 	for (TPair<EPowerUpName, FPowerupStruct> pair : PowerupMap)  {
 		//if any element in the map is a stamina ability AND is active, return true
-		if (pair.Value.bIsStaminaAbility && pair.Value.bIsActive) { 
+		if (pair.Value.bIsStaminaAbility && pair.Value.bEnabled) { 
 			return true;
 		}
 	}

@@ -24,24 +24,21 @@ USTRUCT(BlueprintType)
 struct FPowerupStruct
 {
 	GENERATED_BODY()
-	
+
 	//generalizedRef genRef
+public:
 
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
 	EPowerUpName name;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
 	bool bCollected;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
 	bool bIsStaminaAbility;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	bool bIsActive; //a possible concern is that since this var is accessed through a map of the powerups, 
-	//	and accessed very frequently, the cost of repeatedly iterating over that map could pose performance
-	//  issues. the map will not likely be any larger than 10 powerups (probably half that), so it hopefully
-	//  won't be an issue. but it's something to consider and keep an eye out for.
-	//	this is especially a concern with invisibility, which gets checked almost constantly (enemies do so every
-	//	tick that they see the player). it could be useful to just remake the bPlayerIsinvisble variable and set 
-	//	them equal to one another somehow
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
+	bool bEnabled;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
+	bool bPassive;
+
 
 	//the default value of the relevant stat when this powerup is active
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
@@ -73,13 +70,13 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Timer")
 	float gameTimer = 0;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Powerups")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
 	FPowerupStruct XRayStruct;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Powerups")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
 	FPowerupStruct InvisibilityStruct;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Powerups")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
 	FPowerupStruct SpeedBoostStruct;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Powerups")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
 	FPowerupStruct JumpBoostStruct;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Powerups")

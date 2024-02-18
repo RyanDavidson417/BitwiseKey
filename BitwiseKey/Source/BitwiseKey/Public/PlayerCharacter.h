@@ -79,7 +79,7 @@ protected:
 	UPROPERTY(VisibleAnywhere, blueprintReadOnly, Category = Interaction)
 		UCollectionInteractable* InteractionComponent;
 
-		UCharacterMovementComponent* characterMovement;
+		UCharacterMovementComponent* CharacterMovement;
 	//whether or not we've hit an actor (maybe needs to be a collectible?
 	FHitResult LineTraceHit;
 
@@ -117,6 +117,9 @@ public:
 	
 	void ActivateStaminaEffects();
 	void DeactivateStaminaEffects();
+
+	void ActivateJumpBoost();
+	void DeactivateJumpBoost();
 
 	UFUNCTION()
 	void ResetPlayer();

@@ -58,8 +58,12 @@ void ABitwiseGameMode::BeginPlay()
 
     //should probably make a new helper function buuuuuuut
 
-    GetWorldTimerManager().SetTimer(InvisibilityStruct.RechargeTimerHandle, this, &ABitwiseGameMode::UpdateInvisCharge, 1/InvisibilityStruct.Precision, true, 2.0f);
 
+    GetWorldTimerManager().SetTimer(InvisibilityStatStruct.RechargeTimerHandle,
+        this, &ABitwiseGameMode::UpdateInvisCharge, 1 / InvisibilityStatStruct.Precision, true, 2.0f);
+
+    GetWorldTimerManager().SetTimer(StaminaStatStruct.RechargeTimerHandle, 
+        this, &ABitwiseGameMode::UpdateStamina, 1/ StaminaStatStruct.Precision, true, 2.0f);
 
     D_OnReset.AddDynamic(this, &ABitwiseGameMode::ResetGameMode);
 }
@@ -96,11 +100,11 @@ void ABitwiseGameMode::ResetGameMode()
         
     for (TPair<EPowerUpName, FPowerupStruct> pair : gs->PowerupMap) {
         pair.Value.bCollected = false;
-        pair.Value.bIsActive = false;
+        pair.Value.bEnabled = false;
     }
 
-    InvisibilityStruct.currentCharge = 0;
-    StaminaStruct.currentCharge = 0;
+    InvisibilityStatStruct.currentCharge = 0;
+    StaminaStatStruct.currentCharge = 0;
 
     //DEPRECATED: before I refactored powerups to structs I went through and reset each one individually (gross)
     //gs->PowerupMap.Find(EPowerUpName::PE_XRay)->bCollected = false;
@@ -150,7 +154,9 @@ void ABitwiseGameMode::CollectSpeedBoost()
 void ABitwiseGameMode::CollectJumpBoost()
 {
     gs->JumpBoostStruct.bCollected = true;
-
+    if (gs->JumpBoostStruct.bPassive) {//if we decide it's a passive ability (rather than one the player must activate)
+        playerCharacter->ActivateJumpBoost();
+    }
 }
 
 
@@ -160,9 +166,9 @@ void ABitwiseGameMode::ToggleInvisibility()
 
     if (gs->InvisibilityStruct.bCollected) {
 
-        if (gs->InvisibilityStruct.bIsActive) {
+        if (gs->InvisibilityStruct.bEnabled) {
 
-            gs->InvisibilityStruct.bIsActive = false;
+            gs->InvisibilityStruct.bEnabled = false;
             UGameplayStatics::PlaySound2D(GetWorld(), SW_InvisDeactivate);
 
 
@@ -186,13 +192,13 @@ void ABitwiseGameMode::UpdateInvisCharge()
     if (gs->InvisibilityStruct.bCollected) {
 
         //LOG("CurrentCharge: %f", gs->CurrentInvisCharge)
-        if (gs->InvisibilityStruct.bIsActive) { //invisibility active, counting down
+        if (gs->InvisibilityStruct.bEnabled) { //invisibility active, counting down
 
-            InvisibilityStruct.currentCharge = FMath::Clamp(
-                InvisibilityStruct.currentCharge - InvisibilityStruct.DischargeRate,
-                0.0, InvisibilityStruct.MaxCharge);
+            InvisibilityStatStruct.currentCharge = FMath::Clamp(
+                InvisibilityStatStruct.currentCharge - InvisibilityStatStruct.DischargeRate,
+                0.0, InvisibilityStatStruct.MaxCharge);
 
-            if (InvisibilityStruct.currentCharge == 0) {
+            if (InvisibilityStatStruct.currentCharge == 0) {
                 ToggleInvisibility();
                 return;
             }
@@ -212,9 +218,9 @@ void ABitwiseGameMode::UpdateInvisCharge()
             //}
         } else { //invisibility inactive, counting up
 
-            InvisibilityStruct.currentCharge = FMath::Clamp(
-                InvisibilityStruct.currentCharge + InvisibilityStruct.ChargeRate,
-                0.0, InvisibilityStruct.MaxCharge);
+            InvisibilityStatStruct.currentCharge = FMath::Clamp(
+                InvisibilityStatStruct.currentCharge + InvisibilityStatStruct.ChargeRate,
+                0.0, InvisibilityStatStruct.MaxCharge);
                 
             //DEPRECATED: the (obviously very messy) way I'd been clamping the values originally
             //if (InvisibilityStruct.currentCharge == InvisibilityStruct.MaxCharge) {
@@ -239,11 +245,11 @@ void ABitwiseGameMode::UpdateStamina()
         if (gs->bPlayerIsUsingStamina) { //count down
 
             //decrease the value, setting it no lower than 0 and no higher than the max
-            StaminaStruct.currentCharge = FMath::Clamp(
-                StaminaStruct.currentCharge - StaminaStruct.DischargeRate,
-                0.0, StaminaStruct.MaxCharge);
+            StaminaStatStruct.currentCharge = FMath::Clamp(
+                StaminaStatStruct.currentCharge - StaminaStatStruct.DischargeRate,
+                0.0, StaminaStatStruct.MaxCharge);
 
-            if (StaminaStruct.currentCharge == 0) {
+            if (StaminaStatStruct.currentCharge == 0) {
                 playerCharacter->DeactivateStaminaEffects(); //tell the player to deactivate stamina
                 return;
             }
@@ -266,9 +272,9 @@ void ABitwiseGameMode::UpdateStamina()
         else { //invisibility inactive, counting up
 
             //increase stamina, setting it no lower than 0 and no higher than the max
-            StaminaStruct.currentCharge = FMath::Clamp(
-                StaminaStruct.currentCharge + StaminaStruct.ChargeRate,
-                0.0, StaminaStruct.MaxCharge);
+            StaminaStatStruct.currentCharge = FMath::Clamp(
+                StaminaStatStruct.currentCharge + StaminaStatStruct.ChargeRate,
+                0.0, StaminaStatStruct.MaxCharge);
 
 
             //if (gs->CurrentStamina == InvisMaxCharge) {

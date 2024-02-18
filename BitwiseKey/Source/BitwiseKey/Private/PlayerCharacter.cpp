@@ -79,7 +79,7 @@ void APlayerCharacter::BeginPlay()
 
 	setRandomStartRotation();
 
-	characterMovement = GetCharacterMovement();
+	CharacterMovement = GetCharacterMovement();
 
 
 }
@@ -259,7 +259,7 @@ void APlayerCharacter::ToggleInvisibility(const FInputActionInstance& Instance)
 	WARN("toggle invisibility input called");
 	gm->ToggleInvisibility();
 
-	if (gs->InvisibilityStruct.bIsActive) {
+	if (gs->InvisibilityStruct.bEnabled) {
 
 		GetCharacterMovement()->GravityScale = 1;
 	}
@@ -278,7 +278,7 @@ void APlayerCharacter::ToggleInvisibility(const FInputActionInstance& Instance)
 //void APlayerCharacter::ActivateInvisibilityEffects()
 //{
 //	UCharacterMovementComponent* charMove = GetCharacterMovement();
-//	if (gs->PowerupMap.Find(EPowerUpName::PE_Invisibility)->bIsActive) {
+//	if (gs->PowerupMap.Find(EPowerUpName::PE_Invisibility)->bEnabled) {
 //		characterMovement->GravityScale = 1;
 //		characterMovement->JumpZVelocity = 400;
 //		characterMovement->MaxWalkSpeed = 1100;
@@ -308,11 +308,11 @@ void APlayerCharacter::ActivateStaminaEffects()
 	}
 
 	if (gs->SpeedBoostStruct.bIsStaminaAbility) {
-		characterMovement->MaxWalkSpeed = gs->SpeedBoostStruct.ActiveValue;
+		CharacterMovement->MaxWalkSpeed = gs->SpeedBoostStruct.ActiveValue;
 	}
 
 	if (gs->JumpBoostStruct.bIsStaminaAbility) {
-		characterMovement->JumpZVelocity = gs->JumpBoostStruct.ActiveValue;
+		CharacterMovement->JumpZVelocity = gs->JumpBoostStruct.ActiveValue;
 	}
 }
 
@@ -330,12 +330,22 @@ void APlayerCharacter::DeactivateStaminaEffects()
 	}
 
 	if (gs->SpeedBoostStruct.bIsStaminaAbility) {
-		characterMovement->MaxWalkSpeed = gs->SpeedBoostStruct.defaultValue;
+		CharacterMovement->MaxWalkSpeed = gs->SpeedBoostStruct.defaultValue;
 	}
 
 	if (gs->JumpBoostStruct.bIsStaminaAbility) {
-		characterMovement->JumpZVelocity = gs->JumpBoostStruct.defaultValue;
+		CharacterMovement->JumpZVelocity = gs->JumpBoostStruct.defaultValue;
 	}
+}
+
+void APlayerCharacter::ActivateJumpBoost()
+{
+	CharacterMovement->JumpZVelocity = gs->JumpBoostStruct.ActiveValue;
+}
+
+void APlayerCharacter::DeactivateJumpBoost()
+{
+	CharacterMovement->JumpZVelocity = gs->JumpBoostStruct.defaultValue;
 }
 
 void APlayerCharacter::ResetPlayer()
@@ -344,9 +354,9 @@ void APlayerCharacter::ResetPlayer()
 	
 	bReceivedFirstPlayerInput = false;
 
+
+	DeactivateJumpBoost();
 	DeactivateStaminaEffects();
-
-
 	setRandomStartRotation();
 
 }
