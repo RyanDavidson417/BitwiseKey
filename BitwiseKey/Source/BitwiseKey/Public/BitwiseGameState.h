@@ -11,14 +11,46 @@
  */
 
 UENUM(BlueprintType) 
-enum class EPowerUp : uint8
+enum class EPowerUpName : uint8
 {
 	PE_XRay UMETA(DisplayName="XRay"),
 	PE_Invisibility UMETA(DisplayName = "Invisibility"),
-	PE_Teleport UMETA(DisplayName = "Teleport"),
-	PE_Movement UMETA(DisplayName = "Movement"),
+	PE_SpeedBoost UMETA(DisplayName = "Teleport"),
+	PE_JumpBoost UMETA(DisplayName = "Movement"),
 }; //yet to decide whether the mvement ability will be wall climb related or a grapple
 
+
+USTRUCT(BlueprintType)
+struct FPowerupStruct
+{
+	GENERATED_BODY()
+	
+	//generalizedRef genRef
+
+	//the default value of the relevant stat when this powerup is active
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
+	float defaultValue;
+	//the value of the relevant stat when this powerup is active
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
+	float ActiveValue;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	EPowerUpName name;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool bCollected;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool bIsStaminaAbility;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool bIsActive; //a possible concern is that since this var is accessed through a map of the powerups, 
+	//	and accessed very frequently, the cost of repeatedly iterating over that map could pose performance
+	//  issues. the map will not likely be any larger than 10 powerups (probably half that), so it hopefully
+	//  won't be an issue. but it's something to consider and keep an eye out for.
+	//	this is especially a concern with invisibility, which gets checked almost constantly (enemies do so every
+	//	tick that they see the player). it could be useful to just remake the bPlayerIsinvisble variable and set 
+	//	them equal to one another somehow
+
+
+};
 
 
 UCLASS()
@@ -29,34 +61,34 @@ class BITWISEKEY_API ABitwiseGameState : public AGameState
 public:
 	ABitwiseGameState();
 
+	bool GetStaminaActive();
+	bool GetStaminaAbilityHeld();
+
 private:
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Timer")
 	float gameTimer = 0;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
-	bool hasXray;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
-	bool hasWallGrip;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
-	bool hasTeleport;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
-	bool hasInvisibility;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
-	EPowerUp PowerupEnum;
-	
+	TMap<EPowerUpName, FPowerupStruct> PowerupMap;
+
+	//DEPRECATED: the means by which I was storing whether the player collected powerups before I refac'd to structs
+	//UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
+	//bool bHasXray;
+	//UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
+	//bool bHasSpeedBoost;
+	//UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
+	//bool bHasJumpBoost;
+
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
-		TArray<EPowerUp> EA_PowerupOrder;
+	bool bHasStaminaAbility;	
 
 	//invisibility 
-
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
-		bool bPlayerIsInvisible;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
-		float CurrentInvisCharge = 0;
-
+	
+	//stamina	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Powerups")
+		bool bPlayerIsUsingStamina;
 
 
 };

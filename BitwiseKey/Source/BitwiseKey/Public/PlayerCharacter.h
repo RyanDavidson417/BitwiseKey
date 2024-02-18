@@ -90,7 +90,6 @@ protected:
 	UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
 
 
-	
 
 	//methods
 public:
@@ -114,6 +113,8 @@ public:
 	//powerups
 	void ToggleInvisibility(const FInputActionInstance& Instance);
 	void ToggleInvisibilityEffects();
+	
+	void ToggleStaminaEffects();
 
 	UFUNCTION()
 	void ResetPlayer();
@@ -127,6 +128,8 @@ protected:
 	void setRandomStartRotation();
 
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
+	TMap<EPowerUpName, FPowerupStruct> StaminaPowerups;
 
 
 };

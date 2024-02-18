@@ -6,8 +6,30 @@
 
 ABitwiseGameState::ABitwiseGameState()
 {
-	EA_PowerupOrder.Add(EPowerUp::PE_XRay);
-	EA_PowerupOrder.Add(EPowerUp::PE_Invisibility);
-	EA_PowerupOrder.Add(EPowerUp::PE_Teleport);
-	EA_PowerupOrder.Add(EPowerUp::PE_Movement);
 }
+
+
+bool ABitwiseGameState::GetStaminaActive() 
+{
+	for (TPair<EPowerUpName, FPowerupStruct> pair : PowerupMap)  {
+		//if any element in the map is a stamina ability AND is active, return true
+		if (pair.Value.bIsStaminaAbility && pair.Value.bIsActive) { 
+			return true;
+		}
+	}
+	//if we get through the whole map without finding anything, return false
+	return false;
+}
+
+bool ABitwiseGameState::GetStaminaAbilityHeld()
+{
+	for (TPair<EPowerUpName, FPowerupStruct> pair : PowerupMap) {
+		//if any element in the map is a stamina ability AND is active, return true
+		if (pair.Value.bIsStaminaAbility && pair.Value.bCollected) {
+			return true;
+		}
+	}
+	return false;
+}
+
+

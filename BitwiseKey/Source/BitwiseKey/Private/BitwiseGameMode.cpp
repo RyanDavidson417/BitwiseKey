@@ -53,16 +53,13 @@ void ABitwiseGameMode::BeginPlay()
     UGameplayStatics::GetAllActorsOfClass(GetWorld(), ASpawnPowerup::StaticClass(), PowerupSpawnLocations);
 
     gs = GetWorld()->GetGameState<ABitwiseGameState>();
-    randomizePowerups();
 
     //PlaceCollectibleArray();
 
     //should probably make a new helper function buuuuuuut
 
-    //
-    GetWorldTimerManager().SetTimer(InvisRechargeTimerHandle, this, &ABitwiseGameMode::updateInvisCharge, 1/invis_precision, true, 2.0f);
+    GetWorldTimerManager().SetTimer(InvisibilityStruct.RechargeTimerHandle, this, &ABitwiseGameMode::UpdateInvisCharge, 1/InvisibilityStruct.Precision, true, 2.0f);
 
-    LOG("size of array = %f", SpawnedCollectibles.Num())
 
     D_OnReset.AddDynamic(this, &ABitwiseGameMode::ResetGameMode);
 }
@@ -71,8 +68,6 @@ void ABitwiseGameMode::BeginPlay()
 
 void ABitwiseGameMode::Tick(float DeltaSeconds)
 {
-
-
     if (IsValid(playerCharacter)) {
 
         if (playerCharacter->bReceivedFirstPlayerInput) {
@@ -95,179 +90,72 @@ void ABitwiseGameMode::ResetGameMode()
 
     gs->gameTimer = 0;
 
+
+
     //reset ability collection
-    gs->hasXray = false;
-    gs->hasWallGrip = false;
-    gs->hasTeleport = false;
-    gs->hasInvisibility = false;
-    //make sure that invisibility is reset beyond just collection
-    gs->bPlayerIsInvisible = false;
-    gs->CurrentInvisCharge = 0;
-
-    //int32 NumSpawnedCollectibles = SpawnedCollectiblesMap.Num();
-    //LOG("size of array = %d", NumSpawnedCollectibles)
-
-    //destroy each spawned powerup and remove it from the TMap
-    for ( const auto& Pair : SpawnedCollectiblesMap) {
-        LOG("PING")
-        AActor* PowerUpActor = Pair.Value;
-        PowerUpActor->Destroy();
-        //SpawnedCollectiblesMap.Remove(Pair.Key);
+        
+    for (TPair<EPowerUpName, FPowerupStruct> pair : gs->PowerupMap) {
+        pair.Value.bCollected = false;
+        pair.Value.bIsActive = false;
     }
 
-    //NumSpawnedCollectibles = SpawnedCollectiblesMap.Num();
-    //LOG("size of array = %d", NumSpawnedCollectibles)
+    InvisibilityStruct.currentCharge = 0;
+    StaminaStruct.currentCharge = 0;
 
-    randomizePowerups();
-        
-    //PlaceCollectibleArray();
+    //DEPRECEATED: before I refactored powerups to structs I went through and reset each one individually (gross)
+    //gs->PowerupMap.Find(EPowerUpName::PE_XRay)->bCollected = false;
+    //gs->bHasSpeedBoost = false;
+    //gs->bHasJumpBoost = false;
+    //gs->bHasInvisibility = false;
+    ////make sure that invisibility is reset beyond just collection
+    //gs->bPlayerIsInvisible = false;
+    //gs->CurrentInvisCharge = 0;
+
+    //DEPRECEATED: before I refactored randomization to be based on individual objects, I'd originally tracked all 
+    // the powerups within this game mode. the following comment destroyed their instances. this is now done
+    // in RandomizerBase
+    //destroy each spawned powerup and remove it from the TMap
+    //for ( const auto& Pair : SpawnedCollectiblesMap) {
+    //    LOG("PING")
+    //    AActor* PowerUpActor = Pair.Value;
+    //    PowerUpActor->Destroy();
+    //    //SpawnedCollectiblesMap.Remove(Pair.Key);
+    //}
+
 
     StartGameTimer();
 }
 
-void ABitwiseGameMode::PlaceCollectibleArray()
-{
-
-    int i = 0;
-    for (EPowerUp OrderedPowerUp : gs->EA_PowerupOrder) {//FUTURE CLEANUP: Consider doing all this in helper functions rather than several messy case labels
-        
-        AActor* PowerupActor;
-
-        switch (OrderedPowerUp) {
-        default:
-        case(EPowerUp::PE_XRay):
-        {
-            //SpawnedCollectibles.Add(GetWorld()->SpawnActor<AActor>(XRayCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0, 0, 0)));
-
-            PowerupActor = GetWorld()->SpawnActor<AActor>(XRayCollectible, PowerupSpawnLocations[i]->GetActorLocation(), PowerupSpawnLocations[i]->GetActorRotation());
-
-            UXRayVision* Component = PowerupActor->FindComponentByClass<UXRayVision>();
-            if (Component)
-            {
-                EPowerUp Key = EPowerUp::PE_XRay; // set the key in the map to the enum::invisibility for easy lookup later
-                SpawnedCollectiblesMap.Add(Key, PowerupActor);
-
-
-                ASpawnPowerup* spawnPoint = Cast<ASpawnPowerup>(PowerupSpawnLocations[i]);
-
-
-                if (IsValid(spawnPoint)) {
-                    Component->SpawnPoint = spawnPoint;
-                    //Component->SpawnPoint->CollectionSound->Play();
-                }
-
-                if (IsValid(spawnPoint->CollectionSound)) {}
-                else {
-                    LOG("spawn point not valid")
-                }
-            }
-
-
-            /*UCollectionInteractable* CollectionInteractable = Cast<UCollectionInteractable>(Component);
-            ASpawnPowerup* spawnPoint = Cast<ASpawnPowerup>(PowerupSpawnLocations[i]);
-            if (IsValid(spawnPoint)) {
-                if (IsValid(CollectionInteractable)) {
-                    Component->SpawnPoint = spawnPoint;
-
-                }
-                else {
-                    WARN("collection interactable not valid")
-                }
-            }
-            else {
-                LOG("spawn point not valid")
-            }*/
-
-            //LOG("spawned powerup: %s", &LastSpawnedPowerup->GetName())
-            //SpawnedCollectibles.Add(LastSpawnedPowerup);
-            //if we wanted to access it later, we'd want to set a separate AActor*, and then cast this into that variable
-            // eg XRayInteractable* exampleActor = Cast<XRayInteractable*>(GetWrold....)
-            LOG("spawn an xray at %f %f ", PowerupSpawnLocations[i]->GetActorLocation().X, PowerupSpawnLocations[i]->GetActorLocation().Y)
-
-
-        }
-        break;
-        case(EPowerUp::PE_Invisibility):
-        {
-
-            //SpawnedCollectibles.Add(GetWorld()->SpawnActor<AActor>(XRayCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0, 0, 0)));
-
-            PowerupActor = GetWorld()->SpawnActor<AActor>(InvisibilityCollectible, PowerupSpawnLocations[i]->GetActorLocation(), PowerupSpawnLocations[i]->GetActorRotation());
-
-            UInvisibilityPowerup* Component = PowerupActor->FindComponentByClass<UInvisibilityPowerup>();
-            if (Component)
-            {
-                EPowerUp Key = EPowerUp::PE_Invisibility; // set the key in the map to the enum::invisibility for easy lookup later
-                SpawnedCollectiblesMap.Add(Key, PowerupActor);
-
-
-                ASpawnPowerup* spawnPoint = Cast<ASpawnPowerup>(PowerupSpawnLocations[i]);
-
-                if (IsValid(spawnPoint)) {
-                    Component->SpawnPoint = spawnPoint;
-                }
-                else {
-                    LOG("spawn point not valid")
-                }
-            }
-
-
-            //SpawnedCollectibles.Add(GetWorld()->SpawnActor<AActor>(InvisibilityCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0, 0, 0)));
-            //SpawnedCollectibles.Add(LastSpawnedPowerup);
-            LOG("spawn INVISIBILITY")
-        }
-        break;
-        case(EPowerUp::PE_Teleport):
-            //PowerupActor = GetWorld()->SpawnActor<AActor>(InvisibilityCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0, 0, 0));
-            LOG("spawn Teleport - NOTE: you haven't actually set up the teleport spawning properly, it's currently of type invisibility")
-                break;
-        case(EPowerUp::PE_Movement):
-            //PowerupActor = GetWorld()->SpawnActor<AActor>(InvisibilityCollectible, PowerupSpawnLocations[i]->GetActorLocation(), FRotator(0, 0, 0));
-            LOG("spawn Movement - NOTE: you haven't actually set up the Movement spawning properly, it's currently of type invisibility")
-                break;
-        }
-
-
-
-        i++;
-    }
-}
-
 void ABitwiseGameMode::CollectXRay()
 {
-    WARN("collect x ray method called from gamemode");
-    gs->hasXray = true;
+    LOG("collect x ray method called from gamemode");
+    gs->PowerupMap.Find(EPowerUpName::PE_XRay)->bCollected = true; //tell the gamestate to update xray's collected val
 
-    //SpawnedCollectiblesMap.FindAndRemoveChecked(EPowerUp::PE_XRay);
-
-    //AActor* xraycol = SpawnedCollectibles.Find(UXRayVision);
-
+    //used to notify all xray objects to update their state
     OnCollectedXray.Broadcast();
-
-    //when implementing xray we're going to want to iterate over our list of fake walls - stored by way of getallactorsof class in beginPlay(), and call their toggleXray function
 }
 
 void ABitwiseGameMode::CollectInvisibility()
 {
     //SpawnedCollectiblesMap.FindAndRemoveChecked(EPowerUp::PE_Invisibility);
-    WARN("player collected invisibility -gm");
-    //gs->CurrentInvisCharge = InvisMaxCharge;
-    gs->hasInvisibility = true;
+    LOG("collect x ray method called from gamemode");
+    gs->PowerupMap.Find(EPowerUpName::PE_Invisibility)->bCollected = true; //tell the gamestate to update xray's collected val
+
 }
 
 void ABitwiseGameMode::ToggleInvisibility()
 {
 
-    if (gs->hasInvisibility) {
+    if (gs->PowerupMap.Find(EPowerUpName::PE_Invisibility)->bCollected) {
 
-        if (gs->bPlayerIsInvisible) {
+        if (gs->PowerupMap.Find(EPowerUpName::PE_Invisibility)->bCollected) {
 
-            gs->bPlayerIsInvisible = false; 
+            gs->PowerupMap.Find(EPowerUpName::PE_Invisibility)->bCollected = false;
             UGameplayStatics::PlaySound2D(GetWorld(), SW_InvisDeactivate);
 
         }
         else {
-            gs->bPlayerIsInvisible = true;
+            gs->PowerupMap.Find(EPowerUpName::PE_Invisibility)->bCollected = true;
             UGameplayStatics::PlaySound2D(GetWorld(), SW_InvisActivate);
 
         }
@@ -281,64 +169,112 @@ void ABitwiseGameMode::ToggleInvisibility()
     }
 }
 
-
-void ABitwiseGameMode::randomizePowerups()
+void ABitwiseGameMode::ToggleStamina()
 {
-    TArray<EPowerUp> RandomizedArray;
-    int powerupNumber = gs->EA_PowerupOrder.Num() ;
-    for (int i = 0; i < powerupNumber ; i++) {
-        //WARN("array number %d and we stepped up to %d ", powerupNumber, i)
-        int rand = FMath::RandRange(0, powerupNumber-i-1 );//generate a random number from the number of loops we've had up 
-        RandomizedArray.Add(gs->EA_PowerupOrder[rand]);
-        gs->EA_PowerupOrder.RemoveAt(rand);
 
-       
-
-        //gs->EA_PowerupOrder
-
-        
-    }
-    gs->EA_PowerupOrder = RandomizedArray;
 }
 
-
-//returns true if any changes are made to the charge
-void ABitwiseGameMode::updateInvisCharge()
+void ABitwiseGameMode::UpdateInvisCharge()
 {
-
-    if (gs->hasInvisibility) {
+    if (gs->PowerupMap.Find(EPowerUpName::PE_Invisibility)->bCollected) {
 
         //LOG("CurrentCharge: %f", gs->CurrentInvisCharge)
-        bool bLocalPlayerIsInvisible = gs->bPlayerIsInvisible;
-        if (bLocalPlayerIsInvisible) { //invisibility active, counting down
-            if (gs->CurrentInvisCharge == 0) {
+        if (gs->PowerupMap.Find(EPowerUpName::PE_Invisibility)->bIsActive) { //invisibility active, counting down
+
+            InvisibilityStruct.currentCharge = FMath::Clamp(
+                InvisibilityStruct.currentCharge - InvisibilityStruct.DischargeRate,
+                0.0, InvisibilityStruct.MaxCharge);
+
+            if (InvisibilityStruct.currentCharge == 0) {
                 ToggleInvisibility();
-                return ;
+                return;
             }
-            else  if (gs->CurrentInvisCharge < 0) {
-                gs->CurrentInvisCharge = 0;
-                return ;
-            }
-            else if (gs->CurrentInvisCharge > 0) {
 
-                gs->CurrentInvisCharge -= InvisDecrement/invis_precision;
-                return ;
-            }
+            //DEPRECATED: the (obviously very messy) way I'd been clamping the values originally
+            //if (InvisibilityStruct.currentCharge == 0) {
+            //    ToggleInvisibility();
+            //    return;
+            //}
+            //else  if (InvisibilityStruct.currentCharge < 0) {
+            //    InvisibilityStruct.currentCharge = 0;
+            //    return;
+            //}
+            //else if (InvisibilityStruct.currentCharge > 0) {
+            //    InvisibilityStruct.currentCharge -= InvisibilityStruct.DischargeRate / InvisibilityStruct.Precision;
+            //    return;
+            //}
         } else { //invisibility inactive, counting up
-            if (gs->CurrentInvisCharge == InvisMaxCharge) {
-                return ;
-            }
-            else  if (gs->CurrentInvisCharge > InvisMaxCharge) {
-                gs->CurrentInvisCharge = InvisMaxCharge;
-                return ;
-            }
-            else if (gs->CurrentInvisCharge < InvisMaxCharge) {
-                gs->CurrentInvisCharge += InvisIncrement/invis_precision;
-                return ;
-            }
-        }
 
+            InvisibilityStruct.currentCharge = FMath::Clamp(InvisibilityStruct.currentCharge + InvisibilityStruct.ChargeRate,
+                0.0, InvisibilityStruct.MaxCharge);
+                
+            //DEPRECATED: the (obviously very messy) way I'd been clamping the values originally
+            //if (InvisibilityStruct.currentCharge == InvisibilityStruct.MaxCharge) {
+            //    return;
+            //}
+            //else  if (InvisibilityStruct.currentCharge > InvisibilityStruct.MaxCharge) {
+            //    InvisibilityStruct.currentCharge = InvisibilityStruct.MaxCharge;
+            //    return;
+            //}
+            //else if (gs->CurrentInvisCharge < InvisMaxCharge) {
+            //    gs->CurrentInvisCharge += InvisChargeRate/ProgressBarPrecision;
+            //    return;
+            //}
+        }
     }
     return ;
 }
+
+void ABitwiseGameMode::UpdateStamina()
+{
+    if (gs->bHasStaminaAbility) {
+        if (gs->bPlayerIsUsingStamina) { //count down
+
+            StaminaStruct.currentCharge = FMath::Clamp(
+                StaminaStruct.currentCharge - StaminaStruct.DischargeRate,
+                0.0, StaminaStruct.MaxCharge);
+
+            if (InvisibilityStruct.currentCharge == 0) {
+                ToggleInvisibility();
+                return;
+            }
+
+            //DEPRECATED
+            //if (gs->CurrentStamina == 0) {
+            //    ToggleStamina();
+            //    return;
+            //}
+            //else  if (gs->CurrentStamina < 0) {
+            //    gs->CurrentStamina = 0;
+            //    return;
+            //}
+            //else if (gs->CurrentStamina > 0) {
+
+            //    gs->CurrentStamina -= StaminaDischargeRate / ProgressBarPrecision;
+            //    return;
+            //}
+        }
+        else { //invisibility inactive, counting up
+
+            StaminaStruct.currentCharge = FMath::Clamp(
+                StaminaStruct.currentCharge + StaminaStruct.ChargeRate,
+                0.0, StaminaStruct.MaxCharge);
+
+
+            //if (gs->CurrentStamina == InvisMaxCharge) {
+            //    return;
+            //}
+            //else  if (gs->CurrentStamina > InvisMaxCharge) {
+            //    gs->CurrentStamina = InvisMaxCharge;
+            //    return;
+            //}
+            //else if (gs->CurrentStamina < InvisMaxCharge) {
+            //    gs->CurrentStamina += InvisChargeRate / ProgressBarPrecision;
+            //    return;
+            //}
+        }
+    }
+}
+
+
 

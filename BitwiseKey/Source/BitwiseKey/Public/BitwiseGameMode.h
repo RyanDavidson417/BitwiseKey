@@ -25,6 +25,32 @@ class UCollectionInteractable;
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnResetDelegate);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCollectedXrayDelegate);
 
+USTRUCT(BlueprintType)
+struct FPlayerStatStruct {
+	GENERATED_BODY()
+
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FName name;
+
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
+	float currentCharge;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
+	float ChargeRate;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
+	float DischargeRate;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
+	float MaxCharge;
+	//how many "units" the progress bar has
+	UPROPERTY(EditAnywhere, Category = "Powerups")
+	float Precision;
+	
+	FTimerHandle RechargeTimerHandle;
+
+
+
+};
 
 UCLASS()
 class BITWISEKEY_API ABitwiseGameMode : public AGameMode
@@ -35,20 +61,19 @@ class BITWISEKEY_API ABitwiseGameMode : public AGameMode
 public:	
 	ABitwiseGameMode();
 
-	void randomizePowerups();
-
 	void CollectXRay();
 
 	void CollectInvisibility();
 	void ToggleInvisibility();
-	void updateInvisCharge();
+	void ToggleStamina();
+	void UpdateInvisCharge();
+	void UpdateStamina();
 
 	void StartGameTimer();
 
 	UFUNCTION(BlueprintCallable)
 	void ResetGameMode();
 
-	void PlaceCollectibleArray();
 
 
 protected:
@@ -64,17 +89,16 @@ private:
 public:
 	
 	UPROPERTY(BlueprintAssignable, BlueprintCallable)
-		FOnResetDelegate D_OnReset;
-
-	
+		FOnResetDelegate D_OnReset;	
 	UPROPERTY(BlueprintAssignable, BlueprintCallable)
 	FOnCollectedXrayDelegate OnCollectedXray;
+
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 		float BitwiseGameTimer = 0;
 
-	UPROPERTY(EditAnywhere, Category = "Powerups")
-		float invis_precision;
+		//the number of individual 'units' within each progress bar
+
 
 	//sound waves to play when you activate and deactivate invisibility
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Audio)
@@ -110,21 +134,23 @@ public:
 	AActor* TeleportCollectible;
 
 	AActor* LastSpawnedPowerup;
+	
+	FPlayerStatStruct InvisibilityStruct;
+	FPlayerStatStruct StaminaStruct;
 
-	FTimerHandle InvisRechargeTimerHandle;
 
 protected:
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
-		float InvisIncrement;
+		float StaminaChargeRate;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
-		float InvisDecrement;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
-		float InvisMaxCharge;
+		float StaminaDischargeRate;
+		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
+		float StaminaMaxCharge;
+
 
 	TArray<AActor*> SpawnedCollectibles;
 
-	//used on reset to track which collectibles still have yet to be destroyed
-	TMap<EPowerUp, AActor*> SpawnedCollectiblesMap;
 
 private:
 	float GameStartTime;

@@ -80,6 +80,8 @@ void APlayerCharacter::BeginPlay()
 	setRandomStartRotation();
 
 	characterMovement = GetCharacterMovement();
+
+
 }
 
 
@@ -257,7 +259,7 @@ void APlayerCharacter::ToggleInvisibility(const FInputActionInstance& Instance)
 	WARN("toggle invisibility input called");
 	gm->ToggleInvisibility();
 
-	if (gs->bPlayerIsInvisible) {
+	if (gs->PowerupMap.Find(EPowerUpName::PE_Invisibility)->bIsActive) {
 
 		GetCharacterMovement()->GravityScale = 1;
 	}
@@ -271,7 +273,7 @@ void APlayerCharacter::ToggleInvisibility(const FInputActionInstance& Instance)
 void APlayerCharacter::ToggleInvisibilityEffects()
 {
 	UCharacterMovementComponent* charMove = GetCharacterMovement();
-	if (gs->bPlayerIsInvisible) {
+	if (gs->PowerupMap.Find(EPowerUpName::PE_Invisibility)->bIsActive) {
 		characterMovement->GravityScale = 1;
 		characterMovement->JumpZVelocity = 400;
 		characterMovement->MaxWalkSpeed = 1100;
@@ -282,6 +284,14 @@ void APlayerCharacter::ToggleInvisibilityEffects()
 		characterMovement->MaxWalkSpeed = 700;
 
 	}
+}
+
+void APlayerCharacter::ToggleStaminaEffects()
+{
+	//zzzz
+	//step though each powerup. check if it's a stamina related ability, and if so deactivate it
+	//we might need to refactor it from being a map
+
 }
 
 void APlayerCharacter::ResetPlayer()
