@@ -13,11 +13,18 @@ UXRayVision::UXRayVision()
 void UXRayVision::Interact(APlayerController* playerController)
 {
 	//
+	CollectPowerup(playerController);
+	Super::Interact(playerController);
+}
+
+void UXRayVision::CollectPowerup(APlayerController* playerController)
+{
 	if (IsValid(gm)) {
 		gm->CollectXRay();
 	}
 	else {
-		UE_LOG(LogTemp, Error, TEXT("gm not valid"));
+		WARN("gamestate not valid")
 	}
-	Super::Interact(playerController);
+
 }
+

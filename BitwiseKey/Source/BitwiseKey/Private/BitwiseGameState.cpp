@@ -2,6 +2,7 @@
 
 
 #include "BitwiseGameState.h"
+#include "PowerupDataBase.h"
 
 
 ABitwiseGameState::ABitwiseGameState()
@@ -11,28 +12,30 @@ ABitwiseGameState::ABitwiseGameState()
 
 void ABitwiseGameState::ResetGameState()
 {
-	for (TPair<EPowerUpName, FPowerupStruct> pair : PowerupMap) {
-		pair.Value.bCollected = false;
-		pair.Value.bEnabled = false;
+	for (UPowerupDataBase* powerup : PowerupDataArray) {
+		powerup->bCollected = false;
+		powerup->bEnabled = false;
 	}
 
+	
 }
 
 void ABitwiseGameState::BuildPowerupMap() 
 {
-	PowerupMap.Add(EPowerUpName::PE_XRay, XRayStruct);
-	PowerupMap.Add(EPowerUpName::PE_Invisibility, InvisibilityStruct);
-	PowerupMap.Add(EPowerUpName::PE_SpeedBoost, SpeedBoostStruct);
-	PowerupMap.Add(EPowerUpName::PE_JumpBoost, JumpBoostStruct);
+	PowerupDataArray.Add(XRayData);
+	PowerupDataArray.Add(InvisibilityData);
+	PowerupDataArray.Add(SpeedBoostData);
+	PowerupDataArray.Add(JumpBoostData);
+
 }
 
 
 
 bool ABitwiseGameState::GetStaminaActive() 
 {
-	for (TPair<EPowerUpName, FPowerupStruct> pair : PowerupMap)  {
+	for(UPowerupDataBase* powerup: PowerupDataArray) {
 		//if any element in the map is a stamina ability AND is active, return true
-		if (pair.Value.bIsStaminaAbility && pair.Value.bEnabled) { 
+		if (powerup->bIsStaminaAbility && powerup->bEnabled) {
 			return true;
 		}
 	}
@@ -42,9 +45,9 @@ bool ABitwiseGameState::GetStaminaActive()
 
 bool ABitwiseGameState::GetStaminaAbilityHeld()
 {
-	for (TPair<EPowerUpName, FPowerupStruct> pair : PowerupMap) {
+	for (UPowerupDataBase* powerup : PowerupDataArray) {
 		//if any element in the map is a stamina ability AND is active, return true
-		if (pair.Value.bIsStaminaAbility && pair.Value.bCollected) {
+		if (powerup->bIsStaminaAbility && powerup->bCollected) {
 			return true;
 		}
 	}
@@ -54,6 +57,9 @@ bool ABitwiseGameState::GetStaminaAbilityHeld()
 void ABitwiseGameState::BeginPlay()
 {
 	Super::BeginPlay();
+	
+	ResetGameState();//necessary because otherwise the dataAsset's data would persist after rebooting game
+
 	BuildPowerupMap();
 
 

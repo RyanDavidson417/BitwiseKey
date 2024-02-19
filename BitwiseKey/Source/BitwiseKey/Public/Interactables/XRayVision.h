@@ -3,15 +3,15 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "../CollectionInteractable.h"
+#include "PowerupCollectibleBase.h"
 #include "XRayVision.generated.h"
 
 /**
  * 
  */
 
-UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
-class BITWISEKEY_API UXRayVision : public UCollectionInteractable
+UCLASS(ClassGroup = "PowerupComponents", meta = (BlueprintSpawnableComponent))
+class BITWISEKEY_API UXRayVision : public UPowerupCollectibleBase
 {
 	GENERATED_BODY()
 
@@ -21,4 +21,5 @@ public:
 	//UPROPERTY(Editanywhere)
 
 	virtual void Interact(APlayerController* playerController) override;
+	void CollectPowerup(APlayerController* playerController) override;
 };

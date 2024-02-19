@@ -10,6 +10,7 @@
 #include "Math/UnrealMathUtility.h"
 #include "BitwiseKey/BitwiseKey.h"
 #include "Components/AudioComponent.h" 
+#include "PowerupDataBase.h"
 #include "Kismet/GameplayStatics.h" 
 #include "TimerManager.h"
 #include "Kismet/KismetArrayLibrary.h"
@@ -97,10 +98,9 @@ void ABitwiseGameMode::ResetGameMode()
 
 
     //reset ability collection
-        
-    for (TPair<EPowerUpName, FPowerupStruct> pair : gs->PowerupMap) {
-        pair.Value.bCollected = false;
-        pair.Value.bEnabled = false;
+    for (UPowerupDataBase* powerup : gs->PowerupDataArray) {
+        powerup->bCollected = false;
+        powerup->bEnabled = false;
     }
 
     InvisibilityStatStruct.currentCharge = 0; 
@@ -132,57 +132,46 @@ void ABitwiseGameMode::ResetGameMode()
     StartGameTimer();
 }
 
+
 void ABitwiseGameMode::CollectXRay()
 {
     LOG("collect x ray method called from gamemode");
-    gs->XRayStruct.bCollected = true;
+    gs->XRayData->bCollected = true;
     //used to notify all xray objects to update their state
     OnCollectedXray.Broadcast();
 }
 
-void ABitwiseGameMode::CollectInvisibility()
-{
-    //SpawnedCollectiblesMap.FindAndRemoveChecked(EPowerUp::PE_Invisibility);
-    LOG("collect x ray method called from gamemode");
-    gs->InvisibilityStruct.bCollected = true;
-
-}
-
-void ABitwiseGameMode::CollectSpeedBoost()
-{
-    gs->SpeedBoostStruct.bCollected = true;
-}
-
-void ABitwiseGameMode::CollectJumpBoost()
-{
-    gs->JumpBoostStruct.bCollected = true;
-    if (gs->JumpBoostStruct.bPassive) {//if we decide it's a passive ability (rather than one the player must activate)
-        playerCharacter->ActivateJumpBoost();
-    }
-}
-
+//void ABitwiseGameMode::CollectSpeedBoost()
+//{
+//    gs->SpeedBoostData->bCollected = true;
+//}
+//
+//void ABitwiseGameMode::CollectJumpBoost()
+//{
+//    gs->JumpBoostStruct.bCollected = true;
+//    if (gs->JumpBoostStruct.bPassive) {//if we decide it's a passive ability (rather than one the player must activate)
+//        playerCharacter->ActivateJumpBoost();
+//    }
+//}
 
 
 void ABitwiseGameMode::ToggleInvisibility()
 {
 
-    if (gs->InvisibilityStruct.bCollected) {
+    if (gs->InvisibilityData->bCollected) {
 
-        if (gs->InvisibilityStruct.bEnabled) {
+        if (gs->InvisibilityData->bEnabled) {
 
-            gs->InvisibilityStruct.bEnabled = false;
+            gs->InvisibilityData->bEnabled = false;
             UGameplayStatics::PlaySound2D(GetWorld(), SW_InvisDeactivate);
 
 
         }
         else {
-            gs->InvisibilityStruct.bEnabled = true;
+            gs->InvisibilityData->bEnabled = true;
             UGameplayStatics::PlaySound2D(GetWorld(), SW_InvisActivate);
 
         }
-
-
-
     }
     else {
         WARN("You do not yet have that ability");
@@ -191,10 +180,10 @@ void ABitwiseGameMode::ToggleInvisibility()
 
 void ABitwiseGameMode::UpdateInvisCharge()
 {
-    if (gs->InvisibilityStruct.bCollected) {
+    if (gs->InvisibilityData->bCollected) {
 
         //LOG("CurrentCharge: %f", gs->CurrentInvisCharge)
-        if (gs->InvisibilityStruct.bEnabled) { //invisibility active, counting down
+        if (gs->InvisibilityData->bEnabled) { //invisibility active, counting down
 
             InvisibilityStatStruct.currentCharge = FMath::Clamp(
                 InvisibilityStatStruct.currentCharge - (InvisibilityStatStruct.DischargeRate / InvisibilityStatStruct.Precision),

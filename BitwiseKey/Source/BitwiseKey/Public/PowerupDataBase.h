@@ -19,20 +19,16 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FName name;
 
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
+	bool bCollected;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
+	bool bIsStaminaAbility;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
+	bool bEnabled;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
+	bool bPassive;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
-	float currentCharge;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
-	float ChargeRate;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
-	float DischargeRate;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
-	float MaxCharge;
-	//how many "units" the progress bar has
-	UPROPERTY(EditAnywhere, Category = "Powerups")
-	float Precision;
-
-	FTimerHandle RechargeTimerHandle;
 
 	//the default value of the relevant stat when this powerup is active
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
@@ -40,5 +36,6 @@ public:
 	//the value of the relevant stat when this powerup is active
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
 	float ActiveValue;
+
 
 };

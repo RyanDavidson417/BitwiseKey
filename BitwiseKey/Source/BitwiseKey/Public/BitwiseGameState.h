@@ -10,6 +10,8 @@
  * 
  */
 
+class UPowerupDataBase;
+
 UENUM(BlueprintType) 
 enum class EPowerUpName : uint8
 {
@@ -73,16 +75,19 @@ public:
 	float gameTimer = 0;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
-	FPowerupStruct XRayStruct;
+	UPowerupDataBase* XRayData;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
-	FPowerupStruct InvisibilityStruct;
+	UPowerupDataBase* InvisibilityData;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
-	FPowerupStruct SpeedBoostStruct;
+	UPowerupDataBase* SpeedBoostData;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
-	FPowerupStruct JumpBoostStruct;
+	UPowerupDataBase* JumpBoostData;
+
+
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Powerups")
-	TMap<EPowerUpName, FPowerupStruct> PowerupMap;
+	TArray<UPowerupDataBase*> PowerupDataArray;
+
 
 	//DEPRECATED: the means by which I was storing whether the player collected powerups before I refac'd to structs
 	//UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")

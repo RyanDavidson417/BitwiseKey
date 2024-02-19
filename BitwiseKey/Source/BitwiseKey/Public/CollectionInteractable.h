@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "InteractionComponent.h"
 #include "Materials/MaterialInstanceDynamic.h"
+#include "GameFramework/CharacterMovementComponent.h"
 #include "BWK_RandomizerBase.h"
 #include "CollectionInteractable.generated.h"
 
@@ -14,8 +15,10 @@
 class ABitwiseGameMode;
 class ABitwiseGameState;
 class UMaterialInterface;
+class APlayerController;
 class ASpawnPowerup;
 class ABWK_RandomizerBase;
+class APlayerCharacter;
 struct FLinearColor;
 
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))

@@ -3,21 +3,20 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "PowerupCollectibleBase.h"
-#include "InvisibilityPowerup.generated.h"
+#include "Interactables/PowerupCollectibleBase.h"
+#include "JumpBoost.generated.h"
 
 /**
  * 
  */
-
 UCLASS(ClassGroup = "PowerupComponents", meta = (BlueprintSpawnableComponent))
-class BITWISEKEY_API UInvisibilityPowerup : public UPowerupCollectibleBase
+class BITWISEKEY_API UJumpBoost : public UPowerupCollectibleBase
 {
 	GENERATED_BODY()
+	
+
 
 public:
-	UInvisibilityPowerup();
-
-	virtual void Interact(APlayerController* playerController) override;
 	void CollectPowerup(APlayerController* playerController) override;
+	void Reset() override;
 };

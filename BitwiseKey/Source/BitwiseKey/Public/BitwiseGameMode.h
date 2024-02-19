@@ -70,10 +70,11 @@ public:
 
 
 	void CollectXRay();
-	void CollectInvisibility();
-	void CollectSpeedBoost();
-	void CollectJumpBoost();
-	
+	//void CollectInvisibility();
+	//void CollectSpeedBoost();
+	//void CollectJumpBoost();
+	//
+	//void CollectPowerup(UPowerupDataBase* powerup);
 	
 	void ToggleInvisibility();
 

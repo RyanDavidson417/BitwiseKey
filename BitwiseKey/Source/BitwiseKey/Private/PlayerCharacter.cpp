@@ -14,6 +14,7 @@
 #include "BitwiseGameState.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/PlayerStart.h" 
+#include "PowerupDataBase.h"
 #include "BitwiseGameMode.h"
 
 
@@ -259,7 +260,7 @@ void APlayerCharacter::ToggleInvisibility(const FInputActionInstance& Instance)
 	WARN("toggle invisibility input called");
 	gm->ToggleInvisibility();
 
-	if (gs->InvisibilityStruct.bEnabled) {
+	if (gs->InvisibilityData->bEnabled) {
 
 		GetCharacterMovement()->GravityScale = 1;
 	}
@@ -297,55 +298,55 @@ void APlayerCharacter::ActivateStaminaEffects()
 	//step though each powerup. check if it's a stamina related ability, and if so deactivate it
 	//we might need to refactor it from being a map
 
-	if (gs->XRayStruct.bIsStaminaAbility) {
+	if (gs->XRayData->bIsStaminaAbility) {
 		//no implementation needed as xray (currently) doesn't have any player vals associated
 		//theoretically this statement won't even ever activate
 	}
 
-	if (gs->InvisibilityStruct.bIsStaminaAbility) {
+	if (gs->InvisibilityData->bIsStaminaAbility) {
 		//no implementation needed as invisibility (currently) doesn't have any player vals associated
 		//theoretically this statement won't even ever activate
 	}
 
-	if (gs->SpeedBoostStruct.bIsStaminaAbility) {
-		CharacterMovement->MaxWalkSpeed = gs->SpeedBoostStruct.ActiveValue;
+	if (gs->SpeedBoostData->bIsStaminaAbility) {
+		CharacterMovement->MaxWalkSpeed = gs->SpeedBoostData->ActiveValue;
 	}
 
-	if (gs->JumpBoostStruct.bIsStaminaAbility) {
-		CharacterMovement->JumpZVelocity = gs->JumpBoostStruct.ActiveValue;
+	if (gs->JumpBoostData->bIsStaminaAbility) {
+		CharacterMovement->JumpZVelocity = gs->JumpBoostData->ActiveValue;
 	}
 }
 
 void APlayerCharacter::DeactivateStaminaEffects()
 {
 
-	if (gs->XRayStruct.bIsStaminaAbility) {
+	if (gs->XRayData->bIsStaminaAbility) {
 		//no implementation needed as xray (currently) doesn't have any player vals associated
 		//theoretically this statement won't even ever activate
 	}
 
-	if (gs->InvisibilityStruct.bIsStaminaAbility) {
+	if (gs->InvisibilityData->bIsStaminaAbility) {
 		//no implementation needed as invisibility (currently) doesn't have any player vals associated
 		//theoretically this statement won't even ever activate
 	}
 
-	if (gs->SpeedBoostStruct.bIsStaminaAbility) {
-		CharacterMovement->MaxWalkSpeed = gs->SpeedBoostStruct.defaultValue;
+	if (gs->SpeedBoostData->bIsStaminaAbility) {
+		CharacterMovement->MaxWalkSpeed = gs->SpeedBoostData->defaultValue;
 	}
 
-	if (gs->JumpBoostStruct.bIsStaminaAbility) {
-		CharacterMovement->JumpZVelocity = gs->JumpBoostStruct.defaultValue;
+	if (gs->JumpBoostData->bIsStaminaAbility) {
+		CharacterMovement->JumpZVelocity = gs->JumpBoostData->defaultValue;
 	}
 }
 
 void APlayerCharacter::ActivateJumpBoost()
 {
-	CharacterMovement->JumpZVelocity = gs->JumpBoostStruct.ActiveValue;
+	CharacterMovement->JumpZVelocity = gs->JumpBoostData->ActiveValue;
 }
 
 void APlayerCharacter::DeactivateJumpBoost()
 {
-	CharacterMovement->JumpZVelocity = gs->JumpBoostStruct.defaultValue;
+	CharacterMovement->JumpZVelocity = gs->JumpBoostData->defaultValue;
 }
 
 void APlayerCharacter::ResetPlayer()

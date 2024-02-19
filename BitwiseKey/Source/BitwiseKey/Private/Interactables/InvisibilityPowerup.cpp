@@ -10,10 +10,17 @@ UInvisibilityPowerup::UInvisibilityPowerup()
 
 void UInvisibilityPowerup::Interact(APlayerController* playerController)
 {
-	if (IsValid(gm)) {
-		gm->CollectInvisibility();
-	}
 	Super::Interact(playerController);//called at the end, cause it also destroys the object
-
-
 }
+
+void UInvisibilityPowerup::CollectPowerup(APlayerController* playerController)
+{
+	if (IsValid(gs)) {
+
+		gs->InvisibilityData->bCollected = true;
+	}
+	else {
+		WARN("gamestate not valid")
+	}
+}
+

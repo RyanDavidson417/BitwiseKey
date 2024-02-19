@@ -20,6 +20,7 @@ class UCharacterMovementComponent;
 class UInteractionComponent;
 class UCollectionInteractable;
 class ABitwiseGameMode;
+class UPowerupDataBase;
 class ABitwiseGameState;
 
 
