@@ -124,7 +124,7 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 	EIS->BindAction(ResetPlayerAction, ETriggerEvent::Started, this, &APlayerCharacter::ResetFromPlayer);
 
-
+	EIS->BindAction(ActivateSpeedAction, ETriggerEvent::Triggered, this, &APlayerCharacter::ToggleStamina);
 
 }
 
@@ -292,33 +292,56 @@ void APlayerCharacter::ToggleInvisibility(const FInputActionInstance& Instance)
 //	}
 //}
 
+void APlayerCharacter::ToggleStamina()
+{
+	LOG("TOGGLE STAMINA")
+	if (staminaActive) {
+		DeactivateStaminaEffects();
+	}
+	else {
+		ActivateStaminaEffects();
+	}
+	 
+}
+
 void APlayerCharacter::ActivateStaminaEffects()
 {
-	//zzzz
-	//step though each powerup. check if it's a stamina related ability, and if so deactivate it
-	//we might need to refactor it from being a map
+	LOG("action recognized")
 
-	if (gs->XRayData->bIsStaminaAbility) {
-		//no implementation needed as xray (currently) doesn't have any player vals associated
-		//theoretically this statement won't even ever activate
+
+	if (gs->GetHasStaminaAbility() && gm->StaminaStatStruct.currentCharge > 0) {
+
+		staminaActive = true;
+
+
+
+		if (gs->XRayData->bIsStaminaAbility) {
+			//no implementation needed as xray (currently) doesn't have any player vals associated
+			//theoretically this statement won't even ever activate
+		}
+
+		if (gs->InvisibilityData->bIsStaminaAbility) {
+			//no implementation needed as invisibility (currently) doesn't have any player vals associated
+			//theoretically this statement won't even ever activate
+		}
+
+		if (gs->SpeedBoostData->bIsStaminaAbility) {
+			LOG("action actioned ---")
+
+			CharacterMovement->MaxWalkSpeed = gs->SpeedBoostData->ActiveValue;
+			gs->SpeedBoostData->bEnabled = true;
+		}
+
+		if (gs->JumpBoostData->bIsStaminaAbility) {
+			CharacterMovement->JumpZVelocity = gs->JumpBoostData->ActiveValue;
+		}
 	}
 
-	if (gs->InvisibilityData->bIsStaminaAbility) {
-		//no implementation needed as invisibility (currently) doesn't have any player vals associated
-		//theoretically this statement won't even ever activate
-	}
-
-	if (gs->SpeedBoostData->bIsStaminaAbility) {
-		CharacterMovement->MaxWalkSpeed = gs->SpeedBoostData->ActiveValue;
-	}
-
-	if (gs->JumpBoostData->bIsStaminaAbility) {
-		CharacterMovement->JumpZVelocity = gs->JumpBoostData->ActiveValue;
-	}
 }
 
 void APlayerCharacter::DeactivateStaminaEffects()
 {
+	staminaActive = false;
 
 	if (gs->XRayData->bIsStaminaAbility) {
 		//no implementation needed as xray (currently) doesn't have any player vals associated
@@ -332,6 +355,8 @@ void APlayerCharacter::DeactivateStaminaEffects()
 
 	if (gs->SpeedBoostData->bIsStaminaAbility) {
 		CharacterMovement->MaxWalkSpeed = gs->SpeedBoostData->defaultValue;
+		gs->SpeedBoostData->bEnabled = false;
+
 	}
 
 	if (gs->JumpBoostData->bIsStaminaAbility) {

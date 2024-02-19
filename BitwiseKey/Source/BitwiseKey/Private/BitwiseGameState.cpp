@@ -2,6 +2,7 @@
 
 
 #include "BitwiseGameState.h"
+#include "BitwiseKey/BitwiseKey.h"
 #include "PowerupDataBase.h"
 
 
@@ -31,7 +32,7 @@ void ABitwiseGameState::BuildPowerupMap()
 
 
 
-bool ABitwiseGameState::GetStaminaActive() 
+bool ABitwiseGameState::GetPlayerIsUsingStamina() 
 {
 	for(UPowerupDataBase* powerup: PowerupDataArray) {
 		//if any element in the map is a stamina ability AND is active, return true
@@ -43,7 +44,7 @@ bool ABitwiseGameState::GetStaminaActive()
 	return false;
 }
 
-bool ABitwiseGameState::GetStaminaAbilityHeld()
+bool ABitwiseGameState::GetHasStaminaAbility()
 {
 	for (UPowerupDataBase* powerup : PowerupDataArray) {
 		//if any element in the map is a stamina ability AND is active, return true

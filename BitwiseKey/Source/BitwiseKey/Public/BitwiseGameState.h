@@ -61,14 +61,25 @@ public:
 
 	void ResetGameState();
 	
-	bool GetStaminaActive();
-	bool GetStaminaAbilityHeld();
+	bool GetPlayerIsUsingStamina();
+	bool GetHasStaminaAbility();
 	void BeginPlay() override;
 	
 
 private:
 
 	void BuildPowerupMap();
+
+private:
+
+	UPROPERTY(EditAnywhere,Category = "Powerups")
+	bool bHasStaminaAbility;
+
+	//invisibility 
+
+	//stamina	
+	UPROPERTY(EditAnywhere, category = "Powerups")
+	bool bPlayerIsUsingStamina;
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Timer")
@@ -97,14 +108,6 @@ public:
 	//UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
 	//bool bHasJumpBoost;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
-	bool bHasStaminaAbility;	
-
-	//invisibility 
-	
-	//stamina	
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Powerups")
-		bool bPlayerIsUsingStamina;
 
 
 };

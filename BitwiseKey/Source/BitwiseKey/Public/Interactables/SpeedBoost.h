@@ -16,5 +16,4 @@ class BITWISEKEY_API USpeedBoost : public UPowerupCollectibleBase
 
 public: 
 	void CollectPowerup(APlayerController* playerController) override;
-	void Reset() override;
 };

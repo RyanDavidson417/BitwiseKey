@@ -36,6 +36,8 @@ public:
 
 protected:
 
+
+
 	//gamemode and gamestate, playercontroller and playerstate will be declared here as well
 	TObjectPtr<ABitwiseGameMode> gm;
 	TObjectPtr<ABitwiseGameState> gs;
@@ -57,6 +59,10 @@ protected:
 	/** Reset Player Action */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Input)
 		class UInputAction* ResetPlayerAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Input)
+		class UInputAction* ActivateSpeedAction;
+
 	//movement and look input variables, set in move and look functions
 	FVector2d lastLookInput;
 	FVector2D lastMoveInput;
@@ -92,7 +98,7 @@ protected:
 	//reference to camera component
 	UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
 
-
+	bool staminaActive;
 
 	//methods
 public:
@@ -116,6 +122,7 @@ public:
 	//powerups
 	void ToggleInvisibility(const FInputActionInstance& Instance);
 	
+	void ToggleStamina();
 	void ActivateStaminaEffects();
 	void DeactivateStaminaEffects();
 

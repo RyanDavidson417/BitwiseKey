@@ -232,13 +232,12 @@ void ABitwiseGameMode::UpdateInvisCharge()
 
 void ABitwiseGameMode::UpdateStamina()
 {
-    if (gs->bHasStaminaAbility) {
-        WARN("player has a stamina ability ")
-        if (gs->bPlayerIsUsingStamina) { //count down
+    if (gs->GetHasStaminaAbility()) {
+        if (gs->GetPlayerIsUsingStamina()) { //count down
 
             //decrease the value, setting it no lower than 0 and no higher than the max
             StaminaStatStruct.currentCharge = FMath::Clamp(
-                StaminaStatStruct.currentCharge - StaminaStatStruct.DischargeRate,
+                StaminaStatStruct.currentCharge - (StaminaStatStruct.DischargeRate / StaminaStatStruct.Precision),
                 0.0, StaminaStatStruct.MaxCharge);
 
             if (StaminaStatStruct.currentCharge == 0) {
@@ -265,7 +264,7 @@ void ABitwiseGameMode::UpdateStamina()
 
             //increase stamina, setting it no lower than 0 and no higher than the max
             StaminaStatStruct.currentCharge = FMath::Clamp(
-                StaminaStatStruct.currentCharge + StaminaStatStruct.ChargeRate,
+                StaminaStatStruct.currentCharge + (StaminaStatStruct.ChargeRate / StaminaStatStruct.Precision),
                 0.0, StaminaStatStruct.MaxCharge);
 
 
