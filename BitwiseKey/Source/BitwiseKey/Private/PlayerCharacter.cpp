@@ -92,7 +92,7 @@ void APlayerCharacter::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	TraceLine();
-
+	
 }
 
 // Called to bind functionality to input

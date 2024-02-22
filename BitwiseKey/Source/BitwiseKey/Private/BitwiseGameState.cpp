@@ -59,9 +59,9 @@ void ABitwiseGameState::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	BuildPowerupMap();
 	ResetGameState();//necessary because otherwise the dataAsset's data would persist after rebooting game
 
-	BuildPowerupMap();
 
 
 }
