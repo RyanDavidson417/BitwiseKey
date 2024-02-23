@@ -260,14 +260,6 @@ void APlayerCharacter::ToggleInvisibility(const FInputActionInstance& Instance)
 	WARN("toggle invisibility input called");
 	gm->ToggleInvisibility();
 
-	if (gs->InvisibilityData->bEnabled) {
-
-		GetCharacterMovement()->GravityScale = 1;
-	}
-	else {
-		GetCharacterMovement()->GravityScale = 2;
-
-	}
 
 }
 
