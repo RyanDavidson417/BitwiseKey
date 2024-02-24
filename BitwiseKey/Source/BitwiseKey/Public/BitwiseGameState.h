@@ -93,6 +93,8 @@ public:
 	UPowerupDataBase* SpeedBoostData;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
 	UPowerupDataBase* JumpBoostData;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
+	UPowerupDataBase* DoubleJumpData;
 
 
 

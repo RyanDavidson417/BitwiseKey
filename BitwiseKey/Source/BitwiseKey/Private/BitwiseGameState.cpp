@@ -27,6 +27,8 @@ void ABitwiseGameState::BuildPowerupMap()
 	PowerupDataArray.Add(InvisibilityData);
 	PowerupDataArray.Add(SpeedBoostData);
 	PowerupDataArray.Add(JumpBoostData);
+	PowerupDataArray.Add(DoubleJumpData);
+
 
 }
 

@@ -16,6 +16,7 @@ void UJumpBoost::CollectPowerup(APlayerController* playerController)
 void UJumpBoost::Reset()
 {
 	if (IsValid(gs)) {
+		gs->JumpBoostData->bCollected = false;
 		if (IsValid(MPlayerController)) {
 			MPlayerController->GetCharacter()->GetCharacterMovement()->JumpZVelocity
 				= gs->JumpBoostData->defaultValue;
