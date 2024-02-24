@@ -2,8 +2,8 @@
 
 
 #include "CollectionInteractable.h"
-#include "CustomGameState.h"
-#include "CustomGameMode.h"
+#include "BitwiseGameState.h"
+#include "BitwiseGameMode.h"
 #include "Components/AudioComponent.h" 
 #include "Interactables/ASpawnPowerup.h"
 #include "BitwiseKey/BitwiseKey.h"
@@ -17,8 +17,8 @@ UCollectionInteractable::UCollectionInteractable()
 
 void UCollectionInteractable::BeginPlay()
 {
-	gm = GetWorld()->GetAuthGameMode<ACustomGameMode>();
-	gs = Cast<ACustomGameState>(gm->GameState);
+	gm = GetWorld()->GetAuthGameMode<ABitwiseGameMode>();
+	gs = Cast<ABitwiseGameState>(gm->GameState);
 
 	CollectionSound = GetOwner()->FindComponentByClass<UAudioComponent>(); 
 

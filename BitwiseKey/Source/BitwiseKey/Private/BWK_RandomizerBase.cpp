@@ -1,8 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "BWK_RandomizerBase.h"
-#include "CustomGameMode.h"
-#include "CustomGameState.h"
+#include "BitwiseGameMode.h"
+#include "BitwiseGameState.h"
 #include "Interactables/ASpawnPowerup.h"
 #include "../BitwiseKey.h"
 #include "Kismet//KismetMathLibrary.h"
@@ -21,7 +21,7 @@ void ABWK_RandomizerBase::BeginPlay()
 {
 	Super::BeginPlay();
 
-	gm = GetWorld()->GetAuthGameMode<ACustomGameMode>();
+	gm = GetWorld()->GetAuthGameMode<ABitwiseGameMode>();
 
 	RandomizeOrder();
 	PlaceItems();

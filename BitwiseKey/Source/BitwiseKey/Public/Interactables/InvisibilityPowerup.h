@@ -3,15 +3,15 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "../CollectionInteractable.h"
+#include "PowerupCollectibleBase.h"
 #include "InvisibilityPowerup.generated.h"
 
 /**
  * 
  */
 
-UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
-class BITWISEKEY_API UInvisibilityPowerup : public UCollectionInteractable
+UCLASS(ClassGroup = "PowerupComponents", meta = (BlueprintSpawnableComponent))
+class BITWISEKEY_API UInvisibilityPowerup : public UPowerupCollectibleBase
 {
 	GENERATED_BODY()
 
@@ -19,5 +19,5 @@ public:
 	UInvisibilityPowerup();
 
 	virtual void Interact(APlayerController* playerController) override;
-	
+	void CollectPowerup(APlayerController* playerController) override;
 };

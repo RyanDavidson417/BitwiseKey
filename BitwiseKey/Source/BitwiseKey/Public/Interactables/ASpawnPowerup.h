@@ -5,13 +5,13 @@
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "Interactables/XRayVision.h"  
-#include "CustomGameMode.h"
+#include "BitwiseGameMode.h"
 #include "Interactables/RandomItemSpawner.h"
 #include "ASpawnPowerup.generated.h"
 
-class ACustomGameMode;
+class ABitwiseGameMode;
 class UAudioComponent;
-class ACustomGameState;
+class ABitwiseGameState;
 class UXRayVision;
 class ARandomItemSpawner;
 
@@ -44,6 +44,6 @@ public:
 
 protected:
 
-	TObjectPtr<ACustomGameMode> gm;
-	TObjectPtr<ACustomGameState> gs;
+	TObjectPtr<ABitwiseGameMode> gm;
+	TObjectPtr<ABitwiseGameState> gs;
 };

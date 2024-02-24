@@ -7,8 +7,8 @@
 #include "RandomItemSpawner.generated.h"
 
 
-class ACustomGameMode;
-class ACustomGameState;
+class ABitwiseGameMode;
+class ABitwiseGameState;
 
 UCLASS()
 class BITWISEKEY_API ARandomItemSpawner : public AActor
@@ -36,7 +36,7 @@ public:
 
 protected:
 
-	TObjectPtr<ACustomGameMode> gm;
-	TObjectPtr<ACustomGameState> gs;
+	TObjectPtr<ABitwiseGameMode> gm;
+	TObjectPtr<ABitwiseGameState> gs;
 
 };

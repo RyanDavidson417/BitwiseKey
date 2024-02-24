@@ -11,10 +11,11 @@
 #include "Camera/CameraComponent.h"
 #include "Animation/AnimInstance.h"
 #include "EnhancedInputSubsystems.h"
-#include "CustomGameState.h"
+#include "BitwiseGameState.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/PlayerStart.h" 
-#include "CustomGameMode.h"
+#include "PowerupDataBase.h"
+#include "BitwiseGameMode.h"
 
 
 // Sets default values
@@ -72,14 +73,16 @@ void APlayerCharacter::BeginPlay()
 		}
 	}
 
-	gm = GetWorld()->GetAuthGameMode<ACustomGameMode>();
-	gs = Cast<ACustomGameState>(gm->GameState);
+	gm = GetWorld()->GetAuthGameMode<ABitwiseGameMode>();
+	gs = Cast<ABitwiseGameState>(gm->GameState);
 
 	gm->D_OnReset.AddDynamic(this, &APlayerCharacter::ResetPlayer);
 
 	setRandomStartRotation();
 
-	characterMovement = GetCharacterMovement();
+	CharacterMovement = GetCharacterMovement();
+
+
 }
 
 
@@ -89,7 +92,7 @@ void APlayerCharacter::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	TraceLine();
-
+	
 }
 
 // Called to bind functionality to input
@@ -121,7 +124,7 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 	EIS->BindAction(ResetPlayerAction, ETriggerEvent::Started, this, &APlayerCharacter::ResetFromPlayer);
 
-
+	EIS->BindAction(ActivateSpeedAction, ETriggerEvent::Triggered, this, &APlayerCharacter::ToggleStamina);
 
 }
 
@@ -257,31 +260,110 @@ void APlayerCharacter::ToggleInvisibility(const FInputActionInstance& Instance)
 	WARN("toggle invisibility input called");
 	gm->ToggleInvisibility();
 
-	if (gs->bPlayerIsInvisible) {
 
-		GetCharacterMovement()->GravityScale = 1;
+}
+
+//void APlayerCharacter::DeactivateInvisibilityEffects()
+//{
+//
+//}
+//
+//void APlayerCharacter::ActivateInvisibilityEffects()
+//{
+//	UCharacterMovementComponent* charMove = GetCharacterMovement();
+//	if (gs->PowerupMap.Find(EPowerUpName::PE_Invisibility)->bEnabled) {
+//		characterMovement->GravityScale = 1;
+//		characterMovement->JumpZVelocity = 400;
+//		characterMovement->MaxWalkSpeed = 1100;
+//	}
+//	else {
+//		characterMovement->GravityScale = 2;
+//		characterMovement->JumpZVelocity = 500;
+//		characterMovement->MaxWalkSpeed = 700;
+//
+//	}
+//}
+
+void APlayerCharacter::ToggleStamina()
+{
+	LOG("TOGGLE STAMINA")
+	if (staminaActive) {
+		DeactivateStaminaEffects();
 	}
 	else {
-		GetCharacterMovement()->GravityScale = 2;
+		ActivateStaminaEffects();
+	}
+	 
+}
 
+void APlayerCharacter::ActivateStaminaEffects()
+{
+	LOG("action recognized")
+
+
+	if (gs->GetHasStaminaAbility() && gm->StaminaStatStruct.currentCharge > 0) {
+
+		staminaActive = true;
+
+
+
+		if (gs->XRayData->bIsStaminaAbility) {
+			//no implementation needed as xray (currently) doesn't have any player vals associated
+			//theoretically this statement won't even ever activate
+		}
+
+		if (gs->InvisibilityData->bIsStaminaAbility) {
+			//no implementation needed as invisibility (currently) doesn't have any player vals associated
+			//theoretically this statement won't even ever activate
+		}
+
+		if (gs->SpeedBoostData->bIsStaminaAbility) {
+			LOG("action actioned ---")
+
+			CharacterMovement->MaxWalkSpeed = gs->SpeedBoostData->ActiveValue;
+			gs->SpeedBoostData->bEnabled = true;
+		}
+
+		if (gs->JumpBoostData->bIsStaminaAbility) {
+			CharacterMovement->JumpZVelocity = gs->JumpBoostData->ActiveValue;
+		}
 	}
 
 }
 
-void APlayerCharacter::ToggleInvisibilityEffects()
+void APlayerCharacter::DeactivateStaminaEffects()
 {
-	UCharacterMovementComponent* charMove = GetCharacterMovement();
-	if (gs->bPlayerIsInvisible) {
-		characterMovement->GravityScale = 1;
-		characterMovement->JumpZVelocity = 400;
-		characterMovement->MaxWalkSpeed = 1100;
+	staminaActive = false;
+
+	if (gs->XRayData->bIsStaminaAbility) {
+		//no implementation needed as xray (currently) doesn't have any player vals associated
+		//theoretically this statement won't even ever activate
 	}
-	else {
-		characterMovement->GravityScale = 2;
-		characterMovement->JumpZVelocity = 500;
-		characterMovement->MaxWalkSpeed = 700;
+
+	if (gs->InvisibilityData->bIsStaminaAbility) {
+		//no implementation needed as invisibility (currently) doesn't have any player vals associated
+		//theoretically this statement won't even ever activate
+	}
+
+	if (gs->SpeedBoostData->bIsStaminaAbility) {
+		CharacterMovement->MaxWalkSpeed = gs->SpeedBoostData->defaultValue;
+		gs->SpeedBoostData->bEnabled = false;
 
 	}
+
+	if (gs->JumpBoostData->bIsStaminaAbility) {
+		CharacterMovement->JumpZVelocity = gs->JumpBoostData->defaultValue;
+	}
+}
+
+void APlayerCharacter::ActivateJumpBoost()
+{
+	CharacterMovement->JumpZVelocity = gs->JumpBoostData->ActiveValue;
+}
+
+void APlayerCharacter::DeactivateJumpBoost()
+{
+	CharacterMovement->JumpZVelocity = gs->JumpBoostData->defaultValue;
 }
 
 void APlayerCharacter::ResetPlayer()
@@ -290,8 +372,9 @@ void APlayerCharacter::ResetPlayer()
 	
 	bReceivedFirstPlayerInput = false;
 
-	ToggleInvisibilityEffects();
 
+	DeactivateJumpBoost();
+	DeactivateStaminaEffects();
 	setRandomStartRotation();
 
 }

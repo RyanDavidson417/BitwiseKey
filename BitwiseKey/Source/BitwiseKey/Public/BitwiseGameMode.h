@@ -4,11 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameMode.h"
-#include "CustomGameState.h"
-#include "PlayerCharacter.h"
+#include "BitwiseGameState.h"
 #include "Delegates/Delegate.h"
 #include "Delegates/DelegateSignatureImpl.inl"
-#include "CustomGameMode.generated.h"
+#include "BitwiseGameMode.generated.h"
 
 
 /**
@@ -16,7 +15,7 @@
  */
 
 class APlayerCharacter;
-class ACustomGameState;
+class AGameState;
 class APawnPowerup;
 class UXRayVision;
 class UInvisibilityPowerup;
@@ -25,30 +24,69 @@ class UCollectionInteractable;
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnResetDelegate);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCollectedXrayDelegate);
 
+USTRUCT(BlueprintType)
+struct FPlayerStatStruct {
+	GENERATED_BODY()
+
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FName name;
+
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
+	float currentCharge;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
+	float ChargeRate;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
+	float DischargeRate;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
+	float MaxCharge;
+	//how many "units" the progress bar has
+	UPROPERTY(EditAnywhere, Category = "Powerups")
+	float Precision;
+	
+	FTimerHandle RechargeTimerHandle;
+
+
+
+};
 
 UCLASS()
-class BITWISEKEY_API ACustomGameMode : public AGameMode
+class BITWISEKEY_API ABitwiseGameMode : public AGameMode
 {
 	GENERATED_BODY()
 
 		//functions
 public:	
-	ACustomGameMode();
+	ABitwiseGameMode();
 
-	void randomizePowerups();
+	//concept: rather than separate functions for each ability, could we do one Collect(EPowerup powerUp)
+	// then iterate over the list of powerups until we find a match. I don't want to experiment with this now
+	// since I've already spent a long time on this refactor. I'm also wary of whether it'd properly update
+	// the references (since the TMap doesn't store them as pointers). so we may need to refactor it to a TArray.
+	// but this could be worth keeping in mind. much cleaner function call at the expense of a very small loop
+	//
+
+
 
 	void CollectXRay();
-
-	void CollectInvisibility();
+	//void CollectInvisibility();
+	//void CollectSpeedBoost();
+	//void CollectJumpBoost();
+	//
+	//void CollectPowerup(UPowerupDataBase* powerup);
+	
 	void ToggleInvisibility();
-	void updateInvisCharge();
+
+
+	void UpdateInvisCharge();
+	void UpdateStamina();
 
 	void StartGameTimer();
 
 	UFUNCTION(BlueprintCallable)
 	void ResetGameMode();
 
-	void PlaceCollectibleArray();
 
 
 protected:
@@ -64,17 +102,16 @@ private:
 public:
 	
 	UPROPERTY(BlueprintAssignable, BlueprintCallable)
-		FOnResetDelegate D_OnReset;
-
-	
+		FOnResetDelegate D_OnReset;	
 	UPROPERTY(BlueprintAssignable, BlueprintCallable)
 	FOnCollectedXrayDelegate OnCollectedXray;
+
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 		float BitwiseGameTimer = 0;
 
-	UPROPERTY(EditAnywhere, Category = "Powerups")
-		float invis_precision;
+		//the number of individual 'units' within each progress bar
+
 
 	//sound waves to play when you activate and deactivate invisibility
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Audio)
@@ -82,7 +119,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Audio)
 		USoundWave* SW_InvisDeactivate;
 
-	TObjectPtr<ACustomGameState> gs;
+	TObjectPtr<ABitwiseGameState> gs;
 	TObjectPtr<APlayerCharacter> playerCharacter;
 
 	//prefabs to spawn from
@@ -111,20 +148,18 @@ public:
 
 	AActor* LastSpawnedPowerup;
 
-	FTimerHandle InvisRechargeTimerHandle;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
+	FPlayerStatStruct InvisibilityStatStruct;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
+	FPlayerStatStruct StaminaStatStruct;
+
+
+	
 
 protected:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
-		float InvisIncrement;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
-		float InvisDecrement;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
-		float InvisMaxCharge;
 
 	TArray<AActor*> SpawnedCollectibles;
 
-	//used on reset to track which collectibles still have yet to be destroyed
-	TMap<EPowerUp, AActor*> SpawnedCollectiblesMap;
 
 private:
 	float GameStartTime;

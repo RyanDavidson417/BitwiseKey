@@ -6,6 +6,8 @@
 #include "GameFramework/Character.h"
 #include "InteractionComponent.h"
 #include "CollectionInteractable.h"
+#include "BitwiseGameMode.h"
+#include "BitwiseGameState.h"
 #include "PlayerCharacter.generated.h"
 
 class UInputComponent;
@@ -17,8 +19,9 @@ class USoundBase;
 class UCharacterMovementComponent;
 class UInteractionComponent;
 class UCollectionInteractable;
-class ACustomGameMode;
-class ACustomGameState;
+class ABitwiseGameMode;
+class UPowerupDataBase;
+class ABitwiseGameState;
 
 
 UCLASS()
@@ -33,9 +36,11 @@ public:
 
 protected:
 
+
+
 	//gamemode and gamestate, playercontroller and playerstate will be declared here as well
-	TObjectPtr<ACustomGameMode> gm;
-	TObjectPtr<ACustomGameState> gs;
+	TObjectPtr<ABitwiseGameMode> gm;
+	TObjectPtr<ABitwiseGameState> gs;
 
 	//references to the actions 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
@@ -54,6 +59,10 @@ protected:
 	/** Reset Player Action */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Input)
 		class UInputAction* ResetPlayerAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Input)
+		class UInputAction* ActivateSpeedAction;
+
 	//movement and look input variables, set in move and look functions
 	FVector2d lastLookInput;
 	FVector2D lastMoveInput;
@@ -77,7 +86,7 @@ protected:
 	UPROPERTY(VisibleAnywhere, blueprintReadOnly, Category = Interaction)
 		UCollectionInteractable* InteractionComponent;
 
-		UCharacterMovementComponent* characterMovement;
+		UCharacterMovementComponent* CharacterMovement;
 	//whether or not we've hit an actor (maybe needs to be a collectible?
 	FHitResult LineTraceHit;
 
@@ -89,8 +98,7 @@ protected:
 	//reference to camera component
 	UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
 
-
-	
+	bool staminaActive;
 
 	//methods
 public:
@@ -113,7 +121,13 @@ public:
 
 	//powerups
 	void ToggleInvisibility(const FInputActionInstance& Instance);
-	void ToggleInvisibilityEffects();
+	
+	void ToggleStamina();
+	void ActivateStaminaEffects();
+	void DeactivateStaminaEffects();
+
+	void ActivateJumpBoost();
+	void DeactivateJumpBoost();
 
 	UFUNCTION()
 	void ResetPlayer();
@@ -127,6 +141,8 @@ protected:
 	void setRandomStartRotation();
 
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
+	TMap<EPowerUpName, FPowerupStruct> StaminaPowerups;
 
 
 };
