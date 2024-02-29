@@ -76,3 +76,13 @@ Plugins/*/Intermediate/*
 # Cache files for the editor to use
 DerivedDataCache/*
 Milestones/Milestones/Content/StarterContent/
+Releases/v0.1w/Windows/Manifest_NonUFSFiles_Win64.txt
+Releases/v0.1w/Windows/Manifest_UFSFiles_Win64.txt
+Releases/v0.1w/Windows/Milestones/Content/Paks/.gitattributes
+Releases/v0.1w/Windows/Milestones/Content/Paks/global.ucas
+Releases/v0.1w/Windows/Milestones/Content/Paks/global.utoc
+Releases/v0.1w/Windows/Milestones/Content/Paks/Milestones-Windows.pak
+Releases/v0.1w/Windows/Milestones/Content/Paks/Milestones-Windows.ucas
+Releases/v0.1w/Windows/Milestones/Content/Paks/Milestones-Windows.utoc
+Releases/Initial-Release-Windows/Milestones/Content/Paks/Milestones-Windows.pak
+Releases/Initial-Release-Windows/Milestones/Content/Paks/Milestones-Windows.ucas
