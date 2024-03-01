@@ -372,7 +372,7 @@ void APlayerCharacter::ResetPlayer()
 	
 	bReceivedFirstPlayerInput = false;
 
-
+	JumpMaxCount = gs->DoubleJumpData->defaultValue;
 	DeactivateJumpBoost();
 	DeactivateStaminaEffects();
 	setRandomStartRotation();

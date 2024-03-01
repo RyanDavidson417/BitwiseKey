@@ -18,6 +18,7 @@ void ABitwiseGameState::ResetGameState()
 		powerup->bEnabled = false;
 	}
 
+
 	
 }
 
