@@ -89,3 +89,13 @@ Releases/Initial-Release-Windows/Milestones/Content/Paks/Milestones-Windows.ucas
 Windows/Milestones/Content/Paks/Milestones-Windows.pak
 Windows/Milestones/Content/Paks/Milestones-Windows.ucas
 Windows/Milestones/Content/Paks/Milestones-Windows.utoc
+
+BitwiseKey/Content/StarterContent/
+Milestones/Milestones/Content/Visual/Particles/XrayWallSystem.uasset
+Releases/v0.2w/Windows/BitwiseKey/Content/Paks/BitwiseKey-Windows.pak
+Releases/v0.2w/Windows/BitwiseKey/Content/Paks/BitwiseKey-Windows.ucas
+Releases/v0.2w/Windows/BitwiseKey/Content/Paks/global.ucas
+Windows/Manifest_NonUFSFiles_Win64.txt
+Windows/Manifest_UFSFiles_Win64.txt
+Windows/Milestones/Content/Paks/global.ucas
+Windows/Milestones/Content/Paks/global.utoc
