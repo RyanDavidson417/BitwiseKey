@@ -10,7 +10,7 @@
 class AActorComponent;
 class RandomItemSpawner;
 class ABitwiseGameMode;
-
+class ALevelPrefabBase;
 
 UCLASS()
 class BITWISEKEY_API ABWK_RandomizerBase : public AActor

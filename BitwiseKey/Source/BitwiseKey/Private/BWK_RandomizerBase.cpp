@@ -5,6 +5,7 @@
 #include "BitwiseGameState.h"
 #include "Interactables/ASpawnPowerup.h"
 #include "../BitwiseKey.h"
+#include "LevelPrefabBase.h"
 #include "Kismet//KismetMathLibrary.h"
 
 // Sets default values
@@ -39,12 +40,9 @@ void ABWK_RandomizerBase::RandomizeOrder()
 	TArray<TSubclassOf<AActor>> RandomizedArray; // create a new (blank) array for us to copy the items into
 	int NumOfItems = ItemArray.Num();
 	//RandomizedArray.SetNum(NumOfItems); //set the size of the new array equal to our current item array
-
-	
 	for (int i = 0; i < NumOfItems; i++) {
 
 		//check if it's null? or maybe we still want to re-randomize if it's null and check that if it's placed
-
 
 		int rand = FMath::RandRange(0, NumOfItems- i - 1);
 		LOG("ARRAY SPOT: %d, num of items: %d", rand, NumOfItems)
@@ -79,15 +77,21 @@ void ABWK_RandomizerBase::PlaceItems()
 					SpawnerArray[i]->GetActorRotation())) {
 
 					PlacedActors.Add(PlacedActor);
+					PlacedActor->SetOwner(this);
 
-					LOG("placed item number %d", i)
+					LOG("placed item number %d object name %s done by %s", i, *PlacedActor->GetName(), *GetName())
 
+					//if we're spawning a powerup, set the reference to the spawn point
+					//this is used for playing the collection audio
 					if (ASpawnPowerup* PowerupSpawn = Cast<ASpawnPowerup>(SpawnerArray[i])) {
 						if (UCollectionInteractable* Powerup = PlacedActor->FindComponentByClass<UCollectionInteractable>()) {
 								Powerup->SpawnPoint = PowerupSpawn;
 						}
 					}
 				}		
+			}
+			else {
+				WARN("SPAWNER ARRAY NOT VALID FOR %s", *GetName())
 			}
 
 			//sets the spawn point for the collectionInteractable
@@ -108,9 +112,28 @@ void ABWK_RandomizerBase::ResetItems()
 	LOG("HELLO3")
 	for (TObjectPtr<AActor> actor : PlacedActors) {
 		if (actor) {
+
+			if (ALevelPrefabBase* LevelPrefab = Cast<ALevelPrefabBase>(actor)) {
+				LOG("level prefab found")
+				for (ABWK_RandomizerBase* randomizer : LevelPrefab->RandomizerArray ) {
+					if (IsValid(randomizer)) {
+
+						for (AActor* item : randomizer->PlacedActors) {
+							if (IsValid(item)) {
+									GetWorld()->DestroyActor(item);
+
+							}
+						}
+					}
+				}
+			}
+
+			LOG("DESTROYED OBJECT  %s", *actor->GetName())
 			GetWorld()->DestroyActor(actor);
 		}
 	}
+
+	PlacedActors.Empty();
 
 	RandomizeOrder();
 	PlaceItems();
