@@ -32,6 +32,7 @@ void ABWK_RandomizerBase::BeginPlay()
 
 void ABWK_RandomizerBase::RandomizeOrder()
 {
+	LOG("name: %s", *GetName())
 
 	// -- RANDOMIZE ORDER OF ITEMS --
 	//if we ever wanted to place items without randomizing, we could surround this region with a bool 
@@ -39,6 +40,7 @@ void ABWK_RandomizerBase::RandomizeOrder()
 	int NumOfItems = ItemArray.Num();
 	//RandomizedArray.SetNum(NumOfItems); //set the size of the new array equal to our current item array
 
+	
 	for (int i = 0; i < NumOfItems; i++) {
 
 		//check if it's null? or maybe we still want to re-randomize if it's null and check that if it's placed
@@ -59,42 +61,39 @@ void ABWK_RandomizerBase::RandomizeOrder()
 void ABWK_RandomizerBase::PlaceItems()
 {
 
-	LOG("HELLO2")
 	// -- PLACE ITEMS --
 
+
 	int NumOfSpawns = SpawnerArray.Num();
+		LOG("name: %s, NUM OF ITEMS %d", *GetName(), NumOfSpawns)
 	for (int i = 0; i < NumOfSpawns; i++) {
 
 		AActor* PlacedActor;
 
 
 
-		if (ItemArray[i]) {//if item array at i is not null, do nothing, otherwise empty items would cause a nullref
-			if (PlacedActor = GetWorld()->SpawnActor<AActor>(
-				ItemArray[i], SpawnerArray[i]->GetActorLocation(),
-				SpawnerArray[i]->GetActorRotation())) {
+		if (IsValid(ItemArray[i])) {//if item array at i is not null, do nothing, otherwise empty items would cause a nullref
+			if (IsValid(SpawnerArray[i])) {
+				if (PlacedActor = GetWorld()->SpawnActor<AActor>(
+					ItemArray[i], SpawnerArray[i]->GetActorLocation(),
+					SpawnerArray[i]->GetActorRotation())) {
 
-				PlacedActors.Add(PlacedActor);
+					PlacedActors.Add(PlacedActor);
 
-				if (ASpawnPowerup* PowerupSpawn = Cast<ASpawnPowerup>(SpawnerArray[i])) {
-					if (UCollectionInteractable* Powerup = PlacedActor->FindComponentByClass<UCollectionInteractable>()) {
-							Powerup->SpawnPoint = PowerupSpawn;
+					LOG("placed item number %d", i)
+
+					if (ASpawnPowerup* PowerupSpawn = Cast<ASpawnPowerup>(SpawnerArray[i])) {
+						if (UCollectionInteractable* Powerup = PlacedActor->FindComponentByClass<UCollectionInteractable>()) {
+								Powerup->SpawnPoint = PowerupSpawn;
+						}
 					}
-					
-
-				}
+				}		
 			}
-
-
-			
-			
 
 			//sets the spawn point for the collectionInteractable
 			//could also theoretically do this in a separate powerupRandomizer class inherited from RandomizerBase
 			//however this is currently the only different functionality. if I add more I'll refactor this as well
 			
-
-
 			//XRayCollectible, PowerupSpawnLocations[i]->GetActorLocation(), 
 			//PowerupSpawnLocations[i]->GetActorRotation());
 

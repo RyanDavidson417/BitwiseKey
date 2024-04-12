@@ -49,6 +49,7 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "Randomization")
 	TArray<TSubclassOf<AActor>> ItemArray;
 
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "Randomization")
 	TArray<ARandomItemSpawner*> SpawnerArray;
 
