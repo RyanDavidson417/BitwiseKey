@@ -58,14 +58,6 @@ protected:
 	UPROPERTY(EditAnywhere, blueprintReadWrite)
 	TObjectPtr<ABWK_RandomizerBase> Randomizer;
 
-	UPROPERTY(EditAnywhere, blueprintReadWrite)
-		UMaterialInterface* Material;
-
-	UPROPERTY(EditAnywhere, blueprintReadWrite)
-		FLinearColor PowerupColor;
-
-	UPROPERTY(EditAnywhere, blueprintReadWrite)
-		UStaticMeshComponent* PodMesh;
 
 
 };

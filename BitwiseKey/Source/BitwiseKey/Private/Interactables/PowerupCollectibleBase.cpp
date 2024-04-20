@@ -49,4 +49,15 @@ void UPowerupCollectibleBase::BeginPlay()
 		gm->D_OnReset.AddDynamic(this, &UPowerupCollectibleBase::Reset);
 
 	}
+
+	PodMesh = Cast<UStaticMeshComponent>(GetOwner()->GetComponentByClass(UStaticMeshComponent::StaticClass()));
+
+	UMaterialInstanceDynamic* DynMaterial = UMaterialInstanceDynamic::Create(Material, GetOwner());
+
+	DynMaterial->SetVectorParameterValue(FName("Emissive color 01"), PowerupColor);
+
+	PodMesh->SetMaterial(2, DynMaterial);
+
+	//WARN("podmesh: %s ", *PodMesh->GetName())
+
 }

@@ -34,4 +34,14 @@ public:
 
 protected:
 	APlayerController* MPlayerController;
+
+
+	UPROPERTY(EditAnywhere, blueprintReadWrite)
+	FLinearColor PowerupColor;
+	
+	UPROPERTY(EditAnywhere, blueprintReadWrite)
+	UMaterialInterface* Material;
+
+	UPROPERTY(EditAnywhere, blueprintReadWrite)
+	UStaticMeshComponent* PodMesh;
 };

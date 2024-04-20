@@ -24,15 +24,7 @@ void UCollectionInteractable::BeginPlay()
 
 	StartZ = GetOwner()->GetActorLocation().Z;
 
-	PodMesh =  Cast<UStaticMeshComponent>(GetOwner()->GetComponentByClass(UStaticMeshComponent::StaticClass()));
 
-	UMaterialInstanceDynamic* DynMaterial = UMaterialInstanceDynamic::Create(Material, GetOwner());
-
-	DynMaterial->SetVectorParameterValue(FName("Emissive color 01"), PowerupColor);
-
-	PodMesh->SetMaterial(2, DynMaterial);
-
-	WARN("podmesh: %s ", *PodMesh->GetName())
 
 
 	//if we wanted different collection sounds for different powerups, we'd probably set those on the powerup prefab, then copy the data over here
@@ -63,13 +55,11 @@ void UCollectionInteractable::TickComponent(float DeltaTime, ELevelTick TickType
 
 void UCollectionInteractable::Interact(APlayerController* playerController)
 {
-	
 
 	if (Randomizer) {
 
 		Randomizer->RemoveItemFromPlacedActors(GetOwner());
 	}
-
 
 	GetOwner()->Destroy();
 }
