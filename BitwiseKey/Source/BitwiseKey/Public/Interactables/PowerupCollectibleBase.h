@@ -32,6 +32,8 @@ public:
 	virtual void Reset();
 	virtual void BeginPlay() override;
 
+
+
 protected:
 	APlayerController* MPlayerController;
 

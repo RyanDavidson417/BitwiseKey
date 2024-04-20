@@ -31,6 +31,11 @@ void ABWK_RandomizerBase::BeginPlay()
 }
 
 
+
+void ABWK_RandomizerBase::ReceiveOnItemsPlaced_Implementation()
+{//no c++ behavior
+}
+
 void ABWK_RandomizerBase::RandomizeOrder()
 {
 	LOG("name: %s", *GetName())
@@ -103,6 +108,7 @@ void ABWK_RandomizerBase::PlaceItems()
 
 		}
 	}
+	ReceiveOnItemsPlaced();
 	LOG("ARRAY placed")
 }
 

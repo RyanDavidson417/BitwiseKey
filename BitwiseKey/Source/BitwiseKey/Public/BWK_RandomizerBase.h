@@ -25,8 +25,12 @@ public:
 
 
 
-
+	UFUNCTION()
 	virtual void PlaceItems();
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (DisplayName = "OnItemsPlaced"))
+	void ReceiveOnItemsPlaced(); //no c++ implementation
+	virtual void ReceiveOnItemsPlaced_Implementation();
 	virtual void RandomizeOrder();
 	UFUNCTION()
 	virtual void ResetItems();
