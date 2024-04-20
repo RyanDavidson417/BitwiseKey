@@ -11,6 +11,7 @@ class AActorComponent;
 class RandomItemSpawner;
 class ABitwiseGameMode;
 class ALevelPrefabBase;
+class UPowerupCollectibleBase;
 
 UCLASS()
 class BITWISEKEY_API ABWK_RandomizerBase : public AActor
@@ -64,7 +65,5 @@ protected:
 
 
 public:
-	UPROPERTY(EditAnywhere, Category = "Randomization")
-	TArray<TSubclassOf<AActor>> ItemArrayPlease;
 
 };

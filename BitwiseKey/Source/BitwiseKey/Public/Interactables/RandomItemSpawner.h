@@ -7,8 +7,13 @@
 #include "RandomItemSpawner.generated.h"
 
 
+struct FLinearColor;
 class ABitwiseGameMode;
 class ABitwiseGameState;
+class UPowerupCollectibleBase;
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnPowUpAssignedNPSignature);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPowUpAssignedSignature, FLinearColor, PowerupColor);
 
 UCLASS()
 class BITWISEKEY_API ARandomItemSpawner : public AActor
@@ -16,8 +21,6 @@ class BITWISEKEY_API ARandomItemSpawner : public AActor
 	GENERATED_BODY()
 	
 public:	
-	// Sets default values for this actor's properties
-	ARandomItemSpawner();
 
 protected:
 	// Called when the game starts or when spawned
@@ -27,6 +30,20 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 	virtual void Spawn(TSubclassOf<AActor*> actor);
+
+	// Sets default values for this actor's properties
+	ARandomItemSpawner();
+
+	//sort of a late OnReset delegate, called every on reset after the powerups have been assigned
+	UPROPERTY(BlueprintAssignable, BlueprintCallable)
+	FOnPowUpAssignedSignature D_OnPowUpAssignedNPDelegate;
+
+	//sort of a late OnReset delegate, called every on reset after the powerups have been assigned
+	UPROPERTY(BlueprintAssignable, BlueprintCallable)
+	FOnPowUpAssignedSignature D_OnPowUpAssignedDelegate;
+	
+	UPROPERTY(BlueprintReadOnly)
+	UPowerupCollectibleBase* CurrentPowerup;
 
 
 public:

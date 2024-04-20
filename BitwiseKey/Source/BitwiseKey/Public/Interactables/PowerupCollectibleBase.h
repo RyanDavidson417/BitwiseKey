@@ -15,6 +15,7 @@
 
 class ASpawnPowerup;
 class UPowerupDataBase;
+
 UCLASS()
 class BITWISEKEY_API UPowerupCollectibleBase : public UCollectionInteractable
 {
@@ -33,6 +34,10 @@ public:
 	virtual void BeginPlay() override;
 
 
+
+
+	UPROPERTY(EditAnywhere, blueprintReadWrite)
+	ASpawnPowerup* SpawnPoint;
 
 protected:
 	APlayerController* MPlayerController;

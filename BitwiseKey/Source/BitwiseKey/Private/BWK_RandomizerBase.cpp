@@ -4,6 +4,7 @@
 #include "BitwiseGameMode.h"
 #include "BitwiseGameState.h"
 #include "Interactables/ASpawnPowerup.h"
+#include "Interactables/PowerupCollectibleBase.h"
 #include "../BitwiseKey.h"
 #include "LevelPrefabBase.h"
 #include "Kismet//KismetMathLibrary.h"
@@ -89,10 +90,16 @@ void ABWK_RandomizerBase::PlaceItems()
 					//if we're spawning a powerup, set the reference to the spawn point
 					//this is used for playing the collection audio
 					if (ASpawnPowerup* PowerupSpawn = Cast<ASpawnPowerup>(SpawnerArray[i])) {
-						if (UCollectionInteractable* Powerup = PlacedActor->FindComponentByClass<UCollectionInteractable>()) {
+						if (UPowerupCollectibleBase* Powerup = PlacedActor->FindComponentByClass<UPowerupCollectibleBase>()) {
 								Powerup->SpawnPoint = PowerupSpawn;
 						}
 					}
+					//this is definitely improper inheritence, 
+					// but I'm not sure how exactly to go about fixing it.
+					// My best idea would be to have some setSpawnPoint() function that
+					// I call on the "Powerup" Object, but since it's being originally 
+					// passed as an Actor. I can't add or override any methods there.
+
 				}		
 			}
 			else {

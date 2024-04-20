@@ -45,8 +45,6 @@ public:
 	UPROPERTY(EditAnywhere, blueprintReadWrite, Category = Audio)
 		TObjectPtr<class UAudioComponent> CollectionSound;
 
-	UPROPERTY(EditAnywhere, blueprintReadWrite)
-		ASpawnPowerup* SpawnPoint;
 
 protected:
 
