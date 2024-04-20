@@ -13,6 +13,7 @@
  * 
  */
 
+class ASpawnPowerup;
 class UPowerupDataBase;
 UCLASS()
 class BITWISEKEY_API UPowerupCollectibleBase : public UCollectionInteractable

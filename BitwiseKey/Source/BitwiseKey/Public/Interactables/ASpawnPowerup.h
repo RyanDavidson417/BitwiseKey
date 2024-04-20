@@ -13,6 +13,7 @@ class ABitwiseGameMode;
 class UAudioComponent;
 class ABitwiseGameState;
 class UXRayVision;
+class UPowerupCollectibleBase;
 class ARandomItemSpawner;
 
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
@@ -26,6 +27,9 @@ public:
 
 	UPROPERTY(EditAnywhere, blueprintReadWrite, Category = Audio)
 		TObjectPtr<class UAudioComponent> CollectionSound;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "Collectibles")
+	TObjectPtr<UPowerupCollectibleBase> PowerUp;
 
 protected:
 	// Called when the game starts or when spawned

@@ -137,6 +137,7 @@ void ABWK_RandomizerBase::ResetItems()
 
 	RandomizeOrder();
 	PlaceItems();
+	//invoke placed items
 }
 
 void ABWK_RandomizerBase::RemoveItemFromPlacedActors(TObjectPtr<AActor> actor)

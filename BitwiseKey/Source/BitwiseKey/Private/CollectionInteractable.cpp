@@ -63,36 +63,13 @@ void UCollectionInteractable::TickComponent(float DeltaTime, ELevelTick TickType
 
 void UCollectionInteractable::Interact(APlayerController* playerController)
 {
-	if (IsValid(CollectionSound)) {
-		CollectionSound->Play();
-	}
-	else {
-		WARN("collection sound not valid")
-
-	}
-
-	//play sound
-	//CollectionSound->Play();
-	if (IsValid(SpawnPoint)) {
-		if (IsValid(SpawnPoint->CollectionSound)) {
-			SpawnPoint->CollectionSound->Play();
-
-		}
-		else {
-			WARN("collection sound not valid")
-		}
-	}
-	else {
-		WARN("spawn point not valid")
-
-	}
+	
 
 	if (Randomizer) {
 
 		Randomizer->RemoveItemFromPlacedActors(GetOwner());
 	}
 
-	// while (CollectionSound->IsPlaying()) {	}//infinite loop lmao
 
 	GetOwner()->Destroy();
 }

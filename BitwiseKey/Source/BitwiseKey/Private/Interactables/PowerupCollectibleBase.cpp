@@ -2,6 +2,8 @@
 
 
 #include "Interactables/PowerupCollectibleBase.h"
+#include "Components/AudioComponent.h" 
+#include "Interactables/ASpawnPowerup.h"
 #include "BitwiseGameMode.h"
 
 void UPowerupCollectibleBase::CollectPowerup(APlayerController* playerController)
@@ -14,6 +16,24 @@ void UPowerupCollectibleBase::Interact(APlayerController* PlayerController)
 	MPlayerController = PlayerController;
 
 	CollectPowerup(PlayerController);
+
+
+
+	//play sound
+	//CollectionSound->Play();
+	if (IsValid(SpawnPoint)) {
+		if (IsValid(SpawnPoint->CollectionSound)) {
+			SpawnPoint->CollectionSound->Play();
+
+		}
+		else {
+			WARN("collection sound not valid")
+		}
+	}
+	else {
+		WARN("spawn point not valid")
+
+	}
 
 	Super::Interact(PlayerController);//call at the end as this destroys the object
 }
