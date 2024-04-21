@@ -36,7 +36,7 @@ public:
 
 	//sort of a late OnReset delegate, called every on reset after the powerups have been assigned
 	UPROPERTY(BlueprintAssignable, BlueprintCallable)
-	FOnPowUpAssignedSignature D_OnPowUpAssignedNPDelegate;
+	FOnPowUpAssignedNPSignature D_OnPowUpAssignedNPDelegate;
 
 	//sort of a late OnReset delegate, called every on reset after the powerups have been assigned
 	UPROPERTY(BlueprintAssignable, BlueprintCallable)

@@ -99,7 +99,6 @@ void ABWK_RandomizerBase::PlaceItems()
 					// My best idea would be to have some setSpawnPoint() function that
 					// I call on the "Powerup" Object, but since it's being originally 
 					// passed as an Actor. I can't add or override any methods there.
-
 				}		
 			}
 			else {
