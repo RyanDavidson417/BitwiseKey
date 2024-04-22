@@ -39,7 +39,7 @@ void ABWK_RandomizerBase::ReceiveOnItemsPlaced_Implementation()
 
 void ABWK_RandomizerBase::RandomizeOrder()
 {
-	LOG("name: %s", *GetName())
+	//LOG("name: %s", *GetName())
 
 	// -- RANDOMIZE ORDER OF ITEMS --
 	//if we ever wanted to place items without randomizing, we could surround this region with a bool 
@@ -51,7 +51,7 @@ void ABWK_RandomizerBase::RandomizeOrder()
 		//check if it's null? or maybe we still want to re-randomize if it's null and check that if it's placed
 
 		int rand = FMath::RandRange(0, NumOfItems- i - 1);
-		LOG("ARRAY SPOT: %d, num of items: %d", rand, NumOfItems)
+		//LOG("ARRAY SPOT: %d, num of items: %d", rand, NumOfItems)
 		//FMath::RandRange(0, NumOfItems - i - 1);//generate a random number from the number of loops we've had up 
 		RandomizedArray.Add(ItemArray[rand]);
 		ItemArray.RemoveAt(rand);//necessary because as we remove items from the array we don't want them drawn again
@@ -69,7 +69,7 @@ void ABWK_RandomizerBase::PlaceItems()
 
 
 	int NumOfSpawns = SpawnerArray.Num();
-		LOG("name: %s, NUM OF ITEMS %d", *GetName(), NumOfSpawns)
+		//LOG("name: %s, NUM OF ITEMS %d", *GetName(), NumOfSpawns)
 	for (int i = 0; i < NumOfSpawns; i++) {
 
 		AActor* PlacedActor;
@@ -85,7 +85,7 @@ void ABWK_RandomizerBase::PlaceItems()
 					PlacedActors.Add(PlacedActor);
 					PlacedActor->SetOwner(this);
 
-					LOG("placed item number %d object name %s done by %s", i, *PlacedActor->GetName(), *GetName())
+					//LOG("placed item number %d object name %s done by %s", i, *PlacedActor->GetName(), *GetName())
 
 					//if we're spawning a powerup, set the reference to the spawn point
 					//this is used for playing the collection audio
@@ -115,18 +115,17 @@ void ABWK_RandomizerBase::PlaceItems()
 		}
 	}
 	ReceiveOnItemsPlaced();
-	LOG("ARRAY placed")
+	//LOG("ARRAY placed")
 }
 
 
 void ABWK_RandomizerBase::ResetItems()
 {
-	LOG("HELLO3")
 	for (TObjectPtr<AActor> actor : PlacedActors) {
 		if (actor) {
 
 			if (ALevelPrefabBase* LevelPrefab = Cast<ALevelPrefabBase>(actor)) {
-				LOG("level prefab found")
+				//LOG("level prefab found")
 				for (ABWK_RandomizerBase* randomizer : LevelPrefab->RandomizerArray ) {
 					if (IsValid(randomizer)) {
 
@@ -140,7 +139,7 @@ void ABWK_RandomizerBase::ResetItems()
 				}
 			}
 
-			LOG("DESTROYED OBJECT  %s", *actor->GetName())
+			//LOG("DESTROYED OBJECT  %s", *actor->GetName())
 			GetWorld()->DestroyActor(actor);
 		}
 	}
