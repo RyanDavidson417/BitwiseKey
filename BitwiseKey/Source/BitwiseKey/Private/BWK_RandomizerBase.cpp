@@ -7,6 +7,7 @@
 #include "Interactables/PowerupCollectibleBase.h"
 #include "../BitwiseKey.h"
 #include "LevelPrefabBase.h"
+#include "Engine/GameInstance.h"
 #include "Kismet//KismetMathLibrary.h"
 
 // Sets default values
@@ -30,7 +31,6 @@ void ABWK_RandomizerBase::BeginPlay()
 	gm->D_OnReset.AddDynamic(this, &ABWK_RandomizerBase::ResetItems);
 		//
 }
-
 
 
 void ABWK_RandomizerBase::ReceiveOnItemsPlaced_Implementation()
