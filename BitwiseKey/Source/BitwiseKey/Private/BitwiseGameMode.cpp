@@ -132,6 +132,11 @@ void ABitwiseGameMode::ResetGameMode()
     StartGameTimer();
 }
 
+void ABitwiseGameMode::WinGame()
+{
+    LOG("YOU WIN")
+}
+
 
 //void ABitwiseGameMode::CollectSpeedBoost()
 //{

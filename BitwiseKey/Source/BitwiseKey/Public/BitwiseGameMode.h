@@ -91,6 +91,8 @@ public:
 	void ResetGameMode();
 
 
+	UFUNCTION(BlueprintCallable)
+	void WinGame();
 
 protected:
 	// Called when the game starts or when spawned
