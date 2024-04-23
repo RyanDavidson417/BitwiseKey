@@ -107,8 +107,10 @@ public:
 	UPROPERTY(BlueprintAssignable, BlueprintCallable)
 		FOnResetDelegate D_OnReset;	
 	UPROPERTY(BlueprintAssignable, BlueprintCallable)
-	FOnCollectedXrayDelegate OnCollectedXray; //xray gets a unique delegate since the delegate is tied to
-//other functionality. this allows us to not have to pass a parameter or refactor the prior functionality
+	FOnCollectedXrayDelegate OnCollectedXray; // this delegate is separate from the generic OnAbilityCollected
+	//delegate as xray objects have specific functionality that was implemented prior to the creation
+	// of these delegates.After I further research the performance of delegates I may consider refactoring
+	// that old functionality to be tied to the new delegate, but for now it stays.  
 
 
 	UPROPERTY(BlueprintAssignable, BlueprintCallable)

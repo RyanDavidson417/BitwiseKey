@@ -152,6 +152,7 @@ void ABitwiseGameMode::CollectXRay()
     gs->XRayData->bCollected = true;
     //used to notify all xray objects to update their state
     OnCollectedXray.Broadcast();
+    OnCollectedAbilityDelegate.Broadcast(EPowerUpName::PE_XRay);
 
 }
 
