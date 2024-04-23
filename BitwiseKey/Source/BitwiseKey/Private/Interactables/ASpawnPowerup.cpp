@@ -2,15 +2,15 @@
 #pragma once
 
 #include "Interactables/ASpawnPowerup.h"
-#include "BitwiseGameState.h"
+#include "Core/BitwiseGameState.h"
 #include "Components/AudioComponent.h" 
 #include "Interactables/XRayVision.h"  
-#include "BitwiseGameMode.h"
+#include "Core/BitwiseGameMode.h"
 #include "Math/Rotator.h"
-#include "CollectionInteractable.h"
+#include "LevelObjects/CollectionInteractable.h"
 #include "Interactables/RandomItemSpawner.h"
 #include "Math/Vector.h" 
-#include "CollectionInteractable.h"
+#include "LevelObjects/CollectionInteractable.h"
 #include "../BitwiseKey.h"
 #include "Engine/World.h" 
 

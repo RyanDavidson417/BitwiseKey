@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "PowerupCollectibleBase.h"
+#include "Interactables/PowerupCollectibleBase.h"
 #include "XRayVision.generated.h"
 
 /**

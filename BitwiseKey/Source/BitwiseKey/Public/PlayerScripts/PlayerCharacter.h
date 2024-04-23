@@ -4,10 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-#include "InteractionComponent.h"
-#include "CollectionInteractable.h"
-#include "BitwiseGameMode.h"
-#include "BitwiseGameState.h"
+#include "LevelObjects/InteractionComponent.h"
+#include "LevelObjects/CollectionInteractable.h"
+#include "Core/BitwiseGameMode.h"
+#include "Core/BitwiseGameState.h"
 #include "PlayerCharacter.generated.h"
 
 class UInputComponent;

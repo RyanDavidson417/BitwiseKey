@@ -1,9 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "BitwiseGameState.h"
+#include "Core/BitwiseGameState.h"
 #include "BitwiseKey/BitwiseKey.h"
-#include "PowerupDataBase.h"
+#include "LevelObjects/PowerupDataBase.h"
 
 
 ABitwiseGameState::ABitwiseGameState()

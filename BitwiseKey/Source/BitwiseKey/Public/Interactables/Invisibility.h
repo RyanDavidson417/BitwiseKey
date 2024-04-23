@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "CollectionInteractable.h"
+#include "LevelObjects/CollectionInteractable.h"
 //#include "Invisibility.generated.h"
 
 /**

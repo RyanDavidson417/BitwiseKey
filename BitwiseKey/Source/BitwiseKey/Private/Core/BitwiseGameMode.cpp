@@ -1,21 +1,21 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "BitwiseGameMode.h"
+#include "Core/BitwiseGameMode.h"
 #include "Interactables/ASpawnPowerup.h"
-#include "BitwiseGameState.h"
-#include "CollectionInteractable.h"
+#include "Core/BitwiseGameState.h"
+#include "LevelObjects/CollectionInteractable.h"
 #include "Interactables/XRayVision.h"  
 #include "Interactables/InvisibilityPowerup.h"
-#include "PlayerCharacter.h"
+#include "PlayerScripts/PlayerCharacter.h"
 #include "Math/UnrealMathUtility.h"
 #include "BitwiseKey/BitwiseKey.h"
 #include "Components/AudioComponent.h" 
-#include "PowerupDataBase.h"
+#include "LevelObjects/PowerupDataBase.h"
 #include "Kismet/GameplayStatics.h" 
 #include "TimerManager.h"
 #include "Kismet/KismetArrayLibrary.h"
 #include "UObject/ConstructorHelpers.h" 
-#include "BitwiseGameState.h"
+#include "Core/BitwiseGameState.h"
 
 
 ABitwiseGameMode::ABitwiseGameMode()

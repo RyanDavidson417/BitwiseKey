@@ -4,7 +4,7 @@
 #include "Interactables/PowerupCollectibleBase.h"
 #include "Components/AudioComponent.h" 
 #include "Interactables/ASpawnPowerup.h"
-#include "BitwiseGameMode.h"
+#include "Core/BitwiseGameMode.h"
 
 void UPowerupCollectibleBase::CollectPowerup(APlayerController* playerController)
 {

@@ -1,8 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "LevelPrefabBase.h"
-#include "BWK_RandomizerBase.h"
+#include "LevelObjects/LevelPrefabBase.h"
+#include "LevelObjects/BWK_RandomizerBase.h"
 
 // Sets default values
 ALevelPrefabBase::ALevelPrefabBase()

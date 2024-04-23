@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "Interactables/XRayVision.h"  
-#include "BitwiseGameMode.h"
+#include "Core/BitwiseGameMode.h"
 #include "Interactables/RandomItemSpawner.h"
 #include "ASpawnPowerup.generated.h"
 

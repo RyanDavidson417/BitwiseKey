@@ -1,6 +1,6 @@
 
 #include "Interactables/BWK_DoubleJump.h"
-#include "PlayerCharacter.h"
+#include "PlayerScripts/PlayerCharacter.h"
 
 void UDoubleJump::CollectPowerup(APlayerController* PlayerController)
 {

@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "InteractionComponent.h"
+#include "LevelObjects/InteractionComponent.h"
 
 // Sets default values for this component's properties
 UInteractionComponent::UInteractionComponent()

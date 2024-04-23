@@ -2,7 +2,7 @@
 
 
 #include "Interactables/InvisibilityPowerup.h"
-#include "BitwiseGameMode.h"
+#include "Core/BitwiseGameMode.h"
 
 UInvisibilityPowerup::UInvisibilityPowerup()
 {

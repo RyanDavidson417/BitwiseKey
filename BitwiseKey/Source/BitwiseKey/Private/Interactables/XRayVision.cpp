@@ -2,7 +2,7 @@
 
 
 #include "Interactables/XRayVision.h"  
-#include "BitwiseGameMode.h"
+#include "Core/BitwiseGameMode.h"
 
 UXRayVision::UXRayVision()
 {

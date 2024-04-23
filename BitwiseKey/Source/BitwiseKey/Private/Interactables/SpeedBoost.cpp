@@ -3,7 +3,7 @@
 
 #include "Interactables/SpeedBoost.h"
 #include "GameFramework/CharacterMovementComponent.h"
-#include "PlayerCharacter.h"
+#include "PlayerScripts/PlayerCharacter.h"
 
 void USpeedBoost::CollectPowerup(APlayerController* playerController)
 {

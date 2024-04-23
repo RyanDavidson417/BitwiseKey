@@ -3,9 +3,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "PowerupDataBase.h"
-#include "CollectionInteractable.h"
-#include "BitwiseGameState.h"
+#include "LevelObjects/PowerupDataBase.h"
+#include "LevelObjects/CollectionInteractable.h"
+#include "Core/BitwiseGameState.h"
 #include "BitwiseKey//BitwiseKey.h"
 #include "PowerupCollectibleBase.generated.h"
 

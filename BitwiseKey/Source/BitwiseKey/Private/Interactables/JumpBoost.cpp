@@ -2,7 +2,7 @@
 
 
 #include "Interactables/JumpBoost.h"
-#include "PlayerCharacter.h"
+#include "PlayerScripts/PlayerCharacter.h"
 
 void UJumpBoost::CollectPowerup(APlayerController* playerController)
 {

@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "PlayerCharacter.h"
+#include "PlayerScripts/PlayerCharacter.h"
 #include "BitwiseKey/BitwiseKey.h"
 #include "EnhancedInputComponent.h"
 #include "InputMappingContext.h"
@@ -11,11 +11,11 @@
 #include "Camera/CameraComponent.h"
 #include "Animation/AnimInstance.h"
 #include "EnhancedInputSubsystems.h"
-#include "BitwiseGameState.h"
+#include "Core/BitwiseGameState.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/PlayerStart.h" 
-#include "PowerupDataBase.h"
-#include "BitwiseGameMode.h"
+#include "LevelObjects/PowerupDataBase.h"
+#include "Core/BitwiseGameMode.h"
 
 
 // Sets default values

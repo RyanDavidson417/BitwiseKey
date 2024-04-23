@@ -1,12 +1,12 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "BWK_RandomizerBase.h"
-#include "BitwiseGameMode.h"
-#include "BitwiseGameState.h"
+#include "LevelObjects/BWK_RandomizerBase.h"
+#include "Core/BitwiseGameMode.h"
+#include "Core/BitwiseGameState.h"
 #include "Interactables/ASpawnPowerup.h"
 #include "Interactables/PowerupCollectibleBase.h"
 #include "../BitwiseKey.h"
-#include "LevelPrefabBase.h"
+#include "LevelObjects/LevelPrefabBase.h"
 #include "Engine/GameInstance.h"
 #include "Kismet//KismetMathLibrary.h"
 
