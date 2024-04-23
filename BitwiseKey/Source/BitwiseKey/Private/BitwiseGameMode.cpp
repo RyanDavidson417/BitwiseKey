@@ -133,14 +133,6 @@ void ABitwiseGameMode::ResetGameMode()
 }
 
 
-void ABitwiseGameMode::CollectXRay()
-{
-    LOG("collect x ray method called from gamemode");
-    gs->XRayData->bCollected = true;
-    //used to notify all xray objects to update their state
-    OnCollectedXray.Broadcast();
-}
-
 //void ABitwiseGameMode::CollectSpeedBoost()
 //{
 //    gs->SpeedBoostData->bCollected = true;
@@ -154,6 +146,32 @@ void ABitwiseGameMode::CollectXRay()
 //    }
 //}
 
+
+void ABitwiseGameMode::CollectXRay()
+{
+    gs->XRayData->bCollected = true;
+    //used to notify all xray objects to update their state
+    OnCollectedXray.Broadcast();
+
+}
+
+void ABitwiseGameMode::CollectInvisibility()
+{
+    gs->InvisibilityData->bCollected = true;
+    OnCollectedAbilityDelegate.Broadcast(EPowerUpName::PE_Invisibility);
+}
+
+void ABitwiseGameMode::CollectSpeedBoost()
+{
+    gs->SpeedBoostData->bCollected = true;
+    OnCollectedAbilityDelegate.Broadcast(EPowerUpName::PE_SpeedBoost);
+}
+
+void ABitwiseGameMode::CollectJumpBoost()
+{
+    gs->JumpBoostData->bCollected = true;
+    OnCollectedAbilityDelegate.Broadcast(EPowerUpName::PE_JumpBoost);
+}
 
 void ABitwiseGameMode::ToggleInvisibility()
 {

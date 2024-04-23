@@ -54,7 +54,9 @@ void UPowerupCollectibleBase::BeginPlay()
 
 	UMaterialInstanceDynamic* DynMaterial = UMaterialInstanceDynamic::Create(Material, GetOwner());
 
-	DynMaterial->SetVectorParameterValue(FName("Emissive color 01"), PowerupColor);
+	DynMaterial->SetVectorParameterValue(FName("EmissiveColor"), PowerupColor);
+
+	LOG("COLOR: %s", *PowerupColor.ToString())
 
 	PodMesh->SetMaterial(2, DynMaterial);
 

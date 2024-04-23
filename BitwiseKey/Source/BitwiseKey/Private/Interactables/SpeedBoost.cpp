@@ -9,9 +9,16 @@ void USpeedBoost::CollectPowerup(APlayerController* playerController)
 {
 	if (IsValid(gs)) {
 		gs->SpeedBoostData->bCollected = true;
+		
+		if (IsValid(gm)) {
+
+				gm->CollectSpeedBoost();
+		}
+		
 		if (gs->SpeedBoostData->bPassive) { //if it's passive, just set it automatically
 			playerController->GetCharacter()->GetCharacterMovement()->MaxWalkSpeed
 				= gs->SpeedBoostData->ActiveValue;
+			
 		}
 		else {
 			if (gs->SpeedBoostData->bIsStaminaAbility) {//double check that it's a stamina ability

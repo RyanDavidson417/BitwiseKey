@@ -10,6 +10,7 @@ void UJumpBoost::CollectPowerup(APlayerController* playerController)
 		gs->JumpBoostData->bCollected = true;
 		playerController->GetCharacter()->GetCharacterMovement()->JumpZVelocity
 			= gs->JumpBoostData->ActiveValue;
+		gm->CollectJumpBoost();
 	}
 }
 

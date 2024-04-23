@@ -24,6 +24,9 @@ class UCollectionInteractable;
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnResetDelegate);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCollectedXrayDelegate);
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnCollectedAbilitySignature, EPowerUpName, PowerUpName);
+
+
 USTRUCT(BlueprintType)
 struct FPlayerStatStruct {
 	GENERATED_BODY()
@@ -70,9 +73,9 @@ public:
 
 
 	void CollectXRay();
-	//void CollectInvisibility();
-	//void CollectSpeedBoost();
-	//void CollectJumpBoost();
+	void CollectInvisibility();
+	void CollectSpeedBoost();
+	void CollectJumpBoost();
 	//
 	//void CollectPowerup(UPowerupDataBase* powerup);
 	
@@ -104,7 +107,14 @@ public:
 	UPROPERTY(BlueprintAssignable, BlueprintCallable)
 		FOnResetDelegate D_OnReset;	
 	UPROPERTY(BlueprintAssignable, BlueprintCallable)
-	FOnCollectedXrayDelegate OnCollectedXray;
+	FOnCollectedXrayDelegate OnCollectedXray; //xray gets a unique delegate since the delegate is tied to
+//other functionality. this allows us to not have to pass a parameter or refactor the prior functionality
+
+
+	UPROPERTY(BlueprintAssignable, BlueprintCallable)
+	FOnCollectedAbilitySignature OnCollectedAbilityDelegate;
+
+
 
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)

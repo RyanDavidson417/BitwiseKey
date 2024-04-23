@@ -15,9 +15,9 @@ void UInvisibilityPowerup::Interact(APlayerController* playerController)
 
 void UInvisibilityPowerup::CollectPowerup(APlayerController* playerController)
 {
-	if (IsValid(gs)) {
+	if (IsValid(gm)) {
+		gm->CollectInvisibility();
 
-		gs->InvisibilityData->bCollected = true;
 	}
 	else {
 		WARN("gamestate not valid")
