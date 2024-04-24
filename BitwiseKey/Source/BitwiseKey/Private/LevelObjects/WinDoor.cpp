@@ -18,6 +18,8 @@ void AWinDoor::BeginPlay()
 {
 	Super::BeginPlay();
 
+	gm = GetWorld()->GetAuthGameMode<ABitwiseGameMode>();
+
 	BoxCollider->OnComponentBeginOverlap.AddUniqueDynamic(this, &AWinDoor::BeginOverlapCallback);
 }
 
@@ -29,6 +31,10 @@ void AWinDoor::Tick(float DeltaTime)
 
 void AWinDoor::BeginOverlapCallback(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
+	if (IsValid(gm)) {
 	LOG("HELLO")
-	gm->WinGame();
+		gm->WinGame();
+	} else {
+		LOG("NOT VALID")
+	}
 }

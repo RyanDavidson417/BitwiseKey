@@ -91,8 +91,8 @@ public:
 	void ResetGameMode();
 
 
-	UFUNCTION(BlueprintCallable)
-	void WinGame();
+	UFUNCTION(BlueprintImplementableEvent)
+	void WinGame();//no C++ implementation
 
 protected:
 	// Called when the game starts or when spawned
