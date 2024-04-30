@@ -84,7 +84,7 @@ protected:
 		float interactionDistance;
 	//set from traceline when we find an interactable
 	UPROPERTY(VisibleAnywhere, blueprintReadOnly, Category = Interaction)
-		UCollectionInteractable* InteractionComponent;
+		UInteractionComponent* InteractionComponent;
 
 		UCharacterMovementComponent* CharacterMovement;
 	//whether or not we've hit an actor (maybe needs to be a collectible?
