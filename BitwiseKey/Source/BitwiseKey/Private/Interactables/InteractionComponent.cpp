@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "LevelObjects/InteractionComponent.h"
+#include "Interactables/InteractionComponent.h"
 
 // Sets default values for this component's properties
 UInteractionComponent::UInteractionComponent()
@@ -33,7 +33,7 @@ void UInteractionComponent::TickComponent(float DeltaTime, ELevelTick TickType, 
 	// ...
 }
 
-void UInteractionComponent::Interact(APlayerController* playerController)
+void UInteractionComponent::Interact_Implementation(APlayerController* playerController) 
 {
 
 	UE_LOG(LogTemp, Error, TEXT("Interact called in base class - you should be calling this from a child component of InteractionComponent"));

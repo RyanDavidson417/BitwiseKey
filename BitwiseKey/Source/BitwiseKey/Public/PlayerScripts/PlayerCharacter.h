@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-#include "LevelObjects/InteractionComponent.h"
+#include "Interactables/InteractionComponent.h"
 #include "LevelObjects/CollectionInteractable.h"
 #include "Core/BitwiseGameMode.h"
 #include "Core/BitwiseGameState.h"

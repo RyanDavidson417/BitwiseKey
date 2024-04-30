@@ -8,7 +8,7 @@ UInvisibilityPowerup::UInvisibilityPowerup()
 {
 }
 
-void UInvisibilityPowerup::Interact(APlayerController* playerController)
+void UInvisibilityPowerup::Interact_Implementation(APlayerController* playerController)
 {
 	Super::Interact(playerController);//called at the end, cause it also destroys the object
 }

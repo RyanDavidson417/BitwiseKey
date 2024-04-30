@@ -53,7 +53,7 @@ void UCollectionInteractable::TickComponent(float DeltaTime, ELevelTick TickType
 
 }
 
-void UCollectionInteractable::Interact(APlayerController* playerController)
+void UCollectionInteractable::Interact_Implementation(APlayerController* playerController)
 {
 
 	if (Randomizer) {

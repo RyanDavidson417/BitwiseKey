@@ -20,6 +20,6 @@ public:
 
 	//UPROPERTY(Editanywhere)
 
-	virtual void Interact(APlayerController* playerController) override;
+	virtual void Interact_Implementation(APlayerController* playerController) override;
 	void CollectPowerup(APlayerController* playerController) override;
 };

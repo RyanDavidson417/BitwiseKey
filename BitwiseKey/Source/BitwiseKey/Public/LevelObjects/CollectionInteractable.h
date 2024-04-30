@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "InteractionComponent.h"
+#include "Interactables/InteractionComponent.h"
 #include "Materials/MaterialInstanceDynamic.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "BWK_RandomizerBase.h"
@@ -32,7 +32,8 @@ public:
 
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-	virtual void Interact(APlayerController* playerController) override;
+	
+	virtual void Interact_Implementation(APlayerController* playerController) override;
 
 	//UPROPERTY(EditAnywhere, blueprintReadOnly, Category = Interaction)
 	//	FString Powerup;

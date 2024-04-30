@@ -28,7 +28,7 @@ public:
 
 	virtual void CollectPowerup(APlayerController* playerController);
 
-	void Interact(APlayerController* playerController) override;
+	void Interact_Implementation(APlayerController* playerController) override;
 	UFUNCTION()
 	virtual void Reset();
 	virtual void BeginPlay() override;

@@ -11,7 +11,7 @@ void UPowerupCollectibleBase::CollectPowerup(APlayerController* playerController
 	WARN("default implementation called")
 }
 
-void UPowerupCollectibleBase::Interact(APlayerController* PlayerController)
+void UPowerupCollectibleBase::Interact_Implementation(APlayerController* PlayerController)
 {
 	MPlayerController = PlayerController;
 
@@ -35,7 +35,7 @@ void UPowerupCollectibleBase::Interact(APlayerController* PlayerController)
 
 	}
 
-	Super::Interact(PlayerController);//call at the end as this destroys the object
+	Super::Interact_Implementation(PlayerController);//call at the end as this destroys the object
 }
 
 void UPowerupCollectibleBase::Reset()

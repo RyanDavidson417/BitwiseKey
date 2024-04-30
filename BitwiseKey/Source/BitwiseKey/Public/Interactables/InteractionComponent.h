@@ -9,7 +9,7 @@
 
 
 
-UCLASS( ABSTRACT, ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+UCLASS( ABSTRACT, Blueprintable, ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class BITWISEKEY_API UInteractionComponent : public UActorComponent
 {
 	GENERATED_BODY()
@@ -28,8 +28,9 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
-	UFUNCTION(BlueprintCallable)
-	virtual void Interact(APlayerController* playerController);
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void Interact(APlayerController* playerController);
 
+	virtual void Interact_Implementation(APlayerController* playerController);
 		
 };
