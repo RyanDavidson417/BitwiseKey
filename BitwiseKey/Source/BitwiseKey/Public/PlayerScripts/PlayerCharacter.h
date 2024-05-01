@@ -100,6 +100,9 @@ protected:
 
 	bool staminaActive;
 
+	UPROPERTY(BlueprintReadOnly)
+	FRotator RandomStartingRotation;
+
 	//methods
 public:
 	// Sets default values for this character's properties

@@ -389,6 +389,7 @@ void APlayerCharacter::setRandomStartRotation()
 	{
 		Controller->SetControlRotation(FRotator::ZeroRotator);
 	}
+	RandomStartingRotation = FRotator(0, (randDirection * 90) / 2.5, 0);
 	AddControllerYawInput((randDirection * 90) / 2.5);
 
 	//LOG("random number: %d, direction: %d", randDirection, randDirection * 90);
