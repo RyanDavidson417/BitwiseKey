@@ -22,6 +22,7 @@ class UCollectionInteractable;
 class ABitwiseGameMode;
 class UPowerupDataBase;
 class ABitwiseGameState;
+class UAudioComponent;
 
 
 UCLASS()
@@ -98,7 +99,7 @@ protected:
 	//reference to camera component
 	UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
 
-	bool staminaActive;
+	bool bStaminaActive;
 
 	UPROPERTY(BlueprintReadOnly)
 	FRotator RandomStartingRotation;
@@ -115,7 +116,10 @@ public:
 
 	//update movement and looking
 	void Move(const struct FInputActionInstance& Instance);
+	void StopMoving(const struct FInputActionInstance& Instance);
 	void Look(const FInputActionInstance& InputActionInstance);
+
+	void Jump() override;
 
 	//interaction
 	void Interact(const FInputActionInstance& Instance);
@@ -142,6 +146,32 @@ protected:
 	virtual void BeginPlay() override;
 
 	void setRandomStartRotation();
+
+	UPROPERTY(EditAnywhere, category = "audio")
+	TObjectPtr<USoundBase> FirstJumpSound;
+
+	UPROPERTY(EditAnywhere, category = "audio")
+	TObjectPtr<USoundBase> DoubleJumpSound;
+
+	UPROPERTY(EditAnywhere, category = "audio")
+	TObjectPtr<USoundBase> WalkingAudio;
+
+	UPROPERTY(EditAnywhere, category = "audio")
+	TObjectPtr<USoundBase> SprintingAudio;
+
+	UPROPERTY(EditAnywhere, category = "audio")
+	TObjectPtr<USoundBase> SprintActivateAudio;
+
+	UPROPERTY(EditAnywhere, category = "audio")
+	TObjectPtr<USoundBase> SpritnDeactivateAudio;
+
+	UPROPERTY(EditAnywhere, category = "audio")
+	TObjectPtr<USoundBase> StaminaOutAudio;
+
+	TObjectPtr<UAudioComponent> CurrentAudioComponent;
+	TObjectPtr<UAudioComponent> WalkingAudioComponent;
+	TObjectPtr<UAudioComponent> SprintingAudioComponent;
+	
 
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")

@@ -7,8 +7,10 @@
 #include "InputMappingContext.h"
 #include "EnhancedInputSubsystems.h"
 #include "Components/CapsuleComponent.h"
+#include "Kismet/GameplayStatics.h"
 //#include "BaseGizmos/GizmoElementShared.h"
 #include "Camera/CameraComponent.h"
+#include "Components/AudioComponent.h" 
 #include "Animation/AnimInstance.h"
 #include "EnhancedInputSubsystems.h"
 #include "Core/BitwiseGameState.h"
@@ -50,6 +52,7 @@ APlayerCharacter::APlayerCharacter()
 void APlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+
 
 	//add input mapping context
 	if (APlayerController* playerController = Cast<APlayerController>(GetController()))
@@ -110,6 +113,7 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	//WARN("Binding Move actions");
 	//UE_LOG(LogTemp, Warning, TEXT("binding the move action"));
 	EIS->BindAction(MovementAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Move);
+	EIS->BindAction(MovementAction, ETriggerEvent::Completed, this, &APlayerCharacter::StopMoving);
 	//bind the steer action
 	EIS->BindAction(LookAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Look);
 	//bind the Interact action
@@ -137,16 +141,55 @@ void APlayerCharacter::Move(const FInputActionInstance& Instance)
 	}
 
 	lastMoveInput = Instance.GetValue().Get<FVector2D>();
+	
+	if (Instance.GetValue().Get<FVector2D>() == FVector2D::Zero()) {
+		if (CurrentAudioComponent->IsPlaying()) {
+			LOG("stopping")
+				CurrentAudioComponent->Stop();
+		}
+	}
 	//UE_LOG(LogTemp, Warning, TEXT("MOVE INPUT detected"));
 
 	//FVector2D MovementVector = Value.Get<FVector2D>()
 
 	if (Controller != nullptr)
 	{
+		if (!bStaminaActive) { //if we're just walking
+			if (IsValid(WalkingAudio)) {
+				
+				//so long as we're not already playing the walking audio, start it
+				if (!IsValid(CurrentAudioComponent)) {
+					CurrentAudioComponent = UGameplayStatics::CreateSound2D(this, WalkingAudio);
+					CurrentAudioComponent->Play();
+				}
+				else {
+					LOG("already playing")
+				}
+			}			
+		}
+		else {//if we're sprinting
+			if (IsValid(SprintingAudio)) {
+
+				if (!IsValid(CurrentAudioComponent)) {
+					CurrentAudioComponent = UGameplayStatics::CreateSound2D(this, SprintingAudio);
+					CurrentAudioComponent->Play();
+				}
+				else {
+					LOG("already playing")
+				}
+			}
+		}
 
 		AddMovementInput(GetActorForwardVector(), lastMoveInput.Y);
 		AddMovementInput(GetActorRightVector(), lastMoveInput.X);
+	}	
+}
 
+void APlayerCharacter::StopMoving(const FInputActionInstance& Instance)
+{
+	if (CurrentAudioComponent->IsPlaying()) {
+		LOG("stopping")
+			CurrentAudioComponent->Stop();
 	}
 }
 
@@ -169,6 +212,24 @@ void APlayerCharacter::Look(const FInputActionInstance& InputActionInstance)
 		AddControllerYawInput(LookAxisVector.X);
 		AddControllerPitchInput(LookAxisVector.Y);
 	}
+}
+
+void APlayerCharacter::Jump()
+{
+	if (JumpCurrentCountPreJump == 0) {//if this is our first jump
+		//play first jump sound
+		if (IsValid(FirstJumpSound)) {
+			UGameplayStatics::PlaySound2D(this, FirstJumpSound);
+		}
+	}
+	else if (gs->JumpBoostData->bCollected && JumpCurrentCountPreJump == JumpMaxCount -1) {
+		//play second jump sound
+		if (IsValid(DoubleJumpSound)) {
+			UGameplayStatics::PlaySound2D(this, DoubleJumpSound);
+
+		}
+	}
+	Super::Jump();
 }
 
 void APlayerCharacter::Interact(const FInputActionInstance& Instance)
@@ -288,7 +349,7 @@ void APlayerCharacter::ToggleInvisibility(const FInputActionInstance& Instance)
 void APlayerCharacter::ToggleStamina()
 {
 	LOG("TOGGLE STAMINA")
-	if (staminaActive) {
+	if (bStaminaActive) {
 		DeactivateStaminaEffects();
 	}
 	else {
@@ -301,10 +362,12 @@ void APlayerCharacter::ActivateStaminaEffects()
 {
 	LOG("action recognized")
 
+	//switch sprint and walk audio
+	//zzz
 
 	if (gs->GetHasStaminaAbility() && gm->StaminaStatStruct.currentCharge > 0) {
 
-		staminaActive = true;
+		bStaminaActive = true;
 
 
 
@@ -334,7 +397,10 @@ void APlayerCharacter::ActivateStaminaEffects()
 
 void APlayerCharacter::DeactivateStaminaEffects()
 {
-	staminaActive = false;
+	bStaminaActive = false;
+
+	//switch sprint and walk audio
+	//zzz
 
 	if (gs->XRayData->bIsStaminaAbility) {
 		//no implementation needed as xray (currently) doesn't have any player vals associated
