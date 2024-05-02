@@ -130,6 +130,7 @@ public:
 	void ToggleInvisibility(const FInputActionInstance& Instance);
 	
 	void ToggleStamina();
+	void PlayMovementSound(bool bSprinting);
 	void ActivateStaminaEffects();
 	void DeactivateStaminaEffects();
 
@@ -176,6 +177,8 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
 	TMap<EPowerUpName, FPowerupStruct> StaminaPowerups;
+
+	bool bIsMoving = false;
 
 
 };

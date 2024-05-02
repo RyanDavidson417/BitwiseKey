@@ -134,6 +134,7 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 void APlayerCharacter::Move(const FInputActionInstance& Instance)
 {
+	bIsMoving = true;
 	//used for game timer
 	if (!bReceivedFirstPlayerInput) {
 		gm->StartGameTimer();
@@ -154,6 +155,9 @@ void APlayerCharacter::Move(const FInputActionInstance& Instance)
 
 	if (Controller != nullptr)
 	{
+		PlayMovementSound(bStaminaActive);
+
+		/*
 		if (!bStaminaActive) { //if we're just walking
 			if (IsValid(WalkingAudio)) {
 				
@@ -179,6 +183,7 @@ void APlayerCharacter::Move(const FInputActionInstance& Instance)
 				}
 			}
 		}
+		*/
 
 		AddMovementInput(GetActorForwardVector(), lastMoveInput.Y);
 		AddMovementInput(GetActorRightVector(), lastMoveInput.X);
@@ -187,6 +192,7 @@ void APlayerCharacter::Move(const FInputActionInstance& Instance)
 
 void APlayerCharacter::StopMoving(const FInputActionInstance& Instance)
 {
+	bIsMoving = false;
 	if (CurrentAudioComponent->IsPlaying()) {
 		LOG("stopping")
 			CurrentAudioComponent->Stop();
@@ -358,12 +364,43 @@ void APlayerCharacter::ToggleStamina()
 	 
 }
 
+void APlayerCharacter::PlayMovementSound(bool bSprinting)
+{
+
+
+	if (!bSprinting) { //if we're just walking
+		if (IsValid(WalkingAudio)) {
+
+			//so long as we're not already playing the walking audio, start it
+			if (!IsValid(CurrentAudioComponent)) {
+				CurrentAudioComponent = UGameplayStatics::CreateSound2D(this, WalkingAudio);
+				CurrentAudioComponent->Play();
+			}
+			else {
+				LOG("already playing walki8ng sound")
+			}
+		}
+	}
+	else {//if we're sprinting
+		if (IsValid(SprintingAudio)) {
+
+			if (!IsValid(CurrentAudioComponent)) {
+				CurrentAudioComponent = UGameplayStatics::CreateSound2D(this, SprintingAudio);
+				CurrentAudioComponent->Play();
+			}
+			else {
+				LOG("already playing sprinting sound")
+			}
+		}
+	}
+}
+
 void APlayerCharacter::ActivateStaminaEffects()
 {
 	LOG("action recognized")
+	CurrentAudioComponent->Stop();
+	PlayMovementSound(true);
 
-	//switch sprint and walk audio
-	//zzz
 
 	if (gs->GetHasStaminaAbility() && gm->StaminaStatStruct.currentCharge > 0) {
 
@@ -398,7 +435,11 @@ void APlayerCharacter::ActivateStaminaEffects()
 void APlayerCharacter::DeactivateStaminaEffects()
 {
 	bStaminaActive = false;
+	if (bIsMoving) {
+		CurrentAudioComponent->Stop();
 
+		PlayMovementSound(false);
+	}
 	//switch sprint and walk audio
 	//zzz
 
