@@ -121,9 +121,6 @@ public:
 
 
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-		float BitwiseGameTimer = 0;
-
 		//the number of individual 'units' within each progress bar
 
 

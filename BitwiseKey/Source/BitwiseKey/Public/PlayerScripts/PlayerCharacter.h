@@ -130,7 +130,6 @@ public:
 	void ToggleInvisibility(const FInputActionInstance& Instance);
 	
 	void ToggleStamina();
-	void PlayMovementSound(bool bSprinting);
 	void ActivateStaminaEffects();
 	void DeactivateStaminaEffects();
 
@@ -161,15 +160,15 @@ protected:
 	TObjectPtr<USoundBase> SprintingAudio;
 
 	UPROPERTY(EditAnywhere, category = "audio")
-	TObjectPtr<USoundBase> SprintActivateAudio;
+	TObjectPtr<USoundBase> SprintStartAudio;
 
 	UPROPERTY(EditAnywhere, category = "audio")
-	TObjectPtr<USoundBase> SpritnDeactivateAudio;
+	TObjectPtr<USoundBase> SprintEndAudio;
 
 	UPROPERTY(EditAnywhere, category = "audio")
 	TObjectPtr<USoundBase> StaminaOutAudio;
 
-	TObjectPtr<UAudioComponent> CurrentAudioComponent;
+	TObjectPtr<UAudioComponent> CurrentMovementAudioComponent;
 	TObjectPtr<UAudioComponent> WalkingAudioComponent;
 	TObjectPtr<UAudioComponent> SprintingAudioComponent;
 	

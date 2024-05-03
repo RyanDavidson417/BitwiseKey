@@ -262,6 +262,9 @@ void ABitwiseGameMode::UpdateStamina()
 
             if (StaminaStatStruct.currentCharge == 0) {
                 playerCharacter->DeactivateStaminaEffects(); //tell the player to deactivate stamina
+
+
+
                 return;
             }
 
