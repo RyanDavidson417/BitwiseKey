@@ -99,7 +99,7 @@ protected:
 	//reference to camera component
 	UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
 
-	bool bStaminaActive;
+	bool bStaminaActive = false;
 
 	UPROPERTY(BlueprintReadOnly)
 	FRotator RandomStartingRotation;
