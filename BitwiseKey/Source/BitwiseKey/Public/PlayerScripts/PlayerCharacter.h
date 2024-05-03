@@ -24,6 +24,7 @@ class UPowerupDataBase;
 class ABitwiseGameState;
 class UAudioComponent;
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnFovChangeSignature, int32, TargetFov);
 
 UCLASS()
 class BITWISEKEY_API APlayerCharacter : public ACharacter
@@ -75,6 +76,18 @@ protected:
 	//first person camera
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 		UCameraComponent* FirstPersonCameraComponent;
+
+	UPROPERTY(BlueprintAssignable)
+	FOnFovChangeSignature FOnFOVIncreaseDelegate;
+
+	UPROPERTY(BlueprintAssignable)
+	FOnFovChangeSignature FOnFOVDecreaseDelegate;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = Camera)
+	int DefaultFOV = 90;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = Camera)
+	int SprintingFOV = 100;
 
 	//max movement speed
 	UPROPERTY(EditAnywhere)

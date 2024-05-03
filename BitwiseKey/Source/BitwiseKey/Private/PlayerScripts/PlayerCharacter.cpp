@@ -142,12 +142,6 @@ void APlayerCharacter::Move(const FInputActionInstance& Instance)
 
 	lastMoveInput = Instance.GetValue().Get<FVector2D>();
 	
-	if (Instance.GetValue().Get<FVector2D>() == FVector2D::Zero()) {
-		if (CurrentMovementAudioComponent->IsPlaying()) {
-			LOG("stopping")
-				CurrentMovementAudioComponent->Stop();
-		}
-	}
 	//UE_LOG(LogTemp, Warning, TEXT("MOVE INPUT detected"));
 
 	//FVector2D MovementVector = Value.Get<FVector2D>()
@@ -224,9 +218,14 @@ void APlayerCharacter::Move(const FInputActionInstance& Instance)
 
 void APlayerCharacter::StopMoving(const FInputActionInstance& Instance)
 {
+	if (bStaminaActive) {
+
+		DeactivateStaminaEffects();
+	}
+
 	bIsMoving = false;
 
-	if (IsValid(CurrentMovementAudioComponent)) {
+	if (IsValid(CurrentMovementAudioComponent) && CurrentMovementAudioComponent != nullptr ) {
 		LOG("stopping")
 		CurrentMovementAudioComponent->Stop();
 	}
@@ -454,7 +453,11 @@ void APlayerCharacter::ToggleStamina()
 void APlayerCharacter::ActivateStaminaEffects()
 {
 	LOG("action recognized")
-	CurrentMovementAudioComponent->Stop();
+	if (IsValid(CurrentMovementAudioComponent)) {
+		CurrentMovementAudioComponent->Stop();
+	}
+
+	FOnFOVIncreaseDelegate.Broadcast(SprintingFOV);
 
 	//play sprint sounds
 
@@ -500,30 +503,50 @@ void APlayerCharacter::ActivateStaminaEffects()
 
 void APlayerCharacter::DeactivateStaminaEffects()
 {
+	FOnFOVDecreaseDelegate.Broadcast(DefaultFOV);
 	
 	//play sprint end sounds
-	if (bIsMoving) {
+	if (bIsMoving && bStaminaActive) {
 		CurrentMovementAudioComponent->Stop();
 
+		if (IsValid(SprintEndAudio)) {
+			UGameplayStatics::PlaySound2D(this, SprintEndAudio);
+		}
 
-		//probably going to be called unecessarily, check when we're setting charge to zero on resets relative to this call
+		//throws nullref
 		//zzz
-		if (gm->StaminaStatStruct.currentCharge == 0 && gs->gameTimer >.1f) {
-			if (IsValid(StaminaOutAudio)) {
-				UGameplayStatics::PlaySound2D(this, StaminaOutAudio);
-			}
+		if (IsValid(gm)) {
+			if (gm->StaminaStatStruct.currentCharge == 0) {
+
+				if (IsValid(gs)) {
+					if (gs->gameTimer > .1f) {
+						if (IsValid(StaminaOutAudio)) {
+							UGameplayStatics::PlaySound2D(this, StaminaOutAudio);
+						}
 
 
-			if (IsValid(SprintEndAudio)) {
-				UGameplayStatics::PlaySound2D(this, SprintEndAudio);
+						if (IsValid(SprintEndAudio)) {
+							UGameplayStatics::PlaySound2D(this, SprintEndAudio);
+						}
+						else {
+							LOG("deact not valid")
+						}
+					}
+					else {
+						LOG("timer: %d", gs->gameTimer)
+					}
+				}
+				else {
+					ERROR("GAMEMODE REF NOT VALID")
+				}
+
 			}
-			else {
-				LOG("deact not valid")
-			}
+
 		}
 		else {
-			LOG("timer: %d", gs->gameTimer)
+			UE_LOG(LogTemp, Error, TEXT("GAMEMODE REF NOT VALID"))
 		}
+
 	}
 
 	bStaminaActive = false;
