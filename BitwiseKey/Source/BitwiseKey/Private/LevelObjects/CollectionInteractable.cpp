@@ -20,7 +20,6 @@ void UCollectionInteractable::BeginPlay()
 	gm = GetWorld()->GetAuthGameMode<ABitwiseGameMode>();
 	gs = Cast<ABitwiseGameState>(gm->GameState);
 
-	CollectionSound = GetOwner()->FindComponentByClass<UAudioComponent>(); 
 
 	StartZ = GetOwner()->GetActorLocation().Z;
 

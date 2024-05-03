@@ -22,8 +22,8 @@ void UPowerupCollectibleBase::Interact_Implementation(APlayerController* PlayerC
 	//play sound
 	//CollectionSound->Play();
 	if (IsValid(SpawnPoint)) {
-		if (IsValid(SpawnPoint->CollectionSound)) {
-			SpawnPoint->CollectionSound->Play();
+		if (IsValid(SpawnPoint->CollectionAudioComponent)) {
+			SpawnPoint->CollectionAudioComponent->Play();
 
 		}
 		else {
@@ -49,6 +49,8 @@ void UPowerupCollectibleBase::BeginPlay()
 		gm->D_OnReset.AddDynamic(this, &UPowerupCollectibleBase::Reset);
 
 	}
+
+
 
 	PodMesh = Cast<UStaticMeshComponent>(GetOwner()->GetComponentByClass(UStaticMeshComponent::StaticClass()));
 

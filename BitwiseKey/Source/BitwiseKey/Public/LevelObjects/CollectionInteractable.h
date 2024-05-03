@@ -44,7 +44,7 @@ protected:
 public:
 
 	UPROPERTY(EditAnywhere, blueprintReadWrite, Category = Audio)
-		TObjectPtr<class UAudioComponent> CollectionSound;
+		TObjectPtr<class USoundBase> CollectionSound;
 
 
 protected:

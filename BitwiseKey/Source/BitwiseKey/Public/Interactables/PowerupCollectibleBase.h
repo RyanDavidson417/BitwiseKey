@@ -35,6 +35,8 @@ public:
 
 
 
+	UPROPERTY(EditAnywhere, blueprintReadWrite, Category = Audio)
+	TObjectPtr<class USoundBase> TrillSound;
 
 	UPROPERTY(EditAnywhere, blueprintReadWrite)
 	ASpawnPowerup* SpawnPoint;

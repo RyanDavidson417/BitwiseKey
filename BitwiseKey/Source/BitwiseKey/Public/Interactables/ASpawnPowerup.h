@@ -14,7 +14,11 @@ class UAudioComponent;
 class ABitwiseGameState;
 class UXRayVision;
 class UPowerupCollectibleBase;
-class ARandomItemSpawner;
+class ARandomItemSpawner; 
+class UAudioComponent;
+class USoundBase;
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCollectionSoundFinishedSignature);
 
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class BITWISEKEY_API ASpawnPowerup : public ARandomItemSpawner
@@ -26,14 +30,28 @@ public:
 	ASpawnPowerup();
 
 	UPROPERTY(EditAnywhere, blueprintReadWrite, Category = Audio)
-		TObjectPtr<class UAudioComponent> CollectionSound;
+	TObjectPtr<UAudioComponent> CollectionAudioComponent;
+
+	UPROPERTY(EditAnywhere, blueprintReadWrite, Category = Audio)
+	TObjectPtr<USoundBase> CollectionAudioClip;
+
+	UPROPERTY(EditAnywhere, blueprintReadWrite, Category = Audio)
+	TObjectPtr<UAudioComponent> TrillAudioComponent;
+
+	UPROPERTY(EditAnywhere, blueprintReadWrite, Category = Audio)
+	TObjectPtr<USoundBase> TrillAudioClip;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "Collectibles")
 	TObjectPtr<UPowerupCollectibleBase> PowerUp;
 
+	FOnCollectionSoundFinishedSignature OnCollectionSoundFinishedDelegate;
+
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	UFUNCTION()
+	void PlayTrillSound();
 
 public:	
 	// Called every frame
