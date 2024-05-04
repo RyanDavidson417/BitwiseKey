@@ -3,6 +3,7 @@
 
 #include "Interactables/PowerupCollectibleBase.h"
 #include "Components/AudioComponent.h" 
+#include "GameFramework/Actor.h" 
 #include "Interactables/ASpawnPowerup.h"
 #include "Core/BitwiseGameMode.h"
 
@@ -22,8 +23,12 @@ void UPowerupCollectibleBase::Interact_Implementation(APlayerController* PlayerC
 	//play sound
 	//CollectionSound->Play();
 	if (IsValid(SpawnPoint)) {
-		if (IsValid(SpawnPoint->CollectionSound)) {
-			SpawnPoint->CollectionSound->Play();
+		SpawnPoint->StartTrillSoundTimer();
+			//AudioTimerHandle, this, &ASpawnPowerup::PlayTrillSound,
+			// //SpawnPoint->TrillSoundComponent->Sound->Duration, false);
+		if (IsValid(SpawnPoint->CollectionSoundComponent)) {
+			LOG("playing sound")
+			SpawnPoint->CollectionSoundComponent->Play();
 
 		}
 		else {

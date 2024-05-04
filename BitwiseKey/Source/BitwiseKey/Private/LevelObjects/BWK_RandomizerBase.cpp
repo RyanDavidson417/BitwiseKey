@@ -3,6 +3,7 @@
 #include "LevelObjects/BWK_RandomizerBase.h"
 #include "Core/BitwiseGameMode.h"
 #include "Core/BitwiseGameState.h"
+#include "Components/AudioComponent.h"
 #include "Interactables/ASpawnPowerup.h"
 #include "Interactables/PowerupCollectibleBase.h"
 #include "../BitwiseKey.h"
@@ -87,11 +88,22 @@ void ABWK_RandomizerBase::PlaceItems()
 
 					//LOG("placed item number %d object name %s done by %s", i, *PlacedActor->GetName(), *GetName())
 
+
+					//zzz
+					//to fix delegate abominations:
+					// consider doing this as it's own functionon the spawn point? then we could also
+					// set up a new delegate to invoke after that? 
+					// this'd also result in much cleaner OOP rather than the weird casting nonsense
+					// going on down there									
+
 					//if we're spawning a powerup, set the reference to the spawn point
 					//this is used for playing the collection audio
 					if (ASpawnPowerup* PowerupSpawn = Cast<ASpawnPowerup>(SpawnerArray[i])) {
 						if (UPowerupCollectibleBase* Powerup = PlacedActor->FindComponentByClass<UPowerupCollectibleBase>()) {
-								Powerup->SpawnPoint = PowerupSpawn;
+							Powerup->SpawnPoint = PowerupSpawn;
+							if (IsValid(Powerup->CollectionSound)) {
+								PowerupSpawn->TrillSoundComponent->Sound = Powerup->TrillSound;
+							}
 						}
 					}
 					//this is definitely improper inheritence, 

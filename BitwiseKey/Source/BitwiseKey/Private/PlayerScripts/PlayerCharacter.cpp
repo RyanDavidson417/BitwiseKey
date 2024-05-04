@@ -335,10 +335,10 @@ void APlayerCharacter::TraceLine()
 		UInteractionComponent* InteractableObj = LineTraceHit.GetActor()->FindComponentByClass<UInteractionComponent>();
 		InteractionComponent = LineTraceHit.GetActor()->FindComponentByClass<UInteractionComponent>();
 
-		UE_LOG(LogTemp, Warning, TEXT("Trace hit actor: %s"), *LineTraceHit.GetActor()->GetName());// 
+		//UE_LOG(LogTemp, Warning, TEXT("Trace hit actor: %s"), *LineTraceHit.GetActor()->GetName());// 
 		if (IsValid(InteractionComponent)){
 
-			UE_LOG(LogTemp, Warning, TEXT("INTERACTABLE Trace hit actor: %s"), *LineTraceHit.GetActor()->GetName());
+			//UE_LOG(LogTemp, Warning, TEXT("INTERACTABLE Trace hit actor: %s"), *LineTraceHit.GetActor()->GetName());
 
 			//MAYBE maybe set a bool to track whether we have one, and store a reference to the actor
 			//InteractionComponent = InteractableObj;
