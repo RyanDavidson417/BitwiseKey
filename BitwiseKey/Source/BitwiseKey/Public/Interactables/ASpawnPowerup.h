@@ -14,6 +14,7 @@ class UAudioComponent;
 class ABitwiseGameState;
 class UXRayVision;
 class UPowerupCollectibleBase;
+struct FTimerHandle;
 class ARandomItemSpawner;
 
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
@@ -26,21 +27,30 @@ public:
 	ASpawnPowerup();
 
 	UPROPERTY(EditAnywhere, blueprintReadWrite, Category = Audio)
-		TObjectPtr<class UAudioComponent> CollectionSound;
+	TObjectPtr<class UAudioComponent> CollectionSoundComponent;
+
+	UPROPERTY(EditAnywhere, blueprintReadWrite, Category = Audio)
+	TObjectPtr<class UAudioComponent> TrillSoundComponent;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "Collectibles")
 	TObjectPtr<UPowerupCollectibleBase> PowerUp;
 
+	FTimerHandle AudioTimerHandle;
+
+
 protected:
+	void PlayTrillSound();
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 public:	
+	void StartTrillSoundTimer();
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 	virtual void Spawn(TSubclassOf<AActor*> actor) override;
 	//virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
+	
 
 public:
 	//used to reference the randomized array in the gamestate, on generation we reference the nth index to determine which ability we spawn

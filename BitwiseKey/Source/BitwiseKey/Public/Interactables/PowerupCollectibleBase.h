@@ -15,6 +15,7 @@
 
 class ASpawnPowerup;
 class UPowerupDataBase;
+struct FTimerHandle;
 
 UCLASS()
 class BITWISEKEY_API UPowerupCollectibleBase : public UCollectionInteractable
@@ -28,7 +29,7 @@ public:
 
 	virtual void CollectPowerup(APlayerController* playerController);
 
-	void Interact(APlayerController* playerController) override;
+	void Interact_Implementation(APlayerController* playerController) override;
 	UFUNCTION()
 	virtual void Reset();
 	virtual void BeginPlay() override;
@@ -39,8 +40,13 @@ public:
 	UPROPERTY(EditAnywhere, blueprintReadWrite)
 	ASpawnPowerup* SpawnPoint;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TObjectPtr<USoundBase> TrillSound;
+
 protected:
 	APlayerController* MPlayerController;
+
+
 
 
 	UPROPERTY(EditAnywhere, blueprintReadWrite)

@@ -150,6 +150,7 @@ void ABitwiseGameMode::ResetGameMode()
 
 void ABitwiseGameMode::CollectXRay()
 {
+    LOG("SHOULD BE ONCE")
     gs->XRayData->bCollected = true;
     //used to notify all xray objects to update their state
     OnCollectedXray.Broadcast();
@@ -262,6 +263,9 @@ void ABitwiseGameMode::UpdateStamina()
 
             if (StaminaStatStruct.currentCharge == 0) {
                 playerCharacter->DeactivateStaminaEffects(); //tell the player to deactivate stamina
+
+
+
                 return;
             }
 

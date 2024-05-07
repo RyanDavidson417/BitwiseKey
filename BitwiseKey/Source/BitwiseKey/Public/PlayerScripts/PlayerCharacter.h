@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-#include "LevelObjects/InteractionComponent.h"
+#include "Interactables/InteractionComponent.h"
 #include "LevelObjects/CollectionInteractable.h"
 #include "Core/BitwiseGameMode.h"
 #include "Core/BitwiseGameState.h"
@@ -22,7 +22,9 @@ class UCollectionInteractable;
 class ABitwiseGameMode;
 class UPowerupDataBase;
 class ABitwiseGameState;
+class UAudioComponent;
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnFovChangeSignature, int32, TargetFov);
 
 UCLASS()
 class BITWISEKEY_API APlayerCharacter : public ACharacter
@@ -75,6 +77,18 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 		UCameraComponent* FirstPersonCameraComponent;
 
+	UPROPERTY(BlueprintAssignable)
+	FOnFovChangeSignature FOnFOVIncreaseDelegate;
+
+	UPROPERTY(BlueprintAssignable)
+	FOnFovChangeSignature FOnFOVDecreaseDelegate;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = Camera)
+	int DefaultFOV = 90;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = Camera)
+	int SprintingFOV = 100;
+
 	//max movement speed
 	UPROPERTY(EditAnywhere)
 		float MaxMoveSpeed;
@@ -84,7 +98,7 @@ protected:
 		float interactionDistance;
 	//set from traceline when we find an interactable
 	UPROPERTY(VisibleAnywhere, blueprintReadOnly, Category = Interaction)
-		UCollectionInteractable* InteractionComponent;
+		UInteractionComponent* InteractionComponent;
 
 		UCharacterMovementComponent* CharacterMovement;
 	//whether or not we've hit an actor (maybe needs to be a collectible?
@@ -98,7 +112,10 @@ protected:
 	//reference to camera component
 	UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
 
-	bool staminaActive;
+	bool bStaminaActive = false;
+
+	UPROPERTY(BlueprintReadOnly)
+	FRotator RandomStartingRotation;
 
 	//methods
 public:
@@ -112,7 +129,10 @@ public:
 
 	//update movement and looking
 	void Move(const struct FInputActionInstance& Instance);
+	void StopMoving(const struct FInputActionInstance& Instance);
 	void Look(const FInputActionInstance& InputActionInstance);
+
+	void Jump() override;
 
 	//interaction
 	void Interact(const FInputActionInstance& Instance);
@@ -140,9 +160,37 @@ protected:
 
 	void setRandomStartRotation();
 
+	UPROPERTY(EditAnywhere, category = "audio")
+	TObjectPtr<USoundBase> FirstJumpSound;
+
+	UPROPERTY(EditAnywhere, category = "audio")
+	TObjectPtr<USoundBase> DoubleJumpSound;
+
+	UPROPERTY(EditAnywhere, category = "audio")
+	TObjectPtr<USoundBase> WalkingAudio;
+
+	UPROPERTY(EditAnywhere, category = "audio")
+	TObjectPtr<USoundBase> SprintingAudio;
+
+	UPROPERTY(EditAnywhere, category = "audio")
+	TObjectPtr<USoundBase> SprintStartAudio;
+
+	UPROPERTY(EditAnywhere, category = "audio")
+	TObjectPtr<USoundBase> SprintEndAudio;
+
+	UPROPERTY(EditAnywhere, category = "audio")
+	TObjectPtr<USoundBase> StaminaOutAudio;
+
+	TObjectPtr<UAudioComponent> CurrentMovementAudioComponent;
+	TObjectPtr<UAudioComponent> WalkingAudioComponent;
+	TObjectPtr<UAudioComponent> SprintingAudioComponent;
+	
+
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collectibles")
 	TMap<EPowerUpName, FPowerupStruct> StaminaPowerups;
+
+	bool bIsMoving = false;
 
 
 };

@@ -10,11 +10,10 @@ UXRayVision::UXRayVision()
 
 
 
-void UXRayVision::Interact(APlayerController* playerController)
+void UXRayVision::Interact_Implementation(APlayerController* playerController)
 {
 	//
-	CollectPowerup(playerController);
-	Super::Interact(playerController);
+	Super::Interact_Implementation(playerController);
 }
 
 void UXRayVision::CollectPowerup(APlayerController* playerController)

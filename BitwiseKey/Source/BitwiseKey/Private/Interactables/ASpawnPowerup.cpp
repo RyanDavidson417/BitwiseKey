@@ -6,6 +6,7 @@
 #include "Components/AudioComponent.h" 
 #include "Interactables/XRayVision.h"  
 #include "Core/BitwiseGameMode.h"
+#include "Engine/EngineTypes.h" 
 #include "Math/Rotator.h"
 #include "LevelObjects/CollectionInteractable.h"
 #include "Interactables/RandomItemSpawner.h"
@@ -26,6 +27,9 @@ ASpawnPowerup::ASpawnPowerup()
 	//PrimaryActorTick.bCanEverTick = true;
 
 
+	CollectionSoundComponent = CreateDefaultSubobject<UAudioComponent>(TEXT("CollectionSoundComponent"));
+	TrillSoundComponent = CreateDefaultSubobject<UAudioComponent>(TEXT("TrillSoundComponent"));
+
 }
 
 // Called when the game starts or when spawned
@@ -34,13 +38,41 @@ void ASpawnPowerup::BeginPlay()
 	gm = GetWorld()->GetAuthGameMode<ABitwiseGameMode>();
 	gs = Cast<ABitwiseGameState>(gm->GameState);
 	
+	CollectionSoundComponent->OnAudioFinished.AddDynamic(this, &ASpawnPowerup::PlayTrillSound);
+
 	FActorSpawnParameters SpawnInfo;
 
 	FRotator myRot(0, 0, 0);
 	FVector myPos(0, 0, 0);
 
-	CollectionSound = FindComponentByClass<UAudioComponent>();
 
+}
+
+void ASpawnPowerup::StartTrillSoundTimer()
+{
+	LOG("starting timer")
+		GetWorldTimerManager().SetTimer(
+			AudioTimerHandle, this, &ASpawnPowerup::PlayTrillSound,
+			CollectionSoundComponent->Sound->Duration, false);
+		//AudioTimerHandle, CollectionSoundComponent->Sound->Duration, false);
+	// &ASpawnPowerup::PlayTrillSound
+}
+
+void ASpawnPowerup::PlayTrillSound()
+{
+	LOG("playing trill sound YIPPEE")
+	if (IsValid(TrillSoundComponent)) {
+		if (IsValid(TrillSoundComponent->Sound)) {
+
+			TrillSoundComponent->Play();
+		}
+		else {
+			WARN("trill sound clip not valid")
+		}
+	}
+	else {
+		WARN("trill sound component not valid")
+	}
 }
 
 void ASpawnPowerup::Tick(float DeltaTime)

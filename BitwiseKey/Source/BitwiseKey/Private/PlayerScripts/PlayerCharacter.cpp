@@ -7,8 +7,10 @@
 #include "InputMappingContext.h"
 #include "EnhancedInputSubsystems.h"
 #include "Components/CapsuleComponent.h"
+#include "Kismet/GameplayStatics.h"
 //#include "BaseGizmos/GizmoElementShared.h"
 #include "Camera/CameraComponent.h"
+#include "Components/AudioComponent.h" 
 #include "Animation/AnimInstance.h"
 #include "EnhancedInputSubsystems.h"
 #include "Core/BitwiseGameState.h"
@@ -51,6 +53,7 @@ void APlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
+
 	//add input mapping context
 	if (APlayerController* playerController = Cast<APlayerController>(GetController()))
 	{
@@ -82,7 +85,6 @@ void APlayerCharacter::BeginPlay()
 
 	CharacterMovement = GetCharacterMovement();
 
-
 }
 
 
@@ -110,6 +112,7 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	//WARN("Binding Move actions");
 	//UE_LOG(LogTemp, Warning, TEXT("binding the move action"));
 	EIS->BindAction(MovementAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Move);
+	EIS->BindAction(MovementAction, ETriggerEvent::Completed, this, &APlayerCharacter::StopMoving);
 	//bind the steer action
 	EIS->BindAction(LookAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Look);
 	//bind the Interact action
@@ -130,6 +133,7 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 void APlayerCharacter::Move(const FInputActionInstance& Instance)
 {
+	bIsMoving = true;
 	//used for game timer
 	if (!bReceivedFirstPlayerInput) {
 		gm->StartGameTimer();
@@ -137,6 +141,7 @@ void APlayerCharacter::Move(const FInputActionInstance& Instance)
 	}
 
 	lastMoveInput = Instance.GetValue().Get<FVector2D>();
+	
 	//UE_LOG(LogTemp, Warning, TEXT("MOVE INPUT detected"));
 
 	//FVector2D MovementVector = Value.Get<FVector2D>()
@@ -144,9 +149,92 @@ void APlayerCharacter::Move(const FInputActionInstance& Instance)
 	if (Controller != nullptr)
 	{
 
+		if (!bStaminaActive) { //if we're just walking
+			if (IsValid(WalkingAudio)) {
+
+				// if the movement audio component is valid, it's already playing
+				if (!IsValid(CurrentMovementAudioComponent)) {
+					CurrentMovementAudioComponent = UGameplayStatics::CreateSound2D(this, WalkingAudio);
+					CurrentMovementAudioComponent->Play();
+
+					//do we want the sprint end audio to play as a transition to walking?
+					//can we?
+					//zzz
+				}
+				else {
+					//LOG("already playing walki8ng sound")
+				}
+			}
+		}
+		else {//if we're sprinting
+			if (IsValid(SprintingAudio)) {
+
+				// if the movement audio component is valid, it's already playing
+				if (!IsValid(CurrentMovementAudioComponent)) {
+					CurrentMovementAudioComponent = UGameplayStatics::CreateSound2D(this, SprintingAudio);
+					CurrentMovementAudioComponent->Play();
+					if (IsValid(SprintStartAudio)) {
+						UGameplayStatics::PlaySound2D(this, SprintStartAudio);
+					}
+
+				}
+
+
+			}
+		}
+
+		/*
+		if (!bStaminaActive) { //if we're just walking
+			if (IsValid(WalkingAudio)) {
+				
+				//so long as we're not already playing the walking audio, start it
+				if (!IsValid(CurrentAudioComponent)) {
+					CurrentAudioComponent = UGameplayStatics::CreateSound2D(this, WalkingAudio);
+					CurrentAudioComponent->Play();
+				}
+				else {
+					LOG("already playing")
+				}
+			}			
+		}
+		else {//if we're sprinting
+			if (IsValid(SprintingAudio)) {
+
+				if (!IsValid(CurrentAudioComponent)) {
+					CurrentAudioComponent = UGameplayStatics::CreateSound2D(this, SprintingAudio);
+					CurrentAudioComponent->Play();
+				}
+				else {
+					LOG("already playing")
+				}
+			}
+		}
+		*/
+
 		AddMovementInput(GetActorForwardVector(), lastMoveInput.Y);
 		AddMovementInput(GetActorRightVector(), lastMoveInput.X);
+	}	
+}
 
+void APlayerCharacter::StopMoving(const FInputActionInstance& Instance)
+{
+	if (bStaminaActive) {
+
+		DeactivateStaminaEffects();
+	}
+
+	bIsMoving = false;
+
+	if (IsValid(CurrentMovementAudioComponent) && CurrentMovementAudioComponent != nullptr ) {
+		LOG("stopping")
+		CurrentMovementAudioComponent->Stop();
+	}
+	if (bStaminaActive) {
+		//throws exception access violation 
+		if (IsValid(SprintEndAudio)) {
+			UGameplayStatics::PlaySound2D(this, SprintEndAudio);
+
+		}
 	}
 }
 
@@ -169,6 +257,24 @@ void APlayerCharacter::Look(const FInputActionInstance& InputActionInstance)
 		AddControllerYawInput(LookAxisVector.X);
 		AddControllerPitchInput(LookAxisVector.Y);
 	}
+}
+
+void APlayerCharacter::Jump()
+{
+	if (JumpCurrentCountPreJump == 0) {//if this is our first jump
+		//play first jump sound
+		if (IsValid(FirstJumpSound)) {
+			UGameplayStatics::PlaySound2D(this, FirstJumpSound);
+		}
+	}
+	else if (gs->JumpBoostData->bCollected && JumpCurrentCountPreJump == JumpMaxCount -1) {
+		//play second jump sound
+		if (IsValid(DoubleJumpSound)) {
+			UGameplayStatics::PlaySound2D(this, DoubleJumpSound);
+
+		}
+	}
+	Super::Jump();
 }
 
 void APlayerCharacter::Interact(const FInputActionInstance& Instance)
@@ -226,15 +332,16 @@ void APlayerCharacter::TraceLine()
 // and its fields will be filled with detailed info about what was hit
 	if (LineTraceHit.bBlockingHit && IsValid(LineTraceHit.GetActor()))
 	{
-		UActorComponent* InteractableObj = LineTraceHit.GetActor()->FindComponentByClass<UInteractionComponent>();
+		UInteractionComponent* InteractableObj = LineTraceHit.GetActor()->FindComponentByClass<UInteractionComponent>();
+		InteractionComponent = LineTraceHit.GetActor()->FindComponentByClass<UInteractionComponent>();
 
 		//UE_LOG(LogTemp, Warning, TEXT("Trace hit actor: %s"), *LineTraceHit.GetActor()->GetName());// 
-		if (IsValid(InteractableObj)){
+		if (IsValid(InteractionComponent)){
 
 			//UE_LOG(LogTemp, Warning, TEXT("INTERACTABLE Trace hit actor: %s"), *LineTraceHit.GetActor()->GetName());
 
 			//MAYBE maybe set a bool to track whether we have one, and store a reference to the actor
-			InteractionComponent = Cast<UCollectionInteractable>(InteractableObj);
+			//InteractionComponent = InteractableObj;
 
 		}
 		else {
@@ -287,7 +394,7 @@ void APlayerCharacter::ToggleInvisibility(const FInputActionInstance& Instance)
 void APlayerCharacter::ToggleStamina()
 {
 	LOG("TOGGLE STAMINA")
-	if (staminaActive) {
+	if (bStaminaActive) {
 		DeactivateStaminaEffects();
 	}
 	else {
@@ -295,15 +402,78 @@ void APlayerCharacter::ToggleStamina()
 	}
 	 
 }
+//
+//void APlayerCharacter::PlayMovementSounds(bool bSprinting)
+//{
+//
+//
+//	if (!bSprinting) { //if we're just walking
+//		if (IsValid(WalkingAudio)) {
+//
+//			// if the movement audio component is valid, it's already playing
+//			if (!IsValid(CurrentMovementAudioComponent)) {
+//				CurrentMovementAudioComponent = UGameplayStatics::CreateSound2D(this, WalkingAudio);
+//				CurrentMovementAudioComponent->Play();
+//
+//				//do we want the sprint end audio to play as a transition to walking?
+//				//can we?
+//				//zzz
+//				if (IsValid(SprintEndAudio)) {
+//					UGameplayStatics::PlaySound2D(this, SprintEndAudio);
+//				}
+//				else {
+//					LOG("deact not valid")
+//				}
+//			}
+//			else {
+//				LOG("already playing walki8ng sound")
+//			}
+//		}
+//	}
+//	else {//if we're sprinting
+//		if (IsValid(SprintingAudio)) {
+//
+//			// if the movement audio component is valid, it's already playing
+//			if (!IsValid(CurrentMovementAudioComponent)) { 
+//				CurrentMovementAudioComponent = UGameplayStatics::CreateSound2D(this, SprintingAudio);
+//				CurrentMovementAudioComponent->Play();
+//
+//				if (IsValid(SprintStartAudio)) {
+//					UGameplayStatics::PlaySound2D(this, SprintStartAudio);
+//
+//				}
+//			}
+//			else {
+//				LOG("already playing sprinting sound")
+//			}
+//		}
+//	}
+//}
 
 void APlayerCharacter::ActivateStaminaEffects()
 {
 	LOG("action recognized")
+	if (IsValid(CurrentMovementAudioComponent)) {
+		CurrentMovementAudioComponent->Stop();
+	}
+
+	FOnFOVIncreaseDelegate.Broadcast(SprintingFOV);
+
+	//play sprint sounds
+
+	if (IsValid(SprintStartAudio)) {
+		UGameplayStatics::PlaySound2D(this, SprintStartAudio);
+	}
+	else {
+		LOG("NOT VALID")
+	}
+
+	
 
 
 	if (gs->GetHasStaminaAbility() && gm->StaminaStatStruct.currentCharge > 0) {
 
-		staminaActive = true;
+		bStaminaActive = true;
 
 
 
@@ -328,12 +498,58 @@ void APlayerCharacter::ActivateStaminaEffects()
 			CharacterMovement->JumpZVelocity = gs->JumpBoostData->ActiveValue;
 		}
 	}
-
 }
+
 
 void APlayerCharacter::DeactivateStaminaEffects()
 {
-	staminaActive = false;
+	FOnFOVDecreaseDelegate.Broadcast(DefaultFOV);
+	
+	//play sprint end sounds
+	if (bIsMoving && bStaminaActive) {
+		CurrentMovementAudioComponent->Stop();
+
+		if (IsValid(SprintEndAudio)) {
+			UGameplayStatics::PlaySound2D(this, SprintEndAudio);
+		}
+
+		//throws nullref
+		//zzz
+		if (IsValid(gm)) {
+			if (gm->StaminaStatStruct.currentCharge == 0) {
+
+				if (IsValid(gs)) {
+					if (gs->gameTimer > .1f) {
+						if (IsValid(StaminaOutAudio)) {
+							UGameplayStatics::PlaySound2D(this, StaminaOutAudio);
+						}
+
+
+						if (IsValid(SprintEndAudio)) {
+							UGameplayStatics::PlaySound2D(this, SprintEndAudio);
+						}
+						else {
+							LOG("deact not valid")
+						}
+					}
+					else {
+						LOG("timer: %d", gs->gameTimer)
+					}
+				}
+				else {
+					ERROR("GAMEMODE REF NOT VALID")
+				}
+
+			}
+
+		}
+		else {
+			UE_LOG(LogTemp, Error, TEXT("GAMEMODE REF NOT VALID"))
+		}
+
+	}
+
+	bStaminaActive = false;
 
 	if (gs->XRayData->bIsStaminaAbility) {
 		//no implementation needed as xray (currently) doesn't have any player vals associated
@@ -388,6 +604,7 @@ void APlayerCharacter::setRandomStartRotation()
 	{
 		Controller->SetControlRotation(FRotator::ZeroRotator);
 	}
+	RandomStartingRotation = FRotator(0, (randDirection * 90) / 2.5, 0);
 	AddControllerYawInput((randDirection * 90) / 2.5);
 
 	//LOG("random number: %d, direction: %d", randDirection, randDirection * 90);

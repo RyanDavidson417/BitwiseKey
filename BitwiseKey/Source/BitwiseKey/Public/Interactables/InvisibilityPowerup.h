@@ -18,6 +18,7 @@ class BITWISEKEY_API UInvisibilityPowerup : public UPowerupCollectibleBase
 public:
 	UInvisibilityPowerup();
 
-	virtual void Interact(APlayerController* playerController) override;
+	virtual void Interact_Implementation(APlayerController* playerController) override;
+	
 	void CollectPowerup(APlayerController* playerController) override;
 };
