@@ -23,6 +23,7 @@ class ABitwiseGameMode;
 class UPowerupDataBase;
 class ABitwiseGameState;
 class UAudioComponent;
+class UBWK_UserWidget;
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnFovChangeSignature, int32, TargetFov);
 
@@ -35,6 +36,11 @@ class BITWISEKEY_API APlayerCharacter : public ACharacter
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
 	bool bReceivedFirstPlayerInput;
+
+
+	//set from traceline when we find an interactable
+	UPROPERTY(VisibleAnywhere, blueprintReadOnly, Category = Interaction)
+	UInteractionComponent* InteractionComponent;
 
 protected:
 
@@ -96,9 +102,6 @@ protected:
 	//interaction variables
 	UPROPERTY(EditAnywhere)
 		float interactionDistance;
-	//set from traceline when we find an interactable
-	UPROPERTY(VisibleAnywhere, blueprintReadOnly, Category = Interaction)
-		UInteractionComponent* InteractionComponent;
 
 		UCharacterMovementComponent* CharacterMovement;
 	//whether or not we've hit an actor (maybe needs to be a collectible?
@@ -116,6 +119,7 @@ protected:
 
 	UPROPERTY(BlueprintReadOnly)
 	FRotator RandomStartingRotation;
+
 
 	//methods
 public:
@@ -151,6 +155,10 @@ public:
 
 	UFUNCTION()
 	void ResetPlayer();
+
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void DisplayInteractPrompt(); //no C++ implementation
 
 	void ResetFromPlayer();
 
