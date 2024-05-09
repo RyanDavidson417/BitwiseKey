@@ -27,7 +27,6 @@ void ABitwiseGameState::BuildPowerupMap()
 	PowerupDataArray.Add(XRayData);
 	PowerupDataArray.Add(InvisibilityData);
 	PowerupDataArray.Add(SpeedBoostData);
-	PowerupDataArray.Add(JumpBoostData);
 	PowerupDataArray.Add(DoubleJumpData);
 
 
@@ -38,6 +37,7 @@ void ABitwiseGameState::BuildPowerupMap()
 bool ABitwiseGameState::GetPlayerIsUsingStamina() 
 {
 	for(UPowerupDataBase* powerup: PowerupDataArray) {
+		//if any element in the map is a stamina ability AND is active, return true
 		//if any element in the map is a stamina ability AND is active, return true
 		if (powerup->bIsStaminaAbility && powerup->bEnabled) {
 			return true;
