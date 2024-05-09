@@ -12,6 +12,7 @@
 #include "Camera/CameraComponent.h"
 #include "Components/AudioComponent.h" 
 #include "Animation/AnimInstance.h"
+#include "Core/BWK_UserWidget.h"
 #include "EnhancedInputSubsystems.h"
 #include "Core/BitwiseGameState.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -592,6 +593,12 @@ void APlayerCharacter::ResetPlayer()
 	DeactivateJumpBoost();
 	DeactivateStaminaEffects();
 	setRandomStartRotation();
+	
+	if (IsValid(CurrentWidget)) {
+
+		CurrentWidget->HideMenu();
+	}
+
 
 }
 
