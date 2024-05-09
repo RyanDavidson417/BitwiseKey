@@ -11,6 +11,7 @@
  */
 
 class UPowerupDataBase;
+class UBWK_UserWidget;
 
 UENUM(BlueprintType) 
 enum class EPowerUpName : uint8
@@ -42,6 +43,7 @@ public:
 	bool bPassive;
 
 
+
 	//the default value of the relevant stat when this powerup is active
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
 	float defaultValue;
@@ -65,6 +67,7 @@ public:
 	bool GetHasStaminaAbility();
 	void BeginPlay() override;
 	
+
 
 private:
 
@@ -95,8 +98,6 @@ public:
 	UPowerupDataBase* JumpBoostData;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
 	UPowerupDataBase* DoubleJumpData;
-
-
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Powerups")
 	TArray<UPowerupDataBase*> PowerupDataArray;
