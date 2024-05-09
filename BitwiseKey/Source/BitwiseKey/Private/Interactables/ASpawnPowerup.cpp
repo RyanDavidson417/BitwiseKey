@@ -51,9 +51,10 @@ void ASpawnPowerup::BeginPlay()
 void ASpawnPowerup::StartTrillSoundTimer()
 {
 	LOG("starting timer")
-		GetWorldTimerManager().SetTimer(
-			AudioTimerHandle, this, &ASpawnPowerup::PlayTrillSound,
-			CollectionSoundComponent->Sound->Duration, false);
+		PlayTrillSound();
+		//GetWorldTimerManager().SetTimer(
+		//	AudioTimerHandle, this, &ASpawnPowerup::PlayTrillSound,
+		//	CollectionSoundComponent->Sound->Duration, false);
 		//AudioTimerHandle, CollectionSoundComponent->Sound->Duration, false);
 	// &ASpawnPowerup::PlayTrillSound
 }
