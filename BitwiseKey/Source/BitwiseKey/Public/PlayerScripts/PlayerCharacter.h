@@ -42,6 +42,9 @@ public:
 	UPROPERTY(VisibleAnywhere, blueprintReadOnly, Category = Interaction)
 	UInteractionComponent* InteractionComponent;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	TObjectPtr<UBWK_UserWidget> CurrentWidget;
+
 protected:
 
 
@@ -121,8 +124,10 @@ protected:
 	FRotator RandomStartingRotation;
 
 
+
 	//methods
 public:
+
 	// Sets default values for this character's properties
 	APlayerCharacter();
 	// Called every frame
