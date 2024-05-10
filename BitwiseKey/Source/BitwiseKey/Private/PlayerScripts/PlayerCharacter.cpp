@@ -369,6 +369,12 @@ void APlayerCharacter::ToggleInvisibility(const FInputActionInstance& Instance)
 	gm->ToggleInvisibility();
 
 
+	if (gs->InvisibilityData->bEnabled) {
+		ActivateRipples();
+	} else {
+		DeactivateRipples();
+	}
+
 }
 
 //void APlayerCharacter::DeactivateInvisibilityEffects()

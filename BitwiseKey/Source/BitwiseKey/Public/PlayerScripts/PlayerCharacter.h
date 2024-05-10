@@ -149,6 +149,9 @@ public:
 	void TraceLine();
 
 	//powerups
+
+
+
 	void ToggleInvisibility(const FInputActionInstance& Instance);
 	
 	void ToggleStamina();
@@ -158,6 +161,12 @@ public:
 	void ActivateJumpBoost();
 	void DeactivateJumpBoost();
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void ActivateRipples(); //no c++ implementation
+	UFUNCTION(BlueprintImplementableEvent)
+	void DeactivateRipples();
+	
+	
 	UFUNCTION()
 	void ResetPlayer();
 
@@ -197,6 +206,11 @@ protected:
 	TObjectPtr<UAudioComponent> CurrentMovementAudioComponent;
 	TObjectPtr<UAudioComponent> WalkingAudioComponent;
 	TObjectPtr<UAudioComponent> SprintingAudioComponent;
+
+	UPROPERTY(EditAnywhere)
+	TObjectPtr<UMaterialInterface> M_RippleEffectBase;
+
+	TObjectPtr<UMaterialInstanceDynamic> MiD_RippleEffect;
 	
 
 
