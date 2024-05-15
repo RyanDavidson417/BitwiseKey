@@ -131,7 +131,7 @@ public:
 		USoundWave* SW_InvisDeactivate;
 
 	TObjectPtr<ABitwiseGameState> gs;
-	TObjectPtr<APlayerCharacter> playerCharacter;
+	TObjectPtr<APlayerCharacter> PlayerCharacter;
 
 	//prefabs to spawn from
 	//spawned in the xray spot

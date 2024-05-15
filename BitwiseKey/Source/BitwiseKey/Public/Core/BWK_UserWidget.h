@@ -16,10 +16,7 @@ class BITWISEKEY_API UBWK_UserWidget : public UUserWidget
 	
 public:
 
-	UFUNCTION(BlueprintImplementableEvent)
-	void ActivateInteractPrompt(); //no C++ implemenatation
-
-	UFUNCTION(BlueprintImplementableEvent)
-	void DectivateInteractPrompt();//no C++ implemenatation
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void HideMenu(); // no C++ implementation
 
 };

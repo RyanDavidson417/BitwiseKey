@@ -49,7 +49,7 @@ void ABitwiseGameMode::BeginPlay()
     Super::BeginPlay();
     DispatchBeginPlay();
 
-    playerCharacter = Cast<APlayerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
+    PlayerCharacter = Cast<APlayerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
 
     UGameplayStatics::GetAllActorsOfClass(GetWorld(), ASpawnPowerup::StaticClass(), PowerupSpawnLocations);
 
@@ -73,9 +73,9 @@ void ABitwiseGameMode::BeginPlay()
 
 void ABitwiseGameMode::Tick(float DeltaSeconds)
 {
-    if (IsValid(playerCharacter)) {
+    if (IsValid(PlayerCharacter)) {
 
-        if (playerCharacter->bReceivedFirstPlayerInput) {
+        if (PlayerCharacter->bReceivedFirstPlayerInput) {
             //StartGameTimer();
             gs->gameTimer = GetWorld()->GetUnpausedTimeSeconds() - GameStartTime;
         }
@@ -212,6 +212,8 @@ void ABitwiseGameMode::UpdateInvisCharge()
 
             if (InvisibilityStatStruct.currentCharge == 0) {
                 ToggleInvisibility();
+                LOG("BING BONG")
+                PlayerCharacter->DeactivateRipples();
                 return;
             }
 
@@ -262,7 +264,7 @@ void ABitwiseGameMode::UpdateStamina()
                 0.0, StaminaStatStruct.MaxCharge);
 
             if (StaminaStatStruct.currentCharge == 0) {
-                playerCharacter->DeactivateStaminaEffects(); //tell the player to deactivate stamina
+                PlayerCharacter->DeactivateStaminaEffects(); //tell the player to deactivate stamina
 
 
 
