@@ -459,26 +459,27 @@ void APlayerCharacter::ToggleStamina()
 
 void APlayerCharacter::ActivateStaminaEffects()
 {
-	LOG("action recognized")
-	if (IsValid(CurrentMovementAudioComponent)) {
-		CurrentMovementAudioComponent->Stop();
-	}
-
-	FOnFOVIncreaseDelegate.Broadcast(SprintingFOV);
-
-	//play sprint sounds
-
-	if (IsValid(SprintStartAudio)) {
-		UGameplayStatics::PlaySound2D(this, SprintStartAudio);
-	}
-	else {
-		LOG("NOT VALID")
-	}
 
 	
 
 
 	if (gs->GetHasStaminaAbility() && gm->StaminaStatStruct.currentCharge > 0) {
+
+		LOG("action recognized")
+			if (IsValid(CurrentMovementAudioComponent)) {
+				CurrentMovementAudioComponent->Stop();
+			}
+
+		FOnFOVIncreaseDelegate.Broadcast(SprintingFOV);
+
+		//play sprint sounds
+
+		if (IsValid(SprintStartAudio)) {
+			UGameplayStatics::PlaySound2D(this, SprintStartAudio);
+		}
+		else {
+			LOG("NOT VALID")
+		}
 
 		bStaminaActive = true;
 
