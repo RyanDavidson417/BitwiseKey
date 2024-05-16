@@ -164,7 +164,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
 	FPlayerStatStruct StaminaStatStruct;
 
-
+	//used to track whether the gameplay timer should still be running, without pausing everything else
+	//useful for game end screens (especially lose screen which uses an animation reliant on tick)
+	UPROPERTY(BlueprintReadWrite)
+	bool bGameTimerRunning;
 	
 
 protected:

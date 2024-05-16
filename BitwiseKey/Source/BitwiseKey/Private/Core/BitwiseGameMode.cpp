@@ -65,6 +65,7 @@ void ABitwiseGameMode::BeginPlay()
 
     GetWorldTimerManager().SetTimer(StaminaStatStruct.RechargeTimerHandle, 
         this, &ABitwiseGameMode::UpdateStamina, 1/ StaminaStatStruct.Precision, true, 2.0f);
+    bGameTimerRunning = true;
 
     D_OnReset.AddDynamic(this, &ABitwiseGameMode::ResetGameMode);
 }
@@ -75,9 +76,9 @@ void ABitwiseGameMode::Tick(float DeltaSeconds)
 {
     if (IsValid(PlayerCharacter)) {
 
-        if (PlayerCharacter->bReceivedFirstPlayerInput) {
+        if (PlayerCharacter->bReceivedFirstPlayerInput && bGameTimerRunning) {
             //StartGameTimer();
-            gs->gameTimer = GetWorld()->GetUnpausedTimeSeconds() - GameStartTime;
+            gs->gameTimer += DeltaSeconds;
         }
     } else {
         UE_LOG(LogTemp, Error, TEXT("Player character reference in gamemode NOT valid"));
@@ -87,14 +88,13 @@ void ABitwiseGameMode::Tick(float DeltaSeconds)
 void ABitwiseGameMode::StartGameTimer()
 {
     GameStartTime = GetWorld()->GetUnpausedTimeSeconds();
-    
+
 }
 
 void ABitwiseGameMode::ResetGameMode()
 {
 
     gs->gameTimer = 0;
-
 
 
     //reset ability collection
@@ -129,6 +129,7 @@ void ABitwiseGameMode::ResetGameMode()
     //}
 
 
+    bGameTimerRunning = true;
     StartGameTimer();
 }
 
