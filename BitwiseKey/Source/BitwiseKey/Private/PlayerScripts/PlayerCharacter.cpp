@@ -134,6 +134,16 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 void APlayerCharacter::Move(const FInputActionInstance& Instance)
 {
+
+	if (bIsMoving) {//provided we're not already moving
+		if (!bStaminaActive) {
+			PlayMovementSound(0);
+		}
+		else {
+			PlayMovementSound(1);
+		}
+	}
+
 	bIsMoving = true;
 	//used for game timer
 	if (!bReceivedFirstPlayerInput) {
@@ -151,37 +161,43 @@ void APlayerCharacter::Move(const FInputActionInstance& Instance)
 	{
 
 		if (!bStaminaActive) { //if we're just walking
+			PlayMovementSound(0);
+			
+			
 			if (IsValid(WalkingAudio)) {
+				//// if the movement audio component is valid, it's already playing
+				//if (!IsValid(CurrentMovementAudioComponent)) {
+				//	CurrentMovementAudioComponent = UGameplayStatics::CreateSound2D(this, WalkingAudio);
+				//	CurrentMovementAudioComponent->Play();
 
-				// if the movement audio component is valid, it's already playing
-				if (!IsValid(CurrentMovementAudioComponent)) {
-					CurrentMovementAudioComponent = UGameplayStatics::CreateSound2D(this, WalkingAudio);
-					CurrentMovementAudioComponent->Play();
-
-					//do we want the sprint end audio to play as a transition to walking?
-					//can we?
-					//zzz
-				}
-				else {
-					//LOG("already playing walki8ng sound")
-				}
+				//	//do we want the sprint end audio to play as a transition to walking?
+				//	//can we?
+				//	//zzz
+				//}
+				//else {
+				//	//LOG("already playing walki8ng sound")
+				//}
 			}
 		}
 		else {//if we're sprinting
-			if (IsValid(SprintingAudio)) {
-
-				// if the movement audio component is valid, it's already playing
-				if (!IsValid(CurrentMovementAudioComponent)) {
-					CurrentMovementAudioComponent = UGameplayStatics::CreateSound2D(this, SprintingAudio);
-					CurrentMovementAudioComponent->Play();
-					if (IsValid(SprintStartAudio)) {
-						UGameplayStatics::PlaySound2D(this, SprintStartAudio);
-					}
-
-				}
+			PlayMovementSound(1);
 
 
-			}
+			//if (IsValid(SprintingAudio)) {
+
+
+			//	// if the movement audio component is valid, it's already playing
+			//	if (!IsValid(CurrentMovementAudioComponent)) {
+			//		CurrentMovementAudioComponent = UGameplayStatics::CreateSound2D(this, SprintingAudio);
+			//		CurrentMovementAudioComponent->Play();
+			//		if (IsValid(SprintStartAudio)) {
+			//			UGameplayStatics::PlaySound2D(this, SprintStartAudio);
+			//		}
+
+			//	}
+
+
+			//}
 		}
 
 		/*
@@ -226,10 +242,8 @@ void APlayerCharacter::StopMoving(const FInputActionInstance& Instance)
 
 	bIsMoving = false;
 
-	if (IsValid(CurrentMovementAudioComponent) && CurrentMovementAudioComponent != nullptr ) {
-		LOG("stopping")
-		CurrentMovementAudioComponent->Stop();
-	}
+	StopMovementSound();
+
 	if (bStaminaActive) {
 		//throws exception access violation 
 		if (IsValid(SprintEndAudio)) {
@@ -466,9 +480,8 @@ void APlayerCharacter::ActivateStaminaEffects()
 	if (gs->GetHasStaminaAbility() && gm->StaminaStatStruct.currentCharge > 0) {
 
 		LOG("action recognized")
-			if (IsValid(CurrentMovementAudioComponent)) {
-				CurrentMovementAudioComponent->Stop();
-			}
+
+		StopMovementSound();
 
 		FOnFOVIncreaseDelegate.Broadcast(SprintingFOV);
 
@@ -515,7 +528,11 @@ void APlayerCharacter::DeactivateStaminaEffects()
 	
 	//play sprint end sounds
 	if (bIsMoving && bStaminaActive) {
-		CurrentMovementAudioComponent->Stop();
+
+		StopMovementSound();
+		if (bIsMoving) {
+			PlayMovementSound(0);
+		}
 
 		if (IsValid(SprintEndAudio)) {
 			UGameplayStatics::PlaySound2D(this, SprintEndAudio);

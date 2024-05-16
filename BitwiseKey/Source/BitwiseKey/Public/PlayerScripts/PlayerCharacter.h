@@ -166,6 +166,11 @@ public:
 	UFUNCTION(BlueprintImplementableEvent)
 	void DeactivateRipples();
 	
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void PlayMovementSound(int IsWalking); //no ++ implementation
+	UFUNCTION(BlueprintImplementableEvent)
+	void StopMovementSound(); //no ++ implementation
 	
 	UFUNCTION()
 	void ResetPlayer();
