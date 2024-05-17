@@ -134,103 +134,106 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 void APlayerCharacter::Move(const FInputActionInstance& Instance)
 {
+	if (IsValid(gm) && gm->bGameTimerRunning) {
 
-	if (bIsMoving) {//provided we're not already moving
-		if (!bStaminaActive) {
-			PlayMovementSound(0);
+
+		if (bIsMoving) {//provided we're not already moving
+			if (!bStaminaActive) {
+				PlayMovementSound(0);
+			}
+			else {
+				PlayMovementSound(1);
+			}
 		}
-		else {
-			PlayMovementSound(1);
+
+		bIsMoving = true;
+		//used for game timer
+		if (!bReceivedFirstPlayerInput) {
+			gm->StartGameTimer();
+			bReceivedFirstPlayerInput = true;
 		}
-	}
 
-	bIsMoving = true;
-	//used for game timer
-	if (!bReceivedFirstPlayerInput) {
-		gm->StartGameTimer();
-		bReceivedFirstPlayerInput = true;
-	}
-
-	lastMoveInput = Instance.GetValue().Get<FVector2D>();
+		lastMoveInput = Instance.GetValue().Get<FVector2D>();
 	
-	//UE_LOG(LogTemp, Warning, TEXT("MOVE INPUT detected"));
+		//UE_LOG(LogTemp, Warning, TEXT("MOVE INPUT detected"));
 
-	//FVector2D MovementVector = Value.Get<FVector2D>()
+		//FVector2D MovementVector = Value.Get<FVector2D>()
 
-	if (Controller != nullptr)
-	{
+		if (Controller != nullptr)
+		{
 
-		if (!bStaminaActive) { //if we're just walking
-			PlayMovementSound(0);
+			if (!bStaminaActive) { //if we're just walking
+				PlayMovementSound(0);
 			
 			
-			if (IsValid(WalkingAudio)) {
-				//// if the movement audio component is valid, it's already playing
-				//if (!IsValid(CurrentMovementAudioComponent)) {
-				//	CurrentMovementAudioComponent = UGameplayStatics::CreateSound2D(this, WalkingAudio);
-				//	CurrentMovementAudioComponent->Play();
+				if (IsValid(WalkingAudio)) {
+					//// if the movement audio component is valid, it's already playing
+					//if (!IsValid(CurrentMovementAudioComponent)) {
+					//	CurrentMovementAudioComponent = UGameplayStatics::CreateSound2D(this, WalkingAudio);
+					//	CurrentMovementAudioComponent->Play();
 
-				//	//do we want the sprint end audio to play as a transition to walking?
-				//	//can we?
-				//	//zzz
-				//}
-				//else {
-				//	//LOG("already playing walki8ng sound")
+					//	//do we want the sprint end audio to play as a transition to walking?
+					//	//can we?
+					//	//zzz
+					//}
+					//else {
+					//	//LOG("already playing walki8ng sound")
+					//}
+				}
+			}
+			else {//if we're sprinting
+				PlayMovementSound(1);
+
+
+				//if (IsValid(SprintingAudio)) {
+
+
+				//	// if the movement audio component is valid, it's already playing
+				//	if (!IsValid(CurrentMovementAudioComponent)) {
+				//		CurrentMovementAudioComponent = UGameplayStatics::CreateSound2D(this, SprintingAudio);
+				//		CurrentMovementAudioComponent->Play();
+				//		if (IsValid(SprintStartAudio)) {
+				//			UGameplayStatics::PlaySound2D(this, SprintStartAudio);
+				//		}
+
+				//	}
+
+
 				//}
 			}
-		}
-		else {//if we're sprinting
-			PlayMovementSound(1);
 
-
-			//if (IsValid(SprintingAudio)) {
-
-
-			//	// if the movement audio component is valid, it's already playing
-			//	if (!IsValid(CurrentMovementAudioComponent)) {
-			//		CurrentMovementAudioComponent = UGameplayStatics::CreateSound2D(this, SprintingAudio);
-			//		CurrentMovementAudioComponent->Play();
-			//		if (IsValid(SprintStartAudio)) {
-			//			UGameplayStatics::PlaySound2D(this, SprintStartAudio);
-			//		}
-
-			//	}
-
-
-			//}
-		}
-
-		/*
-		if (!bStaminaActive) { //if we're just walking
-			if (IsValid(WalkingAudio)) {
+			/*
+			if (!bStaminaActive) { //if we're just walking
+				if (IsValid(WalkingAudio)) {
 				
-				//so long as we're not already playing the walking audio, start it
-				if (!IsValid(CurrentAudioComponent)) {
-					CurrentAudioComponent = UGameplayStatics::CreateSound2D(this, WalkingAudio);
-					CurrentAudioComponent->Play();
-				}
-				else {
-					LOG("already playing")
-				}
-			}			
-		}
-		else {//if we're sprinting
-			if (IsValid(SprintingAudio)) {
+					//so long as we're not already playing the walking audio, start it
+					if (!IsValid(CurrentAudioComponent)) {
+						CurrentAudioComponent = UGameplayStatics::CreateSound2D(this, WalkingAudio);
+						CurrentAudioComponent->Play();
+					}
+					else {
+						LOG("already playing")
+					}
+				}			
+			}
+			else {//if we're sprinting
+				if (IsValid(SprintingAudio)) {
 
-				if (!IsValid(CurrentAudioComponent)) {
-					CurrentAudioComponent = UGameplayStatics::CreateSound2D(this, SprintingAudio);
-					CurrentAudioComponent->Play();
-				}
-				else {
-					LOG("already playing")
+					if (!IsValid(CurrentAudioComponent)) {
+						CurrentAudioComponent = UGameplayStatics::CreateSound2D(this, SprintingAudio);
+						CurrentAudioComponent->Play();
+					}
+					else {
+						LOG("already playing")
+					}
 				}
 			}
-		}
-		*/
+			*/
 
-		AddMovementInput(GetActorForwardVector(), lastMoveInput.Y);
-		AddMovementInput(GetActorRightVector(), lastMoveInput.X);
-	}	
+			AddMovementInput(GetActorForwardVector(), lastMoveInput.Y);
+			AddMovementInput(GetActorRightVector(), lastMoveInput.X);
+		}	
+	}
 }
 
 void APlayerCharacter::StopMoving(const FInputActionInstance& Instance)
@@ -256,40 +259,39 @@ void APlayerCharacter::StopMoving(const FInputActionInstance& Instance)
 
 void APlayerCharacter::Look(const FInputActionInstance& InputActionInstance)
 {
-	//used for game timer, could disable these lines if we wanted to be generous and only start the game timer when the player starts moving
-	if (!bReceivedFirstPlayerInput) {
-		gm->StartGameTimer();
-		bReceivedFirstPlayerInput = true;
+	if (IsValid(gm) && gm->bGameTimerRunning) {
+		FVector2D LookAxisVector = InputActionInstance.GetValue().Get<FVector2D>();
+
+		//LOG("looking around");
+
+		if (Controller != nullptr)
+		{
+			AddControllerYawInput(LookAxisVector.X);
+			AddControllerPitchInput(LookAxisVector.Y);
+		}
 	}
-
-
-	FVector2D LookAxisVector = InputActionInstance.GetValue().Get<FVector2D>();
-
-	//LOG("looking around");
-
-	if (Controller != nullptr) 
-	{
-		AddControllerYawInput(LookAxisVector.X);
-		AddControllerPitchInput(LookAxisVector.Y);
-	}
+	
 }
 
 void APlayerCharacter::Jump()
 {
-	if (JumpCurrentCountPreJump == 0) {//if this is our first jump
-		//play first jump sound
-		if (IsValid(FirstJumpSound)) {
-			UGameplayStatics::PlaySound2D(this, FirstJumpSound);
-		}
-	}
-	else if (gs->JumpBoostData->bCollected && JumpCurrentCountPreJump == JumpMaxCount -1) {
-		//play second jump sound
-		if (IsValid(DoubleJumpSound)) {
-			UGameplayStatics::PlaySound2D(this, DoubleJumpSound);
 
+	if (IsValid(gm) && gm->bGameTimerRunning) {
+		if (JumpCurrentCountPreJump == 0) {//if this is our first jump
+			//play first jump sound
+			if (IsValid(FirstJumpSound)) {
+				UGameplayStatics::PlaySound2D(this, FirstJumpSound);
+			}
 		}
+		else if (gs->JumpBoostData->bCollected && JumpCurrentCountPreJump == JumpMaxCount - 1) {
+			//play second jump sound
+			if (IsValid(DoubleJumpSound)) {
+				UGameplayStatics::PlaySound2D(this, DoubleJumpSound);
+
+			}
+		}
+		Super::Jump();
 	}
-	Super::Jump();
 }
 
 void APlayerCharacter::Interact(const FInputActionInstance& Instance)
