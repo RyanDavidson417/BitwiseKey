@@ -45,7 +45,7 @@ APlayerCharacter::APlayerCharacter()
 	//PlayerMesh->CastShadow = false
 	//PlayerMesh->SetRelativeLocation(FVector(-30.f, 0.f, -150.f));
 
-
+	InvisHumAudio = CreateDefaultSubobject<UAudioComponent>(TEXT("InvisHumComponent"));
 
 }
 

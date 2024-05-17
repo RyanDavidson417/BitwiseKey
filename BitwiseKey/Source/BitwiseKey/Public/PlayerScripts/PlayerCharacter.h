@@ -212,6 +212,17 @@ protected:
 	TObjectPtr<UAudioComponent> WalkingAudioComponent;
 	TObjectPtr<UAudioComponent> SprintingAudioComponent;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, category= "audio")
+	TObjectPtr<UAudioComponent> InvisHumAudio;
+
+
+	//sound waves to play when you activate and deactivate invisibility
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Audio)
+	USoundWave* SW_InvisActivate;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Audio)
+	USoundWave* SW_InvisDeactivate;
+
+
 	UPROPERTY(EditAnywhere)
 	TObjectPtr<UMaterialInterface> M_RippleEffectBase;
 

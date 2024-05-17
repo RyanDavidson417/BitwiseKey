@@ -185,13 +185,11 @@ void ABitwiseGameMode::ToggleInvisibility()
         if (gs->InvisibilityData->bEnabled) {
 
             gs->InvisibilityData->bEnabled = false;
-            UGameplayStatics::PlaySound2D(GetWorld(), SW_InvisDeactivate);
 
 
         }
         else {
             gs->InvisibilityData->bEnabled = true;
-            UGameplayStatics::PlaySound2D(GetWorld(), SW_InvisActivate);
 
         }
     }
