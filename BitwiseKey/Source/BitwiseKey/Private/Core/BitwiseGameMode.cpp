@@ -200,6 +200,12 @@ void ABitwiseGameMode::ToggleInvisibility()
     }
 }
 
+void ABitwiseGameMode::StopGameTimerAndMusic()
+{
+    bGameTimerRunning = false;
+    OnMusicStop.Broadcast();
+}
+
 void ABitwiseGameMode::UpdateInvisCharge()
 {
     if (gs->InvisibilityData->bCollected) {

@@ -24,6 +24,8 @@ class UCollectionInteractable;
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnResetDelegate);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCollectedXrayDelegate);
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnMusicStopDelegate);
+
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnCollectedAbilitySignature, EPowerUpName, PowerUpName);
 
 
@@ -81,6 +83,8 @@ public:
 	
 	void ToggleInvisibility();
 
+	UFUNCTION(BlueprintCallable)
+	void StopGameTimerAndMusic();
 
 	void UpdateInvisCharge();
 	void UpdateStamina();
@@ -100,6 +104,7 @@ protected:
 
 	virtual void Tick(float DeltaSeconds) override;
 
+
 private:
 
 
@@ -108,17 +113,21 @@ public:
 	
 	UPROPERTY(BlueprintAssignable, BlueprintCallable)
 		FOnResetDelegate D_OnReset;	
-	UPROPERTY(BlueprintAssignable, BlueprintCallable)
-	FOnCollectedXrayDelegate OnCollectedXray; // this delegate is separate from the generic OnAbilityCollected
+		// this delegate is separate from the generic OnAbilityCollected
 	//delegate as xray objects have specific functionality that was implemented prior to the creation
 	// of these delegates.After I further research the performance of delegates I may consider refactoring
-	// that old functionality to be tied to the new delegate, but for now it stays.  
+	// that old functionality to be tied to the new delegate, but for now it stays.
+	UPROPERTY(BlueprintAssignable, BlueprintCallable)
+	FOnCollectedXrayDelegate OnCollectedXray;   
+
 
 
 	UPROPERTY(BlueprintAssignable, BlueprintCallable)
 	FOnCollectedAbilitySignature OnCollectedAbilityDelegate;
 
 
+	UPROPERTY(BlueprintAssignable, BlueprintCallable)
+	FOnMusicStopDelegate OnMusicStop;
 
 
 		//the number of individual 'units' within each progress bar
