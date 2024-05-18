@@ -162,9 +162,9 @@ public:
 	void DeactivateJumpBoost();
 
 	UFUNCTION(BlueprintImplementableEvent)
-	void ActivateRipples(); //no c++ implementation
+	void ActivitateInvisibilityVFX(); //no c++ implementation
 	UFUNCTION(BlueprintImplementableEvent)
-	void DeactivateRipples();
+	void DeactivitateInvisibilityVFX();
 	
 
 	UFUNCTION(BlueprintImplementableEvent)

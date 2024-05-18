@@ -218,7 +218,7 @@ void ABitwiseGameMode::UpdateInvisCharge()
             if (InvisibilityStatStruct.currentCharge == 0) {
                 ToggleInvisibility();
                 LOG("BING BONG")
-                PlayerCharacter->DeactivateRipples();
+                PlayerCharacter->DeactivitateInvisibilityVFX();
                 return;
             }
 

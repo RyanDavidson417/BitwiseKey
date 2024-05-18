@@ -384,12 +384,22 @@ void APlayerCharacter::ToggleInvisibility(const FInputActionInstance& Instance)
 	WARN("toggle invisibility input called");
 	gm->ToggleInvisibility();
 
+	if (IsValid(gs) && gs->InvisibilityData->bCollected) {
+		if (gs->InvisibilityData->bEnabled) {
+			ActivitateInvisibilityVFX();
+		} else {
+			DeactivitateInvisibilityVFX();
+		}
 
-	if (gs->InvisibilityData->bEnabled) {
-		ActivateRipples();
-	} else {
-		DeactivateRipples();
 	}
+	else {
+		if (!IsValid(gs)) {
+			WARN("NOT VALID")
+		} else if (!IsValid(gs)) {
+			WARN("not collected")
+		}
+	}
+
 
 }
 
