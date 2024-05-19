@@ -236,4 +236,5 @@ protected:
 	bool bIsMoving = false;
 
 
+	float DefaultAirControl;
 };

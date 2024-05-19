@@ -45,6 +45,8 @@ APlayerCharacter::APlayerCharacter()
 	//PlayerMesh->CastShadow = false
 	//PlayerMesh->SetRelativeLocation(FVector(-30.f, 0.f, -150.f));
 
+
+
 	InvisHumAudio = CreateDefaultSubobject<UAudioComponent>(TEXT("InvisHumComponent"));
 
 }
@@ -85,6 +87,8 @@ void APlayerCharacter::BeginPlay()
 	setRandomStartRotation();
 
 	CharacterMovement = GetCharacterMovement();
+
+	DefaultAirControl = CharacterMovement->AirControl;
 
 }
 
@@ -525,6 +529,7 @@ void APlayerCharacter::ActivateStaminaEffects()
 
 			CharacterMovement->MaxWalkSpeed = gs->SpeedBoostData->ActiveValue;
 			gs->SpeedBoostData->bEnabled = true;
+			CharacterMovement->AirControl = 1;
 		}
 
 		if (gs->JumpBoostData->bIsStaminaAbility) {
@@ -601,6 +606,7 @@ void APlayerCharacter::DeactivateStaminaEffects()
 	if (gs->SpeedBoostData->bIsStaminaAbility) {
 		CharacterMovement->MaxWalkSpeed = gs->SpeedBoostData->defaultValue;
 		gs->SpeedBoostData->bEnabled = false;
+		CharacterMovement->AirControl = DefaultAirControl;
 
 	}
 
