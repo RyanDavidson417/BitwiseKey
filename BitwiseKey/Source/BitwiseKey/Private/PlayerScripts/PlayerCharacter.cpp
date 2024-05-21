@@ -378,81 +378,20 @@ void APlayerCharacter::TraceLine()
 }
 
 void APlayerCharacter::ToggleInvisibility(const FInputActionInstance& Instance)
-{
-	//used for game timer, probably not totally necessary to start it if the player hits the invisibility button, just for posterity
-	if (!bReceivedFirstPlayerInput) {
-		gm->StartGameTimer();
-		bReceivedFirstPlayerInput = true;
+{	
+	if (IsValid(gm)) {
+		gm->ToggleInvisibility();
 	}
-
-	
-	WARN("toggle invisibility input called");
-	gm->ToggleInvisibility();
-
-	if (IsValid(gs) && gs->InvisibilityData->bCollected) {
-		if (gs->InvisibilityData->bEnabled) {
-			ActivitateInvisibilityVFX();
-		} else {
-			DeactivitateInvisibilityVFX();
-		}
-
-	}
-	else {
-		if (!IsValid(gs)) {
-			WARN("NOT VALID")
-		} else if (!IsValid(gs)) {
-			WARN("not collected")
-		}
-	}
-
-
 }
-
-//void APlayerCharacter::DeactivateInvisibilityEffects()
-//{
-//
-//}
-//
-//void APlayerCharacter::ActivateInvisibilityEffects()
-//{
-//	UCharacterMovementComponent* charMove = GetCharacterMovement();
-//	if (gs->PowerupMap.Find(EPowerUpName::PE_Invisibility)->bEnabled) {
-//		characterMovement->GravityScale = 1;
-//		characterMovement->JumpZVelocity = 400;
-//		characterMovement->MaxWalkSpeed = 1100;
-//	}
-//	else {
-//		characterMovement->GravityScale = 2;
-//		characterMovement->JumpZVelocity = 500;
-//		characterMovement->MaxWalkSpeed = 700;
-//
-//	}
-//}
 
 void APlayerCharacter::ToggleStamina()
 {
-	LOG("TOGGLE STAMINA")
 
-	if (gs->GetHasStaminaAbility()) {
-		if (bStaminaActive) {
-			if (IsValid(gm)) {
-				gm->DeactivateStamina();
-			}
-			else {
-				ERROR("ERROR: playercharacter.cpp reference to gamemode NOT VALID")
-			}
-		}
-		else {
-			if (IsValid(gm)) {
-				gm->ActivateStamina();
-			}
-			else {
-				ERROR("ERROR: playercharacter.cpp reference to gamemode NOT VALID")
-			}
-		}
+	if (IsValid(gm)) {
+		gm->ToggleStamina();
 	}
 	else {
-		LOG("you do not yet have that ability")
+		ERROR("ERROR: playercharacter.cpp reference to gamemode NOT VALID")
 	}
 }
 //
@@ -519,56 +458,6 @@ void APlayerCharacter::ActivateStaminaEffects()
 
 	CharacterMovement->MaxWalkSpeed = gs->SpeedBoostData->ActiveValue;
 	CharacterMovement->AirControl = 1;
-
-
-	// ---------------
-
-	/* DEPRECEATED
-	if (gs->GetHasStaminaAbility() && gm->StaminaStatStruct.currentCharge > 0) {
-
-		LOG("action recognized")
-
-		StopMovementSound();
-
-		FOnFOVIncreaseDelegate.Broadcast(SprintingFOV);
-
-		//play sprint sounds
-
-		if (IsValid(SprintStartAudio)) {
-			UGameplayStatics::PlaySound2D(this, SprintStartAudio);
-		}
-		else {
-			LOG("NOT VALID")
-		}
-
-		bStaminaActive = true;
-
-
-
-		if (gs->XRayData->bIsStaminaAbility) {
-			//no implementation needed as xray (currently) doesn't have any player vals associated
-			//theoretically this statement won't even ever activate
-		}
-
-		if (gs->InvisibilityData->bIsStaminaAbility) {
-			//no implementation needed as invisibility (currently) doesn't have any player vals associated
-			//theoretically this statement won't even ever activate
-		}
-
-		if (gs->SpeedBoostData->bIsStaminaAbility) {
-			LOG("action actioned ---")
-
-			CharacterMovement->MaxWalkSpeed = gs->SpeedBoostData->ActiveValue;
-			gs->SpeedBoostData->bEnabled = true;
-			CharacterMovement->AirControl = 1;
-		}
-
-		if (gs->JumpBoostData->bIsStaminaAbility) {
-			CharacterMovement->JumpZVelocity = gs->JumpBoostData->ActiveValue;
-		}
-	}
-	*/
-
 }
 
 

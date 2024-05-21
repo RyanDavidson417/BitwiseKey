@@ -178,26 +178,6 @@ void ABitwiseGameMode::CollectJumpBoost()
     OnCollectedAbilityDelegate.Broadcast(EPowerUpName::PE_JumpBoost);
 }
 
-void ABitwiseGameMode::ToggleInvisibility()
-{
-
-    if (gs->InvisibilityData->bCollected) {
-
-        if (gs->InvisibilityData->bEnabled) {
-
-            gs->InvisibilityData->bEnabled = false;
-
-
-        }
-        else {
-            gs->InvisibilityData->bEnabled = true;
-
-        }
-    }
-    else {
-        WARN("You do not yet have that ability");
-    }
-}
 
 void ABitwiseGameMode::StopGameTimerAndMusic()
 {
@@ -213,64 +193,94 @@ void ABitwiseGameMode::UpdateInvisCharge()
 
         //LOG("CurrentCharge: %f", gs->CurrentInvisCharge)
         if (gs->InvisibilityData->bEnabled) { //invisibility active, counting down
+            
+
 
             InvisibilityStatStruct.currentCharge = FMath::Clamp(
                 InvisibilityStatStruct.currentCharge - (InvisibilityStatStruct.DischargeRate / InvisibilityStatStruct.Precision),
                 0.0, InvisibilityStatStruct.MaxCharge);
 
             if (InvisibilityStatStruct.currentCharge == 0) {
-                ToggleInvisibility();
-                LOG("BING BONG")
-                PlayerCharacter->DeactivitateInvisibilityVFX();
+                DeactivateInvisibility(true);
                 return;
             }
 
-            //DEPRECATED: the (obviously very messy) way I'd been clamping the values originally
-            //if (InvisibilityStruct.currentCharge == 0) {
-            //    ToggleInvisibility();
-            //    return;
-            //}
-            //else  if (InvisibilityStruct.currentCharge < 0) {
-            //    InvisibilityStruct.currentCharge = 0;
-            //    return;
-            //}
-            //else if (InvisibilityStruct.currentCharge > 0) {
-            //    InvisibilityStruct.currentCharge -= InvisibilityStruct.DischargeRate / InvisibilityStruct.Precision;
-            //    return;
-            //}
         } else { //invisibility inactive, counting up
 
-            InvisibilityStatStruct.currentCharge = FMath::Clamp(
-                InvisibilityStatStruct.currentCharge + (InvisibilityStatStruct.ChargeRate / InvisibilityStatStruct.Precision),
-                0.0, InvisibilityStatStruct.MaxCharge);
+
+            //calculate whether the invis recharge delay has passed
+            float CurrentTime = UGameplayStatics::GetUnpausedTimeSeconds(this);
+            float TimeInvisCanActivate = TimeSinceInvisRechargeStart + CurrentInvisRechargeDelay;
+            if (CurrentTime > TimeInvisCanActivate) {//if the delay has passed
+
+                //increase invis, setting it no lower than 0 and no higher than the max
+                InvisibilityStatStruct.currentCharge = FMath::Clamp(
+                    InvisibilityStatStruct.currentCharge + (InvisibilityStatStruct.ChargeRate / InvisibilityStatStruct.Precision),
+                    0.0, InvisibilityStatStruct.MaxCharge);
+            }
                 
-            //DEPRECATED: the (obviously very messy) way I'd been clamping the values originally
-            //if (InvisibilityStruct.currentCharge == InvisibilityStruct.MaxCharge) {
-            //    return;
-            //}
-            //else  if (InvisibilityStruct.currentCharge > InvisibilityStruct.MaxCharge) {
-            //    InvisibilityStruct.currentCharge = InvisibilityStruct.MaxCharge;
-            //    return;
-            //}
-            //else if (gs->CurrentInvisCharge < InvisMaxCharge) {
-            //    gs->CurrentInvisCharge += InvisChargeRate/ProgressBarPrecision;
-            //    return;
-            //}
+           
         }
     }
-    return ;
+    return;
 }
 
-void ABitwiseGameMode::ActivateInvis()
+
+void ABitwiseGameMode::ToggleInvisibility()
 {
-    //call to playerchara to activate invis
+
+    if (gs->InvisibilityData->bEnabled) {
+        DeactivateInvisibility();
+    }
+    else {
+        ActivateInvisibility();
+    }
+
 }
 
-void ABitwiseGameMode::DeactivateInvis(bool bRanFullyOut)
+void ABitwiseGameMode::ActivateInvisibility()
 {
-    //call to playerchara to deactivate invis fx
+    //zzz check all refs to invis data to ensure this is the only time we're using it
+    if (gs->InvisibilityData->bCollected) {
+        if (InvisibilityStatStruct.currentCharge) {
+            gs->InvisibilityData->bEnabled = true;
+
+            if (IsValid(PlayerCharacter)) {
+                PlayerCharacter->ActivateInvisibilityVFX();
+            }
+            else {
+                ERROR("gamemode reference to PlayerCharacter NOT VALID")
+            }
+        }
+    }
+    else {
+        LOG("you do not yet have that ability");
+    }
 
 }
+
+void ABitwiseGameMode::DeactivateInvisibility(bool bRanFullyOut)
+{
+    TimeSinceInvisRechargeStart = UGameplayStatics::GetUnpausedTimeSeconds(this);
+    if (bRanFullyOut) {
+        CurrentInvisRechargeDelay = FullyOutRechargeDelay;
+    }
+    else { //make the player wait longer if they ran all the way out
+        CurrentInvisRechargeDelay = DefaultRechargeDelay;
+    }
+
+    gs->InvisibilityData->bEnabled = false;
+    if (IsValid(PlayerCharacter)) {
+
+        PlayerCharacter->DeactivateInvisibilityVFX();
+    }
+    else {
+        ERROR("gamemode reference to PlayerCharacter NOT VALID")
+    }
+}
+
+
+
 #pragma endregion invis
 
 #pragma region stamina
@@ -307,17 +317,30 @@ void ABitwiseGameMode::UpdateStamina()
     }
 }
 
+void ABitwiseGameMode::ToggleStamina()
+{
+    if (gs->SpeedBoostData->bEnabled) {
+        DeactivateStamina();
+    }
+    else {
+        ActivateStamina();
+    }
+}
+
+
 void ABitwiseGameMode::ActivateStamina()
 {
-
-
-    if (StaminaStatStruct.currentCharge > 0) {
-
-
-        gs->SpeedBoostData->bEnabled = true;
-        PlayerCharacter->ActivateStaminaEffects();
-
+    if (gs->SpeedBoostData->bCollected) {
+        if (StaminaStatStruct.currentCharge > 0) {
+            gs->SpeedBoostData->bEnabled = true;
+            PlayerCharacter->ActivateStaminaEffects();
+        }
     }
+    else {
+        LOG("you do not yet have that ability")
+    }
+
+
 
     //call to player to activate stamina fx
 }

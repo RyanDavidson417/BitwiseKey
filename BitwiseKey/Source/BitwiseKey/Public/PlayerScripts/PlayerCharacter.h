@@ -162,9 +162,9 @@ public:
 	void DeactivateJumpBoost();
 
 	UFUNCTION(BlueprintImplementableEvent)
-	void ActivitateInvisibilityVFX(); //no c++ implementation
+	void ActivateInvisibilityVFX(); //no c++ implementation
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
-	void DeactivitateInvisibilityVFX();
+	void DeactivateInvisibilityVFX();
 	
 
 	UFUNCTION(BlueprintImplementableEvent)

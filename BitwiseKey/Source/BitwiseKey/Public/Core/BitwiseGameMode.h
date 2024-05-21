@@ -81,16 +81,16 @@ public:
 	//
 	//void CollectPowerup(UPowerupDataBase* powerup);
 	
-	void ToggleInvisibility();
-
 	UFUNCTION(BlueprintCallable)
 	void StopGameTimerAndMusic();
 
 	void UpdateInvisCharge();
-	void ActivateInvis();
-	void DeactivateInvis(bool bRanFullyOut = false);
+	void ToggleInvisibility();
+	void ActivateInvisibility();
+	void DeactivateInvisibility(bool bRanFullyOut = false);
 
 	void UpdateStamina();
+	void ToggleStamina();
 	void ActivateStamina();
 	void DeactivateStamina(bool bRanFullyOut = false);
 
@@ -203,7 +203,7 @@ protected:
 	float TimeSinceInvisRechargeStart;
 	//how long we're currently SUPPOSED to wait since we started waiting for Invis to recharge
 	//changes between DefaultRechargeDelay and FullyOutRechargeDelay if the player uses all Invis
-	float InvisRechargeDelay;
+	float CurrentInvisRechargeDelay;
 
 
 	//how long before stamina or invis should start recharging in normal circumstances
