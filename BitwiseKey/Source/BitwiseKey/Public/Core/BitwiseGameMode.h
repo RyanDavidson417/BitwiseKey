@@ -87,7 +87,14 @@ public:
 	void StopGameTimerAndMusic();
 
 	void UpdateInvisCharge();
+	void ActivateInvis();
+	void DeactivateInvis(bool bRanFullyOut = false);
+
 	void UpdateStamina();
+	void ActivateStamina();
+	void DeactivateStamina(bool bRanFullyOut = false);
+
+
 
 	void StartGameTimer();
 
@@ -133,11 +140,6 @@ public:
 		//the number of individual 'units' within each progress bar
 
 
-	//sound waves to play when you activate and deactivate invisibility
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Audio)
-		USoundWave* SW_InvisActivate;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Audio)
-		USoundWave* SW_InvisDeactivate;
 
 	TObjectPtr<ABitwiseGameState> gs;
 	TObjectPtr<APlayerCharacter> PlayerCharacter;
@@ -168,10 +170,6 @@ public:
 
 	AActor* LastSpawnedPowerup;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
-	FPlayerStatStruct InvisibilityStatStruct;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
-	FPlayerStatStruct StaminaStatStruct;
 
 	//used to track whether the gameplay timer should still be running, without pausing everything else
 	//useful for game end screens (especially lose screen which uses an animation reliant on tick)
@@ -181,8 +179,40 @@ public:
 
 protected:
 
-	TArray<AActor*> SpawnedCollectibles;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
+	FPlayerStatStruct InvisibilityStatStruct;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
+	FPlayerStatStruct StaminaStatStruct;
 
+
+	//sound waves to play when you activate and deactivate invisibility
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Audio)
+	USoundWave* SW_InvisActivate;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Audio)
+	USoundWave* SW_InvisDeactivate;
+
+	TArray<AActor*> SpawnedCollectibles;
+	
+	//used to track how long it's been since we started waiting for stamina to recharge
+	float TimeSinceStaminaRechargeStart;
+	//how long we're currently SUPPOSED to wait since we started waiting for stamina to recharge
+	//changes between DefaultRechargeDelay and FullyOutRechargeDelay if the player uses all stamina
+	float CurrentStaminaRechargeDelay;
+
+	//used to track how long it's been since we started waiting for invis to recharge
+	float TimeSinceInvisRechargeStart;
+	//how long we're currently SUPPOSED to wait since we started waiting for Invis to recharge
+	//changes between DefaultRechargeDelay and FullyOutRechargeDelay if the player uses all Invis
+	float InvisRechargeDelay;
+
+
+	//how long before stamina or invis should start recharging in normal circumstances
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Powerups")
+	float DefaultRechargeDelay;
+	//how long stamina or invis should take to recharge if the player uses all of it
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Powerups")
+	float FullyOutRechargeDelay;
+	
 
 private:
 	float GameStartTime;

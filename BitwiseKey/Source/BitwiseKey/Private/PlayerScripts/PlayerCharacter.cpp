@@ -243,8 +243,9 @@ void APlayerCharacter::Move(const FInputActionInstance& Instance)
 void APlayerCharacter::StopMoving(const FInputActionInstance& Instance)
 {
 	if (bStaminaActive) {
-
-		DeactivateStaminaEffects();
+		if (IsValid(gm)) {
+			gm->DeactivateStamina();
+		}
 	}
 
 	bIsMoving = false;
@@ -431,13 +432,28 @@ void APlayerCharacter::ToggleInvisibility(const FInputActionInstance& Instance)
 void APlayerCharacter::ToggleStamina()
 {
 	LOG("TOGGLE STAMINA")
-	if (bStaminaActive) {
-		DeactivateStaminaEffects();
+
+	if (gs->GetHasStaminaAbility()) {
+		if (bStaminaActive) {
+			if (IsValid(gm)) {
+				gm->DeactivateStamina();
+			}
+			else {
+				ERROR("ERROR: playercharacter.cpp reference to gamemode NOT VALID")
+			}
+		}
+		else {
+			if (IsValid(gm)) {
+				gm->ActivateStamina();
+			}
+			else {
+				ERROR("ERROR: playercharacter.cpp reference to gamemode NOT VALID")
+			}
+		}
 	}
 	else {
-		ActivateStaminaEffects();
+		LOG("you do not yet have that ability")
 	}
-	 
 }
 //
 //void APlayerCharacter::PlayMovementSounds(bool bSprinting)
@@ -489,10 +505,25 @@ void APlayerCharacter::ToggleStamina()
 
 void APlayerCharacter::ActivateStaminaEffects()
 {
+	StopMovementSound();
+	FOnFOVIncreaseDelegate.Broadcast(SprintingFOV);
 
-	
+	if (IsValid(SprintStartAudio)) {
+		UGameplayStatics::PlaySound2D(this, SprintStartAudio);
+	}
+	else {
+		LOG("NOT VALID")
+	}
+
+	bStaminaActive = true;
+
+	CharacterMovement->MaxWalkSpeed = gs->SpeedBoostData->ActiveValue;
+	CharacterMovement->AirControl = 1;
 
 
+	// ---------------
+
+	/* DEPRECEATED
 	if (gs->GetHasStaminaAbility() && gm->StaminaStatStruct.currentCharge > 0) {
 
 		LOG("action recognized")
@@ -536,10 +567,12 @@ void APlayerCharacter::ActivateStaminaEffects()
 			CharacterMovement->JumpZVelocity = gs->JumpBoostData->ActiveValue;
 		}
 	}
+	*/
+
 }
 
 
-void APlayerCharacter::DeactivateStaminaEffects()
+void APlayerCharacter::DeactivateStaminaEffects(bool bRanFullyOut)
 {
 	FOnFOVDecreaseDelegate.Broadcast(DefaultFOV);
 	
@@ -547,72 +580,40 @@ void APlayerCharacter::DeactivateStaminaEffects()
 	if (bIsMoving && bStaminaActive) {
 
 		StopMovementSound();
-		if (bIsMoving) {
-			PlayMovementSound(0);
+		if (bIsMoving) { //if we're still moving we're walking
+			PlayMovementSound(0); //so play walk audio
 		}
 
 		if (IsValid(SprintEndAudio)) {
 			UGameplayStatics::PlaySound2D(this, SprintEndAudio);
 		}
+		else {
+			WARN("sprint end audio not valid")
+		}
 
-		//throws nullref
-		//zzz
-		if (IsValid(gm)) {
-			if (gm->StaminaStatStruct.currentCharge == 0) {
-
-				if (IsValid(gs)) {
-					if (gs->gameTimer > .1f) {
-						if (IsValid(StaminaOutAudio)) {
-							UGameplayStatics::PlaySound2D(this, StaminaOutAudio);
-						}
-
-
-						if (IsValid(SprintEndAudio)) {
-							UGameplayStatics::PlaySound2D(this, SprintEndAudio);
-						}
-						else {
-							LOG("deact not valid")
-						}
-					}
-					else {
-						LOG("timer: %d", gs->gameTimer)
+		if (bRanFullyOut) {
+			if (IsValid(gs)) {
+				if (gs->gameTimer > .1f) {
+					if (IsValid(StaminaOutAudio)) {
+						UGameplayStatics::PlaySound2D(this, StaminaOutAudio);
 					}
 				}
 				else {
-					ERROR("GAMEMODE REF NOT VALID")
+					LOG("timer: %d", gs->gameTimer)
 				}
-
 			}
-
+			else {
+				ERROR("GAMEMODE REF NOT VALID")
+			}
 		}
-		else {
-			UE_LOG(LogTemp, Error, TEXT("GAMEMODE REF NOT VALID"))
-		}
-
 	}
 
 	bStaminaActive = false;
 
-	if (gs->XRayData->bIsStaminaAbility) {
-		//no implementation needed as xray (currently) doesn't have any player vals associated
-		//theoretically this statement won't even ever activate
-	}
+	CharacterMovement->MaxWalkSpeed = gs->SpeedBoostData->defaultValue;
+	CharacterMovement->AirControl = DefaultAirControl;
 
-	if (gs->InvisibilityData->bIsStaminaAbility) {
-		//no implementation needed as invisibility (currently) doesn't have any player vals associated
-		//theoretically this statement won't even ever activate
-	}
 
-	if (gs->SpeedBoostData->bIsStaminaAbility) {
-		CharacterMovement->MaxWalkSpeed = gs->SpeedBoostData->defaultValue;
-		gs->SpeedBoostData->bEnabled = false;
-		CharacterMovement->AirControl = DefaultAirControl;
-
-	}
-
-	if (gs->JumpBoostData->bIsStaminaAbility) {
-		CharacterMovement->JumpZVelocity = gs->JumpBoostData->defaultValue;
-	}
 }
 
 void APlayerCharacter::ActivateJumpBoost()

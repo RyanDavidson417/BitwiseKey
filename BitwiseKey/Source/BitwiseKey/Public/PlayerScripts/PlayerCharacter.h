@@ -156,7 +156,7 @@ public:
 	
 	void ToggleStamina();
 	void ActivateStaminaEffects();
-	void DeactivateStaminaEffects();
+	void DeactivateStaminaEffects(bool bRanFullyOut = false);
 
 	void ActivateJumpBoost();
 	void DeactivateJumpBoost();

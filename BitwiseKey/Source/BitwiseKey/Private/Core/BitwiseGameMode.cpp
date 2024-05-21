@@ -65,6 +65,7 @@ void ABitwiseGameMode::BeginPlay()
 
     GetWorldTimerManager().SetTimer(StaminaStatStruct.RechargeTimerHandle, 
         this, &ABitwiseGameMode::UpdateStamina, 1/ StaminaStatStruct.Precision, true, 2.0f);
+
     bGameTimerRunning = true;
 
     D_OnReset.AddDynamic(this, &ABitwiseGameMode::ResetGameMode);
@@ -204,6 +205,8 @@ void ABitwiseGameMode::StopGameTimerAndMusic()
     OnMusicStop.Broadcast();
 }
 
+
+#pragma region invis
 void ABitwiseGameMode::UpdateInvisCharge()
 {
     if (gs->InvisibilityData->bCollected) {
@@ -258,6 +261,19 @@ void ABitwiseGameMode::UpdateInvisCharge()
     return ;
 }
 
+void ABitwiseGameMode::ActivateInvis()
+{
+    //call to playerchara to activate invis
+}
+
+void ABitwiseGameMode::DeactivateInvis(bool bRanFullyOut)
+{
+    //call to playerchara to deactivate invis fx
+
+}
+#pragma endregion invis
+
+#pragma region stamina
 void ABitwiseGameMode::UpdateStamina()
 {
     if (gs->GetHasStaminaAbility()) {
@@ -268,51 +284,59 @@ void ABitwiseGameMode::UpdateStamina()
                 StaminaStatStruct.currentCharge - (StaminaStatStruct.DischargeRate / StaminaStatStruct.Precision),
                 0.0, StaminaStatStruct.MaxCharge);
 
+            //deactivate stamina
+
             if (StaminaStatStruct.currentCharge == 0) {
-                PlayerCharacter->DeactivateStaminaEffects(); //tell the player to deactivate stamina
-
-
-
+                DeactivateStamina(true);
                 return;
             }
 
-            //DEPRECATED
-            //if (gs->CurrentStamina == 0) {
-            //    ToggleStamina();
-            //    return;
-            //}
-            //else  if (gs->CurrentStamina < 0) {
-            //    gs->CurrentStamina = 0;
-            //    return;
-            //}
-            //else if (gs->CurrentStamina > 0) {
+        } else { //invisibility inactive, counting up
+            
+            //calculate whether the stamina delay has passed
+            float CurrentTime = UGameplayStatics::GetUnpausedTimeSeconds(this);
+            float TimeStaminaCanActivate = TimeSinceStaminaRechargeStart + CurrentStaminaRechargeDelay;
+            if (CurrentTime > TimeStaminaCanActivate) {//if the delay has passed
 
-            //    gs->CurrentStamina -= StaminaDischargeRate / ProgressBarPrecision;
-            //    return;
-            //}
-        }
-        else { //invisibility inactive, counting up
-
-            //increase stamina, setting it no lower than 0 and no higher than the max
-            StaminaStatStruct.currentCharge = FMath::Clamp(
-                StaminaStatStruct.currentCharge + (StaminaStatStruct.ChargeRate / StaminaStatStruct.Precision),
-                0.0, StaminaStatStruct.MaxCharge);
-
-
-            //if (gs->CurrentStamina == InvisMaxCharge) {
-            //    return;
-            //}
-            //else  if (gs->CurrentStamina > InvisMaxCharge) {
-            //    gs->CurrentStamina = InvisMaxCharge;
-            //    return;
-            //}
-            //else if (gs->CurrentStamina < InvisMaxCharge) {
-            //    gs->CurrentStamina += InvisChargeRate / ProgressBarPrecision;
-            //    return;
-            //}
+                //increase stamina, setting it no lower than 0 and no higher than the max
+                StaminaStatStruct.currentCharge = FMath::Clamp(
+                    StaminaStatStruct.currentCharge + (StaminaStatStruct.ChargeRate / StaminaStatStruct.Precision),
+                    0.0, StaminaStatStruct.MaxCharge);        
+            }
         }
     }
 }
 
+void ABitwiseGameMode::ActivateStamina()
+{
 
+
+    if (StaminaStatStruct.currentCharge > 0) {
+
+
+        gs->SpeedBoostData->bEnabled = true;
+        PlayerCharacter->ActivateStaminaEffects();
+
+    }
+
+    //call to player to activate stamina fx
+}
+
+void ABitwiseGameMode::DeactivateStamina(bool bRanFullyOut)
+{
+
+    TimeSinceStaminaRechargeStart = UGameplayStatics::GetUnpausedTimeSeconds(this);
+    if (bRanFullyOut) {
+        CurrentStaminaRechargeDelay = FullyOutRechargeDelay;
+    }
+    else {
+        CurrentStaminaRechargeDelay = DefaultRechargeDelay;
+    }
+    gs->SpeedBoostData->bEnabled = false;
+
+    PlayerCharacter->DeactivateStaminaEffects(bRanFullyOut);
+
+}
+
+#pragma endregion Stamina
 
