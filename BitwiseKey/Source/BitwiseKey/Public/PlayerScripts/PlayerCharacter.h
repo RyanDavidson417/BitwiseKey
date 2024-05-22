@@ -156,7 +156,9 @@ public:
 	
 	void ToggleStamina();
 	void ActivateStaminaEffects();
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (DisplayName = "DeactivateStaminaEffects"))
 	void DeactivateStaminaEffects(bool bRanFullyOut = false);
+	virtual void DeactivateStaminaEffects_Implementation(bool bRanFullyOut = false);
 
 	void ActivateJumpBoost();
 	void DeactivateJumpBoost();

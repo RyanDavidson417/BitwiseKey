@@ -461,8 +461,9 @@ void APlayerCharacter::ActivateStaminaEffects()
 }
 
 
-void APlayerCharacter::DeactivateStaminaEffects(bool bRanFullyOut)
+void APlayerCharacter::DeactivateStaminaEffects_Implementation(bool bRanFullyOut)
 {
+	LOG("c++ ")
 	FOnFOVDecreaseDelegate.Broadcast(DefaultFOV);
 	
 	//play sprint end sounds
