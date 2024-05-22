@@ -166,7 +166,7 @@ public:
 	UFUNCTION(BlueprintImplementableEvent)
 	void ActivateInvisibilityVFX(); //no c++ implementation
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
-	void DeactivateInvisibilityVFX();
+	void DeactivateInvisibilityVFX(bool bRanFullyOut = false);
 	
 
 	UFUNCTION(BlueprintImplementableEvent)

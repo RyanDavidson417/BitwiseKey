@@ -272,7 +272,7 @@ void ABitwiseGameMode::DeactivateInvisibility(bool bRanFullyOut)
     gs->InvisibilityData->bEnabled = false;
     if (IsValid(PlayerCharacter)) {
 
-        PlayerCharacter->DeactivateInvisibilityVFX();
+        PlayerCharacter->DeactivateInvisibilityVFX(bRanFullyOut);
     }
     else {
         ERROR("gamemode reference to PlayerCharacter NOT VALID")
