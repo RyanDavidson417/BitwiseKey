@@ -553,6 +553,8 @@ void APlayerCharacter::setRandomStartRotation()
 
 void APlayerCharacter::ResetFromPlayer()
 {
+
+	UGameplayStatics::SetGamePaused(this, false);
 	WARN("reset action called from player")
 		gm->D_OnReset.Broadcast();
 }
