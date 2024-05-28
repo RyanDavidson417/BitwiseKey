@@ -19,4 +19,8 @@ public:
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
 	void HideMenu(); // no C++ implementation
 
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	void OnStartButtonPressed(); //no c++ implementation - "overriden" by blueprints
+	virtual void OnStartButtonPressed_Implementation();
+
 };
