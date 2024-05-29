@@ -784,130 +784,130 @@
 "C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StarterContent/Textures/T_Tech_Hex_Tile_N.uexp" 783
 "C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StarterContent/Textures/T_MacroVariation.uasset" 784
 "C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StarterContent/Textures/T_MacroVariation.uexp" 785
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/hex_instances/M_Hex_Parent.uasset" 786
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/hex_instances/M_Hex_Parent.uexp" 787
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/hex_instances/m_hex_normwall.uasset" 788
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/hex_instances/m_hex_normwall.uexp" 789
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/M_Hex_Parent.uasset" 786
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/M_Hex_Parent.uexp" 787
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/InteriorInstances/m_hex_normwall.uasset" 788
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/InteriorInstances/m_hex_normwall.uexp" 789
 "C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/InteriorWalls/BP_RealWall_Narrow.uasset" 790
 "C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/InteriorWalls/BP_RealWall_Narrow.uexp" 791
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraSphereDistributionMode.uasset" 792
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraSphereDistributionMode.uexp" 793
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraTorusDistributionMode.uasset" 794
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraTorusDistributionMode.uexp" 795
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraRandomnessMode.uasset" 796
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraRandomnessMode.uexp" 797
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraRandomnessEvaluation.uasset" 798
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraRandomnessEvaluation.uexp" 799
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/Location/ENiagara_LocationShapes.uasset" 800
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/Location/ENiagara_LocationShapes.uexp" 801
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_MassInitializationMode.uasset" 802
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_MassInitializationMode.uexp" 803
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/Location/ENiagara_CylinderMode.uasset" 804
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/Location/ENiagara_CylinderMode.uexp" 805
-"../../../Engine/Plugins/FX/Niagara/Content/DefaultAssets/DefaultSpriteMaterial.uasset" 806
-"../../../Engine/Plugins/FX/Niagara/Content/DefaultAssets/DefaultSpriteMaterial.uexp" 807
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_PositionInitializationMode.uasset" 808
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_PositionInitializationMode.uexp" 809
-"../../../Engine/Plugins/FX/Niagara/Content/Icons/Modules/T_Icon_Solver_LimitSpeed.uasset" 810
-"../../../Engine/Plugins/FX/Niagara/Content/Icons/Modules/T_Icon_Solver_LimitSpeed.uexp" 811
-"../../../Engine/Plugins/FX/Niagara/Content/Icons/Modules/T_Icon_Solver_RotationalSolve.uasset" 812
-"../../../Engine/Plugins/FX/Niagara/Content/Icons/Modules/T_Icon_Solver_RotationalSolve.uexp" 813
-"../../../Engine/Plugins/FX/Niagara/Content/Icons/Modules/T_Icon_Solver_LimitAccel.uasset" 814
-"../../../Engine/Plugins/FX/Niagara/Content/Icons/Modules/T_Icon_Solver_LimitAccel.uexp" 815
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraScaleColorMode.uasset" 816
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraScaleColorMode.uexp" 817
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_SizeScaleMode.uasset" 818
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_SizeScaleMode.uexp" 819
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_UVFlippingMode.uasset" 820
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_UVFlippingMode.uexp" 821
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/Ribbons/ENiagara_UnsetDirectSetRandom.uasset" 822
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/Ribbons/ENiagara_UnsetDirectSetRandom.uexp" 823
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_LifetimeMode.uasset" 824
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_LifetimeMode.uexp" 825
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/Ribbons/ENiagara_UnsetDirectSet.uasset" 826
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/Ribbons/ENiagara_UnsetDirectSet.uexp" 827
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_SpriteRotationMode.uasset" 828
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_SpriteRotationMode.uexp" 829
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_ColorInitializationMode.uasset" 830
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_ColorInitializationMode.uexp" 831
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraChannelCorrelation.uasset" 832
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraChannelCorrelation.uexp" 833
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/Transforms/ENiagara_ScaleMode.uasset" 834
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/Transforms/ENiagara_ScaleMode.uexp" 835
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/Angles/ENiagara_AngleInput.uasset" 836
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/Angles/ENiagara_AngleInput.uexp" 837
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/Utility/ENiagara_VelocityMode.uasset" 838
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/Utility/ENiagara_VelocityMode.uexp" 839
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/Transforms/ENiagara_RotationMode.uasset" 840
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/Transforms/ENiagara_RotationMode.uexp" 841
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraEmitterLifeCycleMode.uasset" 842
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraEmitterLifeCycleMode.uexp" 843
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_InfiniteLoopDuration.uasset" 844
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_InfiniteLoopDuration.uexp" 845
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_EmitterStateOptions.uasset" 846
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_EmitterStateOptions.uexp" 847
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraInactiveMode.uasset" 848
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraInactiveMode.uexp" 849
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraExecutionStateManagement.uasset" 850
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraExecutionStateManagement.uexp" 851
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraEmitterScalabilityMode_Limited.uasset" 852
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraEmitterScalabilityMode_Limited.uexp" 853
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/Location/ENiagara_ConeMode.uasset" 854
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/Location/ENiagara_ConeMode.uexp" 855
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_AttributeSamplingApplyOutput.uasset" 856
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_AttributeSamplingApplyOutput.uexp" 857
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/Transforms/ENiagara_OffsetMode.uasset" 858
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/Transforms/ENiagara_OffsetMode.uexp" 859
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/Location/ENiagara_BoxPlaneMode.uasset" 860
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/Location/ENiagara_BoxPlaneMode.uexp" 861
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/Transforms/ENiagara_TransformOrder.uasset" 862
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/Transforms/ENiagara_TransformOrder.uexp" 863
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/Location/ENiagaraRingDiscMode.uasset" 864
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/Location/ENiagaraRingDiscMode.uexp" 865
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraShapeTorusMode.uasset" 866
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraShapeTorusMode.uexp" 867
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraExpansionMode.uasset" 868
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraExpansionMode.uexp" 869
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/Transforms/ENiagara_TransformType.uasset" 870
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/Transforms/ENiagara_TransformType.uexp" 871
-"../../../Engine/Plugins/FX/Niagara/Content/Icons/Modules/T_Icon_Particle_InfiniteLife.uasset" 872
-"../../../Engine/Plugins/FX/Niagara/Content/Icons/Modules/T_Icon_Particle_InfiniteLife.uexp" 873
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraSystemInactiveMode.uasset" 874
-"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraSystemInactiveMode.uexp" 875
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/Particles/PlatformWallSystem.uasset" 876
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/Particles/PlatformWallSystem.uexp" 877
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StarterContent/Textures/T_Metal_Steel_D.ubulk" 878
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StarterContent/Textures/T_Metal_Steel_D.uasset" 879
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StarterContent/Textures/T_Metal_Steel_D.uexp" 880
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StarterContent/Textures/T_Tech_Panel_N.ubulk" 881
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StarterContent/Textures/T_Tech_Panel_N.uasset" 882
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StarterContent/Textures/T_Tech_Panel_N.uexp" 883
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StarterContent/Textures/T_Tech_Panel_M.ubulk" 884
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StarterContent/Textures/T_Tech_Panel_M.uasset" 885
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StarterContent/Textures/T_Tech_Panel_M.uexp" 886
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StarterContent/Materials/M_Tech_Panel.uasset" 887
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StarterContent/Materials/M_Tech_Panel.uexp" 888
-"../../../Engine/Content/Functions/Engine_MaterialFunctions01/Gradient/LinearGradient.uasset" 889
-"../../../Engine/Content/Functions/Engine_MaterialFunctions01/Gradient/LinearGradient.uexp" 890
-"../../../Engine/Content/Functions/Engine_MaterialFunctions02/Masking/ThresholdWithRange.uasset" 891
-"../../../Engine/Content/Functions/Engine_MaterialFunctions02/Masking/ThresholdWithRange.uexp" 892
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/StarterContent/Textures/T_Ground_Grass_D.ubulk" 893
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/StarterContent/Textures/T_Ground_Grass_D.uasset" 894
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/StarterContent/Textures/T_Ground_Grass_D.uexp" 895
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/StarterContent/Textures/T_Tech_Hex_Tile_M.ubulk" 896
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/StarterContent/Textures/T_Tech_Hex_Tile_M.uasset" 897
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/StarterContent/Textures/T_Tech_Hex_Tile_M.uexp" 898
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/StarterContent/Textures/T_Tech_Hex_Tile_N.ubulk" 899
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/StarterContent/Textures/T_Tech_Hex_Tile_N.uasset" 900
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/StarterContent/Textures/T_Tech_Hex_Tile_N.uexp" 901
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/StarterContent/Textures/T_MacroVariation.uasset" 902
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/StarterContent/Textures/T_MacroVariation.uexp" 903
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex_Infected_ScaledD.uasset" 904
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex_Infected_ScaledD.uexp" 905
+"../../../Engine/Content/Functions/Engine_MaterialFunctions01/Gradient/LinearGradient.uasset" 792
+"../../../Engine/Content/Functions/Engine_MaterialFunctions01/Gradient/LinearGradient.uexp" 793
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/Masking/ThresholdWithRange.uasset" 794
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/Masking/ThresholdWithRange.uexp" 795
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/StarterContent/Textures/T_Ground_Grass_D.ubulk" 796
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/StarterContent/Textures/T_Ground_Grass_D.uasset" 797
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/StarterContent/Textures/T_Ground_Grass_D.uexp" 798
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/StarterContent/Textures/T_Tech_Hex_Tile_M.ubulk" 799
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/StarterContent/Textures/T_Tech_Hex_Tile_M.uasset" 800
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/StarterContent/Textures/T_Tech_Hex_Tile_M.uexp" 801
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/StarterContent/Textures/T_Tech_Hex_Tile_N.ubulk" 802
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/StarterContent/Textures/T_Tech_Hex_Tile_N.uasset" 803
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/StarterContent/Textures/T_Tech_Hex_Tile_N.uexp" 804
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/StarterContent/Textures/T_MacroVariation.uasset" 805
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/StarterContent/Textures/T_MacroVariation.uexp" 806
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/Infected/Hex_Infected_ScaledD.uasset" 807
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/Infected/Hex_Infected_ScaledD.uexp" 808
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraSphereDistributionMode.uasset" 809
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraSphereDistributionMode.uexp" 810
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraTorusDistributionMode.uasset" 811
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraTorusDistributionMode.uexp" 812
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraRandomnessMode.uasset" 813
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraRandomnessMode.uexp" 814
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraRandomnessEvaluation.uasset" 815
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraRandomnessEvaluation.uexp" 816
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/Location/ENiagara_LocationShapes.uasset" 817
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/Location/ENiagara_LocationShapes.uexp" 818
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_MassInitializationMode.uasset" 819
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_MassInitializationMode.uexp" 820
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/Location/ENiagara_CylinderMode.uasset" 821
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/Location/ENiagara_CylinderMode.uexp" 822
+"../../../Engine/Plugins/FX/Niagara/Content/DefaultAssets/DefaultSpriteMaterial.uasset" 823
+"../../../Engine/Plugins/FX/Niagara/Content/DefaultAssets/DefaultSpriteMaterial.uexp" 824
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_PositionInitializationMode.uasset" 825
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_PositionInitializationMode.uexp" 826
+"../../../Engine/Plugins/FX/Niagara/Content/Icons/Modules/T_Icon_Solver_LimitSpeed.uasset" 827
+"../../../Engine/Plugins/FX/Niagara/Content/Icons/Modules/T_Icon_Solver_LimitSpeed.uexp" 828
+"../../../Engine/Plugins/FX/Niagara/Content/Icons/Modules/T_Icon_Solver_RotationalSolve.uasset" 829
+"../../../Engine/Plugins/FX/Niagara/Content/Icons/Modules/T_Icon_Solver_RotationalSolve.uexp" 830
+"../../../Engine/Plugins/FX/Niagara/Content/Icons/Modules/T_Icon_Solver_LimitAccel.uasset" 831
+"../../../Engine/Plugins/FX/Niagara/Content/Icons/Modules/T_Icon_Solver_LimitAccel.uexp" 832
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraScaleColorMode.uasset" 833
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraScaleColorMode.uexp" 834
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_SizeScaleMode.uasset" 835
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_SizeScaleMode.uexp" 836
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_UVFlippingMode.uasset" 837
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_UVFlippingMode.uexp" 838
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/Ribbons/ENiagara_UnsetDirectSetRandom.uasset" 839
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/Ribbons/ENiagara_UnsetDirectSetRandom.uexp" 840
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_LifetimeMode.uasset" 841
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_LifetimeMode.uexp" 842
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/Ribbons/ENiagara_UnsetDirectSet.uasset" 843
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/Ribbons/ENiagara_UnsetDirectSet.uexp" 844
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_SpriteRotationMode.uasset" 845
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_SpriteRotationMode.uexp" 846
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_ColorInitializationMode.uasset" 847
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_ColorInitializationMode.uexp" 848
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraChannelCorrelation.uasset" 849
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraChannelCorrelation.uexp" 850
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/Transforms/ENiagara_ScaleMode.uasset" 851
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/Transforms/ENiagara_ScaleMode.uexp" 852
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/Angles/ENiagara_AngleInput.uasset" 853
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/Angles/ENiagara_AngleInput.uexp" 854
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/Utility/ENiagara_VelocityMode.uasset" 855
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/Utility/ENiagara_VelocityMode.uexp" 856
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/Transforms/ENiagara_RotationMode.uasset" 857
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/Transforms/ENiagara_RotationMode.uexp" 858
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraEmitterLifeCycleMode.uasset" 859
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraEmitterLifeCycleMode.uexp" 860
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_InfiniteLoopDuration.uasset" 861
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_InfiniteLoopDuration.uexp" 862
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_EmitterStateOptions.uasset" 863
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_EmitterStateOptions.uexp" 864
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraInactiveMode.uasset" 865
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraInactiveMode.uexp" 866
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraExecutionStateManagement.uasset" 867
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraExecutionStateManagement.uexp" 868
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraEmitterScalabilityMode_Limited.uasset" 869
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraEmitterScalabilityMode_Limited.uexp" 870
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/Location/ENiagara_ConeMode.uasset" 871
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/Location/ENiagara_ConeMode.uexp" 872
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_AttributeSamplingApplyOutput.uasset" 873
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagara_AttributeSamplingApplyOutput.uexp" 874
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/Transforms/ENiagara_OffsetMode.uasset" 875
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/Transforms/ENiagara_OffsetMode.uexp" 876
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/Location/ENiagara_BoxPlaneMode.uasset" 877
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/Location/ENiagara_BoxPlaneMode.uexp" 878
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/Transforms/ENiagara_TransformOrder.uasset" 879
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/Transforms/ENiagara_TransformOrder.uexp" 880
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/Location/ENiagaraRingDiscMode.uasset" 881
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/Location/ENiagaraRingDiscMode.uexp" 882
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraShapeTorusMode.uasset" 883
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraShapeTorusMode.uexp" 884
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraExpansionMode.uasset" 885
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraExpansionMode.uexp" 886
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/Transforms/ENiagara_TransformType.uasset" 887
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/Transforms/ENiagara_TransformType.uexp" 888
+"../../../Engine/Plugins/FX/Niagara/Content/Icons/Modules/T_Icon_Particle_InfiniteLife.uasset" 889
+"../../../Engine/Plugins/FX/Niagara/Content/Icons/Modules/T_Icon_Particle_InfiniteLife.uexp" 890
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraSystemInactiveMode.uasset" 891
+"../../../Engine/Plugins/FX/Niagara/Content/Enums/ENiagaraSystemInactiveMode.uexp" 892
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/Particles/PlatformWallSystem.uasset" 893
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/Particles/PlatformWallSystem.uexp" 894
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StarterContent/Textures/T_Metal_Steel_D.ubulk" 895
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StarterContent/Textures/T_Metal_Steel_D.uasset" 896
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StarterContent/Textures/T_Metal_Steel_D.uexp" 897
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StarterContent/Textures/T_Tech_Panel_N.ubulk" 898
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StarterContent/Textures/T_Tech_Panel_N.uasset" 899
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StarterContent/Textures/T_Tech_Panel_N.uexp" 900
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StarterContent/Textures/T_Tech_Panel_M.ubulk" 901
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StarterContent/Textures/T_Tech_Panel_M.uasset" 902
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StarterContent/Textures/T_Tech_Panel_M.uexp" 903
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StarterContent/Materials/M_Tech_Panel.uasset" 904
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StarterContent/Materials/M_Tech_Panel.uexp" 905
 "../../../Engine/Content/Functions/Engine_MaterialFunctions02/Utility/BlendAngleCorrectedNormals.uasset" 906
 "../../../Engine/Content/Functions/Engine_MaterialFunctions02/Utility/BlendAngleCorrectedNormals.uexp" 907
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/hex_instances/M_Tech_Hex_UnlitInfected.uasset" 908
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/hex_instances/M_Tech_Hex_UnlitInfected.uexp" 909
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/Infected/M_Tech_Hex_UnlitInfected.uasset" 908
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/Infected/M_Tech_Hex_UnlitInfected.uexp" 909
 "C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/StarterContent/Materials/M_Basic_Wall.uasset" 910
 "C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/StarterContent/Materials/M_Basic_Wall.uexp" 911
 "C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/StarterContent/Shapes/Shape_Cube.ubulk" 912
@@ -924,10 +924,10 @@
 "C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/StarterContent/Textures/T_Metal_Steel_D.ubulk" 923
 "C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/StarterContent/Textures/T_Metal_Steel_D.uasset" 924
 "C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/StarterContent/Textures/T_Metal_Steel_D.uexp" 925
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/M_tech_scaled_top.uasset" 926
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/M_tech_scaled_top.uexp" 927
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/M_tech_Scaled.uasset" 928
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/M_tech_Scaled.uexp" 929
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Tech_Panel/M_tech_Scaled.uasset" 926
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Tech_Panel/M_tech_Scaled.uexp" 927
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Tech_Panel/M_tech_scaled_top.uasset" 928
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Tech_Panel/M_tech_scaled_top.uexp" 929
 "C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/Platforms/BP_Platform.uasset" 930
 "C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/Platforms/BP_Platform.uexp" 931
 "C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelPrefabs/Gauntlet/BP_LPF_G-1-a.uasset" 932
@@ -1008,68 +1008,68 @@
 "C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/UI/HUDWidget.uexp" 1007
 "C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/PlayerSounds/Movement/MS_PlayerMovement.uasset" 1008
 "C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/PlayerSounds/Movement/MS_PlayerMovement.uexp" 1009
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/UI/SplashScreens/WBP_BWKSplashScreenBase.uasset" 1010
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/UI/SplashScreens/WBP_BWKSplashScreenBase.uexp" 1011
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/UI/SplashScreens/WBP_SpSc_Invisibility.uasset" 1012
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/UI/SplashScreens/WBP_SpSc_Invisibility.uexp" 1013
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/UI/SplashScreens/WBP_SpSc_Vision.uasset" 1014
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/UI/SplashScreens/WBP_SpSc_Vision.uexp" 1015
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/UI/WinGame.ubulk" 1016
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/UI/WinGame.uasset" 1017
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/UI/WinGame.uexp" 1018
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/UI/WinGame.uasset" 1019
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/UI/WinGame.uexp" 1020
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Glass_colored/Glass_colored.uasset" 1021
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Glass_colored/Glass_colored.uexp" 1022
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Glass_colored/Glass_colored_Inst.uasset" 1023
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Glass_colored/Glass_colored_Inst.uexp" 1024
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/TrillsDelayed/XRayTrillDelayed.ubulk" 1025
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/TrillsDelayed/XRayTrillDelayed.uasset" 1026
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/TrillsDelayed/XRayTrillDelayed.uexp" 1027
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/Old/collect-powerup.ubulk" 1028
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/Old/collect-powerup.uasset" 1029
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/Old/collect-powerup.uexp" 1030
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/Models/Environment/Accent.uasset" 1031
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/Models/Environment/Accent.uexp" 1032
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/Models/Environment/Main.uasset" 1033
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/Models/Environment/Main.uexp" 1034
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/Models/Environment/DarkGrey.uasset" 1035
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/Models/Environment/DarkGrey.uexp" 1036
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/Models/Environment/DarkAccent.uasset" 1037
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/Models/Environment/DarkAccent.uexp" 1038
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/Models/Environment/Props_Pod.ubulk" 1039
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/Models/Environment/Props_Pod.uasset" 1040
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/Models/Environment/Props_Pod.uexp" 1041
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Powerups/Powerup_base.uasset" 1042
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Powerups/Powerup_base.uexp" 1043
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Powerups/Powerup_Xray.uasset" 1044
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Powerups/Powerup_Xray.uexp" 1045
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/UI/SplashScreens/WBP_SpSc_Jump.uasset" 1046
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/UI/SplashScreens/WBP_SpSc_Jump.uexp" 1047
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/UI/SplashScreens/WBP_SpSc_Sprint.uasset" 1048
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/UI/SplashScreens/WBP_SpSc_Sprint.uexp" 1049
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/TrillsDelayed/InvisibilityTrillDelayed.ubulk" 1050
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/TrillsDelayed/InvisibilityTrillDelayed.uasset" 1051
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/TrillsDelayed/InvisibilityTrillDelayed.uexp" 1052
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Powerups/Powerup_Invisibility.uasset" 1053
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Powerups/Powerup_Invisibility.uexp" 1054
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/TrillsDelayed/DoubleJumpTrillDelayed.ubulk" 1055
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/TrillsDelayed/DoubleJumpTrillDelayed.uasset" 1056
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/TrillsDelayed/DoubleJumpTrillDelayed.uexp" 1057
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Powerups/Powerup_JumpBoost.uasset" 1058
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Powerups/Powerup_JumpBoost.uexp" 1059
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/BP_BitwiseGameMode.uasset" 1060
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/BP_BitwiseGameMode.uexp" 1061
-"../../../Engine/Content/Functions/Engine_MaterialFunctions01/Texturing/ScaleUVsByCenter.uasset" 1062
-"../../../Engine/Content/Functions/Engine_MaterialFunctions01/Texturing/ScaleUVsByCenter.uexp" 1063
-"../../../Engine/Content/Functions/Engine_MaterialFunctions01/Density/ExponentialDensity.uasset" 1064
-"../../../Engine/Content/Functions/Engine_MaterialFunctions01/Density/ExponentialDensity.uexp" 1065
-"../../../Engine/Content/Functions/Engine_MaterialFunctions01/Gradient/RadialGradientExponential.uasset" 1066
-"../../../Engine/Content/Functions/Engine_MaterialFunctions01/Gradient/RadialGradientExponential.uexp" 1067
-"../../../Engine/Content/Functions/Engine_MaterialFunctions02/Math/TimeWithSpeedVariable.uasset" 1068
-"../../../Engine/Content/Functions/Engine_MaterialFunctions02/Math/TimeWithSpeedVariable.uexp" 1069
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/PostProcessing/PP_Invisiblity.uasset" 1070
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/PostProcessing/PP_Invisiblity.uexp" 1071
+"../../../Engine/Content/Functions/Engine_MaterialFunctions01/Texturing/ScaleUVsByCenter.uasset" 1010
+"../../../Engine/Content/Functions/Engine_MaterialFunctions01/Texturing/ScaleUVsByCenter.uexp" 1011
+"../../../Engine/Content/Functions/Engine_MaterialFunctions01/Density/ExponentialDensity.uasset" 1012
+"../../../Engine/Content/Functions/Engine_MaterialFunctions01/Density/ExponentialDensity.uexp" 1013
+"../../../Engine/Content/Functions/Engine_MaterialFunctions01/Gradient/RadialGradientExponential.uasset" 1014
+"../../../Engine/Content/Functions/Engine_MaterialFunctions01/Gradient/RadialGradientExponential.uexp" 1015
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/Math/TimeWithSpeedVariable.uasset" 1016
+"../../../Engine/Content/Functions/Engine_MaterialFunctions02/Math/TimeWithSpeedVariable.uexp" 1017
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/PostProcessing/PP_Invisiblity.uasset" 1018
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/PostProcessing/PP_Invisiblity.uexp" 1019
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/UI/SplashScreens/WBP_SpSc_Invisibility.uasset" 1020
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/UI/SplashScreens/WBP_SpSc_Invisibility.uexp" 1021
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/UI/SplashScreens/WBP_SpSc_Vision.uasset" 1022
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/UI/SplashScreens/WBP_SpSc_Vision.uexp" 1023
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/UI/WinGame.ubulk" 1024
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/UI/WinGame.uasset" 1025
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/UI/WinGame.uexp" 1026
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/UI/WinGame.uasset" 1027
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/UI/WinGame.uexp" 1028
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Glass_colored/Glass_colored.uasset" 1029
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Glass_colored/Glass_colored.uexp" 1030
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Glass_colored/Glass_colored_Inst.uasset" 1031
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Glass_colored/Glass_colored_Inst.uexp" 1032
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/TrillsDelayed/XRayTrillDelayed.ubulk" 1033
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/TrillsDelayed/XRayTrillDelayed.uasset" 1034
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/TrillsDelayed/XRayTrillDelayed.uexp" 1035
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/Old/collect-powerup.ubulk" 1036
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/Old/collect-powerup.uasset" 1037
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/Old/collect-powerup.uexp" 1038
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/Models/Environment/Accent.uasset" 1039
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/Models/Environment/Accent.uexp" 1040
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/Models/Environment/Main.uasset" 1041
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/Models/Environment/Main.uexp" 1042
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/Models/Environment/DarkGrey.uasset" 1043
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/Models/Environment/DarkGrey.uexp" 1044
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/Models/Environment/DarkAccent.uasset" 1045
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/Models/Environment/DarkAccent.uexp" 1046
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/Models/Environment/Props_Pod.ubulk" 1047
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/Models/Environment/Props_Pod.uasset" 1048
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/Models/Environment/Props_Pod.uexp" 1049
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Powerups/Powerup_base.uasset" 1050
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Powerups/Powerup_base.uexp" 1051
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Powerups/Powerup_Xray.uasset" 1052
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Powerups/Powerup_Xray.uexp" 1053
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/UI/SplashScreens/WBP_SpSc_Jump.uasset" 1054
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/UI/SplashScreens/WBP_SpSc_Jump.uexp" 1055
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/UI/SplashScreens/WBP_SpSc_Sprint.uasset" 1056
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/UI/SplashScreens/WBP_SpSc_Sprint.uexp" 1057
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/TrillsDelayed/InvisibilityTrillDelayed.ubulk" 1058
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/TrillsDelayed/InvisibilityTrillDelayed.uasset" 1059
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/TrillsDelayed/InvisibilityTrillDelayed.uexp" 1060
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Powerups/Powerup_Invisibility.uasset" 1061
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Powerups/Powerup_Invisibility.uexp" 1062
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/TrillsDelayed/DoubleJumpTrillDelayed.ubulk" 1063
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/TrillsDelayed/DoubleJumpTrillDelayed.uasset" 1064
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/TrillsDelayed/DoubleJumpTrillDelayed.uexp" 1065
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Powerups/Powerup_JumpBoost.uasset" 1066
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Powerups/Powerup_JumpBoost.uexp" 1067
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/BP_BitwiseGameMode.uasset" 1068
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/BP_BitwiseGameMode.uexp" 1069
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/UI/SplashScreens/WBP_BWKSplashScreenBase.uasset" 1070
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/UI/SplashScreens/WBP_BWKSplashScreenBase.uexp" 1071
 "C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/PlayerSounds/Abilities/Player_Double_Jump_Bitwise_SFX_v1.ubulk" 1072
 "C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/PlayerSounds/Abilities/Player_Double_Jump_Bitwise_SFX_v1.uasset" 1073
 "C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/PlayerSounds/Abilities/Player_Double_Jump_Bitwise_SFX_v1.uexp" 1074
@@ -1131,12 +1131,12 @@
 "C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/GauntletDoor/GauntletDoor.uexp" 1130
 "C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/WallColorChanger.uasset" 1131
 "C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/WallColorChanger.uexp" 1132
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/hex_instances/Mi_hex_ext_short.uasset" 1133
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/hex_instances/Mi_hex_ext_short.uexp" 1134
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/ExteriorInstances/Mi_hex_ext_short.uasset" 1133
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/ExteriorInstances/Mi_hex_ext_short.uexp" 1134
 "C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_ext_Long_ExtraLong.uasset" 1135
 "C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_ext_Long_ExtraLong.uexp" 1136
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/hex_instances/Mi_hex_ext_end_short.uasset" 1137
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/hex_instances/Mi_hex_ext_end_short.uexp" 1138
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/ExteriorInstances/Mi_hex_ext_end_short.uasset" 1137
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/ExteriorInstances/Mi_hex_ext_end_short.uexp" 1138
 "C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_ext_End_short.uasset" 1139
 "C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_ext_End_short.uexp" 1140
 "C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/StarterContent/Textures/T_Metal_Steel_N.ubulk" 1141
@@ -1144,299 +1144,303 @@
 "C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/StarterContent/Textures/T_Metal_Steel_N.uexp" 1143
 "C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/StarterContent/Materials/M_Metal_Steel.uasset" 1144
 "C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/StarterContent/Materials/M_Metal_Steel.uexp" 1145
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_SpawnRoomTile.uasset" 1146
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_SpawnRoomTile.uexp" 1147
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/hex_instances/MI_hex_MazeWall.uasset" 1148
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/hex_instances/MI_hex_MazeWall.uexp" 1149
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_MazeNorm.uasset" 1150
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_MazeNorm.uexp" 1151
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_ext_Long_Short.uasset" 1152
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_ext_Long_Short.uexp" 1153
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/M_Tech_Panel1.uasset" 1154
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/M_Tech_Panel1.uexp" 1155
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/M_techPan_sPillar.uasset" 1156
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/M_techPan_sPillar.uexp" 1157
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/M_TechPan_sPillarTop.uasset" 1158
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/M_TechPan_sPillarTop.uexp" 1159
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/Platforms/BP_PlatformPillar.uasset" 1160
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/Platforms/BP_PlatformPillar.uexp" 1161
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/Platforms/BP_RandPlatformBasic.uasset" 1162
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/Platforms/BP_RandPlatformBasic.uexp" 1163
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/PowerupCollection/Collect_shortened.ubulk" 1164
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/PowerupCollection/Collect_shortened.uasset" 1165
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/PowerupCollection/Collect_shortened.uexp" 1166
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Powerups/spawnPowerup.uasset" 1167
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Powerups/spawnPowerup.uexp" 1168
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/Particles/XrayWallSystem.uasset" 1169
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/Particles/XrayWallSystem.uexp" 1170
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/hex_instances/Hex_Infected_Scaled_translucent.uasset" 1171
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/hex_instances/Hex_Infected_Scaled_translucent.uexp" 1172
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/hex_instances/Mi_HexInf_Trans_nar.uasset" 1173
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/hex_instances/Mi_HexInf_Trans_nar.uexp" 1174
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/InteriorWalls/BP_FakeWall_Narrow.uasset" 1175
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/InteriorWalls/BP_FakeWall_Narrow.uexp" 1176
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Randomization/BP_BaseRandomizer.uasset" 1177
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Randomization/BP_BaseRandomizer.uexp" 1178
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Randomization/BP_RandomLocation.uasset" 1179
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Randomization/BP_RandomLocation.uexp" 1180
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelPrefabs/InitPlatformRoom/RPF_Room1.uasset" 1181
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelPrefabs/InitPlatformRoom/RPF_Room1.uexp" 1182
-"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/DefaultGizmoLibrary.uasset" 1183
-"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/DefaultGizmoLibrary.uexp" 1184
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Rigs/CR_Mannequin_BasicFootIK.uasset" 1185
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Rigs/CR_Mannequin_BasicFootIK.uexp" 1186
-"../../../Engine/Content/Animation/DefaultAnimCurveCompressionSettings.uasset" 1187
-"../../../Engine/Content/Animation/DefaultAnimCurveCompressionSettings.uexp" 1188
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Meshes/SK_Mannequin.uasset" 1189
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Meshes/SK_Mannequin.uexp" 1190
-"../../../Engine/Content/Animation/DefaultAnimBoneCompressionSettings.uasset" 1191
-"../../../Engine/Content/Animation/DefaultAnimBoneCompressionSettings.uexp" 1192
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Manny/MM_Run_Fwd.uasset" 1193
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Manny/MM_Run_Fwd.uexp" 1194
-"../../../Engine/Content/Animation/DefaultRecorderBoneCompression.uasset" 1195
-"../../../Engine/Content/Animation/DefaultRecorderBoneCompression.uexp" 1196
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Manny/MM_Walk_InPlace.uasset" 1197
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Manny/MM_Walk_InPlace.uexp" 1198
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Manny/MM_Walk_Fwd.uasset" 1199
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Manny/MM_Walk_Fwd.uexp" 1200
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Manny/BS_MM_WalkRun.uasset" 1201
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Manny/BS_MM_WalkRun.uexp" 1202
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Manny/MM_Fall_Loop.uasset" 1203
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Manny/MM_Fall_Loop.uexp" 1204
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Manny/MM_Idle.uasset" 1205
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Manny/MM_Idle.uexp" 1206
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Manny/MM_Land.uasset" 1207
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Manny/MM_Land.uexp" 1208
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Manny/MM_Jump.uasset" 1209
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Manny/MM_Jump.uexp" 1210
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/ABP_Manny.uasset" 1211
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/ABP_Manny.uexp" 1212
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Quinn/MF_Idle.uasset" 1213
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Quinn/MF_Idle.uexp" 1214
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Quinn/MF_Run_Fwd.uasset" 1215
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Quinn/MF_Run_Fwd.uexp" 1216
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Quinn/MF_Walk_Fwd.uasset" 1217
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Quinn/MF_Walk_Fwd.uexp" 1218
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Quinn/BS_MF_Unarmed_WalkRun.uasset" 1219
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Quinn/BS_MF_Unarmed_WalkRun.uexp" 1220
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/ABP_Quinn.uasset" 1221
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/ABP_Quinn.uexp" 1222
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Vision/BP_GuideLIght.uasset" 1223
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Vision/BP_GuideLIght.uexp" 1224
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/hex_instances/Mi_hex_ext_tall.uasset" 1225
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/hex_instances/Mi_hex_ext_tall.uexp" 1226
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_ext_Long_Tall.uasset" 1227
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_ext_Long_Tall.uexp" 1228
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/hex_instances/m_hex_quarterTile.uasset" 1229
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/hex_instances/m_hex_quarterTile.uexp" 1230
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_SpawnRoomTileQuarter.uasset" 1231
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_SpawnRoomTileQuarter.uexp" 1232
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/EnemyController.uasset" 1233
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/EnemyController.uexp" 1234
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/EnemyAudio/AA_AISounds.uasset" 1235
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/EnemyAudio/AA_AISounds.uexp" 1236
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/StateTreePlayAudio.uasset" 1237
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/StateTreePlayAudio.uexp" 1238
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/STE_find_player.uasset" 1239
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/STE_find_player.uexp" 1240
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/EnemyAudio/Enemy_Spots_Player_Alarm_Loop_Bitwise_sfx_v2.ubulk" 1241
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/EnemyAudio/Enemy_Spots_Player_Alarm_Loop_Bitwise_sfx_v2.uasset" 1242
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/EnemyAudio/Enemy_Spots_Player_Alarm_Loop_Bitwise_sfx_v2.uexp" 1243
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/EnemyAudio/Enemy_Spots_Player_Bitwise_sfx_v2.ubulk" 1244
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/EnemyAudio/Enemy_Spots_Player_Bitwise_sfx_v2.uasset" 1245
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/EnemyAudio/Enemy_Spots_Player_Bitwise_sfx_v2.uexp" 1246
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/EnemyAudio/EnemyAlarm.uasset" 1247
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/EnemyAudio/EnemyAlarm.uexp" 1248
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/ST_Task_FindNextLocation.uasset" 1249
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/ST_Task_FindNextLocation.uexp" 1250
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/EnemyAudio/V1s/Enemy_Walking_Bitwise_SFX_v1.ubulk" 1251
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/EnemyAudio/V1s/Enemy_Walking_Bitwise_SFX_v1.uasset" 1252
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/EnemyAudio/V1s/Enemy_Walking_Bitwise_SFX_v1.uexp" 1253
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/ST_Task_PlaySoundCue.uasset" 1254
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/ST_Task_PlaySoundCue.uexp" 1255
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/ST_Task_ChasePlayer.uasset" 1256
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/ST_Task_ChasePlayer.uexp" 1257
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/setLastPlayerLocation.uasset" 1258
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/setLastPlayerLocation.uexp" 1259
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/EnemyAudio/Enemy_Idle_Patrol_Bitwise_SFX_v1.ubulk" 1260
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/EnemyAudio/Enemy_Idle_Patrol_Bitwise_SFX_v1.uasset" 1261
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/EnemyAudio/Enemy_Idle_Patrol_Bitwise_SFX_v1.uexp" 1262
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/MoveToLocation.uasset" 1263
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/MoveToLocation.uexp" 1264
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/ST_Enemy.uasset" 1265
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/ST_Enemy.uexp" 1266
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/BP_EnemyCharacter.uasset" 1267
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/BP_EnemyCharacter.uexp" 1268
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_N.ubulk" 1269
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_N.uasset" 1270
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_N.uexp" 1271
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_Tan.ubulk" 1272
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_Tan.uasset" 1273
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_Tan.uexp" 1274
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_D.ubulk" 1275
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_D.uasset" 1276
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_D.uexp" 1277
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_MSR_MSK.ubulk" 1278
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_MSR_MSK.uasset" 1279
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_MSR_MSK.uexp" 1280
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_BN.ubulk" 1281
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_BN.uasset" 1282
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_BN.uexp" 1283
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_N.ubulk" 1284
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_N.uasset" 1285
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_N.uexp" 1286
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Materials/Functions/ML_BaseColorFallOff.uasset" 1287
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Materials/Functions/ML_BaseColorFallOff.uexp" 1288
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_Tan.ubulk" 1289
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_Tan.uasset" 1290
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_Tan.uexp" 1291
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Materials/Functions/ChromaticCurve.uasset" 1292
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Materials/Functions/ChromaticCurve.uexp" 1293
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Materials/Functions/CA_Mannequin.uasset" 1294
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Materials/Functions/CA_Mannequin.uexp" 1295
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Materials/Functions/MF_Diffraction.uasset" 1296
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Materials/Functions/MF_Diffraction.uexp" 1297
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_ASAOPMASK_MSK.ubulk" 1298
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_ASAOPMASK_MSK.uasset" 1299
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_ASAOPMASK_MSK.uexp" 1300
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_CCRCCPlastic_MSK.ubulk" 1301
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_CCRCCPlastic_MSK.uasset" 1302
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_CCRCCPlastic_MSK.uexp" 1303
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Shared/T_UE_Logo_M.uasset" 1304
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Shared/T_UE_Logo_M.uexp" 1305
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Materials/Functions/MF_logo3layers.uasset" 1306
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Materials/Functions/MF_logo3layers.uexp" 1307
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_D.ubulk" 1308
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_D.uasset" 1309
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_D.uexp" 1310
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_MSR_MSK.ubulk" 1311
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_MSR_MSK.uasset" 1312
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_MSR_MSK.uexp" 1313
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Materials/M_Mannequin.uasset" 1314
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Materials/M_Mannequin.uexp" 1315
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01_CCRCCPlastic_MSK.ubulk" 1316
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01_CCRCCPlastic_MSK.uasset" 1317
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01_CCRCCPlastic_MSK.uexp" 1318
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01_ASAOMASK_MSK.ubulk" 1319
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01_ASAOMASK_MSK.uasset" 1320
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01_ASAOMASK_MSK.uexp" 1321
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_BN.ubulk" 1322
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_BN.uasset" 1323
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_BN.uexp" 1324
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Materials/Instances/Quinn/MI_Quinn_01.uasset" 1325
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Materials/Instances/Quinn/MI_Quinn_01.uexp" 1326
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_D.ubulk" 1327
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_D.uasset" 1328
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_D.uexp" 1329
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02_ASAOMASK_MSK.ubulk" 1330
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02_ASAOMASK_MSK.uasset" 1331
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02_ASAOMASK_MSK.uexp" 1332
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_N.ubulk" 1333
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_N.uasset" 1334
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_N.uexp" 1335
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_MSR_MSK.ubulk" 1336
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_MSR_MSK.uasset" 1337
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_MSR_MSK.uexp" 1338
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_Tan.ubulk" 1339
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_Tan.uasset" 1340
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_Tan.uexp" 1341
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02_CCRCCPlastic_MSK.ubulk" 1342
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02_CCRCCPlastic_MSK.uasset" 1343
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02_CCRCCPlastic_MSK.uexp" 1344
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_BN.ubulk" 1345
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_BN.uasset" 1346
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_BN.uexp" 1347
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Materials/Instances/Quinn/MI_Quinn_02.uasset" 1348
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Materials/Instances/Quinn/MI_Quinn_02.uexp" 1349
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Rigs/PA_Mannequin.uasset" 1350
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Rigs/PA_Mannequin.uexp" 1351
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Meshes/SKM_Quinn_Simple.uasset" 1352
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Meshes/SKM_Quinn_Simple.uexp" 1353
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelPrefabs/InitPlatformRoom/RPF_Room2.uasset" 1354
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelPrefabs/InitPlatformRoom/RPF_Room2.uexp" 1355
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/hex_instances/Mi_hex_ext_end_wide.uasset" 1356
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/hex_instances/Mi_hex_ext_end_wide.uexp" 1357
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_ext_End_Wide.uasset" 1358
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_ext_End_Wide.uexp" 1359
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/hex_instances/m_hex_quarterTile1TR.uasset" 1360
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/hex_instances/m_hex_quarterTile1TR.uexp" 1361
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_SpawnRoomTileQuarterTR.uasset" 1362
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_SpawnRoomTileQuarterTR.uexp" 1363
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/hex_instances/Mi_hex_ext_end_tall.uasset" 1364
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/hex_instances/Mi_hex_ext_end_tall.uexp" 1365
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_ext_End_Tall.uasset" 1366
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_ext_End_Tall.uexp" 1367
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/hex_instances/Mi_hex_ext_Gauntlet.uasset" 1368
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/hex_instances/Mi_hex_ext_Gauntlet.uexp" 1369
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/BP_Wall_Gauntlet_Side.uasset" 1370
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/BP_Wall_Gauntlet_Side.uexp" 1371
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/sheetmetal/SheetMetal001_2K-JPG/SheetMetal001_1K_Metallic.ubulk" 1372
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/sheetmetal/SheetMetal001_2K-JPG/SheetMetal001_1K_Metallic.uasset" 1373
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/sheetmetal/SheetMetal001_2K-JPG/SheetMetal001_1K_Metallic.uexp" 1374
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/sheetmetal/SheetMetal001_2K-JPG/SheetMetal001_1K_Color.ubulk" 1375
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/sheetmetal/SheetMetal001_2K-JPG/SheetMetal001_1K_Color.uasset" 1376
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/sheetmetal/SheetMetal001_2K-JPG/SheetMetal001_1K_Color.uexp" 1377
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/sheetmetal/SheetMetal001_2K-JPG/SheetMetal001_1K_NormalDX.ubulk" 1378
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/sheetmetal/SheetMetal001_2K-JPG/SheetMetal001_1K_NormalDX.uasset" 1379
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/sheetmetal/SheetMetal001_2K-JPG/SheetMetal001_1K_NormalDX.uexp" 1380
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/sheetmetal/SheetMetal001_2K-JPG/SheetMetal001_1K_Roughness.ubulk" 1381
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/sheetmetal/SheetMetal001_2K-JPG/SheetMetal001_1K_Roughness.uasset" 1382
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/sheetmetal/SheetMetal001_2K-JPG/SheetMetal001_1K_Roughness.uexp" 1383
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/sheetmetal/SheetMetal001_2K-JPG/SheetMetal001_1K_Opacity.ubulk" 1384
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/sheetmetal/SheetMetal001_2K-JPG/SheetMetal001_1K_Opacity.uasset" 1385
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/sheetmetal/SheetMetal001_2K-JPG/SheetMetal001_1K_Opacity.uexp" 1386
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/sheetmetal/SheetMetal001_2K-JPG/Sheetmal.uasset" 1387
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/sheetmetal/SheetMetal001_2K-JPG/Sheetmal.uexp" 1388
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Mi_hex_widewall.uasset" 1389
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Mi_hex_widewall.uexp" 1390
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/hex_instances/Mi_HexInf_Trans_wide.uasset" 1391
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/hex_instances/Mi_HexInf_Trans_wide.uexp" 1392
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/InteriorWalls/BP_FakeWall_wide.uasset" 1393
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/InteriorWalls/BP_FakeWall_wide.uexp" 1394
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Randomization/BP_WallRandomizer.uasset" 1395
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Randomization/BP_WallRandomizer.uexp" 1396
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/Chip005_2K-PNG_NormalDX.ubulk" 1397
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/Chip005_2K-PNG_NormalDX.uasset" 1398
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/Chip005_2K-PNG_NormalDX.uexp" 1399
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/Chip005_2K-PNG_Color.ubulk" 1400
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/Chip005_2K-PNG_Color.uasset" 1401
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/Chip005_2K-PNG_Color.uexp" 1402
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/Chip005_2K-PNG_Metalness.ubulk" 1403
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/Chip005_2K-PNG_Metalness.uasset" 1404
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/Chip005_2K-PNG_Metalness.uexp" 1405
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/Chip005_2K-PNG_Roughness.ubulk" 1406
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/Chip005_2K-PNG_Roughness.uasset" 1407
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/Chip005_2K-PNG_Roughness.uexp" 1408
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/RedChipLit.uasset" 1409
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/RedChipLit.uexp" 1410
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/KillingFloor.uasset" 1411
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/KillingFloor.uexp" 1412
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/KillingFloorLong.uasset" 1413
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/KillingFloorLong.uexp" 1414
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/hex_instances/m_hex_eighthtile2.uasset" 1415
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/hex_instances/m_hex_eighthtile2.uexp" 1416
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_SpawnRoomTileeighth2.uasset" 1417
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_SpawnRoomTileeighth2.uexp" 1418
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/DoorMaterial.uasset" 1419
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/DoorMaterial.uexp" 1420
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/WinDoor.uasset" 1421
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/WinDoor.uexp" 1422
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/hex_instances/m_hex_eighthtile.uasset" 1423
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/hex_instances/m_hex_eighthtile.uexp" 1424
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_SpawnRoomTileeighth.uasset" 1425
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_SpawnRoomTileeighth.uexp" 1426
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/MI_hex_widenorm.uasset" 1427
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/MI_hex_widenorm.uexp" 1428
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/InteriorWalls/BP_RealWall_Wide.uasset" 1429
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/InteriorWalls/BP_RealWall_Wide.uexp" 1430
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/TrillsDelayed/SprintTrillDelayed.ubulk" 1431
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/TrillsDelayed/SprintTrillDelayed.uasset" 1432
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/TrillsDelayed/SprintTrillDelayed.uexp" 1433
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Powerups/Powerup_SpeedBoost.uasset" 1434
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Powerups/Powerup_SpeedBoost.uexp" 1435
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Randomization/BP_PowerupRandomizer.uasset" 1436
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Randomization/BP_PowerupRandomizer.uexp" 1437
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/ChipMaterial.uasset" 1438
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/ChipMaterial.uexp" 1439
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Levels/MainLevel.uexp" 1440
-"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Levels/MainLevel.umap" 1441
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/sheetmetal/SheetMetal001_1K_Opacity.ubulk" 1146
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/sheetmetal/SheetMetal001_1K_Opacity.uasset" 1147
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/sheetmetal/SheetMetal001_1K_Opacity.uexp" 1148
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/sheetmetal/SheetMetal001_1K_NormalDX.ubulk" 1149
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/sheetmetal/SheetMetal001_1K_NormalDX.uasset" 1150
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/sheetmetal/SheetMetal001_1K_NormalDX.uexp" 1151
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/sheetmetal/SheetMetal001_1K_Roughness.ubulk" 1152
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/sheetmetal/SheetMetal001_1K_Roughness.uasset" 1153
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/sheetmetal/SheetMetal001_1K_Roughness.uexp" 1154
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/sheetmetal/SheetMetal001_1K_Color.ubulk" 1155
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/sheetmetal/SheetMetal001_1K_Color.uasset" 1156
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/sheetmetal/SheetMetal001_1K_Color.uexp" 1157
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/sheetmetal/SheetMetal001_1K_Metallic.ubulk" 1158
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/sheetmetal/SheetMetal001_1K_Metallic.uasset" 1159
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/sheetmetal/SheetMetal001_1K_Metallic.uexp" 1160
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/sheetmetal/Sheetmal.uasset" 1161
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/sheetmetal/Sheetmal.uexp" 1162
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_SpawnRoomTile.uasset" 1163
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_SpawnRoomTile.uexp" 1164
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/InteriorInstances/MI_hex_MazeWall.uasset" 1165
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/InteriorInstances/MI_hex_MazeWall.uexp" 1166
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_MazeNorm.uasset" 1167
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_MazeNorm.uexp" 1168
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_ext_Long_Short.uasset" 1169
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_ext_Long_Short.uexp" 1170
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Tech_Panel/M_Tech_Panel1.uasset" 1171
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Tech_Panel/M_Tech_Panel1.uexp" 1172
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Tech_Panel/M_techPan_sPillar.uasset" 1173
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Tech_Panel/M_techPan_sPillar.uexp" 1174
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Tech_Panel/M_TechPan_sPillarTop.uasset" 1175
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Tech_Panel/M_TechPan_sPillarTop.uexp" 1176
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/Platforms/BP_PlatformPillar.uasset" 1177
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/Platforms/BP_PlatformPillar.uexp" 1178
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/Platforms/BP_RandPlatformBasic.uasset" 1179
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/Platforms/BP_RandPlatformBasic.uexp" 1180
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/PowerupCollection/Collect_shortened.ubulk" 1181
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/PowerupCollection/Collect_shortened.uasset" 1182
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/PowerupCollection/Collect_shortened.uexp" 1183
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Powerups/spawnPowerup.uasset" 1184
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Powerups/spawnPowerup.uexp" 1185
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/Particles/XrayWallSystem.uasset" 1186
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/Particles/XrayWallSystem.uexp" 1187
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/Infected/Hex_Infected_Scaled_translucent.uasset" 1188
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/Infected/Hex_Infected_Scaled_translucent.uexp" 1189
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/Infected/Mi_HexInf_Trans_nar.uasset" 1190
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/Infected/Mi_HexInf_Trans_nar.uexp" 1191
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/InteriorWalls/BP_FakeWall_Narrow.uasset" 1192
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/InteriorWalls/BP_FakeWall_Narrow.uexp" 1193
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Randomization/BP_BaseRandomizer.uasset" 1194
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Randomization/BP_BaseRandomizer.uexp" 1195
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Randomization/BP_RandomLocation.uasset" 1196
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Randomization/BP_RandomLocation.uexp" 1197
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelPrefabs/InitPlatformRoom/RPF_Room1.uasset" 1198
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelPrefabs/InitPlatformRoom/RPF_Room1.uexp" 1199
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/DefaultGizmoLibrary.uasset" 1200
+"../../../Engine/Plugins/Animation/ControlRig/Content/Controls/DefaultGizmoLibrary.uexp" 1201
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Rigs/CR_Mannequin_BasicFootIK.uasset" 1202
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Rigs/CR_Mannequin_BasicFootIK.uexp" 1203
+"../../../Engine/Content/Animation/DefaultAnimCurveCompressionSettings.uasset" 1204
+"../../../Engine/Content/Animation/DefaultAnimCurveCompressionSettings.uexp" 1205
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Meshes/SK_Mannequin.uasset" 1206
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Meshes/SK_Mannequin.uexp" 1207
+"../../../Engine/Content/Animation/DefaultAnimBoneCompressionSettings.uasset" 1208
+"../../../Engine/Content/Animation/DefaultAnimBoneCompressionSettings.uexp" 1209
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Manny/MM_Run_Fwd.uasset" 1210
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Manny/MM_Run_Fwd.uexp" 1211
+"../../../Engine/Content/Animation/DefaultRecorderBoneCompression.uasset" 1212
+"../../../Engine/Content/Animation/DefaultRecorderBoneCompression.uexp" 1213
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Manny/MM_Walk_InPlace.uasset" 1214
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Manny/MM_Walk_InPlace.uexp" 1215
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Manny/MM_Walk_Fwd.uasset" 1216
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Manny/MM_Walk_Fwd.uexp" 1217
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Manny/BS_MM_WalkRun.uasset" 1218
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Manny/BS_MM_WalkRun.uexp" 1219
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Manny/MM_Fall_Loop.uasset" 1220
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Manny/MM_Fall_Loop.uexp" 1221
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Manny/MM_Idle.uasset" 1222
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Manny/MM_Idle.uexp" 1223
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Manny/MM_Land.uasset" 1224
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Manny/MM_Land.uexp" 1225
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Manny/MM_Jump.uasset" 1226
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Manny/MM_Jump.uexp" 1227
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/ABP_Manny.uasset" 1228
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/ABP_Manny.uexp" 1229
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Quinn/MF_Idle.uasset" 1230
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Quinn/MF_Idle.uexp" 1231
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Quinn/MF_Run_Fwd.uasset" 1232
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Quinn/MF_Run_Fwd.uexp" 1233
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Quinn/MF_Walk_Fwd.uasset" 1234
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Quinn/MF_Walk_Fwd.uexp" 1235
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Quinn/BS_MF_Unarmed_WalkRun.uasset" 1236
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/Quinn/BS_MF_Unarmed_WalkRun.uexp" 1237
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/ABP_Quinn.uasset" 1238
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Animations/ABP_Quinn.uexp" 1239
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Vision/BP_GuideLIght.uasset" 1240
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Vision/BP_GuideLIght.uexp" 1241
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/ExteriorInstances/Mi_hex_ext_tall.uasset" 1242
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/ExteriorInstances/Mi_hex_ext_tall.uexp" 1243
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_ext_Long_Tall.uasset" 1244
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_ext_Long_Tall.uexp" 1245
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/Tiles/m_hex_quarterTile.uasset" 1246
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/Tiles/m_hex_quarterTile.uexp" 1247
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_SpawnRoomTileQuarter.uasset" 1248
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_SpawnRoomTileQuarter.uexp" 1249
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/Tiles/m_hex_eighthtile4.uasset" 1250
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/Tiles/m_hex_eighthtile4.uexp" 1251
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/EnemyController.uasset" 1252
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/EnemyController.uexp" 1253
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/EnemyAudio/AA_AISounds.uasset" 1254
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/EnemyAudio/AA_AISounds.uexp" 1255
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/StateTreePlayAudio.uasset" 1256
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/StateTreePlayAudio.uexp" 1257
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/STE_find_player.uasset" 1258
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/STE_find_player.uexp" 1259
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/EnemyAudio/Enemy_Spots_Player_Alarm_Loop_Bitwise_sfx_v2.ubulk" 1260
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/EnemyAudio/Enemy_Spots_Player_Alarm_Loop_Bitwise_sfx_v2.uasset" 1261
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/EnemyAudio/Enemy_Spots_Player_Alarm_Loop_Bitwise_sfx_v2.uexp" 1262
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/EnemyAudio/Enemy_Spots_Player_Bitwise_sfx_v2.ubulk" 1263
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/EnemyAudio/Enemy_Spots_Player_Bitwise_sfx_v2.uasset" 1264
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/EnemyAudio/Enemy_Spots_Player_Bitwise_sfx_v2.uexp" 1265
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/EnemyAudio/EnemyAlarm.uasset" 1266
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/EnemyAudio/EnemyAlarm.uexp" 1267
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/ST_Task_FindNextLocation.uasset" 1268
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/ST_Task_FindNextLocation.uexp" 1269
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/EnemyAudio/V1s/Enemy_Walking_Bitwise_SFX_v1.ubulk" 1270
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/EnemyAudio/V1s/Enemy_Walking_Bitwise_SFX_v1.uasset" 1271
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/EnemyAudio/V1s/Enemy_Walking_Bitwise_SFX_v1.uexp" 1272
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/ST_Task_PlaySoundCue.uasset" 1273
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/ST_Task_PlaySoundCue.uexp" 1274
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/ST_Task_ChasePlayer.uasset" 1275
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/ST_Task_ChasePlayer.uexp" 1276
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/setLastPlayerLocation.uasset" 1277
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/setLastPlayerLocation.uexp" 1278
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/EnemyAudio/Enemy_Idle_Patrol_Bitwise_SFX_v1.ubulk" 1279
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/EnemyAudio/Enemy_Idle_Patrol_Bitwise_SFX_v1.uasset" 1280
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/EnemyAudio/Enemy_Idle_Patrol_Bitwise_SFX_v1.uexp" 1281
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/MoveToLocation.uasset" 1282
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/MoveToLocation.uexp" 1283
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/ST_Enemy.uasset" 1284
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/ST_Enemy.uexp" 1285
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/BP_EnemyCharacter.uasset" 1286
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/AI/BP_EnemyCharacter.uexp" 1287
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_N.ubulk" 1288
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_N.uasset" 1289
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_N.uexp" 1290
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_Tan.ubulk" 1291
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_Tan.uasset" 1292
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_Tan.uexp" 1293
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_D.ubulk" 1294
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_D.uasset" 1295
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_D.uexp" 1296
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_MSR_MSK.ubulk" 1297
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_MSR_MSK.uasset" 1298
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_MSR_MSK.uexp" 1299
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_BN.ubulk" 1300
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_BN.uasset" 1301
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_BN.uexp" 1302
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_N.ubulk" 1303
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_N.uasset" 1304
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_N.uexp" 1305
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Materials/Functions/ML_BaseColorFallOff.uasset" 1306
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Materials/Functions/ML_BaseColorFallOff.uexp" 1307
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_Tan.ubulk" 1308
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_Tan.uasset" 1309
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_Tan.uexp" 1310
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Materials/Functions/ChromaticCurve.uasset" 1311
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Materials/Functions/ChromaticCurve.uexp" 1312
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Materials/Functions/CA_Mannequin.uasset" 1313
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Materials/Functions/CA_Mannequin.uexp" 1314
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Materials/Functions/MF_Diffraction.uasset" 1315
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Materials/Functions/MF_Diffraction.uexp" 1316
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_ASAOPMASK_MSK.ubulk" 1317
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_ASAOPMASK_MSK.uasset" 1318
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_ASAOPMASK_MSK.uexp" 1319
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_CCRCCPlastic_MSK.ubulk" 1320
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_CCRCCPlastic_MSK.uasset" 1321
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_CCRCCPlastic_MSK.uexp" 1322
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Shared/T_UE_Logo_M.uasset" 1323
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Shared/T_UE_Logo_M.uexp" 1324
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Materials/Functions/MF_logo3layers.uasset" 1325
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Materials/Functions/MF_logo3layers.uexp" 1326
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_D.ubulk" 1327
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_D.uasset" 1328
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_D.uexp" 1329
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_MSR_MSK.ubulk" 1330
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_MSR_MSK.uasset" 1331
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Manny/T_Manny_01_MSR_MSK.uexp" 1332
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Materials/M_Mannequin.uasset" 1333
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Materials/M_Mannequin.uexp" 1334
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01_CCRCCPlastic_MSK.ubulk" 1335
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01_CCRCCPlastic_MSK.uasset" 1336
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01_CCRCCPlastic_MSK.uexp" 1337
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01_ASAOMASK_MSK.ubulk" 1338
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01_ASAOMASK_MSK.uasset" 1339
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01_ASAOMASK_MSK.uexp" 1340
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_BN.ubulk" 1341
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_BN.uasset" 1342
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_01ID_BN.uexp" 1343
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Materials/Instances/Quinn/MI_Quinn_01.uasset" 1344
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Materials/Instances/Quinn/MI_Quinn_01.uexp" 1345
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_D.ubulk" 1346
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_D.uasset" 1347
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_D.uexp" 1348
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02_ASAOMASK_MSK.ubulk" 1349
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02_ASAOMASK_MSK.uasset" 1350
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02_ASAOMASK_MSK.uexp" 1351
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_N.ubulk" 1352
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_N.uasset" 1353
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_N.uexp" 1354
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_MSR_MSK.ubulk" 1355
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_MSR_MSK.uasset" 1356
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_MSR_MSK.uexp" 1357
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_Tan.ubulk" 1358
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_Tan.uasset" 1359
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_Tan.uexp" 1360
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02_CCRCCPlastic_MSK.ubulk" 1361
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02_CCRCCPlastic_MSK.uasset" 1362
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02_CCRCCPlastic_MSK.uexp" 1363
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_BN.ubulk" 1364
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_BN.uasset" 1365
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_BN.uexp" 1366
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Materials/Instances/Quinn/MI_Quinn_02.uasset" 1367
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Materials/Instances/Quinn/MI_Quinn_02.uexp" 1368
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Rigs/PA_Mannequin.uasset" 1369
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Rigs/PA_Mannequin.uexp" 1370
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Meshes/SKM_Quinn_Simple.uasset" 1371
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/StockContent/Characters/Mannequins/Meshes/SKM_Quinn_Simple.uexp" 1372
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelPrefabs/InitPlatformRoom/RPF_Room2.uasset" 1373
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelPrefabs/InitPlatformRoom/RPF_Room2.uexp" 1374
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/ExteriorInstances/Mi_hex_ext_end_wide.uasset" 1375
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/ExteriorInstances/Mi_hex_ext_end_wide.uexp" 1376
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_ext_End_Wide.uasset" 1377
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_ext_End_Wide.uexp" 1378
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/Tiles/m_hex_quarterTile2.uasset" 1379
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/Tiles/m_hex_quarterTile2.uexp" 1380
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_SpawnRoomTileQuarterTR.uasset" 1381
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_SpawnRoomTileQuarterTR.uexp" 1382
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/ExteriorInstances/Mi_hex_ext_end_tall.uasset" 1383
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/ExteriorInstances/Mi_hex_ext_end_tall.uexp" 1384
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_ext_End_Tall.uasset" 1385
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_ext_End_Tall.uexp" 1386
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/ExteriorInstances/Mi_hex_ext_Gauntlet.uasset" 1387
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/ExteriorInstances/Mi_hex_ext_Gauntlet.uexp" 1388
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/BP_Wall_Gauntlet_Side.uasset" 1389
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/BP_Wall_Gauntlet_Side.uexp" 1390
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/Tiles/m_hex_eighthtile3.uasset" 1391
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/Tiles/m_hex_eighthtile3.uexp" 1392
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/Infected/Mi_HexInf_Trans_wide.uasset" 1393
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/Infected/Mi_HexInf_Trans_wide.uexp" 1394
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/InteriorInstances/Mi_hex_widewall.uasset" 1395
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/InteriorInstances/Mi_hex_widewall.uexp" 1396
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/InteriorWalls/BP_FakeWall_wide.uasset" 1397
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/InteriorWalls/BP_FakeWall_wide.uexp" 1398
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Randomization/BP_WallRandomizer.uasset" 1399
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Randomization/BP_WallRandomizer.uexp" 1400
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/Chip005_2K-PNG_NormalDX.ubulk" 1401
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/Chip005_2K-PNG_NormalDX.uasset" 1402
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/Chip005_2K-PNG_NormalDX.uexp" 1403
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/Chip005_2K-PNG_Color.ubulk" 1404
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/Chip005_2K-PNG_Color.uasset" 1405
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/Chip005_2K-PNG_Color.uexp" 1406
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/Chip005_2K-PNG_Metalness.ubulk" 1407
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/Chip005_2K-PNG_Metalness.uasset" 1408
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/Chip005_2K-PNG_Metalness.uexp" 1409
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/Chip005_2K-PNG_Roughness.ubulk" 1410
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/Chip005_2K-PNG_Roughness.uasset" 1411
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/Chip005_2K-PNG_Roughness.uexp" 1412
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/RedChipLit.uasset" 1413
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/RedChipLit.uexp" 1414
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/KillingFloor.uasset" 1415
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/KillingFloor.uexp" 1416
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/KillingFloorLong.uasset" 1417
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/KillingFloorLong.uexp" 1418
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/Tiles/m_hex_eighthtile2.uasset" 1419
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/Tiles/m_hex_eighthtile2.uexp" 1420
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_SpawnRoomTileeighth2.uasset" 1421
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_SpawnRoomTileeighth2.uexp" 1422
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/PlainColors/DoorMaterial.uasset" 1423
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/PlainColors/DoorMaterial.uexp" 1424
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/WinDoor.uasset" 1425
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/WinDoor.uexp" 1426
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/RedChip.uasset" 1427
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Chip/Red/RedChip.uexp" 1428
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/Tiles/m_hex_eighthtile.uasset" 1429
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/Tiles/m_hex_eighthtile.uexp" 1430
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_SpawnRoomTileeighth.uasset" 1431
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/ExteriorWalls/Wall_SpawnRoomTileeighth.uexp" 1432
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/InteriorInstances/MI_hex_widenorm.uasset" 1433
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Visual/materials/Hex/InteriorInstances/MI_hex_widenorm.uexp" 1434
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/InteriorWalls/BP_RealWall_Wide.uasset" 1435
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/LevelGeometry/InteriorWalls/BP_RealWall_Wide.uexp" 1436
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/TrillsDelayed/SprintTrillDelayed.ubulk" 1437
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/TrillsDelayed/SprintTrillDelayed.uasset" 1438
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Audio/TrillsDelayed/SprintTrillDelayed.uexp" 1439
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Powerups/Powerup_SpeedBoost.uasset" 1440
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Powerups/Powerup_SpeedBoost.uexp" 1441
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Randomization/BP_PowerupRandomizer.uasset" 1442
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Blueprints/Randomization/BP_PowerupRandomizer.uexp" 1443
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Levels/MainLevel.uexp" 1444
+"C:/Users/ryand/Documents/Indie Games/Unreal/BitwiseKey-repo/BitwiseKey/Content/Levels/MainLevel.umap" 1445
