@@ -20,6 +20,7 @@ class APawnPowerup;
 class UXRayVision;
 class UInvisibilityPowerup;
 class UCollectionInteractable;
+class UOptionsSaveGame;
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnResetDelegate);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCollectedXrayDelegate);
@@ -27,6 +28,9 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCollectedXrayDelegate);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnMusicStopDelegate);
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnCollectedAbilitySignature, EPowerUpName, PowerUpName);
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnOptionsChangeSignature, UOptionsSaveGame*, SaveGame);
+
 
 
 USTRUCT(BlueprintType)
@@ -176,6 +180,11 @@ public:
 	UPROPERTY(BlueprintReadWrite)
 	bool bGameTimerRunning;
 	
+
+
+	UPROPERTY(BlueprintAssignable, BlueprintCallable, Category="Options")
+	FOnOptionsChangeSignature FOnOptionsChangeDelegate;
+
 
 protected:
 

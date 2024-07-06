@@ -12,6 +12,7 @@
 #include "Camera/CameraComponent.h"
 #include "Components/AudioComponent.h" 
 #include "Animation/AnimInstance.h"
+#include "Core/OptionsSaveGame.h"
 #include "Core/BWK_UserWidget.h"
 #include "EnhancedInputSubsystems.h"
 #include "Core/BitwiseGameState.h"
@@ -90,6 +91,23 @@ void APlayerCharacter::BeginPlay()
 
 	DefaultAirControl = CharacterMovement->AirControl;
 
+	if (OptionsSaveGame = Cast<UOptionsSaveGame>(UGameplayStatics::LoadGameFromSlot("SaveGame", 0))) {
+		UpdateLookControls(OptionsSaveGame);
+	} else {
+		WARN("cast to OptionsSaveGame failed. no save game loaded")
+	}
+
+	gm->FOnOptionsChangeDelegate.AddDynamic(this, &APlayerCharacter::UpdateLookControls);
+	//UOptionsSaveGame BPSaveGame = 
+	//TScriptInterface<UOptionsSaveGame> BPSaveGame = 
+
+}
+
+void APlayerCharacter::UpdateLookControls(UOptionsSaveGame* SaveGame)
+{
+	LOG("updating look controls")
+	bInvertXAxis = SaveGame->bInvertXAxis;
+	bInvertYAxis = SaveGame->bInvertYAxis;
 }
 
 
@@ -268,6 +286,22 @@ void APlayerCharacter::Look(const FInputActionInstance& InputActionInstance)
 		FVector2D LookAxisVector = InputActionInstance.GetValue().Get<FVector2D>();
 
 		//LOG("looking around");
+
+		if (IsValid(gs)) {
+			if (bInvertXAxis) {
+				LookAxisVector.X = LookAxisVector.X * -1;
+				LOG("inverting x")
+			}
+			if (bInvertYAxis) {
+				LOG("inverting y")
+				LookAxisVector.Y = LookAxisVector.Y * -1;
+			}
+			//zzz
+			//check whether the savegame is set and if so invert the value
+		}
+		else {
+			WARN("save game invalid")
+		}
 
 		if (Controller != nullptr)
 		{

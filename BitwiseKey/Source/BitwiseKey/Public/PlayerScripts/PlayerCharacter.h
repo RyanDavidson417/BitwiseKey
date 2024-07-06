@@ -24,6 +24,7 @@ class UPowerupDataBase;
 class ABitwiseGameState;
 class UAudioComponent;
 class UBWK_UserWidget;
+class UOptionsSaveGame;
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnFovChangeSignature, int32, TargetFov);
 
@@ -123,7 +124,7 @@ protected:
 	UPROPERTY(BlueprintReadOnly)
 	FRotator RandomStartingRotation;
 
-
+	TObjectPtr<UOptionsSaveGame> OptionsSaveGame;
 
 	//methods
 public:
@@ -187,6 +188,8 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	void UpdateLookControls(UOptionsSaveGame* SaveGame);
+
 	void setRandomStartRotation();
 
 	UPROPERTY(EditAnywhere, category = "audio")
@@ -239,4 +242,11 @@ protected:
 
 
 	float DefaultAirControl;
+
+
+	UPROPERTY(BlueprintReadWrite, Category = "Options")
+	bool bInvertXAxis;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Options")
+	bool bInvertYAxis;
 };
