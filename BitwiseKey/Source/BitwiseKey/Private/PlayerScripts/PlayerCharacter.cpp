@@ -84,6 +84,7 @@ void APlayerCharacter::BeginPlay()
 	gs = Cast<ABitwiseGameState>(gm->GameState);
 
 	gm->D_OnReset.AddDynamic(this, &APlayerCharacter::ResetPlayer);
+	gm->FOnOptionsChangeDelegate.AddDynamic(this, &APlayerCharacter::UpdateLookControls);
 
 	setRandomStartRotation();
 
@@ -97,17 +98,21 @@ void APlayerCharacter::BeginPlay()
 		WARN("cast to OptionsSaveGame failed. no save game loaded")
 	}
 
-	gm->FOnOptionsChangeDelegate.AddDynamic(this, &APlayerCharacter::UpdateLookControls);
+
+
+	LOG("delegate ping")
 	//UOptionsSaveGame BPSaveGame = 
 	//TScriptInterface<UOptionsSaveGame> BPSaveGame = 
 
 }
-
 void APlayerCharacter::UpdateLookControls(UOptionsSaveGame* SaveGame)
 {
-	LOG("updating look controls")
+	LOG("delegate updating look controls")
 	bInvertXAxis = SaveGame->bInvertXAxis;
 	bInvertYAxis = SaveGame->bInvertYAxis;
+
+	fXSensitivity = SaveGame->fXSensitivity;
+	fYSensitivity = SaveGame->fYSensitivity;
 }
 
 
@@ -296,6 +301,10 @@ void APlayerCharacter::Look(const FInputActionInstance& InputActionInstance)
 				LOG("inverting y")
 				LookAxisVector.Y = LookAxisVector.Y * -1;
 			}
+
+			LookAxisVector.X = LookAxisVector.X * fXSensitivity;
+			LookAxisVector.Y = LookAxisVector.Y * fYSensitivity;
+
 			//zzz
 			//check whether the savegame is set and if so invert the value
 		}

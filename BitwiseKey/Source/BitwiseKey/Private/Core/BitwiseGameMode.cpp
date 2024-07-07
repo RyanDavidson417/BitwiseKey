@@ -69,6 +69,9 @@ void ABitwiseGameMode::BeginPlay()
     bGameTimerRunning = true;
 
     D_OnReset.AddDynamic(this, &ABitwiseGameMode::ResetGameMode);
+
+    FOnOptionsChangeDelegate.AddDynamic(PlayerCharacter, &APlayerCharacter::UpdateLookControls);
+
 }
 
 

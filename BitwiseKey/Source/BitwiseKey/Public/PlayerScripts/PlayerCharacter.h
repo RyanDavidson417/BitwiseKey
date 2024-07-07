@@ -183,12 +183,14 @@ public:
 	void DisplayInteractPrompt(); //no C++ implementation
 
 	void ResetFromPlayer();
+	UFUNCTION()
+	void UpdateLookControls(UOptionsSaveGame* SaveGame);
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	void UpdateLookControls(UOptionsSaveGame* SaveGame);
+
 
 	void setRandomStartRotation();
 
@@ -249,4 +251,7 @@ protected:
 
 	UPROPERTY(BlueprintReadWrite, Category = "Options")
 	bool bInvertYAxis;
+
+	float fXSensitivity;
+	float fYSensitivity;
 };
