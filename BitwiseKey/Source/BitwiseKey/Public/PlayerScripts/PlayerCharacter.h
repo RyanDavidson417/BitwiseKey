@@ -24,6 +24,7 @@ class UPowerupDataBase;
 class ABitwiseGameState;
 class UAudioComponent;
 class UBWK_UserWidget;
+class ABitwisePlayerState;
 class UOptionsSaveGame;
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnFovChangeSignature, int32, TargetFov);
@@ -183,8 +184,6 @@ public:
 	void DisplayInteractPrompt(); //no C++ implementation
 
 	void ResetFromPlayer();
-	UFUNCTION()
-	void UpdateLookControls(UOptionsSaveGame* SaveGame);
 
 protected:
 	// Called when the game starts or when spawned
@@ -246,12 +245,7 @@ protected:
 	float DefaultAirControl;
 
 
-	UPROPERTY(BlueprintReadWrite, Category = "Options")
-	bool bInvertXAxis;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Options")
-	bool bInvertYAxis;
+	TObjectPtr<ABitwisePlayerState> ps;
 
-	float fXSensitivity;
-	float fYSensitivity;
 };

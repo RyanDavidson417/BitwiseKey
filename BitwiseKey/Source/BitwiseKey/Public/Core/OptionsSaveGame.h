@@ -25,10 +25,10 @@ public:
 
 
 	UPROPERTY(BlueprintReadWrite)
-	float fXSensitivity;
+	float fXSensitivity = 1;
 
 	UPROPERTY(BlueprintReadWrite)
-	float fYSensitivity;
+	float fYSensitivity = 1;
 
 
 	UPROPERTY(BlueprintReadWrite)

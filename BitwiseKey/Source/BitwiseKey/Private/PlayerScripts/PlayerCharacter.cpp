@@ -18,6 +18,7 @@
 #include "Core/BitwiseGameState.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/PlayerStart.h" 
+#include "PlayerScripts/BitwisePlayerState.h"
 #include "LevelObjects/PowerupDataBase.h"
 #include "Core/BitwiseGameMode.h"
 
@@ -82,9 +83,10 @@ void APlayerCharacter::BeginPlay()
 
 	gm = GetWorld()->GetAuthGameMode<ABitwiseGameMode>();
 	gs = Cast<ABitwiseGameState>(gm->GameState);
+	ps = Cast<ABitwisePlayerState>(GetPlayerState());
+
 
 	gm->D_OnReset.AddDynamic(this, &APlayerCharacter::ResetPlayer);
-	gm->FOnOptionsChangeDelegate.AddDynamic(this, &APlayerCharacter::UpdateLookControls);
 
 	setRandomStartRotation();
 
@@ -92,11 +94,11 @@ void APlayerCharacter::BeginPlay()
 
 	DefaultAirControl = CharacterMovement->AirControl;
 
-	if (OptionsSaveGame = Cast<UOptionsSaveGame>(UGameplayStatics::LoadGameFromSlot("SaveGame", 0))) {
-		UpdateLookControls(OptionsSaveGame);
-	} else {
-		WARN("cast to OptionsSaveGame failed. no save game loaded")
-	}
+	//if (OptionsSaveGame = Cast<UOptionsSaveGame>(UGameplayStatics::LoadGameFromSlot("SaveGame", 0))) {
+	//	UpdateLookControls(OptionsSaveGame);
+	//} else {
+	//	WARN("cast to OptionsSaveGame failed. no save game loaded")
+	//}
 
 
 
@@ -104,15 +106,6 @@ void APlayerCharacter::BeginPlay()
 	//UOptionsSaveGame BPSaveGame = 
 	//TScriptInterface<UOptionsSaveGame> BPSaveGame = 
 
-}
-void APlayerCharacter::UpdateLookControls(UOptionsSaveGame* SaveGame)
-{
-	LOG("delegate updating look controls")
-	bInvertXAxis = SaveGame->bInvertXAxis;
-	bInvertYAxis = SaveGame->bInvertYAxis;
-
-	fXSensitivity = SaveGame->fXSensitivity;
-	fYSensitivity = SaveGame->fYSensitivity;
 }
 
 
@@ -293,17 +286,17 @@ void APlayerCharacter::Look(const FInputActionInstance& InputActionInstance)
 		//LOG("looking around");
 
 		if (IsValid(gs)) {
-			if (bInvertXAxis) {
+			if (ps->bInvertXAxis) {
 				LookAxisVector.X = LookAxisVector.X * -1;
 				LOG("inverting x")
 			}
-			if (bInvertYAxis) {
+			if (ps->bInvertYAxis) {
 				LOG("inverting y")
 				LookAxisVector.Y = LookAxisVector.Y * -1;
 			}
 
-			LookAxisVector.X = LookAxisVector.X * fXSensitivity;
-			LookAxisVector.Y = LookAxisVector.Y * fYSensitivity;
+			LookAxisVector.X = LookAxisVector.X * ps->fXSensitivity;
+			LookAxisVector.Y = LookAxisVector.Y * ps->fYSensitivity;
 
 			//zzz
 			//check whether the savegame is set and if so invert the value
