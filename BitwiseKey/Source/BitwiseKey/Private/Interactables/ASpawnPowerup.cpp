@@ -38,7 +38,7 @@ void ASpawnPowerup::BeginPlay()
 	gm = GetWorld()->GetAuthGameMode<ABitwiseGameMode>();
 	gs = Cast<ABitwiseGameState>(gm->GameState);
 	
-	CollectionSoundComponent->OnAudioFinished.AddDynamic(this, &ASpawnPowerup::PlayTrillSound);
+	//CollectionSoundComponent->OnAudioFinished.AddDynamic(this, &ASpawnPowerup::PlayTrillSound);
 
 	FActorSpawnParameters SpawnInfo;
 
@@ -51,7 +51,7 @@ void ASpawnPowerup::BeginPlay()
 void ASpawnPowerup::StartTrillSoundTimer()
 {
 	LOG("starting timer")
-		//PlayTrillSound();
+		PlayTrillSound();
 		//GetWorldTimerManager().SetTimer(
 		//	AudioTimerHandle, this, &ASpawnPowerup::PlayTrillSound,
 		//	CollectionSoundComponent->Sound->Duration, false);
