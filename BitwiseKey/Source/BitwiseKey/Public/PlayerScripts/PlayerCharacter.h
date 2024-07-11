@@ -156,7 +156,8 @@ public:
 
 	void ToggleInvisibility(const FInputActionInstance& Instance);
 	
-	void ToggleStamina();
+	void ToggleStamina(const FInputActionInstance& Instance);
+	void ReleaseStamina(const FInputActionInstance& Instance);
 	void ActivateStaminaEffects();
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (DisplayName = "DeactivateStaminaEffects"))
 	void DeactivateStaminaEffects(bool bRanFullyOut = false);

@@ -154,7 +154,7 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 	EIS->BindAction(ResetPlayerAction, ETriggerEvent::Started, this, &APlayerCharacter::ResetFromPlayer);
 
-	EIS->BindAction(ActivateSpeedAction, ETriggerEvent::Started, this, &APlayerCharacter::ToggleStamina);
+	EIS->BindAction(ActivateSpeedAction, ETriggerEvent::Triggered, this, &APlayerCharacter::ToggleStamina);
 	EIS->BindAction(ActivateSpeedAction, ETriggerEvent::Completed, this, &APlayerCharacter::ReleaseStamina);
 	
 	if (UGameplayStatics::DoesSaveGameExist(gs->OptionsSlotName, 0)) {
@@ -448,7 +448,6 @@ void APlayerCharacter::ToggleStamina(const FInputActionInstance& Instance)
 	if (!gs->SpeedBoostData->bEnabled  /*if we're not sprinting*/
 		|| (gs->SpeedBoostData->bEnabled && ps->bToggleSprint)) { //or if we are sprinting, and it's a toggle
 		if (IsValid(gm)) {
-			LOG("starting sprint")
 			gm->ToggleStamina();
 		}
 		else {
@@ -456,7 +455,6 @@ void APlayerCharacter::ToggleStamina(const FInputActionInstance& Instance)
 		}
 	}
 	else {
-		LOG("false")
 	}
 }
 //
