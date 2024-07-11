@@ -185,6 +185,8 @@ public:
 
 	void ResetFromPlayer();
 
+	void UpdateToggles();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

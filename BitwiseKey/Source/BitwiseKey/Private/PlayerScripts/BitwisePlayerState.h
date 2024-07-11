@@ -26,7 +26,7 @@ private:
 
 
 	UFUNCTION()
-	void UpdateLookControls(UOptionsSaveGame* SaveGame);
+	void UpdatePlayerOptions(UOptionsSaveGame* SaveGame);
 
 protected:
 
@@ -39,6 +39,9 @@ public:
 
 	float fXSensitivity = 1;
 	float fYSensitivity = 1;
+
+	bool bToggleSprint = true;
+	bool bToggleInvis = true;
 
 
 	UFUNCTION()

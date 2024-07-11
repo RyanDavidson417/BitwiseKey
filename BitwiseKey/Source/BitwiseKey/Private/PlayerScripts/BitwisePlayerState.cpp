@@ -5,6 +5,7 @@
 #include "BitwiseKey/BitwiseKey.h"
 #include "Kismet/GameplayStatics.h"
 #include "Core/BitwiseGameMode.h"
+#include "PlayerScripts/PlayerCharacter.h"
 #include "Core/OptionsSaveGame.h"
 #include "Core/BitwiseGameState.h"
 
@@ -20,12 +21,12 @@ void ABitwisePlayerState::BeginPlay()
 		LOG("game state does not exist")
 	}
 
-	gm->FOnOptionsChangeDelegate.AddUniqueDynamic(this, &ABitwisePlayerState::UpdateLookControls);
+	gm->FOnOptionsChangeDelegate.AddUniqueDynamic(this, &ABitwisePlayerState::UpdatePlayerOptions);
 }
 
 
 
-void ABitwisePlayerState::UpdateLookControls(UOptionsSaveGame* SaveGame)
+void ABitwisePlayerState::UpdatePlayerOptions(UOptionsSaveGame* SaveGame)
 {
 	LOG("delegate updating look controls")
 	bInvertXAxis = SaveGame->bInvertXAxis;
@@ -33,4 +34,10 @@ void ABitwisePlayerState::UpdateLookControls(UOptionsSaveGame* SaveGame)
 
 	fXSensitivity = SaveGame->fXSensitivity;
 	fYSensitivity = SaveGame->fYSensitivity;
+
+	bToggleSprint = SaveGame->ToggleSprint;
+	bToggleInvis = SaveGame->ToggleInvis;
+
+	gm->PlayerCharacter->UpdateToggles();
+
 }

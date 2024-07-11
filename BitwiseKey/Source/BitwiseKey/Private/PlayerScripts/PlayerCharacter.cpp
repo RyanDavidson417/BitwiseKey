@@ -121,6 +121,11 @@ void APlayerCharacter::Tick(float DeltaTime)
 // Called to bind functionality to input
 void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
+
+
+	gm = GetWorld()->GetAuthGameMode<ABitwiseGameMode>();
+	gs = Cast<ABitwiseGameState>(gm->GameState);
+
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
 
@@ -149,6 +154,20 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	EIS->BindAction(ResetPlayerAction, ETriggerEvent::Started, this, &APlayerCharacter::ResetFromPlayer);
 
 	EIS->BindAction(ActivateSpeedAction, ETriggerEvent::Triggered, this, &APlayerCharacter::ToggleStamina);
+	if (UGameplayStatics::DoesSaveGameExist(gs->OptionsSlotName, 0)) {
+		UOptionsSaveGame* sg = Cast<UOptionsSaveGame>(UGameplayStatics::LoadGameFromSlot(gs->OptionsSlotName, 0));
+		if (sg->ToggleSprint) {
+			InvisToggleAction->bConsumeInput = true;
+		}
+		else {
+			InvisToggleAction->bConsumeInput = false;
+		}
+	}
+	else {
+		//save game not found, default to toggle
+		InvisToggleAction->bConsumeInput = true;
+	}
+
 
 }
 
@@ -422,7 +441,6 @@ void APlayerCharacter::ToggleInvisibility(const FInputActionInstance& Instance)
 
 void APlayerCharacter::ToggleStamina()
 {
-
 	if (IsValid(gm)) {
 		gm->ToggleStamina();
 	}
@@ -480,6 +498,8 @@ void APlayerCharacter::ToggleStamina()
 
 void APlayerCharacter::ActivateStaminaEffects()
 {
+
+
 	StopMovementSound();
 	FOnFOVIncreaseDelegate.Broadcast(SprintingFOV);
 
@@ -593,4 +613,22 @@ void APlayerCharacter::ResetFromPlayer()
 	UGameplayStatics::SetGamePaused(this, false);
 	WARN("reset action called from player")
 		gm->D_OnReset.Broadcast();
+}
+
+void APlayerCharacter::UpdateToggles()
+{
+	UEnhancedInputComponent* EIS = CastChecked<UEnhancedInputComponent>(GetController()->InputComponent);
+
+	LOG("updating toggles: it %S a toggle", ps->bToggleSprint ? TEXT("as") : TEXT("bisn't"))
+	ActivateSpeedAction->bConsumeInput = ps->bToggleSprint;
+	//UInputTriggerReleased ended;
+
+	if (ps->bToggleSprint) {
+		EIS->RemoveActionValueBinding()
+	}
+	else {
+		//ActivateSpeedAction->Triggers.Remove(&ended);
+	}
+
+	InvisToggleAction->bConsumeInput = ps->bToggleInvis;
 }
