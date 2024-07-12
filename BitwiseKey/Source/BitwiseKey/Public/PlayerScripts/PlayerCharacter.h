@@ -155,6 +155,7 @@ public:
 
 
 	void ToggleInvisibility(const FInputActionInstance& Instance);
+	void ReleaseInvisibility(const FInputActionInstance& Instance);
 	
 	void ToggleStamina(const FInputActionInstance& Instance);
 	void ReleaseStamina(const FInputActionInstance& Instance);

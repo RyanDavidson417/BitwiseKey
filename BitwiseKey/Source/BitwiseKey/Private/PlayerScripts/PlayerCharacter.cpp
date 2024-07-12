@@ -146,6 +146,7 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	EIS->BindAction(InteractAction, ETriggerEvent::Started, this, &APlayerCharacter::Interact);
 	//bind the invisActivate action;
 	EIS->BindAction(InvisToggleAction, ETriggerEvent::Started, this, &APlayerCharacter::ToggleInvisibility);
+	EIS->BindAction(InvisToggleAction, ETriggerEvent::Completed, this, &APlayerCharacter::ReleaseInvisibility);
 
 
 	//bind the jump actions
@@ -437,9 +438,21 @@ void APlayerCharacter::TraceLine()
 
 void APlayerCharacter::ToggleInvisibility(const FInputActionInstance& Instance)
 {	
-	//Instance.GetTriggerEvent() == FInputActionInstance.
-	if (IsValid(gm)) {
-		gm->ToggleInvisibility();
+	if (!gs->InvisibilityData->ActiveValue //if we're NOT already invisible
+		 || gs->InvisibilityData->ActiveValue && ps->bToggleInvis) { //or we are invisible, and we're using toggle
+		//Instance.GetTriggerEvent() == FInputActionInstance.
+		if (IsValid(gm)) {
+			gm->ToggleInvisibility();
+		}
+
+	}
+}
+
+void APlayerCharacter::ReleaseInvisibility(const FInputActionInstance& Instance){
+	if (gs->InvisibilityData->bEnabled && !ps->bToggleInvis) {
+		if (IsValid(gm)) {
+			gm->ToggleInvisibility();
+		}
 	}
 }
 
