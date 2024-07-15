@@ -39,6 +39,7 @@ public:
 
 
 protected:
+	UFUNCTION()
 	void PlayTrillSound();
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

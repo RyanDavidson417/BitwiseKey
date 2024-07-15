@@ -9,6 +9,7 @@
 #include "PlayerScripts/PlayerCharacter.h"
 #include "Math/UnrealMathUtility.h"
 #include "BitwiseKey/BitwiseKey.h"
+#include "Core/OptionsSaveGame.h"
 #include "Components/AudioComponent.h" 
 #include "LevelObjects/PowerupDataBase.h"
 #include "Kismet/GameplayStatics.h" 
@@ -25,6 +26,7 @@ ABitwiseGameMode::ABitwiseGameMode()
         notice the use of StaticClass to get the UClass class type properly */
     DefaultPawnClass = APlayerCharacter::StaticClass();
     GameStateClass = ABitwiseGameState::StaticClass();
+
 
 
     //static ConstructorHelpers::FClassFinder<UStaticMesh> AssetFile(TEXT("/Game/Blueprints/XRayActor.XRayActor"));
@@ -49,6 +51,14 @@ void ABitwiseGameMode::BeginPlay()
     Super::BeginPlay();
     DispatchBeginPlay();
 
+    //if (UGameplayStatics::DoesSaveGameExist(gs->OptionsSlotName, 0)) {
+    //    if( UOptionsSaveGame* sg = (UGameplayStatics::LoadGameFromSlot(gs->OptionsSlotName, 0))){
+    //        FOnOptionsChangeDelegate.Broadcast(sg);
+    //    }
+    //}
+
+
+
     PlayerCharacter = Cast<APlayerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
 
     UGameplayStatics::GetAllActorsOfClass(GetWorld(), ASpawnPowerup::StaticClass(), PowerupSpawnLocations);
@@ -59,15 +69,31 @@ void ABitwiseGameMode::BeginPlay()
 
     //should probably make a new helper function buuuuuuut
 
+    if (UGameplayStatics::DoesSaveGameExist(gs->OptionsSlotName, 0)) {
+        if (UOptionsSaveGame* sg = Cast<UOptionsSaveGame>(UGameplayStatics::LoadGameFromSlot(gs->OptionsSlotName, 0))) {
+
+            LOG("save game found")
+            FOnOptionsChangeDelegate.Broadcast(sg);
+        }
+            
+    }
+    else {
+        //save game not found, default to toggle
+        LOG("save game not found")
+    }
 
     GetWorldTimerManager().SetTimer(InvisibilityStatStruct.RechargeTimerHandle,
         this, &ABitwiseGameMode::UpdateInvisCharge, 1 / InvisibilityStatStruct.Precision, true, 2.0f);
 
     GetWorldTimerManager().SetTimer(StaminaStatStruct.RechargeTimerHandle, 
         this, &ABitwiseGameMode::UpdateStamina, 1/ StaminaStatStruct.Precision, true, 2.0f);
+
     bGameTimerRunning = true;
 
     D_OnReset.AddDynamic(this, &ABitwiseGameMode::ResetGameMode);
+
+
+
 }
 
 
@@ -177,26 +203,6 @@ void ABitwiseGameMode::CollectJumpBoost()
     OnCollectedAbilityDelegate.Broadcast(EPowerUpName::PE_JumpBoost);
 }
 
-void ABitwiseGameMode::ToggleInvisibility()
-{
-
-    if (gs->InvisibilityData->bCollected) {
-
-        if (gs->InvisibilityData->bEnabled) {
-
-            gs->InvisibilityData->bEnabled = false;
-
-
-        }
-        else {
-            gs->InvisibilityData->bEnabled = true;
-
-        }
-    }
-    else {
-        WARN("You do not yet have that ability");
-    }
-}
 
 void ABitwiseGameMode::StopGameTimerAndMusic()
 {
@@ -204,60 +210,105 @@ void ABitwiseGameMode::StopGameTimerAndMusic()
     OnMusicStop.Broadcast();
 }
 
+
+#pragma region invis
 void ABitwiseGameMode::UpdateInvisCharge()
 {
     if (gs->InvisibilityData->bCollected) {
 
         //LOG("CurrentCharge: %f", gs->CurrentInvisCharge)
         if (gs->InvisibilityData->bEnabled) { //invisibility active, counting down
+            
+
 
             InvisibilityStatStruct.currentCharge = FMath::Clamp(
                 InvisibilityStatStruct.currentCharge - (InvisibilityStatStruct.DischargeRate / InvisibilityStatStruct.Precision),
                 0.0, InvisibilityStatStruct.MaxCharge);
 
             if (InvisibilityStatStruct.currentCharge == 0) {
-                ToggleInvisibility();
-                LOG("BING BONG")
-                PlayerCharacter->DeactivitateInvisibilityVFX();
+                DeactivateInvisibility(true);
                 return;
             }
 
-            //DEPRECATED: the (obviously very messy) way I'd been clamping the values originally
-            //if (InvisibilityStruct.currentCharge == 0) {
-            //    ToggleInvisibility();
-            //    return;
-            //}
-            //else  if (InvisibilityStruct.currentCharge < 0) {
-            //    InvisibilityStruct.currentCharge = 0;
-            //    return;
-            //}
-            //else if (InvisibilityStruct.currentCharge > 0) {
-            //    InvisibilityStruct.currentCharge -= InvisibilityStruct.DischargeRate / InvisibilityStruct.Precision;
-            //    return;
-            //}
         } else { //invisibility inactive, counting up
 
-            InvisibilityStatStruct.currentCharge = FMath::Clamp(
-                InvisibilityStatStruct.currentCharge + (InvisibilityStatStruct.ChargeRate / InvisibilityStatStruct.Precision),
-                0.0, InvisibilityStatStruct.MaxCharge);
+
+            //calculate whether the invis recharge delay has passed
+            float CurrentTime = UGameplayStatics::GetUnpausedTimeSeconds(this);
+            float TimeInvisCanActivate = TimeSinceInvisRechargeStart + CurrentInvisRechargeDelay;
+            if (CurrentTime > TimeInvisCanActivate) {//if the delay has passed
+
+                //increase invis, setting it no lower than 0 and no higher than the max
+                InvisibilityStatStruct.currentCharge = FMath::Clamp(
+                    InvisibilityStatStruct.currentCharge + (InvisibilityStatStruct.ChargeRate / InvisibilityStatStruct.Precision),
+                    0.0, InvisibilityStatStruct.MaxCharge);
+            }
                 
-            //DEPRECATED: the (obviously very messy) way I'd been clamping the values originally
-            //if (InvisibilityStruct.currentCharge == InvisibilityStruct.MaxCharge) {
-            //    return;
-            //}
-            //else  if (InvisibilityStruct.currentCharge > InvisibilityStruct.MaxCharge) {
-            //    InvisibilityStruct.currentCharge = InvisibilityStruct.MaxCharge;
-            //    return;
-            //}
-            //else if (gs->CurrentInvisCharge < InvisMaxCharge) {
-            //    gs->CurrentInvisCharge += InvisChargeRate/ProgressBarPrecision;
-            //    return;
-            //}
+           
         }
     }
-    return ;
+    return;
 }
 
+
+void ABitwiseGameMode::ToggleInvisibility()
+{
+
+    if (gs->InvisibilityData->bEnabled) {
+        DeactivateInvisibility();
+    }
+    else {
+        ActivateInvisibility();
+    }
+
+}
+
+void ABitwiseGameMode::ActivateInvisibility()
+{
+    //zzz check all refs to invis data to ensure this is the only time we're using it
+    if (gs->InvisibilityData->bCollected) {
+        if (InvisibilityStatStruct.currentCharge) {
+            gs->InvisibilityData->bEnabled = true;
+
+            if (IsValid(PlayerCharacter)) {
+                PlayerCharacter->ActivateInvisibilityVFX();
+            }
+            else {
+                ERROR("gamemode reference to PlayerCharacter NOT VALID")
+            }
+        }
+    }
+    else {
+        LOG("you do not yet have that ability");
+    }
+
+}
+
+void ABitwiseGameMode::DeactivateInvisibility(bool bRanFullyOut)
+{
+    TimeSinceInvisRechargeStart = UGameplayStatics::GetUnpausedTimeSeconds(this);
+    if (bRanFullyOut) {
+        CurrentInvisRechargeDelay = FullyOutRechargeDelay;
+    }
+    else { //make the player wait longer if they ran all the way out
+        CurrentInvisRechargeDelay = DefaultRechargeDelay;
+    }
+
+    gs->InvisibilityData->bEnabled = false;
+    if (IsValid(PlayerCharacter)) {
+
+        PlayerCharacter->DeactivateInvisibilityVFX(bRanFullyOut);
+    }
+    else {
+        ERROR("gamemode reference to PlayerCharacter NOT VALID")
+    }
+}
+
+
+
+#pragma endregion invis
+
+#pragma region stamina
 void ABitwiseGameMode::UpdateStamina()
 {
     if (gs->GetHasStaminaAbility()) {
@@ -268,51 +319,72 @@ void ABitwiseGameMode::UpdateStamina()
                 StaminaStatStruct.currentCharge - (StaminaStatStruct.DischargeRate / StaminaStatStruct.Precision),
                 0.0, StaminaStatStruct.MaxCharge);
 
+            //deactivate stamina
+
             if (StaminaStatStruct.currentCharge == 0) {
-                PlayerCharacter->DeactivateStaminaEffects(); //tell the player to deactivate stamina
-
-
-
+                DeactivateStamina(true);
                 return;
             }
 
-            //DEPRECATED
-            //if (gs->CurrentStamina == 0) {
-            //    ToggleStamina();
-            //    return;
-            //}
-            //else  if (gs->CurrentStamina < 0) {
-            //    gs->CurrentStamina = 0;
-            //    return;
-            //}
-            //else if (gs->CurrentStamina > 0) {
+        } else { //invisibility inactive, counting up
+            
+            //calculate whether the stamina delay has passed
+            float CurrentTime = UGameplayStatics::GetUnpausedTimeSeconds(this);
+            float TimeStaminaCanActivate = TimeSinceStaminaRechargeStart + CurrentStaminaRechargeDelay;
+            if (CurrentTime > TimeStaminaCanActivate) {//if the delay has passed
 
-            //    gs->CurrentStamina -= StaminaDischargeRate / ProgressBarPrecision;
-            //    return;
-            //}
-        }
-        else { //invisibility inactive, counting up
-
-            //increase stamina, setting it no lower than 0 and no higher than the max
-            StaminaStatStruct.currentCharge = FMath::Clamp(
-                StaminaStatStruct.currentCharge + (StaminaStatStruct.ChargeRate / StaminaStatStruct.Precision),
-                0.0, StaminaStatStruct.MaxCharge);
-
-
-            //if (gs->CurrentStamina == InvisMaxCharge) {
-            //    return;
-            //}
-            //else  if (gs->CurrentStamina > InvisMaxCharge) {
-            //    gs->CurrentStamina = InvisMaxCharge;
-            //    return;
-            //}
-            //else if (gs->CurrentStamina < InvisMaxCharge) {
-            //    gs->CurrentStamina += InvisChargeRate / ProgressBarPrecision;
-            //    return;
-            //}
+                //increase stamina, setting it no lower than 0 and no higher than the max
+                StaminaStatStruct.currentCharge = FMath::Clamp(
+                    StaminaStatStruct.currentCharge + (StaminaStatStruct.ChargeRate / StaminaStatStruct.Precision),
+                    0.0, StaminaStatStruct.MaxCharge);        
+            }
         }
     }
 }
 
+void ABitwiseGameMode::ToggleStamina()
+{
+    if (gs->SpeedBoostData->bEnabled) {
+        DeactivateStamina();
+    }
+    else {
+        ActivateStamina();
+    }
+}
 
+
+void ABitwiseGameMode::ActivateStamina()
+{
+    if (gs->SpeedBoostData->bCollected) {
+        if (StaminaStatStruct.currentCharge > 0) {
+            gs->SpeedBoostData->bEnabled = true;
+            PlayerCharacter->ActivateStaminaEffects();
+        }
+    }
+    else {
+        LOG("you do not yet have that ability")
+    }
+
+
+
+    //call to player to activate stamina fx
+}
+
+void ABitwiseGameMode::DeactivateStamina(bool bRanFullyOut)
+{
+
+    TimeSinceStaminaRechargeStart = UGameplayStatics::GetUnpausedTimeSeconds(this);
+    if (bRanFullyOut) {
+        CurrentStaminaRechargeDelay = FullyOutRechargeDelay;
+    }
+    else {
+        CurrentStaminaRechargeDelay = DefaultRechargeDelay;
+    }
+    gs->SpeedBoostData->bEnabled = false;
+
+    PlayerCharacter->DeactivateStaminaEffects(bRanFullyOut);
+
+}
+
+#pragma endregion Stamina
 

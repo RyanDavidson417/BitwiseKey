@@ -24,6 +24,8 @@ class UPowerupDataBase;
 class ABitwiseGameState;
 class UAudioComponent;
 class UBWK_UserWidget;
+class ABitwisePlayerState;
+class UOptionsSaveGame;
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnFovChangeSignature, int32, TargetFov);
 
@@ -123,7 +125,7 @@ protected:
 	UPROPERTY(BlueprintReadOnly)
 	FRotator RandomStartingRotation;
 
-
+	TObjectPtr<UOptionsSaveGame> OptionsSaveGame;
 
 	//methods
 public:
@@ -153,18 +155,22 @@ public:
 
 
 	void ToggleInvisibility(const FInputActionInstance& Instance);
+	void ReleaseInvisibility(const FInputActionInstance& Instance);
 	
-	void ToggleStamina();
+	void ToggleStamina(const FInputActionInstance& Instance);
+	void ReleaseStamina(const FInputActionInstance& Instance);
 	void ActivateStaminaEffects();
-	void DeactivateStaminaEffects();
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (DisplayName = "DeactivateStaminaEffects"))
+	void DeactivateStaminaEffects(bool bRanFullyOut = false);
+	virtual void DeactivateStaminaEffects_Implementation(bool bRanFullyOut = false);
 
 	void ActivateJumpBoost();
 	void DeactivateJumpBoost();
 
 	UFUNCTION(BlueprintImplementableEvent)
-	void ActivitateInvisibilityVFX(); //no c++ implementation
-	UFUNCTION(BlueprintImplementableEvent)
-	void DeactivitateInvisibilityVFX();
+	void ActivateInvisibilityVFX(); //no c++ implementation
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void DeactivateInvisibilityVFX(bool bRanFullyOut = false);
 	
 
 	UFUNCTION(BlueprintImplementableEvent)
@@ -181,9 +187,13 @@ public:
 
 	void ResetFromPlayer();
 
+	void UpdateToggles();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+
 
 	void setRandomStartRotation();
 
@@ -237,4 +247,9 @@ protected:
 
 
 	float DefaultAirControl;
+
+
+
+	TObjectPtr<ABitwisePlayerState> ps;
+
 };

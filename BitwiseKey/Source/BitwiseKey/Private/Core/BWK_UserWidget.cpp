@@ -3,3 +3,7 @@
 
 #include "Core/BWK_UserWidget.h"
 
+void UBWK_UserWidget::OnStartButtonPressed_Implementation()
+{
+	this->HideMenu();
+}

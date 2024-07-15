@@ -12,11 +12,14 @@
 #include "Camera/CameraComponent.h"
 #include "Components/AudioComponent.h" 
 #include "Animation/AnimInstance.h"
+#include "Core/OptionsSaveGame.h"
 #include "Core/BWK_UserWidget.h"
+#include "EnhancedInputLibrary.h"
 #include "EnhancedInputSubsystems.h"
 #include "Core/BitwiseGameState.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/PlayerStart.h" 
+#include "PlayerScripts/BitwisePlayerState.h"
 #include "LevelObjects/PowerupDataBase.h"
 #include "Core/BitwiseGameMode.h"
 
@@ -81,6 +84,8 @@ void APlayerCharacter::BeginPlay()
 
 	gm = GetWorld()->GetAuthGameMode<ABitwiseGameMode>();
 	gs = Cast<ABitwiseGameState>(gm->GameState);
+	ps = Cast<ABitwisePlayerState>(GetPlayerState());
+
 
 	gm->D_OnReset.AddDynamic(this, &APlayerCharacter::ResetPlayer);
 
@@ -89,6 +94,18 @@ void APlayerCharacter::BeginPlay()
 	CharacterMovement = GetCharacterMovement();
 
 	DefaultAirControl = CharacterMovement->AirControl;
+
+	//if (OptionsSaveGame = Cast<UOptionsSaveGame>(UGameplayStatics::LoadGameFromSlot("SaveGame", 0))) {
+	//	UpdateLookControls(OptionsSaveGame);
+	//} else {
+	//	WARN("cast to OptionsSaveGame failed. no save game loaded")
+	//}
+
+
+
+	LOG("delegate ping")
+	//UOptionsSaveGame BPSaveGame = 
+	//TScriptInterface<UOptionsSaveGame> BPSaveGame = 
 
 }
 
@@ -105,6 +122,11 @@ void APlayerCharacter::Tick(float DeltaTime)
 // Called to bind functionality to input
 void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
+
+
+	gm = GetWorld()->GetAuthGameMode<ABitwiseGameMode>();
+	gs = Cast<ABitwiseGameState>(gm->GameState);
+
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
 
@@ -124,6 +146,7 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	EIS->BindAction(InteractAction, ETriggerEvent::Started, this, &APlayerCharacter::Interact);
 	//bind the invisActivate action;
 	EIS->BindAction(InvisToggleAction, ETriggerEvent::Started, this, &APlayerCharacter::ToggleInvisibility);
+	EIS->BindAction(InvisToggleAction, ETriggerEvent::Completed, this, &APlayerCharacter::ReleaseInvisibility);
 
 
 	//bind the jump actions
@@ -132,7 +155,26 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 	EIS->BindAction(ResetPlayerAction, ETriggerEvent::Started, this, &APlayerCharacter::ResetFromPlayer);
 
-	EIS->BindAction(ActivateSpeedAction, ETriggerEvent::Triggered, this, &APlayerCharacter::ToggleStamina);
+	EIS->BindAction(ActivateSpeedAction, ETriggerEvent::Started, this, &APlayerCharacter::ToggleStamina);
+	EIS->BindAction(ActivateSpeedAction, ETriggerEvent::Completed, this, &APlayerCharacter::ReleaseStamina);
+	
+	if (UGameplayStatics::DoesSaveGameExist(gs->OptionsSlotName, 0)) {
+		UOptionsSaveGame* sg = Cast<UOptionsSaveGame>(UGameplayStatics::LoadGameFromSlot(gs->OptionsSlotName, 0));
+		LOG("save game found")
+		if (sg->ToggleSprint) {
+					
+			//InvisToggleAction->bConsumeInput = true;
+		}
+		else {
+			//InvisToggleAction->bConsumeInput = false;
+		}
+	}
+	else {
+		//save game not found, default to toggle
+		LOG("save game not found")
+		InvisToggleAction->bConsumeInput = true;
+	}
+
 
 }
 
@@ -243,8 +285,9 @@ void APlayerCharacter::Move(const FInputActionInstance& Instance)
 void APlayerCharacter::StopMoving(const FInputActionInstance& Instance)
 {
 	if (bStaminaActive) {
-
-		DeactivateStaminaEffects();
+		if (IsValid(gm)) {
+			gm->DeactivateStamina();
+		}
 	}
 
 	bIsMoving = false;
@@ -267,6 +310,26 @@ void APlayerCharacter::Look(const FInputActionInstance& InputActionInstance)
 		FVector2D LookAxisVector = InputActionInstance.GetValue().Get<FVector2D>();
 
 		//LOG("looking around");
+
+		if (IsValid(gs)) {
+			if (ps->bInvertXAxis) {
+				LookAxisVector.X = LookAxisVector.X * -1;
+				LOG("inverting x")
+			}
+			if (ps->bInvertYAxis) {
+				LOG("inverting y")
+				LookAxisVector.Y = LookAxisVector.Y * -1;
+			}
+
+			LookAxisVector.X = LookAxisVector.X * ps->fXSensitivity;
+			LookAxisVector.Y = LookAxisVector.Y * ps->fYSensitivity;
+
+			//zzz
+			//check whether the savegame is set and if so invert the value
+		}
+		else {
+			WARN("save game invalid")
+		}
 
 		if (Controller != nullptr)
 		{
@@ -377,67 +440,40 @@ void APlayerCharacter::TraceLine()
 }
 
 void APlayerCharacter::ToggleInvisibility(const FInputActionInstance& Instance)
-{
-	//used for game timer, probably not totally necessary to start it if the player hits the invisibility button, just for posterity
-	if (!bReceivedFirstPlayerInput) {
-		gm->StartGameTimer();
-		bReceivedFirstPlayerInput = true;
-	}
-
-	
-	WARN("toggle invisibility input called");
-	gm->ToggleInvisibility();
-
-	if (IsValid(gs) && gs->InvisibilityData->bCollected) {
-		if (gs->InvisibilityData->bEnabled) {
-			ActivitateInvisibilityVFX();
-		} else {
-			DeactivitateInvisibilityVFX();
+{	
+	if (!gs->InvisibilityData->ActiveValue //if we're NOT already invisible
+		 || gs->InvisibilityData->ActiveValue && ps->bToggleInvis) { //or we are invisible, and we're using toggle
+		//Instance.GetTriggerEvent() == FInputActionInstance.
+		if (IsValid(gm)) {
+			gm->ToggleInvisibility();
 		}
 
 	}
-	else {
-		if (!IsValid(gs)) {
-			WARN("NOT VALID")
-		} else if (!IsValid(gs)) {
-			WARN("not collected")
-		}
-	}
-
-
 }
 
-//void APlayerCharacter::DeactivateInvisibilityEffects()
-//{
-//
-//}
-//
-//void APlayerCharacter::ActivateInvisibilityEffects()
-//{
-//	UCharacterMovementComponent* charMove = GetCharacterMovement();
-//	if (gs->PowerupMap.Find(EPowerUpName::PE_Invisibility)->bEnabled) {
-//		characterMovement->GravityScale = 1;
-//		characterMovement->JumpZVelocity = 400;
-//		characterMovement->MaxWalkSpeed = 1100;
-//	}
-//	else {
-//		characterMovement->GravityScale = 2;
-//		characterMovement->JumpZVelocity = 500;
-//		characterMovement->MaxWalkSpeed = 700;
-//
-//	}
-//}
+void APlayerCharacter::ReleaseInvisibility(const FInputActionInstance& Instance){
+	if (gs->InvisibilityData->bEnabled && !ps->bToggleInvis) {
+		if (IsValid(gm)) {
+			gm->ToggleInvisibility();
+		}
+	}
+}
 
-void APlayerCharacter::ToggleStamina()
+void APlayerCharacter::ToggleStamina(const FInputActionInstance& Instance)
 {
-	LOG("TOGGLE STAMINA")
-	if (bStaminaActive) {
-		DeactivateStaminaEffects();
+	if (!gs->SpeedBoostData->bEnabled  /*if we're not sprinting*/
+		|| (gs->SpeedBoostData->bEnabled && ps->bToggleSprint)) { //or if we are sprinting, and it's a toggle
+		if (IsValid(gm)) {
+			LOG("starting sprint")
+			gm->ToggleStamina();
+		}
+		else {
+			ERROR("ERROR: playercharacter.cpp reference to gamemode NOT VALID")
+		}
 	}
 	else {
-		ActivateStaminaEffects();
+		LOG("false")
 	}
-	 
 }
 //
 //void APlayerCharacter::PlayMovementSounds(bool bSprinting)
@@ -487,132 +523,82 @@ void APlayerCharacter::ToggleStamina()
 //	}
 //}
 
-void APlayerCharacter::ActivateStaminaEffects()
+void APlayerCharacter::ReleaseStamina(const FInputActionInstance& Instance)
 {
-
-	
-
-
-	if (gs->GetHasStaminaAbility() && gm->StaminaStatStruct.currentCharge > 0) {
-
-		LOG("action recognized")
-
-		StopMovementSound();
-
-		FOnFOVIncreaseDelegate.Broadcast(SprintingFOV);
-
-		//play sprint sounds
-
-		if (IsValid(SprintStartAudio)) {
-			UGameplayStatics::PlaySound2D(this, SprintStartAudio);
+	if (gs->SpeedBoostData->bEnabled && !ps->bToggleSprint) {
+		if (IsValid(gm)) {
+			gm->ToggleStamina();
 		}
 		else {
-			LOG("NOT VALID")
-		}
-
-		bStaminaActive = true;
-
-
-
-		if (gs->XRayData->bIsStaminaAbility) {
-			//no implementation needed as xray (currently) doesn't have any player vals associated
-			//theoretically this statement won't even ever activate
-		}
-
-		if (gs->InvisibilityData->bIsStaminaAbility) {
-			//no implementation needed as invisibility (currently) doesn't have any player vals associated
-			//theoretically this statement won't even ever activate
-		}
-
-		if (gs->SpeedBoostData->bIsStaminaAbility) {
-			LOG("action actioned ---")
-
-			CharacterMovement->MaxWalkSpeed = gs->SpeedBoostData->ActiveValue;
-			gs->SpeedBoostData->bEnabled = true;
-			CharacterMovement->AirControl = 1;
-		}
-
-		if (gs->JumpBoostData->bIsStaminaAbility) {
-			CharacterMovement->JumpZVelocity = gs->JumpBoostData->ActiveValue;
+			ERROR("ERROR: playercharacter.cpp reference to gamemode NOT VALID")
 		}
 	}
 }
 
-
-void APlayerCharacter::DeactivateStaminaEffects()
+void APlayerCharacter::ActivateStaminaEffects()
 {
+
+
+	StopMovementSound();
+	FOnFOVIncreaseDelegate.Broadcast(SprintingFOV);
+
+	if (IsValid(SprintStartAudio)) {
+		UGameplayStatics::PlaySound2D(this, SprintStartAudio);
+	}
+	else {
+		LOG("NOT VALID")
+	}
+
+	bStaminaActive = true;
+
+	CharacterMovement->MaxWalkSpeed = gs->SpeedBoostData->ActiveValue;
+	CharacterMovement->AirControl = 1;
+}
+
+
+void APlayerCharacter::DeactivateStaminaEffects_Implementation(bool bRanFullyOut)
+{
+	LOG("c++ ")
 	FOnFOVDecreaseDelegate.Broadcast(DefaultFOV);
 	
 	//play sprint end sounds
 	if (bIsMoving && bStaminaActive) {
 
 		StopMovementSound();
-		if (bIsMoving) {
-			PlayMovementSound(0);
+		if (bIsMoving) { //if we're still moving we're walking
+			PlayMovementSound(0); //so play walk audio
 		}
 
 		if (IsValid(SprintEndAudio)) {
 			UGameplayStatics::PlaySound2D(this, SprintEndAudio);
 		}
+		else {
+			WARN("sprint end audio not valid")
+		}
 
-		//throws nullref
-		//zzz
-		if (IsValid(gm)) {
-			if (gm->StaminaStatStruct.currentCharge == 0) {
-
-				if (IsValid(gs)) {
-					if (gs->gameTimer > .1f) {
-						if (IsValid(StaminaOutAudio)) {
-							UGameplayStatics::PlaySound2D(this, StaminaOutAudio);
-						}
-
-
-						if (IsValid(SprintEndAudio)) {
-							UGameplayStatics::PlaySound2D(this, SprintEndAudio);
-						}
-						else {
-							LOG("deact not valid")
-						}
-					}
-					else {
-						LOG("timer: %d", gs->gameTimer)
+		if (bRanFullyOut) {
+			if (IsValid(gs)) {
+				if (gs->gameTimer > .1f) {
+					if (IsValid(StaminaOutAudio)) {
+						UGameplayStatics::PlaySound2D(this, StaminaOutAudio);
 					}
 				}
 				else {
-					ERROR("GAMEMODE REF NOT VALID")
+					LOG("timer: %d", gs->gameTimer)
 				}
-
 			}
-
+			else {
+				ERROR("GAMEMODE REF NOT VALID")
+			}
 		}
-		else {
-			UE_LOG(LogTemp, Error, TEXT("GAMEMODE REF NOT VALID"))
-		}
-
 	}
 
 	bStaminaActive = false;
 
-	if (gs->XRayData->bIsStaminaAbility) {
-		//no implementation needed as xray (currently) doesn't have any player vals associated
-		//theoretically this statement won't even ever activate
-	}
+	CharacterMovement->MaxWalkSpeed = gs->SpeedBoostData->defaultValue;
+	CharacterMovement->AirControl = DefaultAirControl;
 
-	if (gs->InvisibilityData->bIsStaminaAbility) {
-		//no implementation needed as invisibility (currently) doesn't have any player vals associated
-		//theoretically this statement won't even ever activate
-	}
 
-	if (gs->SpeedBoostData->bIsStaminaAbility) {
-		CharacterMovement->MaxWalkSpeed = gs->SpeedBoostData->defaultValue;
-		gs->SpeedBoostData->bEnabled = false;
-		CharacterMovement->AirControl = DefaultAirControl;
-
-	}
-
-	if (gs->JumpBoostData->bIsStaminaAbility) {
-		CharacterMovement->JumpZVelocity = gs->JumpBoostData->defaultValue;
-	}
 }
 
 void APlayerCharacter::ActivateJumpBoost()
@@ -662,6 +648,52 @@ void APlayerCharacter::setRandomStartRotation()
 
 void APlayerCharacter::ResetFromPlayer()
 {
+
+	UGameplayStatics::SetGamePaused(this, false);
 	WARN("reset action called from player")
 		gm->D_OnReset.Broadcast();
+}
+
+void APlayerCharacter::UpdateToggles()
+{
+	LOG("yeah it happens")
+	//UEnhancedInputComponent* EIS = CastChecked<UEnhancedInputComponent>(GetController()->InputComponent);
+
+	//LOG("updating toggles: it %S a toggle", ps->bToggleSprint ? TEXT("as") : TEXT("bisn't"))
+	//ActivateSpeedAction->bConsumeInput = ps->bToggleSprint;
+	////UInputTriggerReleased ended;
+	//
+	//if (ps->bToggleSprint) { //if we want to operate by toggle
+
+	//	for (UInputTrigger* Trigger : ActivateSpeedAction->Triggers) {
+	//		if (UInputTriggerReleased* ReleaseTriggerR = Cast<UInputTriggerReleased>(Trigger)) { //if a release trigger is in the array
+	//			ActivateSpeedAction->Triggers.Remove(ReleaseTriggerR);
+	//		}
+	//	}
+	//}
+	//else { //if by hold
+	//	
+	//	UInputTriggerReleased* ReleaseTriggerA = NewObject<UInputTriggerReleased>();
+	//	
+	//	bool bReleaseExists = false;
+	//	for (UInputTrigger* Trigger : ActivateSpeedAction->Triggers) {
+	//		if(UInputTriggerReleased* ReleaseTrigger = Cast<UInputTriggerReleased>(Trigger)) { //if a release trigger is in the array
+	//			UE_LOG(LogTemp, Error, TEXT("ERROR: adding release trigger to ActivateSpeed action, but release trigger already exists"))
+	//				bReleaseExists = true;
+	//		}
+	//	}
+	//	
+	//	if (!bReleaseExists) {
+
+	//	ActivateSpeedAction->Triggers.Add(ReleaseTriggerA);
+	//	}
+	//}
+
+
+
+	//InvisToggleAction->bConsumeInput = ps->bToggleInvis;
+
+
+
+	//UEnhancedInputLibrary::RequestRebuildControlMappingsUsingContext(InputMapping, true);
 }

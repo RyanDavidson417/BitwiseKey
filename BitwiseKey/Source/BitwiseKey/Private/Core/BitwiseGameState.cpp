@@ -3,6 +3,8 @@
 
 #include "Core/BitwiseGameState.h"
 #include "BitwiseKey/BitwiseKey.h"
+#include "Kismet/GameplayStatics.h"
+#include "Core/OptionsSaveGame.h"
 #include "LevelObjects/PowerupDataBase.h"
 
 
@@ -61,6 +63,7 @@ bool ABitwiseGameState::GetHasStaminaAbility()
 void ABitwiseGameState::BeginPlay()
 {
 	Super::BeginPlay();
+
 	
 	BuildPowerupMap();
 	ResetGameState();//necessary because otherwise the dataAsset's data would persist after rebooting game

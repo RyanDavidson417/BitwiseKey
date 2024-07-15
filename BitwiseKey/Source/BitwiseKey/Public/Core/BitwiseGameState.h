@@ -12,6 +12,7 @@
 
 class UPowerupDataBase;
 class UBWK_UserWidget;
+class UOptionsSaveGame;
 
 UENUM(BlueprintType) 
 enum class EPowerUpName : uint8
@@ -84,6 +85,7 @@ private:
 	UPROPERTY(EditAnywhere, category = "Powerups")
 	bool bPlayerIsUsingStamina;
 
+
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Timer")
 	float gameTimer = 0;
@@ -101,6 +103,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Powerups")
 	TArray<UPowerupDataBase*> PowerupDataArray;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FString OptionsSlotName = "SaveGame";
 
 
 	//DEPRECATED: the means by which I was storing whether the player collected powerups before I refac'd to structs
