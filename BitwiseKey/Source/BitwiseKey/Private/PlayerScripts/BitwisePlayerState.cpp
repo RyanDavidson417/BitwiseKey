@@ -15,7 +15,11 @@ void ABitwisePlayerState::BeginPlay()
 	gm = GetWorld()->GetAuthGameMode<ABitwiseGameMode>();
 
 	if (UGameplayStatics::DoesSaveGameExist(gs->OptionsSlotName, 0)) {
-		UGameplayStatics::LoadGameFromSlot(gs->OptionsSlotName, 0);
+		if (sg = Cast<UOptionsSaveGame>(UGameplayStatics::LoadGameFromSlot(gs->OptionsSlotName, 0))) {
+
+			LOG("save game found")
+				UpdatePlayerOptions(sg);
+		}
 	}
 	else {
 		LOG("game state does not exist")

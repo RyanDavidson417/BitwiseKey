@@ -160,15 +160,18 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	
 	if (UGameplayStatics::DoesSaveGameExist(gs->OptionsSlotName, 0)) {
 		UOptionsSaveGame* sg = Cast<UOptionsSaveGame>(UGameplayStatics::LoadGameFromSlot(gs->OptionsSlotName, 0));
+		LOG("save game found")
 		if (sg->ToggleSprint) {
-			InvisToggleAction->bConsumeInput = true;
+					
+			//InvisToggleAction->bConsumeInput = true;
 		}
 		else {
-			InvisToggleAction->bConsumeInput = false;
+			//InvisToggleAction->bConsumeInput = false;
 		}
 	}
 	else {
 		//save game not found, default to toggle
+		LOG("save game not found")
 		InvisToggleAction->bConsumeInput = true;
 	}
 
@@ -653,6 +656,7 @@ void APlayerCharacter::ResetFromPlayer()
 
 void APlayerCharacter::UpdateToggles()
 {
+	LOG("yeah it happens")
 	//UEnhancedInputComponent* EIS = CastChecked<UEnhancedInputComponent>(GetController()->InputComponent);
 
 	//LOG("updating toggles: it %S a toggle", ps->bToggleSprint ? TEXT("as") : TEXT("bisn't"))

@@ -9,6 +9,7 @@
 #include "PlayerScripts/PlayerCharacter.h"
 #include "Math/UnrealMathUtility.h"
 #include "BitwiseKey/BitwiseKey.h"
+#include "Core/OptionsSaveGame.h"
 #include "Components/AudioComponent.h" 
 #include "LevelObjects/PowerupDataBase.h"
 #include "Kismet/GameplayStatics.h" 
@@ -25,6 +26,7 @@ ABitwiseGameMode::ABitwiseGameMode()
         notice the use of StaticClass to get the UClass class type properly */
     DefaultPawnClass = APlayerCharacter::StaticClass();
     GameStateClass = ABitwiseGameState::StaticClass();
+
 
 
     //static ConstructorHelpers::FClassFinder<UStaticMesh> AssetFile(TEXT("/Game/Blueprints/XRayActor.XRayActor"));
@@ -49,6 +51,14 @@ void ABitwiseGameMode::BeginPlay()
     Super::BeginPlay();
     DispatchBeginPlay();
 
+    //if (UGameplayStatics::DoesSaveGameExist(gs->OptionsSlotName, 0)) {
+    //    if( UOptionsSaveGame* sg = (UGameplayStatics::LoadGameFromSlot(gs->OptionsSlotName, 0))){
+    //        FOnOptionsChangeDelegate.Broadcast(sg);
+    //    }
+    //}
+
+
+
     PlayerCharacter = Cast<APlayerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
 
     UGameplayStatics::GetAllActorsOfClass(GetWorld(), ASpawnPowerup::StaticClass(), PowerupSpawnLocations);
@@ -59,6 +69,18 @@ void ABitwiseGameMode::BeginPlay()
 
     //should probably make a new helper function buuuuuuut
 
+    if (UGameplayStatics::DoesSaveGameExist(gs->OptionsSlotName, 0)) {
+        if (UOptionsSaveGame* sg = Cast<UOptionsSaveGame>(UGameplayStatics::LoadGameFromSlot(gs->OptionsSlotName, 0))) {
+
+            LOG("save game found")
+            FOnOptionsChangeDelegate.Broadcast(sg);
+        }
+            
+    }
+    else {
+        //save game not found, default to toggle
+        LOG("save game not found")
+    }
 
     GetWorldTimerManager().SetTimer(InvisibilityStatStruct.RechargeTimerHandle,
         this, &ABitwiseGameMode::UpdateInvisCharge, 1 / InvisibilityStatStruct.Precision, true, 2.0f);
@@ -69,6 +91,7 @@ void ABitwiseGameMode::BeginPlay()
     bGameTimerRunning = true;
 
     D_OnReset.AddDynamic(this, &ABitwiseGameMode::ResetGameMode);
+
 
 
 }
