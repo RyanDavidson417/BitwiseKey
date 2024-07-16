@@ -613,6 +613,7 @@ void APlayerCharacter::DeactivateJumpBoost()
 
 void APlayerCharacter::ResetPlayer()
 {
+	LOG("fuuuuuuuuuuu")
 	SetActorLocation(gm->FindPlayerStart(Controller)->GetActorLocation());
 	
 	bReceivedFirstPlayerInput = false;

@@ -17,6 +17,7 @@ UCollectionInteractable::UCollectionInteractable()
 
 void UCollectionInteractable::BeginPlay()
 {
+	Super::BeginPlay();
 	gm = GetWorld()->GetAuthGameMode<ABitwiseGameMode>();
 	gs = Cast<ABitwiseGameState>(gm->GameState);
 
