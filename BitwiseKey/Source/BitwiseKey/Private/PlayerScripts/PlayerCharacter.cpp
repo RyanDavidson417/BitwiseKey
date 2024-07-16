@@ -180,6 +180,7 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 void APlayerCharacter::Move(const FInputActionInstance& Instance)
 {
+	LOG("hiiiiiiiii")
 	if (IsValid(gm) && gm->bGameTimerRunning) {
 
 
@@ -342,43 +343,57 @@ void APlayerCharacter::Look(const FInputActionInstance& InputActionInstance)
 
 void APlayerCharacter::Jump()
 {
-
-	if (IsValid(gm) && gm->bGameTimerRunning) {
-		if (JumpCurrentCountPreJump == 0) {//if this is our first jump
-			//play first jump sound
-			if (IsValid(FirstJumpSound)) {
-				UGameplayStatics::PlaySound2D(this, FirstJumpSound);
-			}
-		}
-		else if (gs->JumpBoostData->bCollected && JumpCurrentCountPreJump == JumpMaxCount - 1) {
-			//play second jump sound
-			if (IsValid(DoubleJumpSound)) {
-				UGameplayStatics::PlaySound2D(this, DoubleJumpSound);
-
-			}
-		}
-		Super::Jump();
+	if (IsValid(CurrentWidget)) {
+		LOG("HIDING")
+		CurrentWidget->HideMenu();
 	}
+
+	if (!gm->IsPaused()) {
+		if (IsValid(gm) && gm->bGameTimerRunning) {
+			if (JumpCurrentCountPreJump == 0) {//if this is our first jump
+				//play first jump sound
+				if (IsValid(FirstJumpSound)) {
+					UGameplayStatics::PlaySound2D(this, FirstJumpSound);
+				}
+			}
+			else if (gs->JumpBoostData->bCollected && JumpCurrentCountPreJump == JumpMaxCount - 1) {
+				//play second jump sound
+				if (IsValid(DoubleJumpSound)) {
+					UGameplayStatics::PlaySound2D(this, DoubleJumpSound);
+
+				}
+			}
+			Super::Jump();
+		}
+	}
+
 }
 
 void APlayerCharacter::Interact(const FInputActionInstance& Instance)
 {
 
-	//used for game timer, probably not totally necessary to start it if the player hits the invisibility button, just for posterity
-	if (!bReceivedFirstPlayerInput) {
-		gm->StartGameTimer();
-		bReceivedFirstPlayerInput = true;
+	if (IsValid(CurrentWidget)) {
+		LOG("HIDING")
+			CurrentWidget->HideMenu();
 	}
 
-	if (InteractionComponent != nullptr) {
-		//UE_LOG(LogTemp, Warning, TEXT("You Collected the %s "), *InteractionComponent->Powerup);
-		UE_LOG(LogTemp, Warning, TEXT("You Collected the "));
-		InteractionComponent->Interact(Cast<APlayerController>(GetController()));
+	if (!gm->IsPaused()) {
+		//used for game timer, probably not totally necessary to start it if the player hits the invisibility button, just for posterity
+		if (!bReceivedFirstPlayerInput) {
+			gm->StartGameTimer();
+			bReceivedFirstPlayerInput = true;
+		}
 
-	}
-	else {
-		UE_LOG(LogTemp, Warning, TEXT("interaction called, interactable object DOESN'T exist"));
+		if (InteractionComponent != nullptr) {
+			//UE_LOG(LogTemp, Warning, TEXT("You Collected the %s "), *InteractionComponent->Powerup);
+			UE_LOG(LogTemp, Warning, TEXT("You Collected the "));
+			InteractionComponent->Interact(Cast<APlayerController>(GetController()));
 
+		}
+		else {
+			UE_LOG(LogTemp, Warning, TEXT("interaction called, interactable object DOESN'T exist"));
+
+		}
 	}
 }
 
@@ -441,39 +456,69 @@ void APlayerCharacter::TraceLine()
 
 void APlayerCharacter::ToggleInvisibility(const FInputActionInstance& Instance)
 {	
-	if (!gs->InvisibilityData->ActiveValue //if we're NOT already invisible
-		 || gs->InvisibilityData->ActiveValue && ps->bToggleInvis) { //or we are invisible, and we're using toggle
-		//Instance.GetTriggerEvent() == FInputActionInstance.
-		if (IsValid(gm)) {
-			gm->ToggleInvisibility();
-		}
 
+
+	if (IsValid(CurrentWidget)) {
+		LOG("HIDING")
+			CurrentWidget->HideMenu();
 	}
+
+	if (!gm->IsPaused()) {
+		if (!gs->InvisibilityData->ActiveValue //if we're NOT already invisible
+			 || gs->InvisibilityData->ActiveValue && ps->bToggleInvis) { //or we are invisible, and we're using toggle
+			//Instance.GetTriggerEvent() == FInputActionInstance.
+			if (IsValid(gm)) {
+				gm->ToggleInvisibility();
+			}
+
+		}
+	}
+
 }
 
-void APlayerCharacter::ReleaseInvisibility(const FInputActionInstance& Instance){
-	if (gs->InvisibilityData->bEnabled && !ps->bToggleInvis) {
-		if (IsValid(gm)) {
-			gm->ToggleInvisibility();
+void APlayerCharacter::ReleaseInvisibility(const FInputActionInstance& Instance)
+{
+
+
+	if (IsValid(CurrentWidget)) {
+		LOG("HIDING")
+			CurrentWidget->HideMenu();
+	}
+
+	if (!gm->IsPaused()) {
+		if (gs->InvisibilityData->bEnabled && !ps->bToggleInvis) {
+			if (IsValid(gm)) {
+				gm->ToggleInvisibility();
+			}
 		}
 	}
+
 }
 
 void APlayerCharacter::ToggleStamina(const FInputActionInstance& Instance)
 {
-	if (!gs->SpeedBoostData->bEnabled  /*if we're not sprinting*/
-		|| (gs->SpeedBoostData->bEnabled && ps->bToggleSprint)) { //or if we are sprinting, and it's a toggle
-		if (IsValid(gm)) {
-			LOG("starting sprint")
-			gm->ToggleStamina();
+
+	if (IsValid(CurrentWidget)) {
+		LOG("HIDING")
+			CurrentWidget->HideMenu();
+	}
+
+	if (!gm->IsPaused()) {
+		if (!gs->SpeedBoostData->bEnabled  /*if we're not sprinting*/
+			|| (gs->SpeedBoostData->bEnabled && ps->bToggleSprint)) { //or if we are sprinting, and it's a toggle
+			if (IsValid(gm)) {
+				LOG("starting sprint")
+				gm->ToggleStamina();
+			}
+			else {
+				ERROR("ERROR: playercharacter.cpp reference to gamemode NOT VALID")
+			}
 		}
 		else {
-			ERROR("ERROR: playercharacter.cpp reference to gamemode NOT VALID")
+			LOG("false")
 		}
 	}
-	else {
-		LOG("false")
-	}
+
 }
 //
 //void APlayerCharacter::PlayMovementSounds(bool bSprinting)
