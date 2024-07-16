@@ -33,24 +33,24 @@ struct FPowerupStruct
 public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
-	EPowerUpName name;
+	EPowerUpName name = EPowerUpName::PE_XRay;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
-	bool bCollected;
+	bool bCollected = false ;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
-	bool bIsStaminaAbility;
+	bool bIsStaminaAbility = false;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
-	bool bEnabled;
+	bool bEnabled = false;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
-	bool bPassive;
+	bool bPassive = false;
 
 
 
 	//the default value of the relevant stat when this powerup is active
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
-	float defaultValue;
+	float defaultValue = 0;
 	//the value of the relevant stat when this powerup is active
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
-	float ActiveValue;
+	float ActiveValue = 100;
 };
 
 

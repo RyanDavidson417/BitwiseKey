@@ -43,16 +43,16 @@ struct FPlayerStatStruct {
 
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
-	float currentCharge;
+	float currentCharge = 0;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
-	float ChargeRate;
+	float ChargeRate = 1;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
-	float DischargeRate;
+	float DischargeRate = 1;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Powerups")
-	float MaxCharge;
+	float MaxCharge = 100;
 	//how many "units" the progress bar has
 	UPROPERTY(EditAnywhere, Category = "Powerups")
-	float Precision;
+	float Precision = 1;
 	
 	FTimerHandle RechargeTimerHandle;
 
