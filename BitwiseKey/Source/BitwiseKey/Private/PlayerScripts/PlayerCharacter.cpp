@@ -21,6 +21,7 @@
 #include "GameFramework/PlayerStart.h" 
 #include "PlayerScripts/BitwisePlayerState.h"
 #include "LevelObjects/PowerupDataBase.h"
+#include "CommonInputSubsystem.h"
 #include "Core/BitwiseGameMode.h"
 
 
@@ -183,6 +184,15 @@ void APlayerCharacter::Move(const FInputActionInstance& Instance)
 	LOG("hiiiiiiiii")
 	if (IsValid(gm) && gm->bGameTimerRunning) {
 
+
+
+		if (IsValid(CurrentWidget)) {
+			LOG("HIDING")
+				CurrentWidget->HideMenu();
+		}
+
+		if (!gm->IsPaused()) {
+		}
 
 		if (bIsMoving) {//provided we're not already moving
 			if (!bStaminaActive) {

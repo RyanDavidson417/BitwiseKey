@@ -45,7 +45,6 @@ void UPowerupCollectibleBase::Interact_Implementation(APlayerController* PlayerC
 
 void UPowerupCollectibleBase::Reset()
 {
-	LOG("FUUUUUUUUUUU")
 }
 
 void UPowerupCollectibleBase::BeginPlay()
