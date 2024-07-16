@@ -520,64 +520,26 @@ void APlayerCharacter::ToggleStamina(const FInputActionInstance& Instance)
 	}
 
 }
-//
-//void APlayerCharacter::PlayMovementSounds(bool bSprinting)
-//{
-//
-//
-//	if (!bSprinting) { //if we're just walking
-//		if (IsValid(WalkingAudio)) {
-//
-//			// if the movement audio component is valid, it's already playing
-//			if (!IsValid(CurrentMovementAudioComponent)) {
-//				CurrentMovementAudioComponent = UGameplayStatics::CreateSound2D(this, WalkingAudio);
-//				CurrentMovementAudioComponent->Play();
-//
-//				//do we want the sprint end audio to play as a transition to walking?
-//				//can we?
-//				//zzz
-//				if (IsValid(SprintEndAudio)) {
-//					UGameplayStatics::PlaySound2D(this, SprintEndAudio);
-//				}
-//				else {
-//					LOG("deact not valid")
-//				}
-//			}
-//			else {
-//				LOG("already playing walki8ng sound")
-//			}
-//		}
-//	}
-//	else {//if we're sprinting
-//		if (IsValid(SprintingAudio)) {
-//
-//			// if the movement audio component is valid, it's already playing
-//			if (!IsValid(CurrentMovementAudioComponent)) { 
-//				CurrentMovementAudioComponent = UGameplayStatics::CreateSound2D(this, SprintingAudio);
-//				CurrentMovementAudioComponent->Play();
-//
-//				if (IsValid(SprintStartAudio)) {
-//					UGameplayStatics::PlaySound2D(this, SprintStartAudio);
-//
-//				}
-//			}
-//			else {
-//				LOG("already playing sprinting sound")
-//			}
-//		}
-//	}
-//}
 
 void APlayerCharacter::ReleaseStamina(const FInputActionInstance& Instance)
 {
-	if (gs->SpeedBoostData->bEnabled && !ps->bToggleSprint) {
-		if (IsValid(gm)) {
-			gm->ToggleStamina();
-		}
-		else {
-			ERROR("ERROR: playercharacter.cpp reference to gamemode NOT VALID")
+
+	if (IsValid(CurrentWidget)) {
+		LOG("HIDING")
+			CurrentWidget->HideMenu();
+	}
+
+	if (!gm->IsPaused()) {
+		if (gs->SpeedBoostData->bEnabled && !ps->bToggleSprint) {
+			if (IsValid(gm)) {
+				gm->ToggleStamina();
+			}
+			else {
+				ERROR("ERROR: playercharacter.cpp reference to gamemode NOT VALID")
+			}
 		}
 	}
+
 }
 
 void APlayerCharacter::ActivateStaminaEffects()
@@ -658,7 +620,6 @@ void APlayerCharacter::DeactivateJumpBoost()
 
 void APlayerCharacter::ResetPlayer()
 {
-	LOG("fuuuuuuuuuuu")
 	SetActorLocation(gm->FindPlayerStart(Controller)->GetActorLocation());
 	
 	bReceivedFirstPlayerInput = false;
