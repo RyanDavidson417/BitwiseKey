@@ -13,8 +13,12 @@ UCLASS(Blueprintable)
 class BITWISEKEY_API UBWK_UserWidget : public UUserWidget
 {
 	GENERATED_BODY()
+
 	
 public:
+
+	UPROPERTY(BlueprintReadOnly, EditAnywhere)
+	bool bIsSplashScreen = false;
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
 	void HideMenu(); // no C++ implementation

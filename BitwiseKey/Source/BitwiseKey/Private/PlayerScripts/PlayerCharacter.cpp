@@ -191,7 +191,7 @@ void APlayerCharacter::Move(const FInputActionInstance& Instance)
 			{
 				if (const ECommonInputType InputType = CommonInputSubsystem->GetCurrentInputType(); InputType == ECommonInputType::MouseAndKeyboard)
 				{
-					if (IsValid(CurrentWidget)) {
+					if (IsValid(CurrentWidget) && CurrentWidget->bIsSplashScreen) {
 						CurrentWidget->HideMenu();
 					}
 				}
@@ -375,7 +375,7 @@ void APlayerCharacter::Look(const FInputActionInstance& InputActionInstance)
 
 void APlayerCharacter::Jump()
 {
-	if (IsValid(CurrentWidget)) {
+	if (IsValid(CurrentWidget) && CurrentWidget->bIsSplashScreen) {
 		LOG("HIDING")
 		CurrentWidget->HideMenu();
 	}
@@ -404,7 +404,7 @@ void APlayerCharacter::Jump()
 void APlayerCharacter::Interact(const FInputActionInstance& Instance)
 {
 
-	if (IsValid(CurrentWidget)) {
+	if (IsValid(CurrentWidget) && CurrentWidget->bIsSplashScreen) {
 		LOG("HIDING")
 			CurrentWidget->HideMenu();
 	}
@@ -490,7 +490,7 @@ void APlayerCharacter::ToggleInvisibility(const FInputActionInstance& Instance)
 {	
 
 
-	if (IsValid(CurrentWidget)) {
+	if (IsValid(CurrentWidget) && CurrentWidget->bIsSplashScreen) {
 		LOG("HIDING")
 			CurrentWidget->HideMenu();
 	}
@@ -512,7 +512,7 @@ void APlayerCharacter::ReleaseInvisibility(const FInputActionInstance& Instance)
 {
 
 
-	if (IsValid(CurrentWidget)) {
+	if (IsValid(CurrentWidget) && CurrentWidget->bIsSplashScreen) {
 		LOG("HIDING")
 			CurrentWidget->HideMenu();
 	}
@@ -530,7 +530,7 @@ void APlayerCharacter::ReleaseInvisibility(const FInputActionInstance& Instance)
 void APlayerCharacter::ToggleStamina(const FInputActionInstance& Instance)
 {
 
-	if (IsValid(CurrentWidget)) {
+	if (IsValid(CurrentWidget) && CurrentWidget->bIsSplashScreen) {
 		LOG("HIDING")
 			CurrentWidget->HideMenu();
 	}
@@ -556,7 +556,7 @@ void APlayerCharacter::ToggleStamina(const FInputActionInstance& Instance)
 void APlayerCharacter::ReleaseStamina(const FInputActionInstance& Instance)
 {
 
-	if (IsValid(CurrentWidget)) {
+	if (IsValid(CurrentWidget) && CurrentWidget->bIsSplashScreen) {
 		LOG("HIDING")
 			CurrentWidget->HideMenu();
 	}
