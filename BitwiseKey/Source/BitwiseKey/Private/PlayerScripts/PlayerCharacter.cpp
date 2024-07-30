@@ -184,18 +184,13 @@ void APlayerCharacter::Move(const FInputActionInstance& Instance)
 
 	if (const APlayerController* PC = UGameplayStatics::GetPlayerController(this, 0))
 	{
-		LOG("1")
 		if (const ULocalPlayer* LocalPlayer = PC->GetLocalPlayer())
 		{
-			LOG("2")
 
 			if (const UCommonInputSubsystem* CommonInputSubsystem = LocalPlayer->GetSubsystem<UCommonInputSubsystem>())
 			{
-				LOG("3")
-
 				if (const ECommonInputType InputType = CommonInputSubsystem->GetCurrentInputType(); InputType == ECommonInputType::MouseAndKeyboard)
 				{
-					LOG("makes it here")
 					if (IsValid(CurrentWidget)) {
 						CurrentWidget->HideMenu();
 					}
@@ -206,7 +201,6 @@ void APlayerCharacter::Move(const FInputActionInstance& Instance)
 	}
 
 
-	LOG("hiiiiiiiii")
 	if (IsValid(gm) && gm->bGameTimerRunning) {
 
 
@@ -214,7 +208,8 @@ void APlayerCharacter::Move(const FInputActionInstance& Instance)
 
 
 		//if (IsValid(CurrentWidget)) {
-		//	LOG("HIDING")
+		//	LOG(
+		// ")
 		//		CurrentWidget->HideMenu();
 		//}
 
