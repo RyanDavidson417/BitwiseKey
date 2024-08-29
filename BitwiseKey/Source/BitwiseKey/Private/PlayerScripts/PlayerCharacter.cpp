@@ -182,6 +182,7 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 void APlayerCharacter::DismissSplashScreen(const FInputActionInstance& Instance) {
 
+	LOG("dismiss")
 
 	//if we have a current widget and it's a splash screen
 	if (IsValid(CurrentWidget) && CurrentWidget->bIsSplashScreen) {
