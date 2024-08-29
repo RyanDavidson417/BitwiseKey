@@ -626,6 +626,8 @@ void APlayerCharacter::ResetPlayer()
 	DeactivateJumpBoost();
 	DeactivateStaminaEffects();
 	setRandomStartRotation();
+
+	CharacterMovement->Velocity -= CharacterMovement->Velocity;
 	
 	if (IsValid(CurrentWidget)) {
 
