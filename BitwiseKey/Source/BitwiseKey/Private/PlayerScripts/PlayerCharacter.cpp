@@ -140,6 +140,7 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	//WARN("Binding Move actions");
 	//UE_LOG(LogTemp, Warning, TEXT("binding the move action"));
 	EIS->BindAction(MovementAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Move);
+	EIS->BindAction(MovementAction, ETriggerEvent::Started, this, &APlayerCharacter::DismissSplashScreen);
 	EIS->BindAction(MovementAction, ETriggerEvent::Completed, this, &APlayerCharacter::StopMoving);
 	//bind the steer action
 	EIS->BindAction(LookAction, ETriggerEvent::Triggered, this, &APlayerCharacter::Look);
@@ -179,33 +180,40 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 }
 
-void APlayerCharacter::Move(const FInputActionInstance& Instance)
-{
+void APlayerCharacter::DismissSplashScreen(const FInputActionInstance& Instance) {
 
-	if (const APlayerController* PC = UGameplayStatics::GetPlayerController(this, 0))
-	{
-		if (const ULocalPlayer* LocalPlayer = PC->GetLocalPlayer())
+
+	//if we have a current widget and it's a splash screen
+	if (IsValid(CurrentWidget) && CurrentWidget->bIsSplashScreen) {
+
+		//the following lines are just some complicated retrieval and casting to make sure we're using MKB
+		//so that we only dismiss when the player hits a key, rather than pushing the joystick
+		if (const APlayerController* PC = UGameplayStatics::GetPlayerController(this, 0))
 		{
-
-			if (const UCommonInputSubsystem* CommonInputSubsystem = LocalPlayer->GetSubsystem<UCommonInputSubsystem>())
+			if (const ULocalPlayer* LocalPlayer = PC->GetLocalPlayer())
 			{
-				if (const ECommonInputType InputType = CommonInputSubsystem->GetCurrentInputType(); InputType == ECommonInputType::MouseAndKeyboard)
+				if (const UCommonInputSubsystem* CommonInputSubsystem = LocalPlayer->GetSubsystem<UCommonInputSubsystem>())
 				{
-					if (IsValid(CurrentWidget) && CurrentWidget->bIsSplashScreen) {
+					if (const ECommonInputType InputType = CommonInputSubsystem->GetCurrentInputType(); InputType == ECommonInputType::MouseAndKeyboard)
+					{
 						CurrentWidget->HideMenu();
+						
 					}
-				}
 
+				}
 			}
 		}
 	}
 
+}
+
+
+
+void APlayerCharacter::Move(const FInputActionInstance& Instance)
+{
+
 
 	if (IsValid(gm) && gm->bGameTimerRunning) {
-
-
-
-
 
 		//if (IsValid(CurrentWidget)) {
 		//	LOG(
@@ -264,50 +272,7 @@ void APlayerCharacter::Move(const FInputActionInstance& Instance)
 				PlayMovementSound(1);
 
 
-				//if (IsValid(SprintingAudio)) {
-
-
-				//	// if the movement audio component is valid, it's already playing
-				//	if (!IsValid(CurrentMovementAudioComponent)) {
-				//		CurrentMovementAudioComponent = UGameplayStatics::CreateSound2D(this, SprintingAudio);
-				//		CurrentMovementAudioComponent->Play();
-				//		if (IsValid(SprintStartAudio)) {
-				//			UGameplayStatics::PlaySound2D(this, SprintStartAudio);
-				//		}
-
-				//	}
-
-
-				//}
 			}
-
-			/*
-			if (!bStaminaActive) { //if we're just walking
-				if (IsValid(WalkingAudio)) {
-				
-					//so long as we're not already playing the walking audio, start it
-					if (!IsValid(CurrentAudioComponent)) {
-						CurrentAudioComponent = UGameplayStatics::CreateSound2D(this, WalkingAudio);
-						CurrentAudioComponent->Play();
-					}
-					else {
-						LOG("already playing")
-					}
-				}			
-			}
-			else {//if we're sprinting
-				if (IsValid(SprintingAudio)) {
-
-					if (!IsValid(CurrentAudioComponent)) {
-						CurrentAudioComponent = UGameplayStatics::CreateSound2D(this, SprintingAudio);
-						CurrentAudioComponent->Play();
-					}
-					else {
-						LOG("already playing")
-					}
-				}
-			}
-			*/
 
 			AddMovementInput(GetActorForwardVector(), lastMoveInput.Y);
 			AddMovementInput(GetActorRightVector(), lastMoveInput.X);

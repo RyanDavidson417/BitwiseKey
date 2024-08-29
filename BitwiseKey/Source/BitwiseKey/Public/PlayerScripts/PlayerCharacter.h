@@ -140,6 +140,7 @@ public:
 
 	//update movement and looking
 	void Move(const struct FInputActionInstance& Instance);
+	void DismissSplashScreen(const struct FInputActionInstance& Instance);
 	void StopMoving(const struct FInputActionInstance& Instance);
 	void Look(const FInputActionInstance& InputActionInstance);
 
