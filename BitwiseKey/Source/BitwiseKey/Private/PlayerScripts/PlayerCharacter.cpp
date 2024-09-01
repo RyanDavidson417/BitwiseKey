@@ -448,6 +448,9 @@ void APlayerCharacter::TraceLine()
 		//UE_LOG(LogTemp, Warning, TEXT("Trace hit actor: %s"), *LineTraceHit.GetActor()->GetName());// 
 		if (IsValid(InteractionComponent)){
 
+			if (!InteractionComponent->bInteractable) {
+				InteractionComponent = nullptr;
+			}
 			//UE_LOG(LogTemp, Warning, TEXT("INTERACTABLE Trace hit actor: %s"), *LineTraceHit.GetActor()->GetName());
 
 			//MAYBE maybe set a bool to track whether we have one, and store a reference to the actor

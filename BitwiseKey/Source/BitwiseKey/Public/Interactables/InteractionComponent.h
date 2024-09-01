@@ -18,7 +18,8 @@ public:
 	// Sets default values for this component's properties
 	UInteractionComponent();
 
-
+	UPROPERTY(BlueprintReadWrite)
+	bool bInteractable = true; 
 
 protected:
 	// Called when the game starts
