@@ -341,9 +341,22 @@ void APlayerCharacter::Look(const FInputActionInstance& InputActionInstance)
 
 void APlayerCharacter::Jump()
 {
+	
+	LOG("dismiss jump")
 	if (IsValid(CurrentWidget) && CurrentWidget->bIsSplashScreen) {
-		LOG("HIDING")
+		LOG("dismiss jump")
 		CurrentWidget->HideMenu();
+	}
+	else {
+		LOG("didn't dismiss, because: ")
+			if (!IsValid(CurrentWidget)) {
+						LOG("it wasn't valid")
+			}
+			else if(CurrentWidget->bIsSplashScreen){
+				LOG("it's not a splash screen")
+			} else {
+				LOG("idk why actually")
+			}
 	}
 
 	if (!gm->IsPaused()) {
