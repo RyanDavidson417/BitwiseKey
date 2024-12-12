@@ -178,6 +178,12 @@ public:
 	void PlayMovementSound(int IsWalking); //no ++ implementation
 	UFUNCTION(BlueprintImplementableEvent)
 	void StopMovementSound(); //no ++ implementation
+
+	void PlayAbilitySound(USoundBase* sound);
+	UFUNCTION(BluePrintCallable)
+	void PauseAbilitySound();
+	UFUNCTION(BluePrintCallable)
+	void UnPauseAbilitySound();
 	
 	UFUNCTION()
 	void ResetPlayer();
@@ -196,7 +202,9 @@ protected:
 
 
 
-	void setRandomStartRotation();
+	void setRandomStartRotation(); 
+
+		TObjectPtr<UAudioComponent> CurrentAbilitySound;
 
 	UPROPERTY(EditAnywhere, category = "audio")
 	TObjectPtr<USoundBase> FirstJumpSound;

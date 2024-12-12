@@ -296,7 +296,8 @@ void APlayerCharacter::StopMoving(const FInputActionInstance& Instance)
 	if (bStaminaActive) {
 		//throws exception access violation 
 		if (IsValid(SprintEndAudio)) {
-			UGameplayStatics::PlaySound2D(this, SprintEndAudio);
+			//UGameplayStatics::PlaySound2D(this, );
+			PlayAbilitySound(SprintEndAudio);
 
 		}
 	}
@@ -364,13 +365,17 @@ void APlayerCharacter::Jump()
 			if (JumpCurrentCountPreJump == 0) {//if this is our first jump
 				//play first jump sound
 				if (IsValid(FirstJumpSound)) {
-					UGameplayStatics::PlaySound2D(this, FirstJumpSound);
+					//UGameplayStatics::PlaySound2D(this, FirstJumpSound);
+					PlayAbilitySound(FirstJumpSound);
+
 				}
 			}
 			else if (gs->JumpBoostData->bCollected && JumpCurrentCountPreJump == JumpMaxCount - 1) {
 				//play second jump sound
 				if (IsValid(DoubleJumpSound)) {
-					UGameplayStatics::PlaySound2D(this, DoubleJumpSound);
+					//UGameplayStatics::PlaySound2D(this, );		
+					PlayAbilitySound(DoubleJumpSound);
+
 
 				}
 			}
@@ -564,7 +569,9 @@ void APlayerCharacter::ActivateStaminaEffects()
 	FOnFOVIncreaseDelegate.Broadcast(SprintingFOV);
 
 	if (IsValid(SprintStartAudio)) {
-		UGameplayStatics::PlaySound2D(this, SprintStartAudio);
+		//UGameplayStatics::PlaySound2D(this, );
+
+		PlayAbilitySound(SprintStartAudio);
 	}
 	else {
 		LOG("NOT VALID")
@@ -591,7 +598,9 @@ void APlayerCharacter::DeactivateStaminaEffects_Implementation(bool bRanFullyOut
 		}
 
 		if (IsValid(SprintEndAudio)) {
-			UGameplayStatics::PlaySound2D(this, SprintEndAudio);
+			//UGameplayStatics::PlaySound2D(this, );
+			PlayAbilitySound(SprintEndAudio);
+
 		}
 		else {
 			WARN("sprint end audio not valid")
@@ -601,7 +610,9 @@ void APlayerCharacter::DeactivateStaminaEffects_Implementation(bool bRanFullyOut
 			if (IsValid(gs)) {
 				if (gs->gameTimer > .1f) {
 					if (IsValid(StaminaOutAudio)) {
-						UGameplayStatics::PlaySound2D(this, StaminaOutAudio);
+						//UGameplayStatics::PlaySound2D(this, );
+						PlayAbilitySound(StaminaOutAudio);
+
 					}
 				}
 				else {
@@ -621,6 +632,30 @@ void APlayerCharacter::DeactivateStaminaEffects_Implementation(bool bRanFullyOut
 
 
 }
+
+void APlayerCharacter::PlayAbilitySound(USoundBase* sound){
+
+	if (IsValid(CurrentAbilitySound) && CurrentAbilitySound->IsPlaying()) {
+		CurrentAbilitySound->SetActive(false);
+		CurrentAbilitySound = nullptr;
+	}
+	CurrentAbilitySound = UGameplayStatics::SpawnSound2D(this, sound);
+
+}
+
+void APlayerCharacter::PauseAbilitySound() {
+	if (IsValid(CurrentAbilitySound)) {
+		LOG("should be pausing sound")
+			CurrentAbilitySound->SetActive(false);
+	}
+}
+
+void APlayerCharacter::UnPauseAbilitySound() {
+	LOG("should be playing sound")
+
+}
+
+
 
 void APlayerCharacter::ActivateJumpBoost()
 {

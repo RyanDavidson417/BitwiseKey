@@ -31,7 +31,9 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnCollectedAbilitySignature, EPower
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnOptionsChangeSignature, UOptionsSaveGame*, SaveGame);
 
-
+//DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnGamePauseSignature, bool, StartingPaused);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnGamePauseSignature);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnGameUnPauseSignature);
 
 USTRUCT(BlueprintType)
 struct FPlayerStatStruct {
@@ -88,6 +90,12 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void StopGameTimerAndMusic();
 
+	UFUNCTION(BlueprintCallable)
+	void PauseGameMode();
+
+	UFUNCTION(BlueprintCallable)
+	void UnPauseGameMode();
+
 	void UpdateInvisCharge();
 	void ToggleInvisibility();
 	void ActivateInvisibility();
@@ -99,7 +107,6 @@ public:
 	void DeactivateStamina(bool bRanFullyOut = false);
 
 
-
 	void StartGameTimer();
 
 	UFUNCTION(BlueprintCallable)
@@ -108,6 +115,7 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void WinGame();//no C++ implementation
+
 
 protected:
 	// Called when the game starts or when spawned
@@ -143,8 +151,12 @@ public:
 
 
 		//the number of individual 'units' within each progress bar
+	UPROPERTY(BlueprintAssignable)
+	FOnGamePauseSignature OnGamePause;
 
-
+	//the number of individual 'units' within each progress bar
+	UPROPERTY(BlueprintAssignable)
+	FOnGameUnPauseSignature OnGameUnPause;
 
 	TObjectPtr<ABitwiseGameState> gs;
 	TObjectPtr<APlayerCharacter> PlayerCharacter;

@@ -210,6 +210,16 @@ void ABitwiseGameMode::StopGameTimerAndMusic()
     OnMusicStop.Broadcast();
 }
 
+void ABitwiseGameMode::PauseGameMode()
+{
+    OnGamePause.Broadcast();
+}
+
+void ABitwiseGameMode::UnPauseGameMode()
+{
+    OnGameUnPause.Broadcast();
+}
+
 
 #pragma region invis
 void ABitwiseGameMode::UpdateInvisCharge()
