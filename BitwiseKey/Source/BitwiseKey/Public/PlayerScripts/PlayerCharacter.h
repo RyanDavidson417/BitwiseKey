@@ -181,8 +181,6 @@ public:
 
 	void PlayAbilitySound(USoundBase* sound);
 	UFUNCTION(BluePrintCallable)
-	void PauseAbilitySound();
-	UFUNCTION(BluePrintCallable)
 	void UnPauseAbilitySound();
 	
 	UFUNCTION()
@@ -196,6 +194,11 @@ public:
 
 	void UpdateToggles();
 
+	UFUNCTION()
+	void ReceivePause();
+	UFUNCTION()
+	void ReceiveUnpause();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -204,7 +207,8 @@ protected:
 
 	void setRandomStartRotation(); 
 
-		TObjectPtr<UAudioComponent> CurrentAbilitySound;
+	UPROPERTY(BlueprintReadWrite)
+	TObjectPtr<UAudioComponent> CurrentAbilitySound;
 
 	UPROPERTY(EditAnywhere, category = "audio")
 	TObjectPtr<USoundBase> FirstJumpSound;
@@ -257,7 +261,7 @@ protected:
 
 	float DefaultAirControl;
 
-
+	float pointInSoundCue = 0;
 
 	TObjectPtr<ABitwisePlayerState> ps;
 

@@ -212,11 +212,13 @@ void ABitwiseGameMode::StopGameTimerAndMusic()
 
 void ABitwiseGameMode::PauseGameMode()
 {
+    LOG("pausing")
     OnGamePause.Broadcast();
 }
 
 void ABitwiseGameMode::UnPauseGameMode()
 {
+    LOG("unpausing")
     OnGameUnPause.Broadcast();
 }
 

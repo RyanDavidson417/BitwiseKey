@@ -89,6 +89,9 @@ void APlayerCharacter::BeginPlay()
 
 
 	gm->D_OnReset.AddDynamic(this, &APlayerCharacter::ResetPlayer);
+	gm->OnGamePause.AddUniqueDynamic(this, &APlayerCharacter::ReceivePause);
+	gm->OnGameUnPause.AddUniqueDynamic(this, &APlayerCharacter::ReceiveUnpause);
+
 
 	setRandomStartRotation();
 
@@ -117,7 +120,7 @@ void APlayerCharacter::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	TraceLine();
-	
+
 }
 
 // Called to bind functionality to input
@@ -638,17 +641,12 @@ void APlayerCharacter::PlayAbilitySound(USoundBase* sound){
 	if (IsValid(CurrentAbilitySound) && CurrentAbilitySound->IsPlaying()) {
 		CurrentAbilitySound->SetActive(false);
 		CurrentAbilitySound = nullptr;
+		CurrentAbilitySound = nullptr;
 	}
 	CurrentAbilitySound = UGameplayStatics::SpawnSound2D(this, sound);
 
 }
 
-void APlayerCharacter::PauseAbilitySound() {
-	if (IsValid(CurrentAbilitySound)) {
-		LOG("should be pausing sound")
-			CurrentAbilitySound->SetActive(false);
-	}
-}
 
 void APlayerCharacter::UnPauseAbilitySound() {
 	LOG("should be playing sound")
@@ -754,4 +752,29 @@ void APlayerCharacter::UpdateToggles()
 
 
 	//UEnhancedInputLibrary::RequestRebuildControlMappingsUsingContext(InputMapping, true);
+}
+
+void APlayerCharacter::ReceivePause()
+{
+	LOG("pauseLog: player received pause")
+
+	if (IsValid(CurrentAbilitySound)) {
+		LOG("pauseLog: should be pausing sound")
+			CurrentAbilitySound->SetPaused(true);
+
+		
+	}
+	else {
+		LOG("sound already finished " )
+	}
+}
+
+void APlayerCharacter::ReceiveUnpause()
+{
+	
+	if (IsValid(CurrentAbilitySound)) {
+		
+		CurrentAbilitySound->SetPaused(false);
+	}
+
 }
